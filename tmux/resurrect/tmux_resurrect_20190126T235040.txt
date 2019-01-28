@@ -1,0 +1,7 @@
+pane	com	0	:bash	1	:*	0	:/Users/mmngreco/Documents/gitlab	1	bash	:
+pane	com	0	:bash	1	:*	1	:/Users/mmngreco/Documents/gitlab	0	bash	:
+pane	ineqpy	0	:bash	1	:*	0	:/Users/mmngreco/Documents/github/mmngreco/IneqPy	1	bash	:
+pane	ineqpy	0	:bash	1	:*	1	:/Users/mmngreco	0	bash	:
+window	com	0	1	:*	c90e,97x41,0,0[97x20,0,0,3,97x20,0,21,4]
+window	ineqpy	0	1	:*	c905,97x41,0,0[97x20,0,0,1,97x20,0,21,2]
+state	com	
