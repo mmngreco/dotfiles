@@ -13,14 +13,18 @@
     ~/.config:
         path: tmux/*
         glob: true
-    ~/.vim: vim
-    # ~/.vimrc: vimrc
+        force: true
     ~/.tmux:
         path: tmux/*
         glob: true
+        force: true
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.bash_profile: bash_profile
-    # ~/.bashrc: bashrc
+    ~/.zshrc:
+        path: zshrc
+        force: true
+    ~/.bashrc: bashrc
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
