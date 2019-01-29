@@ -57,19 +57,19 @@ call plug#begin()
 
    " Plug 'zchee/deoplete-clang'
    Plug 'davidhalter/jedi-vim'
-   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-   " Plug 'zchee/deoplete-jedi', {'for': 'python'}
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+   Plug 'zchee/deoplete-jedi', {'for': 'python'}
    " Plug 'prabirshrestha/vim-lsp'
    " Plug 'ryanolsonx/vim-lsp-python'
    Plug 'cjrh/vim-conda'
    Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
-   Plug 'HansPinckaers/ncm2-jedi'
-   Plug 'ncm2/ncm2'
-   Plug 'roxma/nvim-yarp'
-   Plug 'ncm2/ncm2-bufword'
-   Plug 'ncm2/ncm2-path'
+   " Plug 'HansPinckaers/ncm2-jedi'
+   " Plug 'ncm2/ncm2'
+   " Plug 'roxma/nvim-yarp'
+   " Plug 'ncm2/ncm2-bufword'
+   " Plug 'ncm2/ncm2-path'
    " Plug 'python-mode/python-mode'
    " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
 
@@ -85,7 +85,7 @@ call plug#begin()
 
   Plug 'junegunn/fzf'
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'yuratomo/w3m.vim'
+  " Plug 'yuratomo/w3m.vim'
 call plug#end()
 
 set hidden
@@ -123,16 +123,16 @@ highlight NonText ctermbg=none
       let g:ale_emit_conflict_warnings = 0
    "=== ctrlp
    "=== deoplete
-      " let g:deoplete#enable_at_startup = 1
-      " let g:deoplete#sources#jedi#show_docstring = 1
-      " let g:deoplete#sources#jedi#server_timeout = 60
-      let g:python3_host_prog = '/usr/local/bin/python3'
+      let g:deoplete#enable_at_startup = 1
+      let g:deoplete#sources#jedi#show_docstring = 1
+      let g:deoplete#sources#jedi#server_timeout = 60
+      let g:python3_host_prog = '/usr/bin/python3'
    "=== echodoc
-      " let g:deoplete#sources#jedi#show_docstring=0
-      " let g:echodoc_enable_at_startup="1"
-      " let g:echodoc_type='echo'
-      " let g:jedi#show_call_singatures= 1
-      " set cmdheight=2
+      let g:deoplete#sources#jedi#show_docstring=0
+      let g:echodoc_enable_at_startup="1"
+      let g:echodoc_type='echo'
+      let g:jedi#show_call_singatures= 1
+      set cmdheight=2
    " === ncm2 settings"
    " Disable Jedi-vim autocompletion and enable call-signatures options
   let g:jedi#auto_initialization = 1
@@ -143,21 +143,21 @@ highlight NonText ctermbg=none
   let g:jedi#completions_command = ""
   let g:jedi#show_call_signatures = "1"
    " === ncm2 settings
-   autocmd BufEnter * call ncm2#enable_for_buffer()
-   set completeopt=menuone,noselect,noinsert
-   set shortmess+=c
-   inoremap <c-c> <ESC>
-   " make it fast
-   let ncm2#popup_delay = 5
-   let ncm2#complete_length = [[1, 1]]
-   let g:ncm2#matcher = 'substrfuzzy'
+   " autocmd BufEnter * call ncm2#enable_for_buffer()
+   " set completeopt=menuone,noselect,noinsert
+   " set shortmess+=c
+   " inoremap <c-c> <ESC>
+   " " make it fast
+   " let ncm2#popup_delay = 5
+   " let ncm2#complete_length = [[1, 1]]
+   " let g:ncm2#matcher = 'substrfuzzy'
   "=== indentLine
    "=== neoinclude
    "=== neomake
    "=== nerdtree
    "=== rainbow
    "=== slimux
-      let g:slimux_python_use_ipython = 1
+  let g:slimux_python_use_ipython = 1
    "=== tabular
    "=== tagbar
    "=== vim-abolish
@@ -165,7 +165,7 @@ highlight NonText ctermbg=none
    "=== vim-gitgutter
    "=== vim-indent-guides
    "=== vim-instant-markdown
-      let g:instant_markdown_slow = 1
+  let g:instant_markdown_slow = 1
    "=== vim-repeat
    "=== vim-sensible
    "=== vim-signature
