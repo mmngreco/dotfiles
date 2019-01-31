@@ -8,31 +8,37 @@
     ~/.config:
       force: true
 
+- clean:
+    ~/.bash_completion:
+      force: true
+
 - link:
     # ~/.dotfiles: ''
+    ~/.tmux.conf: tmux.conf
+    ~/.gitconfig: gitconfig
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
     ~/.config:
-        path: tmux/*
+        path: config/*
         glob: true
         force: true
     ~/.tmux:
         path: tmux/*
         glob: true
         force: true
-    ~/.tmux.conf: tmux.conf
-    ~/.gitconfig: gitconfig
-    ~/.bash_profile: bash_profile
     ~/.oh-my-zsh:
         path: oh-my-zsh
         force: true
     ~/.zshrc:
         path: zshrc
         force: true
-    ~/.bashrc: bashrc
     ~/.bash_completion:
         path: bash_completion/*
         glob: true
         force: true
-    ~/.inputrc: inputrc
+    ~/.inputrc:
+        path: inputrc
+        force: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
