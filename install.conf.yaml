@@ -8,9 +8,9 @@
     ~/.config:
       force: true
 
-- clean:
-    ~/.bash_completion:
-      force: true
+      # - clean :
+      # ~/.bash_completion:
+      # force: true
 
 - link:
     # ~/.dotfiles: ''
@@ -18,6 +18,9 @@
     ~/.gitconfig: gitconfig
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
+    ~/.aliases: aliases
+    ~/.alacritty.yml: alacritty.yml
+    ~/.functions: functions
     ~/.config:
         path: config/*
         glob: true
@@ -35,7 +38,7 @@
     ~/.bash_completion:
         path: bash_completion/*
         glob: true
-        force: true
+        # force: true
     ~/.inputrc:
         path: inputrc
         force: true
