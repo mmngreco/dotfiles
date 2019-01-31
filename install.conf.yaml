@@ -29,9 +29,10 @@
         force: true
     ~/.bashrc: bashrc
     ~/.bash_completion:
-        path: bash_completion
+        path: bash_completion/*
         glob: true
         force: true
+    ~/.inputrc: inputrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
