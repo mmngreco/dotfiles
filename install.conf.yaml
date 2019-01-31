@@ -19,7 +19,9 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.aliases: aliases
-    ~/.alacritty.yml: alacritty.yml
+    ~/.alacritty.yml:
+        path: alacritty.yml
+        force: true
     ~/.functions: functions
     ~/.config:
         path: config/*
