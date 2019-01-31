@@ -23,11 +23,15 @@
     ~/.bash_profile: bash_profile
     ~/.oh-my-zsh:
         path: oh-my-zsh
-        force: tre
+        force: true
     ~/.zshrc:
         path: zshrc
         force: true
     ~/.bashrc: bashrc
+    ~/.bash_completion:
+        path: bash_completion
+        glob: true
+        force: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
