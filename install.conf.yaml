@@ -23,6 +23,10 @@
         path: alacritty.yml
         force: true
     ~/.functions: functions
+    ~/.fonts:
+        path: fonts/*
+        glob: true
+        force: true
     ~/.config:
         path: config/*
         glob: true

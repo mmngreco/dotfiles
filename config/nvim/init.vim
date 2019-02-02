@@ -75,12 +75,11 @@ call plug#begin()
 
    "=== vim-trailing-whitespace
    Plug 'bronson/vim-trailing-whitespace'
-   " Plug 'jpalardy/vim-slime'
+   Plug 'jpalardy/vim-slime'
 
    Plug 'ErichDonGubler/vim-sublime-monokai'
    Plug 'jalvesaq/vimcmdline'
-   Plug 'scrooloose/nerdtree'
-   Plug 'Nopik/vim-nerdtree-direnter'
+   " Plug 'Nopik/vim-nerdtree-direnter'
    Plug 'altercation/vim-colors-solarized'
 
   Plug 'junegunn/fzf'
@@ -96,8 +95,8 @@ set shiftwidth=4
 set fillchars+=vert:\  " remove chars from seperators
 set softtabstop=4
 set colorcolumn=80
-" set clipboard=unnamedplus
-set clipboard=unnamed
+set clipboard=unnamedplus
+" set clipboard=unnamed
 " set undodir=~/.vim/undodir
 set undofile  " save undos
 set undolevels=10000  " maximum number of changes that can be undone
@@ -129,8 +128,8 @@ highlight NonText ctermbg=none
       let g:python3_host_prog = '/usr/bin/python3'
    "=== echodoc
       let g:deoplete#sources#jedi#show_docstring=0
-      let g:echodoc_enable_at_startup="1"
-      let g:echodoc_type='echo'
+      " let g:echodoc_enable_at_startup="1"
+      " let g:echodoc_type='echo'
       let g:jedi#show_call_singatures= 1
       set cmdheight=2
    " === ncm2 settings"
@@ -235,13 +234,13 @@ endfunction
 " autocmd FileType markdown let b:dispatch = 'octodown --live-reload %'
 tnoremap <Esc> <C-\><C-n>
 
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 " set noshowmode
 set noshowmode  " keep command line clean
 set noshowcmd
 set laststatus=2
 " toggle nerdtree on ctrl+n
-let NERDTreeMapOpenInTab='<ENTER>'
+" let NERDTreeMapOpenInTab='<ENTER>'
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :set nosplitright<CR>:TagbarToggle<CR>:set splitright<CR>
 " let g:powerline_pycmd = 'py3'
