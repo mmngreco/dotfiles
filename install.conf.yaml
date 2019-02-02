@@ -42,9 +42,9 @@
         path: zshrc
         force: true
     ~/.bash_completion:
-        path: bash_completion/*
-        glob: true
-        # force: true
+        path: bash_completion
+        # glob: true
+        force: true
     ~/.inputrc:
         path: inputrc
         force: true
