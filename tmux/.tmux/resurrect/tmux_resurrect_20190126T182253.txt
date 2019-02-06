@@ -1,4 +1,0 @@
-pane	ineqpy	0	:bash	1	:*	0	:/Users/mmngreco/Documents/github/mmngreco/IneqPy	0	bash	:
-pane	ineqpy	0	:bash	1	:*	1	:/Users/mmngreco	1	bash	:
-window	ineqpy	0	1	:*	4902,97x41,0,0[97x20,0,0,0,97x20,0,21,3]
-state	ineqpy	

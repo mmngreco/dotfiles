@@ -1,7 +1,7 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot.git
-[submodule "config/tmux/tpm"]
+[submodule "tpm"]
 	path = config/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "oh-my-zsh"]

@@ -8,6 +8,9 @@
     ~/.config:
       force: true
 
+- clean:
+    ~/.tmux:
+      force: true
       # - clean :
       # ~/.bash_completion:
       # force: true
@@ -16,7 +19,9 @@
     # ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
-    ~/.bash_profile: bash_profile
+    ~/.bash_profile:
+        path: bash_profile
+        create: true
     ~/.bashrc: bashrc
     ~/.aliases: aliases
     ~/.alacritty.yml:
@@ -27,27 +32,33 @@
         path: fonts/*
         glob: true
         force: true
+        create: true
     ~/.config:
         path: config/*
         glob: true
         force: true
+        create: true
     ~/.tmux:
         path: tmux/*
         glob: true
         force: true
+        create: true
     ~/.oh-my-zsh:
         path: oh-my-zsh
         force: true
+        create: true
     ~/.zshrc:
         path: zshrc
         force: true
     ~/.bash_completion:
         path: bash_completion
         # glob: true
+        create: true
         force: true
     ~/.inputrc:
         path: inputrc
         force: true
+        create: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
