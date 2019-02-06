@@ -1,3 +1,0 @@
-pane	0	0	:bash	1	:*	0	:/Users/mmngreco	1	bash	:
-window	0	0	1	:*	b9bd,158x33,0,0,0
-state	0	
