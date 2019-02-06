@@ -109,10 +109,5 @@ alias gist='open -a Firefox https://gist.github.com/'
 
 # work
 alias sshmet='ssh mgreco@etstea08'
-alias sshcom='ssh mgreco@etstea07'
+alias sshcom='ssh mgreco@etstea10'
 
-# .bashrc
-alias reloadrc='source ~/.bashrc'
-alias editrc='nvim ~/.bashrc'
-alias edittmux='nvim ~/.tmux.conf'
-alias editvim='nvim ~/.config/nvim/init.vim'

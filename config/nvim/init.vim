@@ -40,6 +40,7 @@ call plug#begin()
    Plug 'airblade/vim-gitgutter'
    Plug 'mbbill/undotree'
 
+   Plug 'vimwiki/vimwiki'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
    Plug 'suan/vim-instant-markdown'
@@ -56,13 +57,14 @@ call plug#begin()
    Plug 'tpope/vim-surround'
 
    " Plug 'zchee/deoplete-clang'
+   Plug 'nvie/vim-flake8'
    Plug 'davidhalter/jedi-vim'
    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
    Plug 'zchee/deoplete-jedi', {'for': 'python'}
    " Plug 'prabirshrestha/vim-lsp'
    " Plug 'ryanolsonx/vim-lsp-python'
-   Plug 'cjrh/vim-conda'
-   Plug 'tweekmonster/impsort.vim'  " color and sort imports
+   " Plug 'cjrh/vim-conda'
+   " Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
    " Plug 'HansPinckaers/ncm2-jedi'
@@ -75,7 +77,7 @@ call plug#begin()
 
    "=== vim-trailing-whitespace
    Plug 'bronson/vim-trailing-whitespace'
-   Plug 'jpalardy/vim-slime'
+   " Plug 'jpalardy/vim-slime'
 
    Plug 'ErichDonGubler/vim-sublime-monokai'
    Plug 'jalvesaq/vimcmdline'
@@ -134,13 +136,13 @@ highlight NonText ctermbg=none
       set cmdheight=2
    " === ncm2 settings"
    " Disable Jedi-vim autocompletion and enable call-signatures options
-  let g:jedi#auto_initialization = 1
-  let g:jedi#completions_enabled = 0
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#smart_auto_mappings = 0
-  let g:jedi#popup_on_dot = 0
-  let g:jedi#completions_command = ""
-  let g:jedi#show_call_signatures = "1"
+      let g:jedi#auto_initialization = 1
+      let g:jedi#completions_enabled = 0
+      let g:jedi#auto_vim_configuration = 0
+      let g:jedi#smart_auto_mappings = 0
+      let g:jedi#popup_on_dot = 0
+      let g:jedi#completions_command = ""
+      let g:jedi#show_call_signatures = "1"
    " === ncm2 settings
    " autocmd BufEnter * call ncm2#enable_for_buffer()
    " set completeopt=menuone,noselect,noinsert
@@ -205,7 +207,7 @@ let g:rainbow_active = 1
 let g:indentLine_char = "|"
 filetype indent on
 filetype plugin on
-
+let g:slime_target = "tmux"
 set smartcase  " better case-sensitivity when searching
 " ===================  COMMANDS   ==================
 function Latexize()
