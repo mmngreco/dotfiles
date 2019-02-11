@@ -16,7 +16,7 @@
       # force: true
 
 - link:
-    # ~/.dotfiles: ''
+    ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.bash_profile:
@@ -59,6 +59,12 @@
         path: inputrc
         force: true
         create: true
+    ~/.zplug:
+        path: zplug
+        force: true
+        create: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [fc-list -v -f, add fonts]
+  # - [fc-list -v -f, add fonts]

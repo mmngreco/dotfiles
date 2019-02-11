@@ -199,7 +199,8 @@ highlight NonText ctermbg=none
   " ActivateAddons vim-snippets snipmate
 
 " ==========  SLIMUX  ==========
-let g:slimux_tmux_path = "/usr/local/bin/tmux"
+" let g:slimux_tmux_path = "/usr/local/bin/tmux"
+let g:slimux_tmux_path = "/usr/bin/tmux"
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
