@@ -122,20 +122,18 @@ unset __conda_setup
 
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check ; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
     fi
 fi
 
-zplug load --verbose
+zplug load
 # Then, source plugins and add commands to $PATH
 # .zshrc
-autoload -U promptinit; promptinit
-
-# optionally define some options
-PURE_CMD_MAX_EXEC_TIME=10
-
-prompt pure
+autoload -Uz promptinit
+promptinit
+# options
+# prompt pure
 
