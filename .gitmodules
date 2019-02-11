@@ -7,3 +7,21 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "zplug"]
+	path = zplug
+	url = https://github.com/zplug/zplug
+[submodule "tmux/plugins/tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "tmux/plugins/tmux-continuum"]
+	path = tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum/
+[submodule "tmux/plugins/tmux-logging"]
+	path = tmux/plugins/tmux-logging
+	url = https://github.com/tmux-plugins/tmux-logging/
+[submodule "tmux/plugins/tmux-sensible"]
+	path = tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible/
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank/
