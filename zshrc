@@ -1,9 +1,9 @@
+source ~/.aliases
+source ~/.functions
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/mgreco/.oh-my-zsh"
-export ZPLUG_HOME=$HOME/.zplug
+export ZSH="$HOME/.oh-my-zsh"
+export ZPLUG_HOME="$HOME/.zplug"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,7 +70,11 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zplug/init.zsh
+source $ZPLUG_HOME/init.zsh
+
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -116,8 +120,6 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-source ~/.aliases
-source ~/.functions
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -127,5 +129,13 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# Then, source plugins and add commands to $PATH
 zplug load --verbose
+# Then, source plugins and add commands to $PATH
+# .zshrc
+autoload -U promptinit; promptinit
+
+# optionally define some options
+PURE_CMD_MAX_EXEC_TIME=10
+
+prompt pure
+
