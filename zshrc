@@ -136,4 +136,3 @@ promptinit
 # options
 # prompt pure
 
-
