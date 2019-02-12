@@ -28,6 +28,7 @@
         path: alacritty.yml
         force: true
     ~/.functions: functions
+    ~/.variables: variables
     ~/.fonts:
         path: fonts/*
         glob: true
@@ -66,5 +67,4 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [fc-list -v -f, add fonts]
-  # - [fc-list -v -f, add fonts]
+  - [fc-cache -v -f, add fonts]
