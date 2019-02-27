@@ -129,20 +129,18 @@ highlight NonText ctermbg=none
       let g:deoplete#sources#jedi#server_timeout = 60
       let g:python3_host_prog = '/usr/bin/python3'
    "=== echodoc
-      let g:deoplete#sources#jedi#show_docstring=0
       " let g:echodoc_enable_at_startup="1"
       " let g:echodoc_type='echo'
-      let g:jedi#show_call_singatures= 1
       set cmdheight=2
    " === ncm2 settings"
    " Disable Jedi-vim autocompletion and enable call-signatures options
       let g:jedi#auto_initialization = 1
+      let g:jedi#show_call_singatures= 1
       let g:jedi#completions_enabled = 0
       let g:jedi#auto_vim_configuration = 0
       let g:jedi#smart_auto_mappings = 0
       let g:jedi#popup_on_dot = 0
-      let g:jedi#completions_command = ""
-      let g:jedi#show_call_signatures = "1"
+      " let g:jedi#completions_command = ''
    " === ncm2 settings
    " autocmd BufEnter * call ncm2#enable_for_buffer()
    " set completeopt=menuone,noselect,noinsert
