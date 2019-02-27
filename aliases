@@ -111,3 +111,4 @@ alias gist='open -a Firefox https://gist.github.com/'
 alias sshmet='ssh mgreco@etstea08'
 alias sshcom='ssh mgreco@etstea10'
 
+ alias drmca='docker rm $(docker stop $(docker ps -qa))'
