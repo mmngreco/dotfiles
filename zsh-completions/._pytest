@@ -1,0 +1,9 @@
+#compdef pytest
+
+_pytest_complete() {
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+    compadd "$@" $( pytest --collect-only -q | head -n -2)
+}
+
+_pytest_complete "$@"

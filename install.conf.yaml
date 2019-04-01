@@ -44,6 +44,10 @@
         glob: true
         force: true
         create: true
+    ~/.zsh-completions:
+        path: zsh-completions
+        force: true
+        create: true
     ~/.oh-my-zsh:
         path: oh-my-zsh
         force: true

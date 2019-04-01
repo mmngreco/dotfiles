@@ -66,6 +66,14 @@ ZSH_THEME=""
 plugins=(
     git
     zsh-syntax-highlighting
+    python
+    pip
+    pep8
+    autopep8
+    docker
+    git-flow
+    github
+    taskwarrior
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,6 +111,15 @@ zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<< custom completions
+fpath=(~/.zsh-completions $fpath)
+autoload -U compinit
+compinit
+zstyle ':completion:*' menu select=2
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/mgreco/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
@@ -135,4 +152,3 @@ autoload -Uz promptinit
 promptinit
 # options
 # prompt pure
-

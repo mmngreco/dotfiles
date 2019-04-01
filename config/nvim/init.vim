@@ -59,12 +59,14 @@ call plug#begin()
    " Plug 'zchee/deoplete-clang'
    Plug 'nvie/vim-flake8'
    Plug 'davidhalter/jedi-vim'
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-   Plug 'zchee/deoplete-jedi', {'for': 'python'}
-   " Plug 'prabirshrestha/vim-lsp'
-   " Plug 'ryanolsonx/vim-lsp-python'
+   Plug 'mattn/gist-vim'
+   Plug 'mattn/webapi-vim'
+   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+   " Plug 'zchee/deoplete-jedi', {'for': 'python'}
+   Plug 'prabirshrestha/vim-lsp'
+   Plug 'ryanolsonx/vim-lsp-python'
    " Plug 'cjrh/vim-conda'
-   " Plug 'tweekmonster/impsort.vim'  " color and sort imports
+   Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
    " Plug 'HansPinckaers/ncm2-jedi'
@@ -73,11 +75,11 @@ call plug#begin()
    " Plug 'ncm2/ncm2-bufword'
    " Plug 'ncm2/ncm2-path'
    " Plug 'python-mode/python-mode'
-   " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
+   Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
 
    "=== vim-trailing-whitespace
    Plug 'bronson/vim-trailing-whitespace'
-   " Plug 'jpalardy/vim-slime'
+   Plug 'jpalardy/vim-slime'
 
    Plug 'ErichDonGubler/vim-sublime-monokai'
    Plug 'jalvesaq/vimcmdline'
@@ -124,9 +126,9 @@ highlight NonText ctermbg=none
       let g:ale_emit_conflict_warnings = 0
    "=== ctrlp
    "=== deoplete
-      let g:deoplete#enable_at_startup = 1
-      let g:deoplete#sources#jedi#show_docstring = 1
-      let g:deoplete#sources#jedi#server_timeout = 60
+      " let g:deoplete#enable_at_startup = 1
+      " let g:deoplete#sources#jedi#show_docstring = 1
+      " let g:deoplete#sources#jedi#server_timeout = 60
       let g:python3_host_prog = '/usr/bin/python3'
    "=== echodoc
       " let g:echodoc_enable_at_startup="1"
@@ -157,6 +159,7 @@ highlight NonText ctermbg=none
    "=== rainbow
    "=== slimux
   let g:slimux_python_use_ipython = 1
+  " let g:gist_use_password_in_gitconfig = 1
    "=== tabular
    "=== tagbar
    "=== vim-abolish
@@ -250,3 +253,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
 " let g:airline_theme = 'raven'
 " let g:airline_theme = 'monochrome'
+
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
