@@ -12,9 +12,9 @@ call plug#begin()
    Plug 'w0rp/ale'
    Plug 'arakashic/chromatica.nvim'
    Plug 'kien/ctrlp.vim'
-   Plug 'prabirshrestha/async.vim'
-   Plug 'Shougo/echodoc.vim'
+   " Plug 'Shougo/echodoc.vim'
    Plug 'Shougo/neoinclude.vim'
+   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
    Plug 'neomake/neomake'
    Plug 'scrooloose/nerdtree'
    Plug 'ivalkeen/nerdtree-execute'
@@ -25,6 +25,7 @@ call plug#begin()
    Plug 'ervandew/supertab'
    Plug 'godlygeek/tabular'
    Plug 'majutsushi/tagbar'
+   Plug 'dhruvasagar/vim-table-mode'
 
    "=== ultisnips
    Plug 'SirVer/ultisnips'
@@ -43,7 +44,7 @@ call plug#begin()
    Plug 'vimwiki/vimwiki'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
-   Plug 'suan/vim-instant-markdown'
+   " Plug 'suan/vim-instant-markdown'
    Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
    Plug 'tpope/vim-commentary'
    Plug 'ryanoasis/vim-devicons'
@@ -58,13 +59,14 @@ call plug#begin()
 
    " Plug 'zchee/deoplete-clang'
    Plug 'nvie/vim-flake8'
-   Plug 'davidhalter/jedi-vim'
+       Plug 'davidhalter/jedi-vim'
+
    Plug 'mattn/gist-vim'
-   Plug 'mattn/webapi-vim'
+       Plug 'mattn/webapi-vim'
    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
    " Plug 'zchee/deoplete-jedi', {'for': 'python'}
-   Plug 'prabirshrestha/vim-lsp'
-   Plug 'ryanolsonx/vim-lsp-python'
+   " Plug 'prabirshrestha/vim-lsp'
+   " Plug 'prabirshrestha/asyncomplete.vim'
    " Plug 'cjrh/vim-conda'
    Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
@@ -75,7 +77,12 @@ call plug#begin()
    " Plug 'ncm2/ncm2-bufword'
    " Plug 'ncm2/ncm2-path'
    " Plug 'python-mode/python-mode'
+   " Plug 'ryanolsonx/vim-lsp-python'
    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
+   " Plug 'prabirshrestha/asyncomplete.vim'
+   " Plug 'prabirshrestha/async.vim'
+   " Plug 'prabirshrestha/vim-lsp'
+   " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
    "=== vim-trailing-whitespace
    Plug 'bronson/vim-trailing-whitespace'
@@ -101,7 +108,7 @@ set softtabstop=4
 set colorcolumn=80
 set clipboard=unnamedplus
 " set clipboard=unnamed
-" set undodir=~/.vim/undodir
+set undodir=~/.vim/undodir
 set undofile  " save undos
 set undolevels=10000  " maximum number of changes that can be undone
 set undoreload=100000  " maximum number lines to save for undo on a buffer reload
@@ -121,28 +128,27 @@ highlight NonText ctermbg=none
 " set runtimepath+=~/.config/nvim/plugins/deoplete.nvim
 
 "===   - Plugins
-
-   "=== ale
-      let g:ale_emit_conflict_warnings = 0
-   "=== ctrlp
-   "=== deoplete
-      " let g:deoplete#enable_at_startup = 1
-      " let g:deoplete#sources#jedi#show_docstring = 1
-      " let g:deoplete#sources#jedi#server_timeout = 60
-      let g:python3_host_prog = '/usr/bin/python3'
-   "=== echodoc
-      " let g:echodoc_enable_at_startup="1"
-      " let g:echodoc_type='echo'
-      set cmdheight=2
+   " === ale
+   let g:ale_emit_conflict_warnings = 0
+   " === ctrlp
+   " === deoplete
+   " let g:deoplete#enable_at_startup = 1
+   let g:deoplete#sources#jedi#show_docstring = 1
+   let g:deoplete#sources#jedi#server_timeout = 60
+   " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
+   " === echodoc
+   " let g:echodoc_enable_at_startup="1"
+   " let g:echodoc_type='echo'
+   set cmdheight=2
    " === ncm2 settings"
    " Disable Jedi-vim autocompletion and enable call-signatures options
-      let g:jedi#auto_initialization = 1
-      let g:jedi#show_call_singatures= 1
-      let g:jedi#completions_enabled = 0
-      let g:jedi#auto_vim_configuration = 0
-      let g:jedi#smart_auto_mappings = 0
-      let g:jedi#popup_on_dot = 0
-      " let g:jedi#completions_command = ''
+   let g:jedi#auto_initialization = 1
+   let g:jedi#show_call_singatures= 1
+   let g:jedi#completions_enabled = 0
+   let g:jedi#auto_vim_configuration = 0
+   let g:jedi#smart_auto_mappings = 0
+   let g:jedi#popup_on_dot = 0
+   let g:jedi#completions_command = ''
    " === ncm2 settings
    " autocmd BufEnter * call ncm2#enable_for_buffer()
    " set completeopt=menuone,noselect,noinsert
@@ -152,27 +158,29 @@ highlight NonText ctermbg=none
    " let ncm2#popup_delay = 5
    " let ncm2#complete_length = [[1, 1]]
    " let g:ncm2#matcher = 'substrfuzzy'
-  "=== indentLine
-   "=== neoinclude
-   "=== neomake
-   "=== nerdtree
-   "=== rainbow
-   "=== slimux
+   " === indentLine
+   " === neoinclude
+   " === neomake
+   " === nerdtree
+   " === rainbow
+   " === slimux
   let g:slimux_python_use_ipython = 1
-  " let g:gist_use_password_in_gitconfig = 1
-   "=== tabular
-   "=== tagbar
-   "=== vim-abolish
-   "=== vim-airline
-   "=== vim-gitgutter
-   "=== vim-indent-guides
-   "=== vim-instant-markdown
+  let g:LanguageClient_loggingLevel = 'DEBUG'
+  let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+   " let g:gist_use_password_in_gitconfig = 1
+   " === tabular
+   " === tagbar
+   " === vim-abolish
+   " === vim-airline
+   " === vim-gitgutter
+   " === vim-indent-guides
+   " === vim-instant-markdown
   let g:instant_markdown_slow = 1
-   "=== vim-repeat
-   "=== vim-sensible
-   "=== vim-signature
-   "=== vim-surround
-   "=== vim-trailing-whitespace
+   " === vim-repeat
+   " === vim-sensible
+   " === vim-signature
+   " === vim-surround
+   " === vim-trailing-whitespace
    " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
    let g:UltiSnipsExpandTrigger="<tab>"
@@ -186,18 +194,6 @@ highlight NonText ctermbg=none
    " let g:UltiSnipsSnippetDirectories=["UltiSnipsNewDir"]
    let g:ultisnips_python_style="sphinx"
    let g:pydocstring_templates_dir='~/.config/nvim/plugged/vim-pydocstring/test/templates/numpy'
-
-
-   " let g:LanguageClient_serverCommands = {
-   "     \ 'python': ['~/miniconda3/bin/pyls']
-   "     \ }
-   " nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  " " Or map each action separately
-   " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-   " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-   " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  " snippets : assuming you want to use snipmate snippet engine.
-  " ActivateAddons vim-snippets snipmate
 
 " ==========  SLIMUX  ==========
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
@@ -239,7 +235,6 @@ endfunction
 tnoremap <Esc> <C-\><C-n>
 
 " autocmd vimenter * NERDTree
-" set noshowmode
 set noshowmode  " keep command line clean
 set noshowcmd
 set laststatus=2
@@ -248,16 +243,24 @@ set laststatus=2
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :set nosplitright<CR>:TagbarToggle<CR>:set splitright<CR>
 " let g:powerline_pycmd = 'py3'
-" let g:powerline_pyeval = 'python3'
+" let g:powerline_pyeval = '/usr/bin/python3'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
 " let g:airline_theme = 'raven'
 " let g:airline_theme = 'monochrome'
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                     \ 'syntax': 'markdown', 'ext': '.md'
+                     \ }]
 
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
+
+" https://github.com/palantir/python-language-server/issues/374
+    " \ 'python': ['$CONDA_PYTHON_EXE', '-m', 'pyls', '--log-file', '/tmp/pyls.log'],
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
+    \ }
+
+" let g:lsp_virtual_text_enabled = 1
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
