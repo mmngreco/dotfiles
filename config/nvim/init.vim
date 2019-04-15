@@ -1,6 +1,5 @@
 
-"===   PLUGINS
-"==============================================================================
+" ============   PLUGINS ============
 function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
     !cargo build --release
@@ -9,7 +8,7 @@ function! BuildComposer(info)
 endfunction
 
 call plug#begin()
-   Plug 'w0rp/ale'
+   " Plug 'w0rp/ale'
    Plug 'arakashic/chromatica.nvim'
    Plug 'kien/ctrlp.vim'
    " Plug 'Shougo/echodoc.vim'
@@ -45,7 +44,9 @@ call plug#begin()
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
    " Plug 'suan/vim-instant-markdown'
-   Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+   " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+   Plug 'previm/previm'
+       Plug 'tyru/open-browser'
    Plug 'tpope/vim-commentary'
    Plug 'ryanoasis/vim-devicons'
    " Plug 'terryma/vim-multiple-cursors'
@@ -92,10 +93,9 @@ call plug#begin()
    Plug 'jalvesaq/vimcmdline'
    " Plug 'Nopik/vim-nerdtree-direnter'
    Plug 'altercation/vim-colors-solarized'
-
-  Plug 'junegunn/fzf'
-  Plug 'christoomey/vim-tmux-navigator'
-  " Plug 'yuratomo/w3m.vim'
+   Plug 'junegunn/fzf'
+   Plug 'christoomey/vim-tmux-navigator'
+   " Plug 'yuratomo/w3m.vim'
 call plug#end()
 
 set hidden
@@ -164,9 +164,9 @@ highlight NonText ctermbg=none
    " === nerdtree
    " === rainbow
    " === slimux
-  let g:slimux_python_use_ipython = 1
-  let g:LanguageClient_loggingLevel = 'DEBUG'
-  let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+   let g:slimux_python_use_ipython = 1
+   let g:LanguageClient_loggingLevel = 'DEBUG'
+   let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
    " let g:gist_use_password_in_gitconfig = 1
    " === tabular
    " === tagbar
@@ -175,7 +175,18 @@ highlight NonText ctermbg=none
    " === vim-gitgutter
    " === vim-indent-guides
    " === vim-instant-markdown
-  let g:instant_markdown_slow = 1
+   let g:instant_markdown_slow = 1
+
+   " === vim-previm
+   let g:previm_open_cmd = 'xdg-open'
+   let g:previm_enable_realtime = 1
+   augroup PrevimSettings
+       autocmd!
+       autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
+       " nnoremap <silent> <C-p> :PrevimOpen<CR>
+       " autocmd BufReadPre,FileReadPre :PrevimOpen
+       autocmd FileType markdown :PrevimOpen
+   augroup END
    " === vim-repeat
    " === vim-sensible
    " === vim-signature
@@ -228,7 +239,6 @@ endfunction
 " map <F9> :silent !pdflatex ./report.tex --output-directory=./tmp<CR>:redraw!<CR>
 " map <F10>  :exec Latexize()<CR>
 " map <F12> :! evince ./*.pdf &<CR><CR>
-" colorscheme industry
 " set rtp+=/Users/mmngreco/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 " autocmd! BufWritePost * Neomake
 " autocmd FileType markdown let b:dispatch = 'octodown --live-reload %'
@@ -256,7 +266,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 " https://github.com/palantir/python-language-server/issues/374
     " \ 'python': ['$CONDA_PYTHON_EXE', '-m', 'pyls', '--log-file', '/tmp/pyls.log'],
 let g:LanguageClient_serverCommands = {
-    \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
+    \ 'python': ['pyls', '--log-file', '/tmp/pyls.log', '-v'],
     \ }
 
 " let g:lsp_virtual_text_enabled = 1

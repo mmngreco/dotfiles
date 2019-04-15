@@ -1,0 +1,124 @@
+time 1550744234
+new [description:"refactorizar indicators y orders para cogerlos desde fuera." entry:"1550744234" modified:"1550744234" project:"pymo" status:"pending" tags:"pymo,python" uuid:"24566e4a-d8fa-4719-abda-5fce0065dac6"]
+---
+time 1550744284
+new [description:"terminar notebook de ejemplo" entry:"1550744284" modified:"1550744284" project:"pymo" status:"pending" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+---
+time 1550744314
+new [description:"terminar documentacion" entry:"1550744314" modified:"1550744314" project:"pymo" status:"pending" tags:"pymo,doc,python" uuid:"cf890e85-4e9a-4422-86bc-e9d818617d3e"]
+---
+time 1550744368
+old [description:"terminar notebook de ejemplo" entry:"1550744284" modified:"1550744284" project:"pymo" status:"pending" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+new [description:"terminar notebook de ejemplo" entry:"1550744284" modified:"1550744368" project:"pymo" start:"1550744368" status:"pending" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+---
+time 1550744381
+old [description:"refactorizar indicators y orders para cogerlos desde fuera." entry:"1550744234" modified:"1550744234" project:"pymo" status:"pending" tags:"pymo,python" uuid:"24566e4a-d8fa-4719-abda-5fce0065dac6"]
+new [description:"refactorizar indicators y orders para cogerlos desde fuera." entry:"1550744234" modified:"1550744381" project:"pymo" start:"1550744381" status:"pending" tags:"pymo,python" uuid:"24566e4a-d8fa-4719-abda-5fce0065dac6"]
+---
+time 1550744405
+old [description:"terminar notebook de ejemplo" entry:"1550744284" modified:"1550744368" project:"pymo" start:"1550744368" status:"pending" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+new [description:"terminar notebook de ejemplo" entry:"1550744284" modified:"1550744405" project:"pymo" status:"pending" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+---
+time 1550744614
+new [description:"cambiar calculate_orders para que devuelva la fecha como date en lugar de timestamp." entry:"1550744614" modified:"1550744614" project:"pymo" status:"pending" tags:"ENH" uuid:"d1a64b28-7ab0-40e0-b803-e825e5b1e0d9"]
+---
+time 1551261433
+old [description:"refactorizar indicators y orders para cogerlos desde fuera." entry:"1550744234" modified:"1550744381" project:"pymo" start:"1550744381" status:"pending" tags:"pymo,python" uuid:"24566e4a-d8fa-4719-abda-5fce0065dac6"]
+new [description:"refactorizar indicators y orders para cogerlos desde fuera." end:"1551261433" entry:"1550744234" modified:"1551261433" project:"pymo" status:"completed" tags:"pymo,python" uuid:"24566e4a-d8fa-4719-abda-5fce0065dac6"]
+---
+time 1551264093
+new [description:"corregir clean_impossible_orders" entry:"1551264093" modified:"1551264093" project:"pymo" status:"pending" tags:"ENH" uuid:"4b40be45-5b62-4851-bbb7-4c1a389fec4a"]
+---
+time 1551264147
+new [description:"corregir bug en clean_impossible_order y test" entry:"1551264147" modified:"1551264147" project:"pymo" status:"pending" tags:"BUG" uuid:"88b7a985-d4c7-41c4-a291-071a6f470360"]
+---
+time 1551264171
+new [description:"corregir docstrings" entry:"1551264171" modified:"1551264171" project:"pymo" status:"pending" tags:"DOC" uuid:"09302ce5-bafe-48f1-aba2-c4c816603357"]
+---
+time 1551264269
+old [description:"corregir bug en clean_impossible_order y test" entry:"1551264147" modified:"1551264147" project:"pymo" status:"pending" tags:"BUG" uuid:"88b7a985-d4c7-41c4-a291-071a6f470360"]
+new [description:"corregir bug en clean_impossible_order y test" entry:"1551264147" modified:"1551264269" project:"pymo" start:"1551264269" status:"pending" tags:"BUG" uuid:"88b7a985-d4c7-41c4-a291-071a6f470360"]
+---
+time 1554288462
+old [description:"corregir bug en clean_impossible_order y test" entry:"1551264147" modified:"1551264269" project:"pymo" start:"1551264269" status:"pending" tags:"BUG" uuid:"88b7a985-d4c7-41c4-a291-071a6f470360"]
+new [description:"corregir bug en clean_impossible_order y test" end:"1554288462" entry:"1551264147" modified:"1554288462" project:"pymo" status:"completed" tags:"BUG" uuid:"88b7a985-d4c7-41c4-a291-071a6f470360"]
+---
+time 1554288467
+old [description:"terminar notebook de ejemplo" entry:"1550744284" modified:"1550744405" project:"pymo" status:"pending" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+new [description:"terminar notebook de ejemplo" end:"1554288467" entry:"1550744284" modified:"1554288467" project:"pymo" status:"completed" tags:"pymo,doc,python" uuid:"73bf2a3d-460b-4fe0-bdba-bfdd99aa2d27"]
+---
+time 1554288471
+old [description:"terminar documentacion" entry:"1550744314" modified:"1550744314" project:"pymo" status:"pending" tags:"pymo,doc,python" uuid:"cf890e85-4e9a-4422-86bc-e9d818617d3e"]
+new [description:"terminar documentacion" end:"1554288471" entry:"1550744314" modified:"1554288471" project:"pymo" status:"completed" tags:"pymo,doc,python" uuid:"cf890e85-4e9a-4422-86bc-e9d818617d3e"]
+---
+time 1554288482
+old [description:"cambiar calculate_orders para que devuelva la fecha como date en lugar de timestamp." entry:"1550744614" modified:"1550744614" project:"pymo" status:"pending" tags:"ENH" uuid:"d1a64b28-7ab0-40e0-b803-e825e5b1e0d9"]
+new [description:"cambiar calculate_orders para que devuelva la fecha como date en lugar de timestamp." end:"1554288482" entry:"1550744614" modified:"1554288482" project:"pymo" status:"completed" tags:"ENH" uuid:"d1a64b28-7ab0-40e0-b803-e825e5b1e0d9"]
+---
+time 1554288493
+old [description:"corregir clean_impossible_orders" entry:"1551264093" modified:"1551264093" project:"pymo" status:"pending" tags:"ENH" uuid:"4b40be45-5b62-4851-bbb7-4c1a389fec4a"]
+new [description:"corregir clean_impossible_orders" end:"1554288493" entry:"1551264093" modified:"1554288493" project:"pymo" status:"completed" tags:"ENH" uuid:"4b40be45-5b62-4851-bbb7-4c1a389fec4a"]
+---
+time 1554288504
+old [description:"corregir docstrings" entry:"1551264171" modified:"1551264171" project:"pymo" status:"pending" tags:"DOC" uuid:"09302ce5-bafe-48f1-aba2-c4c816603357"]
+new [description:"corregir docstrings" end:"1554288504" entry:"1551264171" modified:"1554288504" project:"pymo" status:"completed" tags:"DOC" uuid:"09302ce5-bafe-48f1-aba2-c4c816603357"]
+---
+time 1554288532
+new [description:"desarrollar test _at_mkt2pord" entry:"1554288532" modified:"1554288532" status:"pending" uuid:"0a96d7a7-f7e9-44d5-b076-eb6e1836afac"]
+---
+time 1554288538
+new [description:"desarrollar test _level2pord" entry:"1554288538" modified:"1554288538" status:"pending" uuid:"8c591f57-676a-488c-bc05-63372fe054e4"]
+---
+time 1554288546
+new [description:"desarrollar test mord2pord" entry:"1554288546" modified:"1554288546" status:"pending" uuid:"10c498b9-3385-45b3-b76f-919cd773c408"]
+---
+time 1554288562
+new [description:"guilines ETS" entry:"1554288562" modified:"1554288562" status:"pending" uuid:"19e0036a-e27e-4614-950e-57bb84703674"]
+---
+time 1554289230
+new [description:"probar jenkins en local" entry:"1554289230" modified:"1554289230" status:"pending" uuid:"80c15660-839c-469b-88b2-54525a59840b"]
+---
+time 1554289241
+new [description:"sistemas etspip" entry:"1554289241" modified:"1554289241" status:"pending" uuid:"86caeb6a-9920-41a8-b969-afb918b92725"]
+---
+time 1554375884
+old [description:"desarrollar test _at_mkt2pord" entry:"1554288532" modified:"1554288532" status:"pending" uuid:"0a96d7a7-f7e9-44d5-b076-eb6e1836afac"]
+new [description:"desarrollar test _at_mkt2pord" end:"1554375884" entry:"1554288532" modified:"1554375884" status:"completed" uuid:"0a96d7a7-f7e9-44d5-b076-eb6e1836afac"]
+---
+time 1554375889
+old [description:"desarrollar test _level2pord" entry:"1554288538" modified:"1554288538" status:"pending" uuid:"8c591f57-676a-488c-bc05-63372fe054e4"]
+new [description:"desarrollar test _level2pord" end:"1554375889" entry:"1554288538" modified:"1554375889" status:"completed" uuid:"8c591f57-676a-488c-bc05-63372fe054e4"]
+---
+time 1554375893
+old [description:"desarrollar test mord2pord" entry:"1554288546" modified:"1554288546" status:"pending" uuid:"10c498b9-3385-45b3-b76f-919cd773c408"]
+new [description:"desarrollar test mord2pord" end:"1554375893" entry:"1554288546" modified:"1554375893" status:"completed" uuid:"10c498b9-3385-45b3-b76f-919cd773c408"]
+---
+time 1554376053
+new [description:"test _round_buy_sell" entry:"1554376053" modified:"1554376053" status:"pending" uuid:"0fb5d933-40a3-4e6a-8ed1-09d23da578b3"]
+---
+time 1554797646
+old [description:"test _round_buy_sell" entry:"1554376053" modified:"1554376053" status:"pending" uuid:"0fb5d933-40a3-4e6a-8ed1-09d23da578b3"]
+new [description:"test _round_buy_sell" end:"1554797646" entry:"1554376053" modified:"1554797646" status:"completed" uuid:"0fb5d933-40a3-4e6a-8ed1-09d23da578b3"]
+---
+time 1554797667
+new [description:"Implementear program_order -p auguro" entry:"1554797667" modified:"1554797667" status:"pending" uuid:"0f1b2c51-bf8c-40d7-90db-5066e1722092"]
+---
+time 1554797775
+old [description:"Implementear program_order -p auguro" entry:"1554797667" modified:"1554797667" status:"pending" uuid:"0f1b2c51-bf8c-40d7-90db-5066e1722092"]
+new [description:"Implementear program_order" entry:"1554797667" modified:"1554797775" project:"auguro" status:"pending" uuid:"0f1b2c51-bf8c-40d7-90db-5066e1722092"]
+---
+time 1554798396
+new [description:"corregir pymo doc" entry:"1554798396" modified:"1554798396" project:"pymo" status:"pending" uuid:"18ab4863-b808-4ed9-932a-05227f353e2a"]
+---
+time 1554898139
+old [description:"corregir pymo doc" entry:"1554798396" modified:"1554798396" project:"pymo" status:"pending" uuid:"18ab4863-b808-4ed9-932a-05227f353e2a"]
+new [description:"corregir pymo doc" end:"1554898139" entry:"1554798396" modified:"1554898139" project:"pymo" status:"completed" uuid:"18ab4863-b808-4ed9-932a-05227f353e2a"]
+---
+time 1554898151
+old [description:"sistemas etspip" entry:"1554289241" modified:"1554289241" status:"pending" uuid:"86caeb6a-9920-41a8-b969-afb918b92725"]
+new [description:"sistemas etspip" end:"1554898151" entry:"1554289241" modified:"1554898151" status:"completed" uuid:"86caeb6a-9920-41a8-b969-afb918b92725"]
+---
+time 1554898176
+old [description:"Implementear program_order" entry:"1554797667" modified:"1554797775" project:"auguro" status:"pending" uuid:"0f1b2c51-bf8c-40d7-90db-5066e1722092"]
+new [description:"Implementear program_order" entry:"1554797667" modified:"1554898176" project:"auguro" start:"1554898176" status:"pending" uuid:"0f1b2c51-bf8c-40d7-90db-5066e1722092"]
+---
