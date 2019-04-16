@@ -11,6 +11,7 @@ call plug#begin()
    " Plug 'w0rp/ale'
    Plug 'arakashic/chromatica.nvim'
    Plug 'kien/ctrlp.vim'
+   Plug 'blindFS/vim-taskwarrior'
    " Plug 'Shougo/echodoc.vim'
    Plug 'Shougo/neoinclude.vim'
    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -43,10 +44,11 @@ call plug#begin()
    Plug 'vimwiki/vimwiki'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
+   Plug 'plasticboy/vim-markdown'
    " Plug 'suan/vim-instant-markdown'
    " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
    Plug 'previm/previm'
-       Plug 'tyru/open-browser'
+       Plug 'tyru/open-browser.vim'
    Plug 'tpope/vim-commentary'
    Plug 'ryanoasis/vim-devicons'
    " Plug 'terryma/vim-multiple-cursors'
@@ -98,20 +100,27 @@ call plug#begin()
    " Plug 'yuratomo/w3m.vim'
 call plug#end()
 
-set hidden
-set nu
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set fillchars+=vert:\  " remove chars from seperators
-set softtabstop=4
-set colorcolumn=80
-set clipboard=unnamedplus
 " set clipboard=unnamed
+set clipboard=unnamedplus
+set colorcolumn=80
+set expandtab
+set fillchars+=vert:\  " remove chars from seperators
+set hidden
+set laststatus=2
+set noshowcmd
+set noshowmode  " keep command line clean
+set nu
+set shiftwidth=4
+set smartcase  " better case-sensitivity when searching
+set softtabstop=4
+set tabstop=4
 set undodir=~/.vim/undodir
 set undofile  " save undos
 set undolevels=10000  " maximum number of changes that can be undone
 set undoreload=100000  " maximum number lines to save for undo on a buffer reload
+filetype indent on
+filetype plugin on
+
 "===============================================================================
 "===   DEFAULT CONFIGURATION
 "===   - Typing
@@ -163,10 +172,6 @@ highlight NonText ctermbg=none
    " === neomake
    " === nerdtree
    " === rainbow
-   " === slimux
-   let g:slimux_python_use_ipython = 1
-   let g:LanguageClient_loggingLevel = 'DEBUG'
-   let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
    " let g:gist_use_password_in_gitconfig = 1
    " === tabular
    " === tagbar
@@ -194,6 +199,7 @@ highlight NonText ctermbg=none
    " === vim-trailing-whitespace
    " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
+   " === UltiSnips
    let g:UltiSnipsExpandTrigger="<tab>"
    let g:UltiSnipsListSnippets="<c-l>"
    let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -207,17 +213,22 @@ highlight NonText ctermbg=none
    let g:pydocstring_templates_dir='~/.config/nvim/plugged/vim-pydocstring/test/templates/numpy'
 
 " ==========  SLIMUX  ==========
+let g:slimux_python_use_ipython = 1
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
 let g:slimux_tmux_path = "/usr/bin/tmux"
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
+let g:slime_target = "tmux"
+
+" rainbow
 let g:rainbow_active = 1
 let g:indentLine_char = "|"
-filetype indent on
-filetype plugin on
-let g:slime_target = "tmux"
-set smartcase  " better case-sensitivity when searching
+
+
+
 " ===================  COMMANDS   ==================
 function Latexize()
    :silent !pdflatex ./report.tex --output-directory=./tmp
@@ -226,6 +237,7 @@ function Latexize()
    :silent !pdflatex ./report.tex --output-directory=./tmp
    :redraw!
 endfunction
+
 "command Latexize_small execute "silent !pdflatex ./report.tex --output-directory=./tmp"
 " ===================  MAPPINGS   ==================
 " map <C-l> 1@l
@@ -242,31 +254,34 @@ endfunction
 " set rtp+=/Users/mmngreco/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 " autocmd! BufWritePost * Neomake
 " autocmd FileType markdown let b:dispatch = 'octodown --live-reload %'
+" au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+" :set syntax=markdown
 tnoremap <Esc> <C-\><C-n>
 
+" === NerdTree
 " autocmd vimenter * NERDTree
-set noshowmode  " keep command line clean
-set noshowcmd
-set laststatus=2
 " toggle nerdtree on ctrl+n
 " let NERDTreeMapOpenInTab='<ENTER>'
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :set nosplitright<CR>:TagbarToggle<CR>:set splitright<CR>
+
+" === Porwerline
 " let g:powerline_pycmd = 'py3'
 " let g:powerline_pyeval = '/usr/bin/python3'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
 " let g:airline_theme = 'raven'
 " let g:airline_theme = 'monochrome'
+
+" === vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                      \ 'syntax': 'markdown', 'ext': '.md'
                      \ }]
 
-
+" === Language Client Server
 " https://github.com/palantir/python-language-server/issues/374
-    " \ 'python': ['$CONDA_PYTHON_EXE', '-m', 'pyls', '--log-file', '/tmp/pyls.log'],
 let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls', '--log-file', '/tmp/pyls.log', '-v'],
+    \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
     \ }
 
 " let g:lsp_virtual_text_enabled = 1
