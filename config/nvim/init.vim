@@ -71,6 +71,9 @@ call plug#begin()
    " Plug 'prabirshrestha/vim-lsp'
    " Plug 'prabirshrestha/asyncomplete.vim'
    " Plug 'cjrh/vim-conda'
+
+   Plug 'flazz/vim-colorschemes'
+
    Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
@@ -102,6 +105,7 @@ call plug#end()
 
 " set clipboard=unnamed
 set clipboard=unnamedplus
+highlight ColorColumn ctermbg=gray
 set colorcolumn=80
 set expandtab
 set fillchars+=vert:\  " remove chars from seperators
@@ -129,9 +133,6 @@ filetype plugin on
 " ===   - Mappings
 " ===============================================================================
 
-" ===   - Colorscheme
-" colorscheme Monokai
-colorscheme sublimemonokai
 highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
 " set runtimepath+=~/.config/nvim/plugins/deoplete.nvim
@@ -289,3 +290,15 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" ===   - Colorscheme
+" colorscheme molokai
+" colorscheme sublimemonokai
+" colorscheme lucius
+" colorscheme lucid
+" colorscheme Benokai
+" colorscheme gruvbox
+" colorscheme ayu
+" colorscheme smyck
+colorscheme mustang
+

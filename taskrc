@@ -12,7 +12,7 @@
 
 # Files
 data.location=~/.task
-
+defaultwidth=999
 # Color theme (uncomment one to use)
 #include /usr/share/taskwarrior/light-16.theme
 #include /usr/share/taskwarrior/light-256.theme
