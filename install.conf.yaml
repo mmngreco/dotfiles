@@ -18,6 +18,7 @@
 - link:
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
+    ~/.zprofile: zprofile
     ~/.gitconfig: gitconfig
     ~/.bash_profile:
         path: bash_profile
