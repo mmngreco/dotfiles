@@ -152,3 +152,7 @@ autoload -Uz promptinit
 promptinit
 # options
 # prompt pure
+fpath+=$HOME/dotfiles/conda-zsh-completion
+compinit
+zstyle ':completion::complete:*' use-cache 1
+

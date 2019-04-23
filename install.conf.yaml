@@ -20,6 +20,10 @@
     ~/.tmux.conf: tmux.conf
     ~/.zprofile: zprofile
     ~/.gitconfig: gitconfig
+    ~/conda-zsh-completion:
+        path: conda-zsh-completion
+        force: true
+        create: true
     ~/.bash_profile:
         path: bash_profile
         create: true

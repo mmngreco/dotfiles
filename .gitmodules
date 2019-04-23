@@ -25,3 +25,6 @@
 [submodule "tmux/plugins/tmux-yank"]
 	path = tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank/
+[submodule "conda-zsh-completion"]
+	path = conda-zsh-completion
+	url = https://github.com/esc/conda-zsh-completion
