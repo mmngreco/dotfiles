@@ -199,7 +199,7 @@ highlight NonText ctermbg=none
        autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
        " nnoremap <silent> <C-p> :PrevimOpen<CR>
        " autocmd BufReadPre,FileReadPre :PrevimOpen
-       autocmd FileType markdown :PrevimOpen
+       autocmd FileType markdown <silent!> :PrevimOpen
    augroup END
    " === vim-repeat
    " === vim-sensible
