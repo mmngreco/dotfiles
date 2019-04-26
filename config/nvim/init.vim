@@ -26,6 +26,7 @@ call plug#begin()
    Plug 'godlygeek/tabular'
    Plug 'majutsushi/tagbar'
    Plug 'dhruvasagar/vim-table-mode'
+   Plug 'elzr/vim-json'
 
    "=== ultisnips
    Plug 'SirVer/ultisnips'
@@ -149,7 +150,7 @@ highlight NonText ctermbg=none
    " === echodoc
    " let g:echodoc_enable_at_startup="1"
    " let g:echodoc_type='echo'
-   set cmdheight=2
+   set cmdheight=3
    " === ncm2 settings"
    " Disable Jedi-vim autocompletion and enable call-signatures options
    let g:jedi#auto_initialization = 1
@@ -180,12 +181,19 @@ highlight NonText ctermbg=none
    " === vim-airline
    " === vim-gitgutter
    " === vim-indent-guides
+   " === vim-markdown
+   " let g:markdown_enable_folding = 0
+   let g:vim_markdown_folding_disabled = 1
+   let g:vim_markdown_no_default_key_mappings = 1
+   set conceallevel=0
+   let g:tex_conceal = ""
+   let g:vim_markdown_math = 1
    " === vim-instant-markdown
    let g:instant_markdown_slow = 1
 
    " === vim-previm
    let g:previm_open_cmd = 'xdg-open'
-   let g:previm_enable_realtime = 1
+   let g:previm_enable_realtime = 0
    augroup PrevimSettings
        autocmd!
        autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
