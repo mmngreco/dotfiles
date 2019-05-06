@@ -8,27 +8,36 @@ function! BuildComposer(info)
 endfunction
 
 call plug#begin()
-   " Plug 'w0rp/ale'
-   Plug 'arakashic/chromatica.nvim'
    Plug 'kien/ctrlp.vim'
-   Plug 'blindFS/vim-taskwarrior'
-   " Plug 'Shougo/echodoc.vim'
    Plug 'Shougo/neoinclude.vim'
    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
    Plug 'neomake/neomake'
+
+   " === Manage directories
    Plug 'scrooloose/nerdtree'
    Plug 'ivalkeen/nerdtree-execute'
-   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
-   Plug 'luochen1990/rainbow'
-
-   Plug 'epeli/slimux'
+   Plug 'blindFS/vim-taskwarrior'
    Plug 'ervandew/supertab'
+   Plug 'ervandew/supertab'
+
+   " === Interactivity with tmux
+   Plug 'epeli/slimux'
+   " Plug 'benmills/vimux '
    Plug 'godlygeek/tabular'
    Plug 'majutsushi/tagbar'
-   Plug 'dhruvasagar/vim-table-mode'
+   Plug 'jpalardy/vim-slime'
+   Plug 'christoomey/vim-tmux-navigator'
+
+   " === Syntax
+   " Plug 'Shougo/echodoc.vim'
+   " Plug 'w0rp/ale'
+   Plug 'arakashic/chromatica.nvim'
+   " Plug 'rhysd/vim-grammarous'
+   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
+   Plug 'luochen1990/rainbow'
    Plug 'elzr/vim-json'
 
-   "=== ultisnips
+   " === ultisnips
    Plug 'SirVer/ultisnips'
    Plug 'honza/vim-snippets'
    " Plug 'Valloric/YouCompleteMe' " === only works with MacVim.
@@ -37,19 +46,28 @@ call plug#begin()
    Plug 'vim-airline/vim-airline'
    Plug 'vim-airline/vim-airline-themes'
 
+   " === Git
    Plug 'tpope/vim-fugitive'
    Plug 'tpope/vim-unimpaired'
    Plug 'airblade/vim-gitgutter'
    Plug 'mbbill/undotree'
+   Plug 'mattn/gist-vim'
+       Plug 'mattn/webapi-vim'
 
+   " === Wiki
    Plug 'vimwiki/vimwiki'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
+
+   " === Markdown
+   Plug 'dhruvasagar/vim-table-mode'
    Plug 'plasticboy/vim-markdown'
    " Plug 'suan/vim-instant-markdown'
    " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-   Plug 'previm/previm'
-       Plug 'tyru/open-browser.vim'
+   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+   " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+   " Plug 'previm/previm'
+   "     Plug 'tyru/open-browser.vim'
    Plug 'tpope/vim-commentary'
    Plug 'ryanoasis/vim-devicons'
    " Plug 'terryma/vim-multiple-cursors'
@@ -62,19 +80,17 @@ call plug#begin()
    Plug 'tpope/vim-surround'
 
    " Plug 'zchee/deoplete-clang'
-   Plug 'nvie/vim-flake8'
-       Plug 'davidhalter/jedi-vim'
 
-   Plug 'mattn/gist-vim'
-       Plug 'mattn/webapi-vim'
    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
    " Plug 'zchee/deoplete-jedi', {'for': 'python'}
    " Plug 'prabirshrestha/vim-lsp'
    " Plug 'prabirshrestha/asyncomplete.vim'
    " Plug 'cjrh/vim-conda'
 
-   Plug 'flazz/vim-colorschemes'
 
+   " === Python
+   Plug 'nvie/vim-flake8'
+       Plug 'davidhalter/jedi-vim'
    Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
@@ -93,15 +109,13 @@ call plug#begin()
 
    "=== vim-trailing-whitespace
    Plug 'bronson/vim-trailing-whitespace'
-   Plug 'jpalardy/vim-slime'
 
    Plug 'ErichDonGubler/vim-sublime-monokai'
    Plug 'jalvesaq/vimcmdline'
    " Plug 'Nopik/vim-nerdtree-direnter'
    Plug 'altercation/vim-colors-solarized'
    Plug 'junegunn/fzf'
-   Plug 'christoomey/vim-tmux-navigator'
-   " Plug 'yuratomo/w3m.vim'
+   Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 " set clipboard=unnamed
@@ -138,93 +152,62 @@ highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
 " set runtimepath+=~/.config/nvim/plugins/deoplete.nvim
 
-"===   - Plugins
-   " === ale
-   let g:ale_emit_conflict_warnings = 0
-   " === ctrlp
-   " === deoplete
-   " let g:deoplete#enable_at_startup = 1
-   let g:deoplete#sources#jedi#show_docstring = 1
-   let g:deoplete#sources#jedi#server_timeout = 60
-   " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
-   " === echodoc
-   " let g:echodoc_enable_at_startup="1"
-   " let g:echodoc_type='echo'
-   set cmdheight=3
-   " === ncm2 settings"
-   " Disable Jedi-vim autocompletion and enable call-signatures options
-   let g:jedi#auto_initialization = 1
-   let g:jedi#show_call_singatures= 1
-   let g:jedi#completions_enabled = 0
-   let g:jedi#auto_vim_configuration = 0
-   let g:jedi#smart_auto_mappings = 0
-   let g:jedi#popup_on_dot = 0
-   let g:jedi#completions_command = ''
-   " === ncm2 settings
-   " autocmd BufEnter * call ncm2#enable_for_buffer()
-   " set completeopt=menuone,noselect,noinsert
-   " set shortmess+=c
-   " inoremap <c-c> <ESC>
-   " " make it fast
-   " let ncm2#popup_delay = 5
-   " let ncm2#complete_length = [[1, 1]]
-   " let g:ncm2#matcher = 'substrfuzzy'
-   " === indentLine
-   " === neoinclude
-   " === neomake
-   " === nerdtree
-   " === rainbow
-   " let g:gist_use_password_in_gitconfig = 1
-   " === tabular
-   " === tagbar
-   " === vim-abolish
-   " === vim-airline
-   " === vim-gitgutter
-   " === vim-indent-guides
-   " === vim-markdown
-   " let g:markdown_enable_folding = 0
-   let g:vim_markdown_folding_disabled = 1
-   let g:vim_markdown_no_default_key_mappings = 1
-   set conceallevel=0
-   let g:tex_conceal = ""
-   let g:vim_markdown_math = 1
-   " === vim-instant-markdown
-   let g:instant_markdown_slow = 1
+" ===   - PLUGINS
+" === ale
+let g:ale_emit_conflict_warnings = 0
+" === ctrlp
+" === deoplete
+" let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#server_timeout = 60
+" let g:python3_host_prog = '$CONDA_PYTHON_EXE'
+" === echodoc
+" let g:echodoc_enable_at_startup="1"
+" let g:echodoc_type='echo'
+set cmdheight=1
+" === ncm2 settings"
+" Disable Jedi-vim autocompletion and enable call-signatures options
+let g:jedi#auto_initialization = 1
+let g:jedi#show_call_singatures= 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ''
 
-   " === vim-previm
-   let g:previm_open_cmd = 'xdg-open'
-   let g:previm_enable_realtime = 0
-   augroup PrevimSettings
-       autocmd!
-       autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
-       " nnoremap <silent> <C-p> :PrevimOpen<CR>
-       " autocmd BufReadPre,FileReadPre :PrevimOpen
-       autocmd FileType markdown <silent!> :PrevimOpen
-   augroup END
-   " === vim-repeat
-   " === vim-sensible
-   " === vim-signature
-   " === vim-surround
-   " === vim-trailing-whitespace
-   " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" === vim-instant-markdown
+let g:instant_markdown_slow = 1
 
-   " === UltiSnips
-   let g:UltiSnipsExpandTrigger="<tab>"
-   let g:UltiSnipsListSnippets="<c-l>"
-   let g:UltiSnipsJumpForwardTrigger="<c-j>"
-   let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-   " If you want :UltiSnipsEdit to split your window.
-   let g:UltiSnipsEditSplit="vertical"
-   "let g:UltiSnipsSnippetsDir="~/.vim/bundle/vim-snippets/snippets"
-   let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
-   " let g:UltiSnipsSnippetDirectories=["UltiSnipsNewDir"]
-   let g:ultisnips_python_style="sphinx"
-   let g:pydocstring_templates_dir='~/.config/nvim/plugged/vim-pydocstring/test/templates/numpy'
+" === markdown-preview
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_browser = ''
+autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
+
+" === vim-markdown
+let g:markdown_enable_folding = 0
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal = 0
+
+" === UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsSnippetsDir="~/.vim/bundle/vim-snippets/snippets"
+let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
+" let g:UltiSnipsSnippetDirectories=["UltiSnipsNewDir"]
+let g:ultisnips_python_style="sphinx"
+let g:pydocstring_templates_dir='~/.config/nvim/plugged/vim-pydocstring/test/templates/numpy'
 
 " ==========  SLIMUX  ==========
-let g:slimux_python_use_ipython = 1
-let g:LanguageClient_loggingLevel = 'DEBUG'
-let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+let g:slimux_python_use_ipython = 0
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
 let g:slimux_tmux_path = "/usr/bin/tmux"
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -232,8 +215,13 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
 let g:slime_target = "tmux"
 
-" rainbow
+" === Language Client
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+
+" === rainbow
 let g:rainbow_active = 1
+
 let g:indentLine_char = "|"
 
 
@@ -249,22 +237,6 @@ endfunction
 
 "command Latexize_small execute "silent !pdflatex ./report.tex --output-directory=./tmp"
 " ===================  MAPPINGS   ==================
-" map <C-l> 1@l
-" map <C-L> 1@v
-" map <C-p> 1@p
-" map <C-i> 1@i
-" map <C-c> 1@c
-" map <F2>  \l<CR>
-" map <F5>  : TagbarToggle<CR><C-w><C-w>
-" map <F8>  :! ./modelsim.fdo &<CR>
-" map <F9> :silent !pdflatex ./report.tex --output-directory=./tmp<CR>:redraw!<CR>
-" map <F10>  :exec Latexize()<CR>
-" map <F12> :! evince ./*.pdf &<CR><CR>
-" set rtp+=/Users/mmngreco/.local/lib/python3.6/site-packages/powerline/bindings/vim/
-" autocmd! BufWritePost * Neomake
-" autocmd FileType markdown let b:dispatch = 'octodown --live-reload %'
-" au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-" :set syntax=markdown
 tnoremap <Esc> <C-\><C-n>
 
 " === NerdTree
