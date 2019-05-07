@@ -8,29 +8,34 @@ function! BuildComposer(info)
 endfunction
 
 call plug#begin()
-   " Plug 'w0rp/ale'
-   Plug 'arakashic/chromatica.nvim'
-   Plug 'kien/ctrlp.vim'
-   Plug 'blindFS/vim-taskwarrior'
-   " Plug 'Shougo/echodoc.vim'
    Plug 'Shougo/neoinclude.vim'
-   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
    Plug 'neomake/neomake'
    Plug 'scrooloose/nerdtree'
    Plug 'ivalkeen/nerdtree-execute'
    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
-   Plug 'luochen1990/rainbow'
-
-   Plug 'epeli/slimux'
-   Plug 'ervandew/supertab'
-   Plug 'godlygeek/tabular'
+   " Plug 'Nopik/vim-nerdtree-direnter'
+   Plug 'kien/ctrlp.vim'
    Plug 'majutsushi/tagbar'
+
+   Plug 'luochen1990/rainbow'
+   Plug 'flazz/vim-colorschemes'
+   Plug 'arakashic/chromatica.nvim'
+   Plug 'ryanoasis/vim-devicons'
+   " Plug 'altercation/vim-colors-solarized'
+
+   Plug 'christoomey/vim-tmux-navigator'
+   Plug 'epeli/slimux'
+   Plug 'godlygeek/tabular'
    Plug 'dhruvasagar/vim-table-mode'
+   Plug 'ervandew/supertab'
+   Plug 'tpope/vim-commentary'
+   " Plug 'tpope/vim-repeat'
+   Plug 'tpope/vim-sensible'
 
    "=== ultisnips
    Plug 'SirVer/ultisnips'
    Plug 'honza/vim-snippets'
-   " Plug 'Valloric/YouCompleteMe' " === only works with MacVim.
 
    Plug 'tpope/vim-abolish'
    Plug 'vim-airline/vim-airline'
@@ -40,59 +45,43 @@ call plug#begin()
    Plug 'tpope/vim-unimpaired'
    Plug 'airblade/vim-gitgutter'
    Plug 'mbbill/undotree'
-
+   Plug 'rhysd/vim-grammarous'
+   " Plug 'vim-pandoc/vim-pandoc'
+   " Plug 'vim-pandoc/vim-pandoc-syntax'
    Plug 'vimwiki/vimwiki'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
    Plug 'plasticboy/vim-markdown'
    " Plug 'iamcco/markdown-preview.vim', { 'do': 'cd app & yarn install'}
    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
-   " Plug 'suan/vim-instant-markdown'
-   " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-   " Plug 'previm/previm'
-   "     Plug 'tyru/open-browser.vim'
-   Plug 'tpope/vim-commentary'
-   Plug 'ryanoasis/vim-devicons'
-   " Plug 'terryma/vim-multiple-cursors'
-   Plug 'tpope/vim-repeat'
-   Plug 'tpope/vim-sensible'
 
-   Plug 'kshenoy/vim-signature'
-   Plug 'xolox/vim-notes'
-   Plug 'xolox/vim-misc'
+   Plug 'kshenoy/vim-signature'  " add tag into lines
+   " Plug 'xolox/vim-notes'
+   "     Plug 'xolox/vim-misc'
    Plug 'tpope/vim-surround'
 
    " Plug 'zchee/deoplete-clang'
-   Plug 'nvie/vim-flake8'
-       Plug 'davidhalter/jedi-vim'
 
    Plug 'mattn/gist-vim'
        Plug 'mattn/webapi-vim'
-   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-   " Plug 'zchee/deoplete-jedi', {'for': 'python'}
-   " Plug 'prabirshrestha/vim-lsp'
-   " Plug 'prabirshrestha/asyncomplete.vim'
    " Plug 'cjrh/vim-conda'
 
-   Plug 'flazz/vim-colorschemes'
-
+   Plug 'nvie/vim-flake8'
+       Plug 'davidhalter/jedi-vim'
    Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
 
-   "=== vim-trailing-whitespace
    Plug 'bronson/vim-trailing-whitespace'
-   Plug 'jpalardy/vim-slime'
+   " Plug 'jpalardy/vim-slime'
 
-   Plug 'ErichDonGubler/vim-sublime-monokai'
+   " Plug 'ErichDonGubler/vim-sublime-monokai'
    Plug 'jalvesaq/vimcmdline'
-   " Plug 'Nopik/vim-nerdtree-direnter'
-   Plug 'altercation/vim-colors-solarized'
    Plug 'junegunn/fzf'
-   Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
+set conceallevel=0
 " set clipboard=unnamed
 set clipboard=unnamedplus
 highlight ColorColumn ctermbg=gray
@@ -108,112 +97,86 @@ set shiftwidth=4
 set smartcase  " better case-sensitivity when searching
 set softtabstop=4
 set tabstop=4
-set undodir=~/.vim/undodir
+set undodir=~/.config/nvim/undodir
 set undofile  " save undos
 set undolevels=10000  " maximum number of changes that can be undone
 set undoreload=100000  " maximum number lines to save for undo on a buffer reload
+set cmdheight=1
 filetype indent on
 filetype plugin on
 
-"===============================================================================
-"===   DEFAULT CONFIGURATION
-"===   - Typing
+" =============================================================================
+" ===   DEFAULT CONFIGURATION
+" ===   - Typing
 " ===   - Colorscheme
 " ===   - Plugins
 " ===   - Mappings
-" ===============================================================================
+" =============================================================================
 
 highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
 " set runtimepath+=~/.config/nvim/plugins/deoplete.nvim
 
-"===   - Plugins
-" === ale
-let g:ale_emit_conflict_warnings = 0
-" === ctrlp
+
 " === deoplete
 " let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#server_timeout = 60
+" let g:deoplete#sources#jedi#show_docstring = 1
+" let g:deoplete#sources#jedi#server_timeout = 60
 " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
+
 " === echodoc
 " let g:echodoc_enable_at_startup="1"
 " let g:echodoc_type='echo'
-set cmdheight=1
-" === ncm2 settings"
-" Disable Jedi-vim autocompletion and enable call-signatures options
-let g:jedi#auto_initialization = 1
-let g:jedi#show_call_singatures= 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ''
-" === ncm2 settings
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-" set completeopt=menuone,noselect,noinsert
-" set shortmess+=c
-" inoremap <c-c> <ESC>
-" " make it fast
-" let ncm2#popup_delay = 5
-" let ncm2#complete_length = [[1, 1]]
-" let g:ncm2#matcher = 'substrfuzzy'
-" === indentLine
-" === neoinclude
-" === neomake
-" === nerdtree
-" === rainbow
-" let g:gist_use_password_in_gitconfig = 1
-" === tabular
-" === tagbar
-" === vim-abolish
-" === vim-airline
-" === vim-gitgutter
-" === vim-indent-guides
 
-" === vim-previm
-" let g:previm_open_cmd = 'xdg-open'
-" let g:previm_enable_realtime = 1
-" augroup PrevimSettings
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
-"     " nnoremap <silent> <C-p> :PrevimOpen<CR>
-"     " autocmd BufReadPre,FileReadPre :PrevimOpen
-"     autocmd FileType markdown :PrevimOpen
-" augroup END
-" === vim-repeat
-" === vim-sensible
-" === vim-signature
-" === vim-surround
-" === vim-trailing-whitespace
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
-" ========= markdown-syntax ============
-autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
+" ==========  UltiSnips  ==========
+" === jedi settings"
+" " Disable Jedi-vim autocompletion and enable call-signatures options
+" let g:jedi#auto_initialization = 1
+" let g:jedi#show_call_singatures= 1
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#completions_command = ''
 
-" === vim-markdown
-let g:markdown_enable_folding = 0
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_no_default_key_mappings = 1
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
-let g:vim_markdown_conceal = 0
-
-" === UltiSnips
+" ==========  UltiSnips  ==========
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-"let g:UltiSnipsSnippetsDir="~/.vim/bundle/vim-snippets/snippets"
 let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
 " let g:UltiSnipsSnippetDirectories=["UltiSnipsNewDir"]
 let g:ultisnips_python_style="sphinx"
+
+
+" ==========  PyDocstrign  ==========
 let g:pydocstring_templates_dir='~/.config/nvim/plugged/vim-pydocstring/test/templates/numpy'
 
+" ========== MARKDOWN-PREVIEW ===========
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_page_title = '${name}'
+" let g:mkdp_markdown_css = '/home/mgreco/dotfiles/css/tufte.css'
+
+" ========= MARKDOWN-SYNTAX ============
+" autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_override_foldtext = 0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" ==========  Language Client Server  ==========
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+
 " ==========  SLIMUX  ==========
-let g:slimux_python_use_ipython = 0
+let g:slimux_python_use_ipython = 1
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
 let g:slimux_tmux_path = "/usr/bin/tmux"
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -221,11 +184,9 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
 let g:slime_target = "tmux"
 
-" rainbow
+" ==========  RAINBOW  ==========
 let g:rainbow_active = 1
 let g:indentLine_char = "|"
-
-
 
 " ===================  COMMANDS   ==================
 function Latexize()
