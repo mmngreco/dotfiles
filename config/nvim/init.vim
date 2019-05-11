@@ -9,7 +9,6 @@ endfunction
 
 call plug#begin()
    Plug 'Shougo/neoinclude.vim'
-
    Plug 'neomake/neomake'
    Plug 'scrooloose/nerdtree'
    Plug 'ivalkeen/nerdtree-execute'
@@ -48,6 +47,7 @@ call plug#begin()
    Plug 'rhysd/vim-grammarous'
    " Plug 'vim-pandoc/vim-pandoc'
    " Plug 'vim-pandoc/vim-pandoc-syntax'
+
    Plug 'vimwiki/vimwiki'
    Plug 'nathanaelkane/vim-indent-guides'
    Plug 'Yggdroot/indentLine'
@@ -59,19 +59,20 @@ call plug#begin()
    " Plug 'xolox/vim-notes'
    "     Plug 'xolox/vim-misc'
    Plug 'tpope/vim-surround'
+   Plug 'webastien/vim-ctags'
 
    " Plug 'zchee/deoplete-clang'
 
    Plug 'mattn/gist-vim'
        Plug 'mattn/webapi-vim'
-   " Plug 'cjrh/vim-conda'
+   Plug 'cjrh/vim-conda'
 
    Plug 'nvie/vim-flake8'
        Plug 'davidhalter/jedi-vim'
    Plug 'tweekmonster/impsort.vim'  " color and sort imports
    Plug 'tell-k/vim-autopep8'
    Plug 'heavenshell/vim-pydocstring'
-   Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
+   " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
 
    Plug 'bronson/vim-trailing-whitespace'
    " Plug 'jpalardy/vim-slime'
@@ -132,13 +133,13 @@ highlight NonText ctermbg=none
 " ==========  UltiSnips  ==========
 " === jedi settings"
 " " Disable Jedi-vim autocompletion and enable call-signatures options
-" let g:jedi#auto_initialization = 1
-" let g:jedi#show_call_singatures= 1
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:jedi#smart_auto_mappings = 0
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#completions_command = ''
+let g:jedi#auto_initialization = 1
+let g:jedi#show_call_singatures= 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ''
 
 " ==========  UltiSnips  ==========
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -170,6 +171,7 @@ let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_conceal = 0
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
+set conceallelvel=0
 
 " ==========  Language Client Server  ==========
 let g:LanguageClient_loggingLevel = 'DEBUG'
@@ -240,15 +242,15 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 
 " === Language Client Server
 " https://github.com/palantir/python-language-server/issues/374
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
-    \ }
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
+"     \ }
 
 " let g:lsp_virtual_text_enabled = 1
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " ===   - Colorscheme
 " colorscheme molokai
