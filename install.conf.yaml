@@ -39,11 +39,11 @@
         glob: true
         force: true
         create: true
-    ~/.task:
-        path: task/*
-        glob: true
-        force: true
-        create: true
+    # ~/.task:
+    #     path: task/*
+    #     glob: true
+    #     force: true
+    #     create: true
     ~/.fonts:
         path: fonts/*
         glob: true
