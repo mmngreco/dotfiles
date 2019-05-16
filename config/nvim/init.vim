@@ -33,7 +33,7 @@ call plug#begin()
     Plug 'dhruvasagar/vim-table-mode'
     Plug 'ervandew/supertab'
     Plug 'tpope/vim-commentary'
-    " Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-sensible'
 
     "=== ultisnips
@@ -75,12 +75,17 @@ call plug#begin()
     " Plug 'tell-k/vim-autopep8'
     Plug 'heavenshell/vim-pydocstring'
     " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
+
+
     " Language Protocol Server and autocompelete
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'ncm2/ncm2'
-    Plug 'roxma/nvim-yarp'
-    Plug 'ncm2/ncm2-vim-lsp'
+    " Plug 'prabirshrestha/async.vim'
+    " Plug 'prabirshrestha/vim-lsp'
+    " Plug 'ncm2/ncm2'
+    " Plug 'roxma/nvim-yarp'
+    " Plug 'ncm2/ncm2-vim-lsp'
+    " Plug 'ncm2/ncm2-bufword'
+    " Plug 'ncm2/ncm2-path'
+    " Plug 'ncm2/ncm2-jedi'
 
     Plug 'bronson/vim-trailing-whitespace'
     " Plug 'jpalardy/vim-slime'
@@ -91,7 +96,7 @@ call plug#begin()
 call plug#end()
 "
 " habit
-let mapleader = ","
+" let mapleader = ","
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
@@ -153,7 +158,7 @@ function! ToggleColumnWidth()
 endfunction
 
 " Sort lines in alphabetical order
-vnoremap <leader>s :'<,'>!sort -f<cr>
+" vnoremap <leader>s :'<,'>!sort -f<cr>
 
 " FZF
 if executable('fzf')
@@ -163,21 +168,30 @@ endif
 " Git status
 nnoremap <leader>w :Gstatus<cr>
 
+" ===========================================================================
 " LSP and autocomplete
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
+" if executable('pyls')
+"     " pip install python-language-server
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pyls',
+"         \ 'cmd': {server_info->['pyls']},
+"         \ 'whitelist': ['python'],
+"         \ })
+" endif
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
 "
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=cI
-nnoremap <leader>e :LspHover<cr>
-nnoremap <leader>d :LspDefinition<cr>
-"
+" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" " found' messages
+" set shortmess+=cI
+" nnoremap <leader>e :LspHover<cr>
+" nnoremap <leader>d :LspDefinition<cr>
+" ===========================================================================
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -240,15 +254,17 @@ highlight NonText ctermbg=none
 
 
 " ==========  UltiSnips  ==========
+"
+"
 " === jedi settings"
 " " Disable Jedi-vim autocompletion and enable call-signatures options
-" let g:jedi#auto_initialization = 1
-" let g:jedi#show_call_singatures= 1
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:jedi#smart_auto_mappings = 0
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#completions_command = ''
+let g:jedi#auto_initialization = 1
+let g:jedi#show_call_singatures= 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ''
 
 " ==========  UltiSnips  ==========
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -289,13 +305,10 @@ let g:slimux_python_use_ipython = 1
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
 let g:slimux_tmux_path = "/usr/bin/tmux"
 map <Leader>s :SlimuxREPLSendLine<CR>
-map <Leader>s :SlimuxREPLSendSelection<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
-" let g:slime_target = "tmux"
+let g:slime_target = "tmux"
 
-" ==========  RAINBOW  ==========
-" let g:rainbow_active = 1
-" let g:indentLine_char = "|"
 
 " ===================  COMMANDS   ==================
 function Latexize()
@@ -342,17 +355,28 @@ let g:airline_theme = 'murmur'
 " let g:airline_theme = 'monochrome'
 
 " === vimwiki
+" Wiki settings
 let g:vimwiki_global_ext=0
-let g:vimwiki_list = [{'path': '$HOME/vimwiki/',
-                     \ 'syntax': 'markdown', 'ext': '.md'
-                     \ }]
+let g:wiki_default = {}
+let g:wiki_default.auto_export = 0
+let g:wiki_default.auto_toc = 0
+let g:wiki_default.syntax = 'markdown'
+let g:wiki_default.ext = '.md'
+" let g:wiki_default.diary_rel_path = 'log/'  
+
+let g:sh_wiki = copy(g:wiki_default)
+let g:sh_wiki.path = '$HOME/vimwiki/'
+
+let g:guidelines_wiki = copy(g:wiki_default)
+let g:guidelines_wiki.path = '$HOME/gitlab/mgreco/guidelines.wiki/'
+
+let g:vimwiki_list = [g:sh_wiki, g:guidelines_wiki]
 
 " === Language Client Server
 " https://github.com/palantir/python-language-server/issues/374
 " let g:LanguageClient_serverCommands = {
 "     \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
 "     \ }
-
 " let g:lsp_virtual_text_enabled = 1
 " nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -369,4 +393,4 @@ let g:vimwiki_list = [{'path': '$HOME/vimwiki/',
 " colorscheme ayu
 " colorscheme smyck
 colorscheme mustang
-set conceallevel=0
+" set conceallevel=0
