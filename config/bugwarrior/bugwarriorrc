@@ -77,10 +77,10 @@ service = gitlab
 gitlab.login = mgreco
 gitlab.token = SbKSxAzyx95LvypEqDih
 gitlab.host = etsgit1.ets.es
-gitlab.include_repos = boa
+gitlab.include_repos = Snakes/boa, COM/com_on/product_backlog
 gitlab.include_regex = COM/*
 gitlab.import_labels_as_tags = True
-# gitlab.label_template = gitlab_{{label}}
+gitlab.label_template = {{label}}
 gitlab.only_if_assigned = mgreco
 # gitlab.exclude_repos = foo/ep_example
 #

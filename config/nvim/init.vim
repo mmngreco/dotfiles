@@ -76,17 +76,6 @@ call plug#begin()
     Plug 'heavenshell/vim-pydocstring'
     " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
 
-
-    " Language Protocol Server and autocompelete
-    " Plug 'prabirshrestha/async.vim'
-    " Plug 'prabirshrestha/vim-lsp'
-    " Plug 'ncm2/ncm2'
-    " Plug 'roxma/nvim-yarp'
-    " Plug 'ncm2/ncm2-vim-lsp'
-    " Plug 'ncm2/ncm2-bufword'
-    " Plug 'ncm2/ncm2-path'
-    " Plug 'ncm2/ncm2-jedi'
-
     Plug 'bronson/vim-trailing-whitespace'
     " Plug 'jpalardy/vim-slime'
 
@@ -94,7 +83,10 @@ call plug#begin()
     " Plug 'jalvesaq/vimcmdline'
     Plug 'junegunn/fzf'
 call plug#end()
-"
+
+" let g:python3_host_prog = '$CONDA_PYTHON_EXE'
+let g:python3_host_prog = 'python'
+
 " habit
 " let mapleader = ","
 " In many terminal emulators the mouse works just fine, thus enable it.
@@ -111,6 +103,19 @@ let g:AutoPairsMultilineClose=0
 let g:AutoPairsMapSpace=0
 " accelerated scrolling
 set scrolljump=-15
+
+" jedi options
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
+let g:jedi#show_call_signatures_delay = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures_modes = 'i'  " ni = also in normal mode
+let g:jedi#enable_speed_debugging=0
 
 " Replace <Esc> with C-c
 inoremap <F1> <Esc>
