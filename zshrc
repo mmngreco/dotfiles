@@ -160,3 +160,5 @@ zstyle ':completion::complete:*' use-cache 1
 export PATH=$PATH:/root/.go/bin
 
 export PATH=$PATH:/root/go/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

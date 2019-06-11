@@ -17,6 +17,7 @@ call plug#begin()
     " Plug 'Nopik/vim-nerdtree-direnter'
     Plug 'kien/ctrlp.vim'
     Plug 'majutsushi/tagbar'
+    Plug 'xolox/vim-session'
 
     " Auto close parens, braces, brackets, etc
     Plug 'jiangmiao/auto-pairs'
@@ -354,6 +355,7 @@ map <C-t> :set nosplitright<CR>:TagbarToggle<CR>:set splitright<CR>
 " === Porwerline
 " let g:powerline_pycmd = 'py3'
 " let g:powerline_pyeval = '/usr/bin/python3'
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
 " let g:airline_theme = 'raven'

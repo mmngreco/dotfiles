@@ -26,3 +26,5 @@ unset __conda_setup
 # <<< conda init <<<
 
 source ~/.bash_completion/alacritty
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
