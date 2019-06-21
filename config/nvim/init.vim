@@ -18,6 +18,7 @@ call plug#begin()
     Plug 'kien/ctrlp.vim'
     Plug 'majutsushi/tagbar'
     Plug 'xolox/vim-session'
+        Plug 'xolox/vim-misc'
 
     " Auto close parens, braces, brackets, etc
     Plug 'jiangmiao/auto-pairs'
@@ -61,7 +62,7 @@ call plug#begin()
 
     Plug 'kshenoy/vim-signature'  " add tag into lines
     " Plug 'xolox/vim-notes'
-    "     Plug 'xolox/vim-misc'
+        " Plug 'xolox/vim-misc'
     Plug 'tpope/vim-surround'
 
     " Plug 'zchee/deoplete-clang'
