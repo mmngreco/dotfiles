@@ -105,7 +105,7 @@ alias ak='ack-grep'
 alias cs='source ../solve -s'
 alias cq='source ../solve -q'
 alias ca='source ../solve'
-alias gist='open -a Firefox https://gist.github.com/'
+alias gist='xdg-open https://gist.github.com/'
 
 # work
 alias sshmet='ssh mgreco@etstea08'

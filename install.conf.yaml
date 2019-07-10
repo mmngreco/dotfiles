@@ -28,6 +28,7 @@
         path: bash_profile
         create: true
     ~/.bashrc: bashrc
+    ~/.xonsh: xonsh
     ~/.aliases: aliases
     ~/.alacritty.yml:
         path: alacritty.yml

@@ -15,6 +15,7 @@ call plug#begin()
     " Plug 'ivalkeen/nerdtree-execute'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
     " Plug 'Nopik/vim-nerdtree-direnter'
+    Plug 'vim-scripts/VisIncr'
     Plug 'kien/ctrlp.vim'
     Plug 'majutsushi/tagbar'
     Plug 'xolox/vim-session'
@@ -308,11 +309,11 @@ let g:vim_markdown_math = 1
 " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
 
 " ==========  SLIMUX  ==========
-let g:slimux_python_use_ipython = 1
+let g:slimux_python_use_ipython = 0
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
 let g:slimux_tmux_path = "/usr/bin/tmux"
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>e :SlimuxREPLSendLine<CR>
+vmap <Leader>e :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
 let g:slime_target = "tmux"
 
