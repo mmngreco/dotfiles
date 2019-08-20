@@ -87,4 +87,4 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [fc-cache -v -f, add fonts]
+  - [fc-cache -v -f, Add fonts]
