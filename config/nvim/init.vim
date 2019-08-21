@@ -67,10 +67,12 @@ call plug#begin()
     Plug 'tpope/vim-surround'
 
     " Plug 'zchee/deoplete-clang'
+    "
+    Plug 'lervag/vimtex'
 
     Plug 'mattn/gist-vim'
        Plug 'mattn/webapi-vim'
-    " Plug 'cjrh/vim-conda'
+    Plug 'cjrh/vim-conda'
 
     Plug 'nvie/vim-flake8'
        Plug 'davidhalter/jedi-vim'
