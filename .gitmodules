@@ -28,3 +28,6 @@
 [submodule "conda-zsh-completion"]
 	path = conda-zsh-completion
 	url = https://github.com/esc/conda-zsh-completion
+[submodule "conda-auto-env"]
+	path = conda-auto-env
+	url = https://github.com/chdoig/conda-auto-env
