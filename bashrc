@@ -1,6 +1,8 @@
 source ~/.aliases
 source ~/.functions
 source ~/.variables
+source ~/dotfiles/conda-auto-env/conda_auto_env.sh
+source ~/dotfiles/autoenv/activate.sh
 
 # to go to directory of next question
 # Web
@@ -28,3 +30,4 @@ unset __conda_setup
 source ~/.bash_completion/alacritty
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

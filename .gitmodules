@@ -31,3 +31,6 @@
 [submodule "conda-auto-env"]
 	path = conda-auto-env
 	url = https://github.com/chdoig/conda-auto-env
+[submodule "autoenv"]
+	path = autoenv
+	url = https://github.com/inishchith/autoenv.git

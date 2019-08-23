@@ -1,6 +1,8 @@
 source ~/.aliases
 source ~/.functions
 source ~/.variables
+source ~/dotfiles/conda-auto-env/conda_auto_env.sh
+source ~/dotfiles/autoenv/activate.sh
 
 # If you come from bash you might have to change your $PATH.
 # Set name of the theme to load --- if set to "random", it will
