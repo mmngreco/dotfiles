@@ -1,2 +1,5 @@
 $include /etc/inputrc
 set completion-ignore-case On
+
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
