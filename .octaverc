@@ -1,0 +1,4 @@
+addpath(genpath('/home/mgreco/matlab/ets'))
+% PS1('[\u@\H] \W \# ·>>> ')
+PS1('·>>> ')
+clc

@@ -34,3 +34,6 @@
 [submodule "autoenv"]
 	path = autoenv
 	url = https://github.com/inishchith/autoenv.git
+[submodule "todo.txt-cli"]
+	path = todo.txt-cli
+	url = https://github.com/todotxt/todo.txt-cli.git

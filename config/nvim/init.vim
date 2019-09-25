@@ -9,9 +9,10 @@ endfunction
 
 call plug#begin()
 
-    " Plug 'Shougo/neoinclude.vim'
-    " Plug 'neomake/neomake'
+    Plug 'Shougo/neoinclude.vim'
+    Plug 'neomake/neomake'
     Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
     " Plug 'ivalkeen/nerdtree-execute'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
     " Plug 'Nopik/vim-nerdtree-direnter'
@@ -47,33 +48,53 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
+    "=== git
+    Plug 'junegunn/gv.vim'
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-unimpaired'
     Plug 'airblade/vim-gitgutter'
+    Plug 'jreybert/vimagit'
+
+    Plug 'tpope/vim-unimpaired'
     Plug 'mbbill/undotree'
     " Plug 'rhysd/vim-grammarous'
     " Plug 'vim-pandoc/vim-pandoc'
     " Plug 'vim-pandoc/vim-pandoc-syntax'
+    "
+    " ==== Task warrior
+    Plug 'blindFS/vim-taskwarrior'
+    Plug 'soywod/kronos.vim'
+
+    " ==== vim wiki
     Plug 'vimwiki/vimwiki'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'Yggdroot/indentLine'
-    Plug 'plasticboy/vim-markdown'
+
+    " ==== vim markdown
+    Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
+    Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
+    Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
     " Plug 'iamcco/markdown-preview.vim', { 'do': 'cd app & yarn install'}
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
+    Plug 'gyim/vim-boxdraw'
 
     Plug 'kshenoy/vim-signature'  " add tag into lines
     " Plug 'xolox/vim-notes'
         " Plug 'xolox/vim-misc'
     Plug 'tpope/vim-surround'
 
-    " Plug 'zchee/deoplete-clang'
-    "
-    Plug 'lervag/vimtex'
+    Plug 'zchee/deoplete-clang'
 
+    Plug 'lervag/vimtex'
     Plug 'mattn/gist-vim'
        Plug 'mattn/webapi-vim'
+
+    " ==== python related
     Plug 'cjrh/vim-conda'
 
+    Plug 'janko/vim-test'
+        Plug 'tpope/vim-dispatch'
+        Plug 'benmills/vimux'
+    Plug 'psf/black'
     Plug 'nvie/vim-flake8'
        Plug 'davidhalter/jedi-vim'
     Plug 'tweekmonster/impsort.vim'  " color and sort imports
@@ -86,8 +107,12 @@ call plug#begin()
 
     " Plug 'ErichDonGubler/vim-sublime-monokai'
     " Plug 'jalvesaq/vimcmdline'
+
+    " ====== searching
     Plug 'junegunn/fzf'
     Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+
+    Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 
 " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
@@ -268,19 +293,30 @@ highlight NonText ctermbg=none
 " let g:echodoc_enable_at_startup="1"
 " let g:echodoc_type='echo'
 
+" =============== If a file change then reaload it
+" https://unix.stackexchange.com/a/383044
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * :checktime
 
 " ==========  UltiSnips  ==========
 "
 "
+"
+" ========== indentLines ==========
+" autocmd FileType markdown,md let g:indentLine_enabled=0
+autocmd FileType markdown setl conceallevel=0
+autocmd FileType markdown set conceallevel=0
+let g:indentLine_fileTypeExclude = ['markdown']
+
 " === jedi settings"
 " " Disable Jedi-vim autocompletion and enable call-signatures options
-let g:jedi#auto_initialization = 1
-let g:jedi#show_call_singatures= 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ''
+let g:jedi#auto_initialization=1
+let g:jedi#show_call_singatures=1
+let g:jedi#completions_enabled=0
+let g:jedi#auto_vim_configuration=0
+let g:jedi#smart_auto_mappings=0
+let g:jedi#popup_on_dot=0
+let g:jedi#completions_command=''
 
 " ==========  UltiSnips  ==========
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -302,15 +338,20 @@ let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 0
 let g:mkdp_page_title = '${name}'
 
+" ========== vim-sessions ===========
+:let g:session_autoload = 'yes'
+
 " ========= MARKDOWN-SYNTAX ============
 " autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_override_foldtext = 0
-let g:vim_markdown_folding_level = 6
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_conceal = 0
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_override_foldtext=0
+let g:vim_markdown_folding_level=6
+let g:vim_markdown_toc_autofit=1
+let g:vim_markdown_conceal=0
+let g:tex_conceal=""
+let g:vim_markdown_math=1
+let g:conceallevel=0
+setl conceallevel=0
 set conceallevel=0
 
 " ==========  Language Client Server  ==========
@@ -318,13 +359,13 @@ set conceallevel=0
 " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
 
 " ==========  SLIMUX  ==========
-let g:slimux_python_use_ipython = 0
+let g:slimux_python_use_ipython=0
 " let g:slimux_tmux_path = "/usr/local/bin/tmux"
-let g:slimux_tmux_path = "/usr/bin/tmux"
+let g:slimux_tmux_path="/usr/bin/tmux"
 map <Leader>e :SlimuxREPLSendLine<CR>
 vmap <Leader>e :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
-let g:slime_target = "tmux"
+let g:slime_target="tmux"
 
 
 " ===================  COMMANDS   ==================
@@ -378,6 +419,64 @@ let g:airline_detect_modified=0
 " let g:airline_theme = 'raven'
 " let g:airline_theme = 'monochrome'
 
+
+" ===== Task warrior
+" default task report type
+let g:task_report_name     = 'next'
+" custom reports have to be listed explicitly to make them available
+let g:task_report_command  = []
+" whether the field under the cursor is highlighted
+let g:task_highlight_field = 1
+" can not make change to task data when set to 1
+let g:task_readonly        = 0
+" vim built-in term for task undo in gvim
+let g:task_gui_term        = 1
+" allows user to override task configurations. Seperated by space. Defaults to ''
+let g:task_rc_override     = 'rc.defaultwidth=999'
+" default fields to ask when adding a new task
+let g:task_default_prompt  = ['due', 'description']
+" whether the info window is splited vertically
+let g:task_info_vsplit     = 0
+" info window size
+let g:task_info_size       = 15
+" info window position
+let g:task_info_position   = 'belowright'
+" directory to store log files defaults to taskwarrior data.location
+let g:task_log_directory   = '~/.task'
+" max number of historical entries
+let g:task_log_max         = '20'
+" forward arrow shown on statusline
+let g:task_left_arrow      = ' <<'
+" backward arrow ...
+let g:task_left_arrow      = '>> '
+
+" ===== Kronos
+let g:kronos_backend = 'taskwarrior'
+
+" ===== vimagit
+" Open vimagit pane
+nnoremap <leader>gs :Magit<CR>       " git status
+" Push to remote
+nnoremap <leader>gP :! git push<CR>  " git Push
+" Enable deletion of untracked files in Magit
+let g:magit_discard_untracked_do_delete=1
+
+" ==== vim-test
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+let test#strategy = "vimux"
+let test#python#runner = 'pytest'
+let test#python#minitest#options = '--verbose'
+let test#neovim#term_position = "right"
+
+
+" === black
+let g:black_linelength = 79
+
 " === vimwiki
 " Wiki settings
 let g:vimwiki_global_ext=0
@@ -417,4 +516,3 @@ let g:vimwiki_list = [g:sh_wiki, g:guidelines_wiki]
 " colorscheme ayu
 " colorscheme smyck
 colorscheme mustang
-" set conceallevel=0

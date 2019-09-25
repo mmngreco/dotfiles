@@ -164,3 +164,6 @@ export PATH=$PATH:/root/.go/bin
 export PATH=$PATH:/root/go/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+source "/home/mgreco/.local/share/dephell/_dephell_zsh_autocomplete"

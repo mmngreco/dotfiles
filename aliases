@@ -68,7 +68,6 @@ alias sitecopy='wget -k -K -E -r -l 10 -p -N -F -nH '
 alias ytmp3='youtube-dl --extract-audio --audio-format mp3 '
 alias pipclean='curl https://gist.githubusercontent.com/mmngreco/afafe8c37498f8185d25b2648c57f73a/raw/pip_clean.py > ~/pipclean.py; python ~/pipclean.py; rm ~/pipclean.py'
 
-
 # docker
 alias datt='docker attach'
 alias dcb='docker-compose build'

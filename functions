@@ -1,3 +1,6 @@
+etspip (){
+    pip $@ -i http://etspip.ets.es/ets/pypi/+simple/ --trusted-host etspip.ets.es
+}
 
 parse_git_branch ()
 {
