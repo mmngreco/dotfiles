@@ -12,64 +12,83 @@ call plug#begin()
     Plug 'Shougo/neoinclude.vim'
     Plug 'neomake/neomake'
     Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    " Plug 'ivalkeen/nerdtree-execute'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
-    " Plug 'Nopik/vim-nerdtree-direnter'
-    Plug 'vim-scripts/VisIncr'
+        Plug 'Xuyuanp/nerdtree-git-plugin'
+        " Plug 'ivalkeen/nerdtree-execute'
+        Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
+        " Plug 'Nopik/vim-nerdtree-direnter'
     Plug 'kien/ctrlp.vim'
     Plug 'majutsushi/tagbar'
-    Plug 'xolox/vim-session'
-        Plug 'xolox/vim-misc'
 
-    " Auto close parens, braces, brackets, etc
-    Plug 'jiangmiao/auto-pairs'
+    " ==== vim enhances
+    Plug 'vim-scripts/VisIncr'
+    Plug 'mhinz/vim-startify'
+    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
-    " Plug 'luochen1990/rainbow'
-    Plug 'flazz/vim-colorschemes'
-    Plug 'arakashic/chromatica.nvim'
-    Plug 'ryanoasis/vim-devicons'
-    " Plug 'altercation/vim-colors-solarized'
+    Plug 'thaerkh/vim-workspace'
+    " Plug 'xolox/vim-session'
+    "     Plug 'xolox/vim-misc'
 
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'epeli/slimux'
+    Plug 'wellle/targets.vim'
+    Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
     Plug 'godlygeek/tabular'
     Plug 'dhruvasagar/vim-table-mode'
     Plug 'ervandew/supertab'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-sensible'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'Yggdroot/indentLine'
+
+    " ===== cmd
+    Plug 'skywind3000/asyncrun.vim'
+
+    " =========== colors
+    Plug 'flazz/vim-colorschemes'
+    Plug 'arakashic/chromatica.nvim'
+
+    " =========== icons
+    Plug 'ryanoasis/vim-devicons'
+
+    " ===== tmux
+    Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'epeli/slimux'
+
 
     "=== ultisnips
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
-    Plug 'tpope/vim-abolish'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    " ==== status bar
+    Plug 'itchyny/lightline.vim'
 
     "=== git
     Plug 'junegunn/gv.vim'
     Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
+    " Plug 'airblade/vim-gitgutter'
+    Plug 'mhinz/vim-signify'
     Plug 'jreybert/vimagit'
-
-    Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-abolish'
     Plug 'mbbill/undotree'
+
+    "==== syntax
+    Plug 'tpope/vim-unimpaired'
+    Plug 'kshenoy/vim-signature'  " add tag into lines
+    " Plug 'xolox/vim-notes'
+        " Plug 'xolox/vim-misc'
+    Plug 'tpope/vim-surround'
     " Plug 'rhysd/vim-grammarous'
-    " Plug 'vim-pandoc/vim-pandoc'
-    " Plug 'vim-pandoc/vim-pandoc-syntax'
-    "
+
     " ==== Task warrior
-    Plug 'blindFS/vim-taskwarrior'
+    " Plug 'blindFS/vim-taskwarrior'
     Plug 'soywod/kronos.vim'
 
     " ==== vim wiki
     Plug 'vimwiki/vimwiki'
-    Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'Yggdroot/indentLine'
 
     " ==== vim markdown
+    " Plug 'vim-pandoc/vim-pandoc', { 'for': 'markdown'}
+    " Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'markdown'}
     Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
     Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
@@ -77,20 +96,18 @@ call plug#begin()
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
     Plug 'gyim/vim-boxdraw'
 
-    Plug 'kshenoy/vim-signature'  " add tag into lines
-    " Plug 'xolox/vim-notes'
-        " Plug 'xolox/vim-misc'
-    Plug 'tpope/vim-surround'
-
-    Plug 'zchee/deoplete-clang'
-
+    " ==== latex
     Plug 'lervag/vimtex'
+
+    " ==== gist github
     Plug 'mattn/gist-vim'
        Plug 'mattn/webapi-vim'
 
+    " ==== clang related
+    Plug 'zchee/deoplete-clang'
+
     " ==== python related
     Plug 'cjrh/vim-conda'
-
     Plug 'janko/vim-test'
         Plug 'tpope/vim-dispatch'
         Plug 'benmills/vimux'
@@ -100,26 +117,23 @@ call plug#begin()
     Plug 'tweekmonster/impsort.vim'  " color and sort imports
     " Plug 'tell-k/vim-autopep8'
     Plug 'heavenshell/vim-pydocstring'
-    " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',  }
-
     Plug 'bronson/vim-trailing-whitespace'
     " Plug 'jpalardy/vim-slime'
-
-    " Plug 'ErichDonGubler/vim-sublime-monokai'
     " Plug 'jalvesaq/vimcmdline'
+    " documentation
+    Plug 'rhysd/devdocs.vim'
 
     " ====== searching
     Plug 'junegunn/fzf'
     Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
-    Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 
 " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
-let g:python3_host_prog = 'python'
+" let g:python3_host_prog = 'python'
 
 " habit
-" let mapleader = ","
+let mapleader = ","
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
@@ -304,7 +318,7 @@ au FocusGained,BufEnter * :checktime
 "
 " ========== indentLines ==========
 " autocmd FileType markdown,md let g:indentLine_enabled=0
-autocmd FileType markdown setl conceallevel=0
+" autocmd FileType markdown setl conceallevel=0
 autocmd FileType markdown set conceallevel=0
 let g:indentLine_fileTypeExclude = ['markdown']
 
@@ -339,7 +353,11 @@ let g:mkdp_auto_close = 0
 let g:mkdp_page_title = '${name}'
 
 " ========== vim-sessions ===========
-:let g:session_autoload = 'yes'
+let g:session_autoload = 'yes'
+nnoremap <leader>s :ToggleWorkspace<CR>
+
+" ========== vim-workspace =========
+let g:workspace_autosave_always = 1
 
 " ========= MARKDOWN-SYNTAX ============
 " autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
@@ -350,13 +368,7 @@ let g:vim_markdown_toc_autofit=1
 let g:vim_markdown_conceal=0
 let g:tex_conceal=""
 let g:vim_markdown_math=1
-let g:conceallevel=0
-setl conceallevel=0
-set conceallevel=0
 
-" ==========  Language Client Server  ==========
-" let g:LanguageClient_loggingLevel = 'DEBUG'
-" let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
 
 " ==========  SLIMUX  ==========
 let g:slimux_python_use_ipython=0
@@ -367,16 +379,24 @@ vmap <Leader>e :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
 let g:slime_target="tmux"
 
+" ==== devdocs
+nmap K <Plug>(devdocs-under-cursor)
+let g:devdocs_filetype_map = {
+    \   'ruby': 'rails',
+    \   'javascript.jsx': 'react',
+    \   'javascript.test': 'chai',
+    \   'python': 'python',
+    \   'cpp': 'cpp',
+    \ }
 
 " ===================  COMMANDS   ==================
-function Latexize()
-   :silent !pdflatex ./report.tex --output-directory=./tmp
-   :silent !bibtex ./report
-   :silent !makeindex report.idx
-   :silent !pdflatex ./report.tex --output-directory=./tmp
-   :redraw!
-endfunction
-
+" function Latexize()
+"    :silent !pdflatex ./report.tex --output-directory=./tmp
+"    :silent !bibtex ./report
+"    :silent !makeindex report.idx
+"    :silent !pdflatex ./report.tex --output-directory=./tmp
+"    :redraw!
+" endfunction
 "command Latexize_small execute "silent !pdflatex ./report.tex --output-directory=./tmp"
 " ===================  MAPPINGS   ==================
 " map <C-l> 1@l
@@ -404,21 +424,31 @@ tnoremap <Esc> <C-\><C-n>
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :set nosplitright<CR>:TagbarToggle<CR>:set splitright<CR>
 
-" === Porwerline
+" === airline status bar
 " let g:powerline_pycmd = 'py3'
 " let g:powerline_pyeval = '/usr/bin/python3'
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 0
+" let g:airline_powerline_fonts = 1
 " let g:airline_theme = 'murmur'
-let g:airline_theme = 'minimalist'
-let g:airline_detect_iminsert=0
-let g:airline_detect_spelllang=0
-let g:airline_detect_crypt=0
-let g:airline_detect_paste=0
-let g:airline_detect_modified=0
-" let g:airline_theme = 'raven'
-" let g:airline_theme = 'monochrome'
-
+" let g:airline_theme = 'minimalist'
+" let g:airline_detect_iminsert=0
+" let g:airline_detect_spelllang=1
+" let g:airline_detect_crypt=0
+" let g:airline_detect_paste=0
+" let g:airline_detect_modified=0
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 " ===== Task warrior
 " default task report type
@@ -487,11 +517,11 @@ let g:wiki_default.syntax = 'markdown'
 let g:wiki_default.ext = '.md'
 " let g:wiki_default.diary_rel_path = 'log/'
 
-let g:sh_wiki = copy(g:wiki_default)
-let g:sh_wiki.path = '$HOME/vimwiki/'
+let g:sh_wiki=copy(g:wiki_default)
+let g:sh_wiki.path='$HOME/vimwiki/'
 
-let g:guidelines_wiki = copy(g:wiki_default)
-let g:guidelines_wiki.path = '$HOME/gitlab/mgreco/guidelines.wiki/'
+let g:guidelines_wiki=copy(g:wiki_default)
+let g:guidelines_wiki.path='$HOME/gitlab/mgreco/guidelines.wiki/'
 
 let g:vimwiki_list = [g:sh_wiki, g:guidelines_wiki]
 

@@ -51,3 +51,5 @@ export PATH="$GEM_HOME/bin:$PATH"
 export PATH="$PATH:/home/mgreco/.go/bin"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$HOME/go/bin"
+# export MERMAID_BIN='/home/mgreco/.local/bin/pandoc-mermaid'
+export MERMAID_BIN='/home/mgreco/node_modules/.bin/mmdc'
