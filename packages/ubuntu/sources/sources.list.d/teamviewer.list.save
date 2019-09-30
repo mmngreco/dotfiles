@@ -11,19 +11,12 @@
 ###       teamviewer repo                - show current repository configuration
 ###       teamviewer repo default        - restore default configuration
 ###       teamviewer repo disable        - disable the repository
-###       teamviewer repo main [stable]  - make all TeamViewer packages available (default)
-###       teamviewer repo tv14 [stable]  - make TeamViewer 14 packages available
-###                             stable     omit preview and beta releases
+###       teamviewer repo stable         - make all regular TeamViewer packages available (default)
+###       teamviewer repo preview        - additionally, make feature preview packages available
+###       teamviewer repo development    - additionally, make the latest development packages available
 
-
-### Choose stable main to receive updates for TeamViewer 14 and upcoming major releases
-### Choose preview main to receive early updates for TeamViewer 14 and to receive major beta releases
-
-### Choose stable tv14 to receive updates for TeamViewer 14
-### Choose preview tv14 to receive early updates for TeamViewer 14
 
 deb http://linux.teamviewer.com/deb stable main
-# deb http://linux.teamviewer.com/deb preview main
 
-# deb http://linux.teamviewer.com/deb stable tv14
-# deb http://linux.teamviewer.com/deb preview tv14
+# deb http://linux.teamviewer.com/deb preview main
+# deb http://linux.teamviewer.com/deb development main

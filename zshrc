@@ -83,7 +83,9 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "Tarrasch/zsh-autoenv"
 
+export AUTOENV_FILE_ENTER=".env"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

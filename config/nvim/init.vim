@@ -129,7 +129,7 @@ call plug#begin()
 
 call plug#end()
 
-" let g:python3_host_prog = '$CONDA_PYTHON_EXE'
+let g:python3_host_prog = '$CONDA_PYTHON_EXE'
 " let g:python3_host_prog = 'python'
 
 " habit

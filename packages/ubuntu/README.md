@@ -1,7 +1,8 @@
 # Programs
+
 A quick way of backing up a list of programs is to run this:
 
-```
+```bash
 dpkg --get-selections > ~/dotfiles/software/ubuntu/package.list
 sudo cp -R /etc/apt/sources.list* ~/dotfiles/software/ubuntu
 sudo apt-key exportall > ~/dotfiles/software/ubuntu/repo.keys
@@ -9,7 +10,7 @@ sudo apt-key exportall > ~/dotfiles/software/ubuntu/repo.keys
 
 It will back them up in a format that dpkg can read* for after your reinstall, like this:
 
-```
+```bash
 sudo apt-key add ~/dotfiles/software/ubuntu/repo.keys
 sudo cp -R ~/dotfiles/software/ubuntu/sources.list* /etc/apt/
 sudo apt-get update
