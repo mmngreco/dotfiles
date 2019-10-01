@@ -129,8 +129,8 @@ call plug#begin()
 
 call plug#end()
 
-let g:python3_host_prog = '$CONDA_PYTHON_EXE'
-" let g:python3_host_prog = 'python'
+" let g:python3_host_prog = '$CONDA_PYTHON_EXE'
+let g:python3_host_prog = 'python'
 
 " habit
 let mapleader = ","
@@ -174,23 +174,35 @@ nnoremap <leader><space> :nohlsearch<cr>
 " Strip all trailing whitespace
 nnoremap <leader>f :StripWhitespace<cr>
 
+" ===   - Colorscheme
+colorscheme mustang
+
 set ignorecase
 set smartcase
+
 " Highlight the line the cursor is on.
+set cursorcolumn
+" highlight ColorColumn ctermbg=gray
+highlight Normal  ctermbg=none
+highlight NonText ctermbg=none
+
 set cursorline
+highlight CursorLine term=bold cterm=bold guibg=Grey40
+" highlight ColorLine ctermbg=none
 
 " Toggle NerdTree
-nnoremap <leader>a :NERDTreeToggle<cr>
+" nnoremap <leader>a :NERDTreeToggle<cr>
 
 " I type Wq more often than wq
 cmap Wq wq
 cmap wQ wq
 cmap WQ wq
+
+" sudo
 cmap w!! w suda://%
 "
 " show the cursor position all the time
 set ruler
-"
 
 " Column limits
 set textwidth=110
@@ -250,7 +262,6 @@ nnoremap <leader>w :Gstatus<cr>
 map Q gq
 " set clipboard=unnamed
 set clipboard=unnamedplus
-highlight ColorColumn ctermbg=gray
 
 " read/write file when switching buffers
 set autowrite
@@ -264,7 +275,6 @@ set laststatus=2
 
 set noshowcmd
 set noshowmode  " keep command line clean
-set nu
 
 set shiftwidth=4
 set smartcase  " better case-sensitivity when searching
@@ -284,6 +294,8 @@ filetype indent on
 filetype plugin on
 
 nmap <silent> <C-d> <Plug>(pydocstring)
+
+
 " =============================================================================
 " ===   DEFAULT CONFIGURATION
 " ===   - Typing
@@ -292,8 +304,6 @@ nmap <silent> <C-d> <Plug>(pydocstring)
 " ===   - Mappings
 " =============================================================================
 
-highlight Normal  ctermbg=none
-highlight NonText ctermbg=none
 " set runtimepath+=~/.config/nvim/plugins/deoplete.nvim
 
 
@@ -536,13 +546,3 @@ let g:vimwiki_list = [g:sh_wiki, g:guidelines_wiki]
 " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
-" ===   - Colorscheme
-" colorscheme molokai
-" colorscheme sublimemonokai
-" colorscheme lucius
-" colorscheme lucid
-" colorscheme Benokai
-" colorscheme gruvbox
-" colorscheme ayu
-" colorscheme smyck
-colorscheme mustang
