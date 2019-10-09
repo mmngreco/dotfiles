@@ -12,6 +12,7 @@ call plug#begin()
     Plug 'Shougo/neoinclude.vim'
     Plug 'neomake/neomake'
     Plug 'scrooloose/nerdtree'
+    Plug 'mortonfox/nerdtree-clip'
         Plug 'Xuyuanp/nerdtree-git-plugin'
         " Plug 'ivalkeen/nerdtree-execute'
         Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
@@ -118,6 +119,7 @@ call plug#begin()
     " Plug 'tell-k/vim-autopep8'
     Plug 'heavenshell/vim-pydocstring'
     Plug 'bronson/vim-trailing-whitespace'
+
     " Plug 'jpalardy/vim-slime'
     " Plug 'jalvesaq/vimcmdline'
     " documentation
@@ -329,7 +331,8 @@ au FocusGained,BufEnter * :checktime
 " ========== indentLines ==========
 " autocmd FileType markdown,md let g:indentLine_enabled=0
 " autocmd FileType markdown setl conceallevel=0
-autocmd FileType markdown set conceallevel=0
+autocmd FileType markdown,vimwiki set conceallevel=0
+autocmd FileType vimwiki let g:indentLine_enabled=0
 let g:indentLine_fileTypeExclude = ['markdown']
 
 " === jedi settings"
@@ -349,10 +352,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir="$HOME/.config/nvim/plugged/vim-snippets/UltiSnips"
+let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/plugged/vim-snippets/UltiSnips#'
 " let g:UltiSnipsSnippetDirectories=["UltiSnipsNewDir"]
 let g:Ultisnips_python_style="sphinx"
-
 
 " ==========  PyDocstrign  ==========
 let g:pydocstring_templates_dir='$HOME/.config/nvim/plugged/vim-pydocstring/test/templates/numpy'
@@ -373,7 +375,7 @@ let g:workspace_autosave_always = 1
 " autocmd BufNewFile,BufRead *.{md,mark*} set filetype=markdown
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_override_foldtext=0
-let g:vim_markdown_folding_level=6
+" let g:vim_markdown_folding_level=6
 let g:vim_markdown_toc_autofit=1
 let g:vim_markdown_conceal=0
 let g:tex_conceal=""
@@ -520,19 +522,20 @@ let g:black_linelength = 79
 " === vimwiki
 " Wiki settings
 let g:vimwiki_global_ext=0
+let g:vimwiki_conceallevel=0
+
 let g:wiki_default = {}
 let g:wiki_default.auto_export = 0
 let g:wiki_default.auto_toc = 0
 let g:wiki_default.syntax = 'markdown'
 let g:wiki_default.ext = '.md'
 " let g:wiki_default.diary_rel_path = 'log/'
-
+"
 let g:sh_wiki=copy(g:wiki_default)
-let g:sh_wiki.path='$HOME/vimwiki/'
-
+" let g:sh_wiki.path='$HOME/vimwiki/'
+let g:sh_wiki.path='$HOME/scio/'
 let g:guidelines_wiki=copy(g:wiki_default)
 let g:guidelines_wiki.path='$HOME/gitlab/mgreco/guidelines.wiki/'
-
 let g:vimwiki_list = [g:sh_wiki, g:guidelines_wiki]
 
 " === Language Client Server
