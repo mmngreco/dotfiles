@@ -324,6 +324,11 @@ nmap <silent> <C-d> <Plug>(pydocstring)
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 
+
+" === commentary
+autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+autocmd FileType matlab setlocal commentstring=%\ %s
+
 " ==========  UltiSnips  ==========
 "
 "
@@ -333,6 +338,7 @@ au FocusGained,BufEnter * :checktime
 " autocmd FileType markdown setl conceallevel=0
 autocmd FileType markdown,vimwiki set conceallevel=0
 autocmd FileType vimwiki let g:indentLine_enabled=0
+autocmd FileType markdown let g:indentLine_enabled=0
 let g:indentLine_fileTypeExclude = ['markdown']
 
 " === jedi settings"
