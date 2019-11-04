@@ -1,8 +1,0 @@
-default_profile: etsgit1.ets.es
-profiles:
-  etsgit1.ets.es:
-    token: SbKSxAzyx95LvypEqDih
-    host: etsgit1.ets.es
-    default_group: COM
-    default_project: COM/product_backlog
-    # default_assignee_id: 123

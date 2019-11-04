@@ -47,4 +47,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-eval $(~/.linuxbrew/bin/brew shellenv)
+export PATH="/home/mgreco/.pyenv/bin:$PATH"

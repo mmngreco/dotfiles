@@ -112,3 +112,5 @@ alias sshcom='ssh mgreco@etstea10'
 
 alias drmca='docker rm $(docker stop $(docker ps -qa))'
 alias open='xdg-open '
+
+alias etscheck='~/miniconda3/envs/autochecker/bin/python ~/autochecker/main.py'

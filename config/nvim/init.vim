@@ -19,7 +19,7 @@ call plug#begin()
         " Plug 'Nopik/vim-nerdtree-direnter'
     Plug 'kien/ctrlp.vim'
     Plug 'majutsushi/tagbar'
-
+    Plug 'mtth/scratch.vim'
     " ==== vim enhances
     Plug 'vim-scripts/VisIncr'
     Plug 'mhinz/vim-startify'
@@ -41,7 +41,7 @@ call plug#begin()
     Plug 'Yggdroot/indentLine'
 
     " ===== cmd
-    Plug 'skywind3000/asyncrun.vim'
+    " Plug 'skywind3000/asyncrun.vim'
 
     " =========== colors
     Plug 'flazz/vim-colorschemes'
@@ -87,6 +87,10 @@ call plug#begin()
     " ==== vim wiki
     Plug 'vimwiki/vimwiki'
 
+    " ==== cheathseets get doc
+    Plug 'wlemuel/vim-tldr'
+    Plug 'rhysd/devdocs.vim'
+
     " ==== vim markdown
     " Plug 'vim-pandoc/vim-pandoc', { 'for': 'markdown'}
     " Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'markdown'}
@@ -114,16 +118,22 @@ call plug#begin()
         Plug 'benmills/vimux'
     Plug 'psf/black'
     Plug 'nvie/vim-flake8'
-       Plug 'davidhalter/jedi-vim'
+       " Plug 'davidhalter/jedi-vim'
     Plug 'tweekmonster/impsort.vim'  " color and sort imports
     " Plug 'tell-k/vim-autopep8'
     Plug 'heavenshell/vim-pydocstring'
     Plug 'bronson/vim-trailing-whitespace'
+    " Plug 'autozimu/LanguageClient-neovim', {
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
+    "     \ }
+    Plug 'Shougo/deoplete.nvim', {
+        \ 'do': ':UpdateRemotePlugins' }
 
+    Plug 'zchee/deoplete-jedi'
     " Plug 'jpalardy/vim-slime'
     " Plug 'jalvesaq/vimcmdline'
     " documentation
-    Plug 'rhysd/devdocs.vim'
 
     " ====== searching
     Plug 'junegunn/fzf'
@@ -132,7 +142,7 @@ call plug#begin()
 call plug#end()
 
 " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
-let g:python3_host_prog = 'python'
+" let g:python3_host_prog = 'python'
 
 " habit
 let mapleader = ","
@@ -152,17 +162,32 @@ let g:AutoPairsMapSpace=0
 set scrolljump=-15
 
 " jedi options
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = "1"
-let g:jedi#show_call_signatures_delay = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures_modes = 'i'  " ni = also in normal mode
-let g:jedi#enable_speed_debugging=0
+" let g:jedi#auto_initialization = 1
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#completions_command = ""
+" let g:jedi#show_call_signatures = "1"
+" let g:jedi#show_call_signatures_delay = 0
+" let g:jedi#use_tabs_not_buffers = 0
+" let g:jedi#show_call_signatures_modes = 'i'  " ni = also in normal mode
+" let g:jedi#enable_speed_debugging=0
+
+
+" let g:LanguageClient_loggingLevel = 'INFO'
+" let g:LanguageClient_loggingFile = expand('~/.local/share/nvim/LanguageClient.log')
+" let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['python', '-m', 'pyls']
+"     \ }
+
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" " Or map each action separately
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 
 " Replace <Esc> with C-c
 inoremap <F1> <Esc>
@@ -177,7 +202,8 @@ nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>f :StripWhitespace<cr>
 
 " ===   - Colorscheme
-colorscheme mustang
+" colorscheme mustang
+colorscheme gruvbox
 
 set ignorecase
 set smartcase
@@ -199,6 +225,7 @@ highlight CursorLine term=bold cterm=bold guibg=Grey40
 cmap Wq wq
 cmap wQ wq
 cmap WQ wq
+cmap W w
 
 " sudo
 cmap w!! w suda://%
@@ -310,14 +337,7 @@ nmap <silent> <C-d> <Plug>(pydocstring)
 
 
 " === deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#sources#jedi#show_docstring = 1
-" let g:deoplete#sources#jedi#server_timeout = 60
-" let g:python3_host_prog = '$CONDA_PYTHON_EXE'
-
-" === echodoc
-" let g:echodoc_enable_at_startup="1"
-" let g:echodoc_type='echo'
+let g:deoplete#enable_at_startup = 1
 
 " =============== If a file change then reaload it
 " https://unix.stackexchange.com/a/383044
@@ -336,8 +356,9 @@ autocmd FileType matlab setlocal commentstring=%\ %s
 " ========== indentLines ==========
 " autocmd FileType markdown,md let g:indentLine_enabled=0
 " autocmd FileType markdown setl conceallevel=0
-autocmd FileType markdown,vimwiki set conceallevel=0
+autocmd FileType vimwiki set conceallevel=0
 autocmd FileType vimwiki let g:indentLine_enabled=0
+autocmd FileType markdown set conceallevel=0
 autocmd FileType markdown let g:indentLine_enabled=0
 let g:indentLine_fileTypeExclude = ['markdown']
 
@@ -389,23 +410,31 @@ let g:vim_markdown_math=1
 
 
 " ==========  SLIMUX  ==========
+function! UseIpython()
+    if g:slimux_python_use_ipython
+        let g:slimux_python_use_ipython=0
+    else
+        let g:slimux_python_use_ipython=1
+    endif
+endfunction
+nnoremap <leader>py :call UseIpython()<cr>
 let g:slimux_python_use_ipython=0
-" let g:slimux_tmux_path = "/usr/local/bin/tmux"
 let g:slimux_tmux_path="/usr/bin/tmux"
 map <Leader>e :SlimuxREPLSendLine<CR>
+map <Leader>p :SlimuxREPLSendParagraph<CR>
 vmap <Leader>e :SlimuxREPLSendSelection<CR>
 let maplocalleader="\<space>"
 let g:slime_target="tmux"
 
 " ==== devdocs
-nmap K <Plug>(devdocs-under-cursor)
-let g:devdocs_filetype_map = {
-    \   'ruby': 'rails',
-    \   'javascript.jsx': 'react',
-    \   'javascript.test': 'chai',
-    \   'python': 'python',
-    \   'cpp': 'cpp',
-    \ }
+nmap dK <Plug>(devdocs-under-cursor)
+" let g:devdocs_filetype_map = {
+"     \   'ruby': 'rails',
+"     \   'javascript.jsx': 'react',
+"     \   'javascript.test': 'chai',
+"     \   'python': 'python',
+"     \   'cpp': 'cpp',
+"     \ }
 
 " ===================  COMMANDS   ==================
 " function Latexize()
@@ -544,14 +573,6 @@ let g:guidelines_wiki=copy(g:wiki_default)
 let g:guidelines_wiki.path='$HOME/gitlab/mgreco/guidelines.wiki/'
 let g:vimwiki_list = [g:sh_wiki, g:guidelines_wiki]
 
-" === Language Client Server
-" https://github.com/palantir/python-language-server/issues/374
-" let g:LanguageClient_serverCommands = {
-"     \ 'python': ['python3', '-m', 'pyls', '--log-file', '/tmp/pyls.log', '-v'],
-"     \ }
-" let g:lsp_virtual_text_enabled = 1
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
+" ==== tldr
+let g:tldr_directory_path = '~/.cache/tldr'
+let g:tldr_split_type = 'horizontal'  " horizontal vertical tab

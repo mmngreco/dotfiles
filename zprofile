@@ -12,3 +12,5 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+export PATH="$HOME/.cargo/bin:$PATH"
