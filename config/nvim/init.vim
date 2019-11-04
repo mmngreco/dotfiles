@@ -20,7 +20,9 @@ call plug#begin()
     Plug 'kien/ctrlp.vim'
     Plug 'majutsushi/tagbar'
     Plug 'mtth/scratch.vim'
+
     " ==== vim enhances
+    Plug 'tyru/open-browser.vim'
     Plug 'vim-scripts/VisIncr'
     Plug 'mhinz/vim-startify'
     Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
