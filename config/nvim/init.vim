@@ -125,7 +125,8 @@ call plug#begin()
     Plug 'Shougo/deoplete.nvim', {
         \ 'do': ':UpdateRemotePlugins' }
 
-    Plug 'zchee/deoplete-jedi'
+    " Plug 'zchee/deoplete-jedi'
+    Plug 'zxqfl/tabnine-vim'
     Plug 'szymonmaszke/vimpyter' "vim-plug needs pip install notedown
 
     " ====== searching
@@ -135,7 +136,7 @@ call plug#begin()
 call plug#end()
 
 " let g:python3_host_prog = '$CONDA_PYTHON_EXE'
-" let g:python3_host_prog = 'python'
+let g:python3_host_prog = 'python'
 
 " habit
 let mapleader = ","
@@ -317,6 +318,11 @@ filetype plugin on
 
 nmap <silent> <C-d> <Plug>(pydocstring)
 
+" =============================================================================
+" Registers
+let @x=":s\/\\([a-z_]*\\)\\n\/self.\\1 = \\1\\r\/g\r:nohlsearch\r"
+let @y=":s\/\\([a-z_]*\\)\\n\/\\1=\\1,\\r\/g\r:nohlsearch\r"
+let @z=":s\/\\(\\s*\\)\\([a-z._]*\\) = \\([a-z_]*\\)\/\\1\\3 = \\2/g\r:nohlsearch\r"
 
 " =============================================================================
 " ===   DEFAULT CONFIGURATION
