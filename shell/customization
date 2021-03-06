@@ -1,0 +1,5 @@
+#!/bin/bash
+# fast keyboard delay (ms) and speed (keys by sec)
+# keyboard typing speed
+xset r rate 250 60
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl

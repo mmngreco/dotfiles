@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+python -s -m venv $HOME/neovim
+source $HOME/neovim/bin/activate
+python -s -m pip install neovim "python-language-server[all]"
+pip install notedown pynvim --user
+echo "export PYTHON_NEOVIM=$(which python)" >> $HOME/.dotfiles/variables
+deactivate

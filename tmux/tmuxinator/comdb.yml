@@ -1,0 +1,12 @@
+# /home/mgreco/.config/tmuxinator/comdb.yml
+
+name: comdb
+root: ~/gitlab/com/libraries/comdb
+windows:
+  - editor:
+      layout: 9e92,274x53,0,0{121x53,0,0,1,152x53,122,0[152x21,122,0{86x21,122,0,3,65x21,209,0,9},152x31,122,22,4]}
+      panes:
+        - vim
+        - issues-pb
+        - issues
+        -
