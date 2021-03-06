@@ -1,0 +1,19 @@
+# /home/mgreco/.config/tmuxinator/matpy.yml
+
+name: matpy
+root: ~/gitlab/com/libraries/matpy
+windows:
+  - editor:
+      layout: 9e92,274x53,0,0{121x53,0,0,1,152x53,122,0[152x21,122,0{86x21,122,0,3,65x21,209,0,9},152x31,122,22,4]}
+      panes:
+        - vim
+        - issues
+        # - issues-pb
+        # -
+  # - matlab:
+      # layout: 5d4d,274x53,0,0{130x53,0,0,2,143x53,131,0[143x17,131,0{71x17,131,0,6,71x17,203,0,15},143x35,131,18,7]}
+      # panes:
+        # - cd ~/gitlab/mgreco/matlab; vim
+        # - cd ~/gitlab/mgreco/matlab;
+        # - cd ~/gitlab/mgreco/matlab;
+        # - cd ~/gitlab/mgreco/matlab;

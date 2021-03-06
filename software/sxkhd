@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+sudo apt install libxcb-util0-dev xcb libxcb-keysyms1-dev
+
+git clone git@github.com:baskerville/sxhkd.git /tmp/sxhkd
+pushd /tmp/sxhkd
+make
+sudo make install
+popd
+rm -rf /tmp/sxhkd

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+dest=~/github/universal_ctags
+
+rm -rf $dest
+git clone --depth 1 https://github.com/universal-ctags/ctags.git $dest
+
+pushd $dest
+./autogen.sh
+./configure
+make
+sudo make install # may require extra privileges depending on where to install
+popd
+
+rm -rf  $dest

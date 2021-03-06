@@ -1,0 +1,58 @@
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+!xterm*font: -*-mplus*-*-*-*-14-*-*-*-*-*-iso10646-1
+!xrdb ~/.Xresources
+XTerm.VT100.translations: #override \
+Meta <Key> minus: smaller-vt-font() \n\
+Meta <Key> plus: larger-vt-font() \n\
+Meta <Key> KP_Subtract: smaller-vt-font() \n\
+Meta <Key> KP_Add: larger-vt-font() \n\
+Super <Key> minus: smaller-vt-font() \n\
+Super <Key> plus: larger-vt-font() \n\
+Super <Key> KP_Subtract: smaller-vt-font() \n\
+Super <Key> KP_Add: larger-vt-font() \n\
+Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+XTerm*transparent: true
+xterm*renderFont: true
+xterm*faceName: mplus Nerd Font Mono
+xterm*faceSize: 14
+xterm*vt100*geometry: 80x50
+xterm*loginShell: true
+xterm*saveLines: 10000
+xterm*boldMode: false
+xterm*selectToClipboard: true
+
+! hard contrast: *background: #1d2021
+xterm*background: #282828
+! soft contrast: xterm*background: #32302f
+xterm*foreground: #ebdbb2
+! Black + DarkGrey
+xterm*color0:  #282828
+xterm*color8:  #928374
+! DarkRed + Red
+xterm*color1:  #cc241d
+xterm*color9:  #fb4934
+! DarkGreen + Green
+xterm*color2:  #98971a
+xterm*color10: #b8bb26
+! DarkYellow + Yellow
+xterm*color3:  #d79921
+xterm*color11: #fabd2f
+! DarkBlue + Blue
+xterm*color4:  #458588
+xterm*color12: #83a598
+! DarkMagenta + Magenta
+xterm*color5:  #b16286
+xterm*color13: #d3869b
+! DarkCyan + Cyan
+xterm*color6:  #689d6a
+xterm*color14: #8ec07c
+! LightGrey + White
+xterm*color7:  #a89984
+xterm*color15: #ebdbb2

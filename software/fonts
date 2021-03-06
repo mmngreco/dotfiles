@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if [ ! -d "$HOME/github/mmngreco/fonts" ]
+then
+    git clone https://github.com/mmngreco/fonts $HOME/github/mmngreco/fonts
+    sudo cp $HOME/github/mmngreco/fonts/*.ttf /usr/local/share/fonts
+fi
+sudo fc-cache -fv

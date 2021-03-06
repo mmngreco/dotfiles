@@ -1,0 +1,199 @@
+# set modifier
+set $super Mod4
+set $alt Mod1
+
+# set font
+font pango: Noto Sans 8
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+# ============================================================================
+# autostart
+exec --no-startup-id xrandr --output eDP-1 --off --rate 144
+exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+exec --no-startup-id xsettingsd &
+exec --no-startup-id nm-applet &
+exec --no-startup-id blueman-applet &
+exec --no-startup-id volumeicon &
+exec --no-startup-id compton -b
+
+# ============================================================================
+
+# start a terminal
+bindsym $super+Return exec kitty; workspace 1; focus
+
+# start dmenu (a program launcher)
+bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+
+# open rofi
+bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+
+# monitor settings using rofi
+bindsym $super+Ctrl+Shift+m exec rofi-randr
+bindsym $super+Ctrl+Shift+x exec xrandr --auto
+bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
+
+# launch tmux
+bindsym $super+s exec rofi-txs
+bindsym $super+w exec rofi-txw
+
+# change wallpaper
+bindsym $super+Ctrl+Shift+w exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+
+# common apps keybinds
+bindsym $alt+Ctrl+f exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png -e 'viewnior $f'
+bindsym $alt+Ctrl+e exec scrot -e 'xclip -selection clipboard -t image/png -i $f'
+
+bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png -s -e 'xclip -selection clipboard -t image/png -i $f'
+# bindsym $alt+Shift+Ctrl+v exec "i3-nagbar -t warning -m 'Screen Recording?' -b 'Start' 'rec_screen &' -b 'Stop' 'pkill ffmpeg'"
+
+# define lock screen
+bindsym $super+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
+
+# open firefow
+bindsym $super+Shift+w exec brave-browser; workspace 2; focus
+
+bindsym $super+Shift+c exec google-chrome
+
+# open file browser
+bindsym $super+Shift+f exec nautilus;workspace 4;focus
+
+# ============================================================================
+# Focus
+
+# kill focused window
+bindsym $super+q kill
+bindsym $super+c kill
+
+# change focus
+bindsym $super+h focus left
+bindsym $super+j focus down
+bindsym $super+k focus up
+bindsym $super+l focus right
+
+
+# avoid using alt+{hjkl} as it's used in tmux
+# move focused window
+bindsym Ctrl+Shift+h move left
+bindsym Ctrl+Shift+j move down
+bindsym Ctrl+Shift+k move up
+bindsym Ctrl+Shift+l move right
+
+# ============================================================================
+# splits / layout
+
+# split in vertical orientation
+bindsym $super+Shift+v split h
+
+# split in horizontal orientation
+bindsym $super+Shift+h split v
+
+# change container layout split
+bindsym Ctrl+Shift+s layout toggle split
+
+# enter fullscreen mode for the focused container
+bindsym Ctrl+Shift+m fullscreen toggle
+
+# toggle tiling / floating
+bindsym Ctrl+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $alt+Ctrl+Shift+s focus mode_toggle
+
+
+# switch to workspace
+bindsym $alt+Shift+Ctrl+h workspace next
+bindsym $alt+Shift+Ctrl+l workspace prev
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace 1
+bindsym $super+Shift+2 move container to workspace 2
+bindsym $super+Shift+3 move container to workspace 3
+bindsym $super+Shift+4 move container to workspace 4
+bindsym $super+Shift+5 move container to workspace 5
+bindsym $super+Shift+6 move container to workspace 6
+
+# move workspace between screens
+bindsym $super+Ctrl+greater move workspace to output right
+bindsym $super+Ctrl+less move workspace to output left
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+        bindsym Return mode "default"
+}
+bindsym $super+r mode "resize"
+
+
+# =============================================================================
+# Focus
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
+bindsym $super+9 workspace 9
+
+# =============================================================================
+# System
+#
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+
+
+# close session
+bindsym $super+Shift+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+
+# power off
+bindsym $super+Shift+Ctrl+q exec --no-startup-id systemctl poweroff -i, mode "default"
+
+# panel
+bar {
+        colors {
+            background #2f343f
+            statusline #2f343f
+            separator #4b5262
+
+            # colour of border, background, and text
+            focused_workspace       #2f343f #bf616a #d8dee8
+            active_workspace        #2f343f #2f343f #d8dee8
+            inactive_workspace      #2f343f #2f343f #d8dee8
+            urgent_workspacei       #2f343f #ebcb8b #2f343f
+    }
+        status_command i3status
+}
+
+default_orientation vertical #start in opposite orientation from your monitor
+for_window [class=".*"] split toggle
+# toggles split at each new window
+# bindsym $mod+shift+q split toggle kill #kill command resets the split
+# bindsym $mod+e layout toggle split # should already exist but use if split orientation  messes up
+
+
+# window rules, you can find the window class using xprop
+for_window [class=".*"] border pixel 4
+
+assign [class=URxvt|kitty] 1
+assign [class=Firefox|Transmission-gtk|brave-browser|Brave-browser] 2
+assign [class=TelegramDesktop|telegram-desktop] 3
+assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|keepassxc|Thunar|File-roller] 4
+assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
+assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
+
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
+for_window [class=URxvt|brave-browser|Brave-browser|Firefox|firefox|Geany|TelegramDesktop|telegram-desktop|Gimp*|Inkscape|Vlc] focus
+
+# colour of border, background, text, indicator, and child_border
+client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f

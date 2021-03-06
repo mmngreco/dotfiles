@@ -1,0 +1,15 @@
+config/nvim/plugged/*
+config/nvim/undodir
+*.uuid
+.pytest_cache
+config/nvim/.netrwhist
+.undodir
+gmail-pass.txt
+settings.vim
+.gitsecret/keys/random_seed
+
+# End of https://www.gitignore.io/api/python
+.gitsecret/keys/private-keys-v1.d/
+espanso/user/pass.hide.yml
+shell/custom.hide
+espanso/user/hide.yml

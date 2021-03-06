@@ -1,0 +1,11 @@
+# /home/mgreco/.config/tmuxinator/scio.yml
+
+name: scio
+root: ~/github/mmngreco/scio
+
+
+windows:
+  - editor:
+      panes:
+        - vim
+        -
