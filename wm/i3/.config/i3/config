@@ -6,7 +6,7 @@ set $monitor_main HDMI-1
 set $monitor_secondary eDP-1
 
 # set font
-font pango: Noto Sans 8
+font pango:mplus 8
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -161,7 +161,6 @@ bindsym $super+9 workspace 9
 #
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
-
 
 # close session
 bindsym $super+Shift+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
