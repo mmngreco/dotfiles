@@ -2,6 +2,9 @@
 set $super Mod4
 set $alt Mod1
 
+set $monitor_main HDMI-1
+set $monitor_secondary eDP-1
+
 # set font
 font pango: Noto Sans 8
 
@@ -132,6 +135,17 @@ bindsym $super+r mode "resize"
 
 # =============================================================================
 # Focus
+workspace 1 output $monitor_main
+workspace 2 output $monitor_main
+workspace 3 output $monitor_main
+workspace 4 output $monitor_main
+workspace 5 output $monitor_main
+
+workspace 6 output $monitor_secondary
+workspace 7 output $monitor_secondary
+workspace 8 output $monitor_secondary
+workspace 9 output $monitor_secondary
+
 bindsym $super+1 workspace 1
 bindsym $super+2 workspace 2
 bindsym $super+3 workspace 3
