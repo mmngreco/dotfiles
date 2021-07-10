@@ -23,6 +23,7 @@ exec --no-startup-id compton -b
 # start a terminal
 # bindsym $super+Return exec kitty; workspace 1; focus
 bindsym $super+Return exec xterm; workspace 1; focus
+bindsym --release $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
