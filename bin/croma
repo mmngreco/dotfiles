@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+pushd /home/mgreco/github/floe/backscrub
+./deepseg -c /dev/video2 -v /dev/video4 -H
+popd
