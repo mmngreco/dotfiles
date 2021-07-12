@@ -49,7 +49,7 @@ bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.
 # bindsym $alt+Shift+Ctrl+v exec "i3-nagbar -t warning -m 'Screen Recording?' -b 'Start' 'rec_screen &' -b 'Stop' 'pkill ffmpeg'"
 
 # define lock screen
-bindsym $super+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
+bindsym $super+Ctrl+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
 
 # open firefow
 bindsym $super+Shift+w exec brave-browser; workspace 2; focus
