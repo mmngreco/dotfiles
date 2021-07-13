@@ -2,10 +2,10 @@
 
 sudo apt install libopencv-dev build-essential v4l2loopback-dkms curl v4l-utils
 
-path="$HOME/github/floe/backscrub"
-if [ ! -d $path ]; then
-    git clone --recursive --depth 1 https://github.com/floe/backscrub.git $path
-    pushd $path
+dir="$HOME/github/floe/backscrub"
+if [ ! -d $dir ]; then
+    git clone --recursive --depth 1 https://github.com/floe/backscrub.git $dir
+    pushd $dir
     make
-    popd $path
+    popd $dir
 fi
