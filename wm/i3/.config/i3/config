@@ -6,7 +6,7 @@ set $monitor_main HDMI-1
 set $monitor_secondary eDP-1
 
 # set font
-font pango:mplus 8
+font pango:mplus 9
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -20,6 +20,12 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
+
+exec workspace 2; focus ; brave-browser
+exec workspace 6; focus ; telegram-desktop
+exec workspace 7; focus ; keepasxc
+exec workspace 1; focus ; xterm
+
 
 # ============================================================================
 
@@ -116,7 +122,12 @@ bindsym $super+Shift+2 move container to workspace 2
 bindsym $super+Shift+3 move container to workspace 3
 bindsym $super+Shift+4 move container to workspace 4
 bindsym $super+Shift+5 move container to workspace 5
+
 bindsym $super+Shift+6 move container to workspace 6
+bindsym $super+Shift+7 move container to workspace 7
+bindsym $super+Shift+8 move container to workspace 8
+bindsym $super+Shift+9 move container to workspace 9
+bindsym $super+Shift+0 move container to workspace 0
 
 # move workspace between screens
 bindsym $super+Ctrl+greater move workspace to output right
@@ -145,16 +156,19 @@ workspace 6 output $monitor_secondary
 workspace 7 output $monitor_secondary
 workspace 8 output $monitor_secondary
 workspace 9 output $monitor_secondary
+workspace 0 output $monitor_secondary
 
 bindsym $super+1 workspace 1
 bindsym $super+2 workspace 2
 bindsym $super+3 workspace 3
 bindsym $super+4 workspace 4
 bindsym $super+5 workspace 5
+
 bindsym $super+6 workspace 6
 bindsym $super+7 workspace 7
 bindsym $super+8 workspace 8
 bindsym $super+9 workspace 9
+bindsym $super+0 workspace 0
 
 # =============================================================================
 # System
@@ -195,14 +209,14 @@ for_window [class=".*"] split toggle
 for_window [class=".*"] border pixel 4
 
 assign [class=URxvt|kitty] 1
-assign [class=Firefox|Transmission-gtk|brave-browser|Brave-browser] 2
-assign [class=TelegramDesktop|telegram-desktop] 3
+assign [class=brave-browser|Brave-browser] 2
 assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|keepassxc|Thunar|File-roller] 4
-assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
-assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
+# assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
+# assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
+assign [class=TelegramDesktop|telegram-desktop] 6
 
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
-for_window [class=URxvt|brave-browser|Brave-browser|Firefox|firefox|Geany|TelegramDesktop|telegram-desktop|Gimp*|Inkscape|Vlc] focus
+for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
+for_window [class=brave-browser|Brave-browser|Firefox|firefox|TelegramDesktop|telegram-desktop|Gimp*|Inkscape|Vlc] focus
 
 # colour of border, background, text, indicator, and child_border
 client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
