@@ -33,10 +33,11 @@ export EDITOR="nvim"
 export AUTOENV_FILE_ENTER=".env"
 # export SHELL="zsh"
 # https://superuser.com/questions/71588/how-to-syntax-highlight-via-less
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+# export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 export CONDA_DIR="$HOME/miniconda3"
 
+export MYGITPROJECTS="$HOME/github:$HOME/gitlab"
 # ============================================================================
 
 export GOPATH="$HOME/go"
@@ -49,3 +50,6 @@ export PYTHON_NEOVIM="/home/mgreco/miniconda3/envs/neovim/bin/python"
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES="$HOME/.dotfiles"
 export DEFAULT_IMG="python:3.8"
+
+
+
