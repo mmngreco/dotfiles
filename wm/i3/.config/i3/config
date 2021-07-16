@@ -21,11 +21,10 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
 
-exec workspace 2; focus ; brave-browser
-exec workspace 6; focus ; telegram-desktop
-exec workspace 7; focus ; keepasxc
-exec workspace 1; focus ; xterm
-
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser'
+exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/keepassxc'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/xterm'
 
 # ============================================================================
 
