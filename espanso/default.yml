@@ -47,7 +47,7 @@ matches:
   - trigger: ":name:"
     replace: "Maximiliano Greco"
 
-  - trigger: ":dir:"
+  - trigger: ":calle:"
     replace: "Calle Benigno Granizo, 45, BJO, B"
 
   - trigger: ":sshcom"

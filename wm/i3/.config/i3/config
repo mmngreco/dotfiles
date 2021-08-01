@@ -2,6 +2,7 @@
 set $super Mod4
 set $alt Mod1
 
+# check this with the command: xrandr
 set $monitor_main HDMI-1
 set $monitor_secondary eDP-1
 
@@ -13,7 +14,7 @@ floating_modifier $super
 
 # ============================================================================
 # autostart
-exec --no-startup-id xrandr --output eDP-1 --off --rate 144
+exec --no-startup-id xrandr --output eDP-1 --off --rate 60
 exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
@@ -21,20 +22,32 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
 
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/brave-browser'
-exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/keepassxc'
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/xterm'
+
+# workspace 1 : terminal
+# workspace 2 : browser
+# workspace 3 : workstuff
+# workspace 4 : files
+# workspace 5 :
+# workspace 6 : chats
+# workspace 7 : passwords
+# workspace 8 :
+# workspace 9 :
+exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+exec --no-startup-id i3-msg 'workspace 1; exec xterm'
+exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
+exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
+exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'
 
 # ============================================================================
 
 # start a terminal
 # bindsym $super+Return exec kitty; workspace 1; focus
-bindsym $super+Return exec xterm; workspace 1; focus
+bindsym $super+Return exec xterm
 bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
-bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'mplus:size=8'"
 
 # open rofi
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
@@ -46,7 +59,7 @@ bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
 
 # launch tmux
 bindsym $super+s exec rofi-txs
-bindsym $super+w exec rofi-txw
+# bindsym $super+w exec rofi-txw
 
 # change wallpaper
 bindsym $super+Ctrl+Shift+w exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
@@ -61,12 +74,12 @@ bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.
 bindsym $super+Ctrl+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
 
 # browsers
-bindsym $super+Shift+w exec brave-browser; workspace 2; focus
+bindsym $super+Shift+w exec brave-browser
 # bindsym $super+Shift+w exec google-chrome
 # bindsym $super+Shift+w exec firefox
 
 # open file browser
-bindsym $super+Shift+f exec nautilus;workspace 4;focus
+bindsym $super+Shift+f exec nautilus
 
 # ============================================================================
 # Focus
@@ -210,12 +223,13 @@ for_window [class=".*"] border pixel 4
 assign [class=URxvt|kitty] 1
 assign [class=brave-browser|Brave-browser] 2
 assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|keepassxc|Thunar|File-roller] 4
+assign [class=keepassxc] 7
 # assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
 # assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
 assign [class=TelegramDesktop|telegram-desktop] 6
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
-for_window [class=brave-browser|Brave-browser|Firefox|firefox|TelegramDesktop|telegram-desktop|Gimp*|Inkscape|Vlc] focus
+for_window [class=brave-browser|firefox|telegram-desktop|Gimp*|Inkscape|Vlc] focus
 
 # colour of border, background, text, indicator, and child_border
 client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8

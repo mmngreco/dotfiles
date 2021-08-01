@@ -21,7 +21,7 @@ Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 XTerm*transparent: true
 xterm*renderFont: true
 xterm*faceName: mplus Nerd Font Mono
-xterm*faceSize: 12
+xterm*faceSize: 14
 xterm*vt100*geometry: 80x50
 xterm*loginShell: true
 xterm*saveLines: 10000

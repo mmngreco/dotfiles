@@ -18,7 +18,6 @@ def show_variables(variables):
         print(msj)
 
 
-
 class Config(pdb.DefaultConfig):
 
     editor = 'e'
@@ -29,9 +28,8 @@ class Config(pdb.DefaultConfig):
     line_number_color = pdb.Color.darkred
     current_line_color = 44
 
-
     def setup(self, pdb):
-       # make 'l' an alias to 'longlist'
         Pdb = pdb.__class__
+        # make 'l' an alias to 'longlist'
         # Pdb.do_l = Pdb.do_longlist
         Pdb.do_st = Pdb.do_sticky

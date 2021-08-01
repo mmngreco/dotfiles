@@ -5,6 +5,11 @@ call plug#begin()
 Plug 'mmngreco/dbee.nvim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'ThePrimeagen/refactoring.nvim'
+
+" ==== javascript
+Plug 'gko/vim-coloresque'
+Plug 'pangloss/vim-javascript'
 
 " ==== telescope
 Plug 'nvim-lua/popup.nvim'
@@ -244,15 +249,40 @@ nnoremap <leader>p "+p
 " paste last copied/yanked
 nnoremap <leader>pl "0p
 vnoremap <leader>p "_dP
-nnoremap <leader>Y gg"+yG
+nnoremap <leader>YY gg"+yG
 " yank current file's path
 nnoremap <leader>yp :let @+ = expand("%:p")<cr>
 
 com! W w
 
+" https://www.youtube.com/watch?v=hSHATqh8svM
+nnoremap <leader>Y y$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
 " moves selected lines down/up
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<cr>==
+inoremap <C-k> <esc>:m .-2<cr>==
+nnoremap <leader>k :m .-2<cr>==
+nnoremap <leader>j :m .+1<cr>==
+
+
+nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call
+nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
+nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
+
+
 " Sort lines in alphabetical order
 vnoremap <leader>s :'<,'>!sort -f<cr>
 nnoremap <leader>f :StripWhitespace<cr>
