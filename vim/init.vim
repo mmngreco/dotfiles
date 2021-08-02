@@ -240,7 +240,7 @@ nnoremap <leader>pv :Ex<CR>
 " snippets in pure vim
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
-nnoremap <leader>dow :put =strftime('%A %d-%m-%Y')<cr><esc>kVjJ
+nnoremap <leader>dow :put =strftime('%A %Y-%m-%d')<cr><esc>kVjJ
 
 " yank/paste
 nnoremap <leader>y "+y
@@ -272,15 +272,19 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 " moves selected lines down/up
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" bug here!
 inoremap <C-j> <esc>:m .+1<cr>==
+
 inoremap <C-k> <esc>:m .-2<cr>==
 nnoremap <leader>k :m .-2<cr>==
 nnoremap <leader>j :m .+1<cr>==
 
-
-nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call
-nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
-nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
+nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(_search_term)<cr>
+nnoremap <C-t><C-s> :lua require('harpoon.term').sendCommand(4, "txs\n"); require('harpoon.term').gotoTerminal(4)<cr>i
+nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>
+nnoremap <leader>gln :cnext<cr>:call search(_search_term)<cr>
+nnoremap <leader>glp :cprev<cr>:call search(_search_term)<cr>
 
 
 " Sort lines in alphabetical order

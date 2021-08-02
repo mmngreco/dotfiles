@@ -24,7 +24,7 @@ nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim
 " view help tags
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 " git branches
-nnoremap <leader>gc :lua require('telescope').mmngreco.git_branches()<CR>
+nnoremap <leader>gb :lua require('telescope').mmngreco.git_branches()<CR>
 " search on dotfiles
 nnoremap <leader>dot :lua require('telescope').mmngreco.search_dotfiles()<CR>
 nnoremap <leader>fg :lua require('telescope').mmngreco.no_preview()<CR>
