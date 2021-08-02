@@ -50,6 +50,4 @@ export PYTHON_NEOVIM="/home/mgreco/miniconda3/envs/neovim/bin/python"
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES="$HOME/.dotfiles"
 export DEFAULT_IMG="python:3.8"
-
-
-
+# export npm_config_node_gyp="/usr/local/lib/node_modules/node-gyp/bin/node-gyp.js"

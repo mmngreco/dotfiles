@@ -14,7 +14,7 @@ setup_servers()
 
 local nvim_lsp = require('lspconfig')
 local on_attach = require'completion'.on_attach
-nvim_lsp.pyls.setup {
+nvim_lsp.python.setup {
   cmd = {"pyls"};
   cmd_env = {VIRTUAL_ENV = "$CONDA_PREFIX"};
   on_attach = require'completion'.on_attach;
