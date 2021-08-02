@@ -255,7 +255,9 @@ nnoremap <leader>yp :let @+ = expand("%:p")<cr>
 
 com! W w
 
+" ==== theprimeagen
 " https://www.youtube.com/watch?v=hSHATqh8svM
+nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(4, "txs\n");require("harpoon.term").gotoTerminal(4)<cr>i
 nnoremap <leader>Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -266,6 +268,7 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
@@ -277,8 +280,7 @@ inoremap <C-k> <esc>:m .-2<cr>==
 nnoremap <leader>k :m .-2<cr>==
 nnoremap <leader>j :m .+1<cr>==
 
-
-nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call
+nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
 nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
 

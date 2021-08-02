@@ -59,6 +59,13 @@ mmngreco.no_preview = function()
     require("telescope.builtin").current_buffer_fuzzy_find(no_preview())
 end
 
+mmngreco.search_scio = function()
+    require("telescope.builtin").find_files({
+        prompt_title = "< scio >",
+        cwd = "~/github/mmngreco/scio",
+    })
+end
+
 mmngreco.search_matlab = function()
     require("telescope.builtin").find_files({
         prompt_title = "< matlab toolbox >",
