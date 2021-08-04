@@ -25,6 +25,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
+Plug 'hrsh7th/nvim-compe'
 
 " ==== syntax
 Plug 'cespare/vim-toml'
@@ -259,7 +260,7 @@ com! W w
 " https://www.youtube.com/watch?v=hSHATqh8svM
 nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(4, "txs\n");require("harpoon.term").gotoTerminal(4)<cr>i
 nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(4, "txw\n");require("harpoon.term").gotoTerminal(4)<cr>i
-nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>
+nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
 
 nnoremap <leader>Y y$
 nnoremap n nzzzv
@@ -290,6 +291,8 @@ nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:c
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
 nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
 
+" TODO wip:
+vnoremap <C-t><C-e> Ay<cr>:let g:_cmd = getreg("A")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
 
 " Sort lines in alphabetical order
 vnoremap <leader>s :'<,'>!sort -f<cr>

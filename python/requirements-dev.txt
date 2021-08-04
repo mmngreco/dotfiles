@@ -1,0 +1,19 @@
+# vim integration
+pynvim
+
+# linting
+black; python_version>='3.6'
+wemake-python-styleguide
+python-language-server[all]
+
+# testing
+pytest
+pytest-cov
+pytest-xdist
+pytest-aggreport
+pytest-sugar
+pytest-notifier
+
+# debugging
+pdbpp
+

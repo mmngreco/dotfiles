@@ -32,7 +32,7 @@ exec --no-startup-id caffeine-indicator
 # workspace 7 : passwords
 # workspace 8 :
 # workspace 9 :
-exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+# exec --no-startup-id i3-msg 'workspace 1; exec kitty'
 exec --no-startup-id i3-msg 'workspace 1; exec xterm'
 exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
 exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
