@@ -239,9 +239,10 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :Ex<CR>
 
 " snippets in pure vim
-nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
-nnoremap <Leader>cpu a%" PRIu64 "<esc>
-nnoremap <leader>dow :put =strftime('%A %Y-%m-%d')<cr><esc>kVjJ
+" nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
+" nnoremap <Leader>cpu a%" PRIu64 "<esc>
+nnoremap <leader>dow :put =strftime(\"## %A %Y-%m-%d\")<cr><esc>k
+nnoremap <leader>dt :put =strftime(\"%Y-%m-%d\ttt\tww\tbb\tcc\")<cr><esc>
 
 " yank/paste
 nnoremap <leader>y "+y
