@@ -221,9 +221,9 @@ for_window [class=".*"] split toggle
 for_window [class=".*"] border pixel 4
 
 assign [class=URxvt|kitty] 1
-assign [class=brave-browser|Brave-browser] 2
+# assign [class=brave-browser|Brave-browser] 2
 assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|keepassxc|Thunar|File-roller] 4
-assign [class=keepassxc] 7
+# assign [class=keepassxc] 7
 # assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
 # assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
 assign [class=TelegramDesktop|telegram-desktop] 6
