@@ -33,17 +33,17 @@ exec --no-startup-id caffeine-indicator
 # workspace 8 :
 # workspace 9 :
 # exec --no-startup-id i3-msg 'workspace 1; exec kitty'
-exec --no-startup-id i3-msg 'workspace 1; exec xterm'
-exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
-exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'
+exec --no-startup-id i3-msg 'workspace 1; focus; exec xterm'
+exec --no-startup-id i3-msg 'workspace 2; focus; exec brave-browser'
+exec --no-startup-id i3-msg 'workspace 4; focus; exec nautilus'
+exec --no-startup-id i3-msg 'workspace 6; focus; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 7; focus; exec keepassxc'
 
 # ============================================================================
 
 # start a terminal
 # bindsym $super+Return exec kitty; workspace 1; focus
-bindsym $super+Return exec xterm
+bindsym $super+Return workspace 1; focus; exec xterm
 bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
@@ -74,7 +74,7 @@ bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.
 bindsym $super+Ctrl+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
 
 # browsers
-bindsym $super+Shift+w exec brave-browser
+bindsym $super+Shift+w workspace 2; focus; exec brave-browser
 # bindsym $super+Shift+w exec google-chrome
 # bindsym $super+Shift+w exec firefox
 
@@ -220,10 +220,10 @@ for_window [class=".*"] split toggle
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 4
 
-assign [class=URxvt|kitty] 1
+# assign [class=URxvt|kitty] 1
 # assign [class=brave-browser|Brave-browser] 2
-assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|keepassxc|Thunar|File-roller] 4
-# assign [class=keepassxc] 7
+assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|Thunar|File-roller] 4
+assign [class=keepassxc] 7
 # assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
 # assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
 assign [class=TelegramDesktop|telegram-desktop] 6

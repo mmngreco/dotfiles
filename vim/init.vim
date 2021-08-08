@@ -1,11 +1,12 @@
 call plug#begin()
 
 " mmngreco
-" Plug '/home/mgreco/github/mmngreco/glab.nvim'
 Plug 'mmngreco/dbee.nvim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/refactoring.nvim'
+
+Plug 'numtostr/FTerm.nvim'
 
 " ==== javascript
 Plug 'gko/vim-coloresque'
@@ -43,7 +44,9 @@ Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'chrisbra/unicode.vim'
 " Plug 'cjrh/vim-conda'
 Plug 'mmngreco/slimux'
-Plug 'janko/vim-test'
+" Plug 'janko/vim-test'
+Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
@@ -261,7 +264,7 @@ com! W w
 " https://www.youtube.com/watch?v=hSHATqh8svM
 nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(4, "txs\n");require("harpoon.term").gotoTerminal(4)<cr>i
 nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(4, "txw\n");require("harpoon.term").gotoTerminal(4)<cr>i
-nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
+" nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
 
 nnoremap <leader>Y y$
 nnoremap n nzzzv
@@ -347,6 +350,7 @@ source $DOTFILES/vim/plugins/git.vim
 " source $DOTFILES/vim/plugins/grepper.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
+source $DOTFILES/vim/plugins/vim-ultest.vim
 " source $DOTFILES/vim/plugins/indentlines.vim
 source $DOTFILES/vim/plugins/jupytext.vim
 " source $DOTFILES/vim/plugins/latex_unicoder.vim
@@ -357,16 +361,19 @@ source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
-source $DOTFILES/vim/plugins/reply.vim
+" source $DOTFILES/vim/plugins/reply.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/statusline.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
-source $DOTFILES/vim/plugins/test.vim
+" source $DOTFILES/vim/plugins/test.vim
 source $DOTFILES/vim/plugins/treesitter.vim
+source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
+source $DOTFILES/vim/plugins/fterm.vim
 source $DOTFILES/vim/plugins/workspace.vim
 
+" https://google.com
 
 function! Sendtmux ()
     let startl= line("'<")
