@@ -23,21 +23,6 @@ exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
 exec --no-startup-id caffeine-indicator
 
-# workspace 1 : terminal
-# workspace 2 : browser
-# workspace 3 : workstuff
-# workspace 4 : files
-# workspace 5 :
-# workspace 6 : chats
-# workspace 7 : passwords
-# workspace 8 :
-# workspace 9 :
-# exec --no-startup-id i3-msg 'workspace 1; exec kitty'
-exec --no-startup-id i3-msg 'workspace 1; focus; exec xterm'
-exec --no-startup-id i3-msg 'workspace 2; focus; exec brave-browser'
-exec --no-startup-id i3-msg 'workspace 4; focus; exec nautilus'
-exec --no-startup-id i3-msg 'workspace 6; focus; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 7; focus; exec keepassxc'
 
 # ============================================================================
 
@@ -238,3 +223,20 @@ client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background           #2f343f
+
+
+# workspace 1 : terminal
+# workspace 2 : browser
+# workspace 3 : workstuff
+# workspace 4 : files
+# workspace 5 :
+# workspace 6 : chats
+# workspace 7 : passwords
+# workspace 8 :
+# workspace 9 :
+# exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+exec --no-startup-id i3-msg 'workspace 1; focus; exec xterm'
+exec --no-startup-id i3-msg 'workspace 2; focus; exec brave-browser'
+exec --no-startup-id i3-msg 'workspace 4; focus; exec nautilus'
+exec --no-startup-id i3-msg 'workspace 6; focus; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 7; focus; exec keepassxc'
