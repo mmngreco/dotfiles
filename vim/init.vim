@@ -5,6 +5,7 @@ Plug 'mmngreco/dbee.nvim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 Plug 'numtostr/FTerm.nvim'
 
@@ -37,7 +38,7 @@ Plug 'tpope/vim-markdown'
 
 " ==== thirdparty
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
-" Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser.vim'
 
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
@@ -406,3 +407,7 @@ function! ShowHidenSymbols()
         let g:show_hidden_symbols=1
     endif
 endfunction
+
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)

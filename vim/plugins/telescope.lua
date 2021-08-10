@@ -93,3 +93,4 @@ end
 require('telescope').mmngreco = mmngreco
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('coc')
+require("telescope").load_extension("git_worktree")
