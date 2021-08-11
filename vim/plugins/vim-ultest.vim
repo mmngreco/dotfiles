@@ -2,10 +2,10 @@ let test#python#pytest#options = "--color=yes"
 let test#javascript#jest#options = "--color=always"
 let g:ultest_use_pty = 1
 
-" augroup UltestRunner
-"     au!
-"     au BufWritePost * UltestNearest
-" augroup END
+augroup UltestRunner
+    au!
+    au BufWritePost test_*.py UltestNearest
+augroup END
 
 nmap ]t <Plug>(ultest-next-fail)
 nmap [t <Plug>(ultest-prev-fail)
