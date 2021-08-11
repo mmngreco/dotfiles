@@ -28,7 +28,7 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 # export LS_OPTIONS='--color=always'
 # export GREP_OPTIONS='--color=always'
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export EDITOR="nvim"
 export AUTOENV_FILE_ENTER=".env"
 # export SHELL="zsh"
