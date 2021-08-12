@@ -28,4 +28,3 @@ nnoremap <leader>hh :lua require("harpoon.mark").add_file()<cr>
 nnoremap <leader>hm :lua require("harpoon.ui").toggle_quick_menu()<cr>
 
 nnoremap <leader>is :lua require("harpoon.term").sendCommand(1, "clab issue ls")<cr>
-nnoremap <leader>tst :lua require("harpoon.term").sendCommand(1, "pytest tests -x --pdb\n")<cr>

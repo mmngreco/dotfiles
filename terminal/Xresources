@@ -7,6 +7,8 @@
 ! -----------------------------------------------------------------------------
 !xterm*font: -*-mplus*-*-*-*-14-*-*-*-*-*-iso10646-1
 !xrdb ~/.Xresources
+
+XTerm*termName: xterm-256color
 XTerm.VT100.translations: #override \
 Meta <Key> minus: smaller-vt-font() \n\
 Meta <Key> plus: larger-vt-font() \n\

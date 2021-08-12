@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# taken from https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/bin/tmux-sessionizer
+# if [[ $# -eq 1 ]]; then
+#     query=$1
+# else
+#     items=("$HOME/.dotfiles")
+#     items+=`find $HOME/gitlab -maxdepth 3 -mindepth 1 -type d -name '.git' -not -path "**/.git/*"`
+#     items+=`find $HOME/github -maxdepth 3 -mindepth 1 -type d -name '.git' -not -path "**/.git/*"`
+#     selected=`echo "$items" | fzf --select-1 --ansi -q "$query" --height 10% -m`
+# fi
+query=$1
+items=("$HOME/.dotfiles")
+items+=`find $HOME/gitlab -maxdepth 3 -mindepth 1 -type d -name '.git' -not -path "**/.git/*" | xargs -I FOLDER realpath "FOLDER/.."`
+items+=`find $HOME/github -maxdepth 3 -mindepth 1 -type d -name '.git' -not -path "**/.git/*" | xargs -I FOLDER realpath "FOLDER/.."`
+selected=`echo "$items" | fzf --select-1 --ansi -q "$query" --height 10% -m`
+
+if [[ -n "$selected"  ]]; then
+
+    tmux_session_name=`basename $selected | tr . _`
+
+    tmux switch-client -t $tmux_session_name &> /dev/null
+    if [[ $? -eq 0 ]]; then
+        exit 0
+    fi
+
+    tmux new-session -c $selected -d -s $tmux_session_name &> /dev/null && \
+    tmux switch-client -t $tmux_session_name &> /dev/null || \
+    tmux new -c $selected -A -s $tmux_session_name
+
+fi

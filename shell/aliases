@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for hidden in $(find $DOTFILES/ -name "*.hide" -type f)
 do
@@ -148,9 +148,9 @@ alias sag="sudo apt upgrade"
 alias open='xdg-open '
 
 # conda
-alias cc="conda create -n="
+alias cc="conda create -n"
 alias cel="conda env list"
-alias crm="conda remove -n="
+alias crm="conda remove -n"
 alias ca="conda activate"
 
 # kitty
@@ -167,4 +167,4 @@ alias pythons='python -s'
 alias pythonsm='python -s -m'
 alias pipm='pythonsm pip'
 alias pytestm='pythonsm pytest'
-alias pireq='pipm install -r $DOTFILES/python/requirements-dev.txt'
+alias pip-ir='pipm install -r $DOTFILES/python/requirements-dev.txt'

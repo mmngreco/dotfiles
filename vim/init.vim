@@ -265,8 +265,13 @@ com! W w
 " https://www.youtube.com/watch?v=hSHATqh8svM
 nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(4, "txs\n");require("harpoon.term").gotoTerminal(4)<cr>i
 nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(4, "txw\n");require("harpoon.term").gotoTerminal(4)<cr>i
-" nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
-"
+
+nnoremap <c-t><c-t> :let @b=''<CR>?def .*(.*):<CR>w"byw<CR>:let g:_cmd=join(["pytest tests -v --ff -p no:warnings --pdb -k", getreg('b'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
+nnoremap <c-t><c-l> :lua require('harpoon.term').sendCommand(4, "pytest"); require('harpoon.term').gotoTerminal(4)<cr>i
+" tmux send-keys -t "0:1.2" "pytest" C-p Enter
+
+" deprecated by ultest (better way)
+" nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb --ff -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
 "
 nnoremap <leader>Y y$
 nnoremap n nzzzv
@@ -302,6 +307,7 @@ nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
 
 " TODO wip:
 vnoremap <C-t><C-e> Ay<cr>:let g:_cmd = getreg("A")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
+nnoremap <leader>tst :lua require("harpoon.term").sendCommand(1, "pytest tests -x --pdb\n")<cr>
 
 " Sort lines in alphabetical order
 vnoremap <leader>s :'<,'>!sort -f<cr>

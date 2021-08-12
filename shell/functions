@@ -248,21 +248,7 @@ txs() {
         cancel)
             ;;
         *)
-            prj=$(selectProjectFzf $1)
-            name=$(basename $prj)
-
-            tmux has-session -t "$name"
-            if [ $? != 0 ]; then
-                tmux new-session -d -s "$name" -c "$prj"
-            fi
-
-
-            if [ -z $TMUX ]; then
-                tmux attach -t "$name"
-            else
-                # inside a tmux session
-                tmux switch-client -t "$name"
-            fi
+            tmux-sessionizer $1
             ;;
     esac
 }

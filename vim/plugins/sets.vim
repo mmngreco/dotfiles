@@ -1,5 +1,6 @@
 " https://github.com/awesome-streamers/awesome-streamerrc/blob/master/ThePrimeagen/init.vim
 " set clipboard=unnamedplus
+"
 set scrollback=10000
 set guicursor=
 set relativenumber
