@@ -266,7 +266,8 @@ com! W w
 nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(4, "txs\n");require("harpoon.term").gotoTerminal(4)<cr>i
 nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(4, "txw\n");require("harpoon.term").gotoTerminal(4)<cr>i
 " nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
-
+"
+"
 nnoremap <leader>Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -276,6 +277,9 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
+
+inoremap <Left> <c-g>U<Left>
+inoremap <Right> <c-g>U<Right>
 
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
