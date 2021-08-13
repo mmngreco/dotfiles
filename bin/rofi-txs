@@ -1,21 +1,2 @@
 #!/usr/bin/env bash
-
-listGitProjects () {
-    # find projects using .git folder as reference
-    find $HOME -type d -name '.git' -not -path "**/.git/*"  \
-        | xargs -I GIT_FOLDER bash -c "realpath GIT_FOLDER/.."
-}
-
-rofi-txls () {
-    # select directory to be open in a new tmux session
-    # (listing all projects)
-    listGitProjects | rofi -dmenu -p "Tmux New Session:" -a 0 -no-custom  | awk '{print $1}'
-}
-
-rofi-new-txs() {
-    # Creates a new window and attach it in a session
-    path="$(rofi-txls)"
-    tmux new-session -s $(basename $path) -c $path -d
-}
-
-rofi-new-txs
+xterm -e /usr/bin/zsh -c tmux-sessionizer

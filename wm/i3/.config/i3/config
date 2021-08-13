@@ -3,8 +3,8 @@ set $super Mod4
 set $alt Mod1
 
 # check this with the command: xrandr
-set $monitor_main HDMI-1
-set $monitor_secondary eDP-1
+set $monitor_secondary HDMI-1
+set $monitor_main eDP-1
 
 # set font
 font pango:mplus 9
@@ -23,6 +23,21 @@ exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
 exec --no-startup-id caffeine-indicator
 
+# workspace 1 : terminal
+# workspace 2 : browser
+# workspace 3 : workstuff
+# workspace 4 : files
+# workspace 5 :
+# workspace 6 : chats
+# workspace 7 : passwords
+# workspace 8 :
+# workspace 9 :
+# exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+exec --no-startup-id i3-msg 'workspace 1; exec xterm'
+exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
+exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
+exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'
 
 # ============================================================================
 
@@ -225,18 +240,3 @@ client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background           #2f343f
 
 
-# workspace 1 : terminal
-# workspace 2 : browser
-# workspace 3 : workstuff
-# workspace 4 : files
-# workspace 5 :
-# workspace 6 : chats
-# workspace 7 : passwords
-# workspace 8 :
-# workspace 9 :
-# exec --no-startup-id i3-msg 'workspace 1; exec kitty'
-exec --no-startup-id i3-msg 'workspace 1; exec xterm'
-exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
-exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'

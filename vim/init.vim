@@ -263,16 +263,14 @@ com! W w
 
 " ==== theprimeagen
 " https://www.youtube.com/watch?v=hSHATqh8svM
-nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(4, "txs\n");require("harpoon.term").gotoTerminal(4)<cr>i
-nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(4, "txw\n");require("harpoon.term").gotoTerminal(4)<cr>i
+nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(3, "txs\n");require("harpoon.term").gotoTerminal(3)<cr>i
+nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(3, "txw\n");require("harpoon.term").gotoTerminal(3)<cr>i
 
-nnoremap <c-t><c-t> :let @b=''<CR>?def .*(.*):<CR>w"byw<CR>:let g:_cmd=join(["pytest tests -v --ff -p no:warnings --pdb -k", getreg('b'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
-nnoremap <c-t><c-l> :lua require('harpoon.term').sendCommand(4, "pytest"); require('harpoon.term').gotoTerminal(4)<cr>i
+let g:my_pytest_cmd="pytest tests -v --ff -p no:warnings --pdb -k"
+nnoremap <c-t><c-t> :let @b=''<CR>?def .*(.*):<CR>w"byw<CR>:let g:_cmd=join([my_pytest_cmd, getreg('b'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
+nnoremap <c-t><c-l> :lua require('harpoon.term').sendCommand(4, "pytest test"); require('harpoon.term').gotoTerminal(4)<cr>i
 " tmux send-keys -t "0:1.2" "pytest" C-p Enter
 
-" deprecated by ultest (better way)
-" nnoremap <C-t><C-t> :let g:_cmd_pytest = join(["pytest -v --pdb --ff -p no:warnings", expand("%"), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd_pytest"]); require('harpoon.term').gotoTerminal(4)<cr>i
-"
 nnoremap <leader>Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -345,7 +343,6 @@ nnoremap <F10> :setl ai cin si inde=<CR>
 
 " ==== source plugin conf
 source $DOTFILES/vim/plugins/sets.vim
-
 " source $DOTFILES/vim/plugins/airline.vim
 " source $DOTFILES/vim/plugins/arduino.vim
 source $DOTFILES/vim/plugins/bujo.vim
@@ -383,28 +380,7 @@ source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/fterm.vim
 source $DOTFILES/vim/plugins/workspace.vim
-
-" https://google.com
-
-function! Sendtmux ()
-    let startl= line("'<")
-    let endl= line("'>")
-    let lines = getline(startl, endl)
-    let cmds = join(lines, ";")
-    call system("tmux send-keys -t ". t:pane_id . " clear enter " . shellescape(cmds) . " enter")
-endfunction
-
-let t:pane_id = ""
-function! CreatePane()
-    let t:pane_id=system('tmux split-window -P -F "#{pane_id}" -h -p 50 -c "#{pane_current_path}"')
-    call system('tmux last-pane')
-endfunction
-
-" Create a tmux pane on the right and go back in vim
-" nnoremap <silent><leader>tp :call CreatePane()<cr>
-vnoremap <C-q> :DBeeQuery<cr>
-vnoremap <C-c><C-c> :DBeeSetConnection<cr><cr>
-
+source $DOTFILES/vim/plugins/dbee.vim
 
 " TODO move to functions.vim
 let g:show_hidden_symbols=1
@@ -417,6 +393,7 @@ function! ShowHidenSymbols()
         let g:show_hidden_symbols=1
     endif
 endfunction
+
 
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
