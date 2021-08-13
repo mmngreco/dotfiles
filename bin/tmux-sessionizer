@@ -9,8 +9,8 @@
 #     selected=`echo "$items" | fzf --select-1 --ansi -q "$query" --height 10% -m`
 # fi
 query=$1
-items=("$HOME/.dotfiles")
-items+=`find $HOME/gitlab -maxdepth 4 -mindepth 1 -type d -name '.git' -not -path "**/.git/*" | xargs -I FOLDER realpath "FOLDER/.."`
+items=`find $HOME/gitlab -maxdepth 4 -mindepth 1 -type d -name '.git' -not -path "**/.git/*" | xargs -I FOLDER realpath "FOLDER/.."`
+items+=("$HOME/.dotfiles")
 items+=`find $HOME/github -maxdepth 4 -mindepth 1 -type d -name '.git' -not -path "**/.git/*" | xargs -I FOLDER realpath "FOLDER/.."`
 selected=`echo "$items" | fzf --select-1 --ansi -q "$query" --height 10% -m`
 
