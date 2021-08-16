@@ -76,8 +76,6 @@ Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
 Plug 'majutsushi/tagbar'
 Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': '$PYTHON_NEOVIM -m chadtree deps'}
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'ervandew/supertab'
     " Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 " Plug 'liuchengxu/vista.vim'   " modern ctag
@@ -95,7 +93,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sainnhe/gruvbox-material'
-Plug 'hoob3rt/lualine.nvim'
+" Plug 'hoob3rt/lualine.nvim'
+Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
 Plug 'mhinz/vim-startify'
 " Plug 'itchyny/lightline.vim'
 " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
@@ -122,8 +121,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'haorenW1025/completion-nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'nvim-treesitter/completion-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug 'nvim-treesitter/completion-treesitter'
 Plug 'nvie/vim-flake8'
 Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
@@ -281,24 +280,24 @@ inoremap <Left> <c-g>U<Left>
 inoremap <Right> <c-g>U<Right>
 
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 " moves selected lines down/up
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 
 " bug here!
-inoremap <C-j> <esc>:m .+1<cr>==
-
-inoremap <C-k> <esc>:m .-2<cr>==
-nnoremap <leader>k :m .-2<cr>==
-nnoremap <leader>j :m .+1<cr>==
+" inoremap <C-j> <esc>:m .+1<cr>==
+" inoremap <C-k> <esc>:m .-2<cr>==
+" nnoremap <leader>k :m .-2<cr>==
+" nnoremap <leader>j :m .+1<cr>==
 
 nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
 nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
 
+" scrum get date from title
 nnoremap <leader>nt ?##<cr>yy<C-o>pj2dwA
 
 " Sort lines in alphabetical order
@@ -337,15 +336,15 @@ nnoremap <F10> :setl ai cin si inde=<CR>
 
 " ==== source plugin conf
 source $DOTFILES/vim/plugins/sets.vim
+source $DOTFILES/vim/plugins/lualine.vim
 " source $DOTFILES/vim/plugins/airline.vim
 " source $DOTFILES/vim/plugins/arduino.vim
 source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
-" source $DOTFILES/vim/plugins/chadtree.vim
 source $DOTFILES/vim/plugins/commentary.vim
 " source $DOTFILES/vim/plugins/conda.vim
 " source $DOTFILES/vim/plugins/fastfold.vim
-source $DOTFILES/vim/plugins/firenvim.vim
+" source $DOTFILES/vim/plugins/firenvim.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/functions.vim
 source $DOTFILES/vim/plugins/git.vim
@@ -365,11 +364,11 @@ source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
 " source $DOTFILES/vim/plugins/reply.vim
 source $DOTFILES/vim/plugins/slimux.vim
-source $DOTFILES/vim/plugins/statusline.vim
+" source $DOTFILES/vim/plugins/statusline.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
-" source $DOTFILES/vim/plugins/test.vim
-source $DOTFILES/vim/plugins/treesitter.vim
+source $DOTFILES/vim/plugins/test.vim
+" source $DOTFILES/vim/plugins/treesitter.vim
 source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/fterm.vim
