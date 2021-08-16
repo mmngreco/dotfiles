@@ -1,7 +1,9 @@
 {
   "Task": {
     "prefix": "task",
-    "body": ["${VIM:put =strftime('%Y-%m-%d')}\t$1\t$2\t$3\n\0"]
+    "body": [
+        "${VIM:strftime('%Y-%m-%d')}\t$1\t$2\t$3\t$4\n$0"
+    ]
   },
   "uuid": {
     "prefix": "uuid",

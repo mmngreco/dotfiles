@@ -2,6 +2,7 @@ name: emojis
 parent: default
 
 # https://www.fastemoji.com/Sort/?order=recommended
+# https://looks.wtf/
 
 matches:
   - trigger: ":ok:"
@@ -12,6 +13,18 @@ matches:
 
   - trigger: ':wedidit'
     replace: "ヽ(ﾟ▽ﾟ)乂(ﾟ▽ﾟ)ﾉ"
+
+  - trigger: ':shrug:'
+    replace: '¯\_ (ツ) _/¯'
+
+  - trigger: ':meh:'
+    replace: 'ヽ(。_°)ノ'
+
+  - trigger: ':kiss'
+    replace: '( ˘ ³˘)♥'
+
+  - trigger: ':flipping table:'
+    replace: '(┛ಠ_ಠ)┛彡┻━┻'
 
   - trigger: ':no:'
     replace: "ಠ_ಠ"
@@ -778,8 +791,8 @@ matches:
   - trigger: ':makeup:'
     replace: "\U0001F484"
 
-  - trigger: ':kiss:'
-    replace: "\U0001F48B"
+  # - trigger: ':kiss:'
+  #   replace: "\U0001F48B"
 
   - trigger: ':lips:'
     replace: "\U0001F444"

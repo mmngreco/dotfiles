@@ -266,10 +266,6 @@ com! W w
 nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(3, "txs\n");require("harpoon.term").gotoTerminal(3)<cr>i
 nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(3, "txw\n");require("harpoon.term").gotoTerminal(3)<cr>i
 
-let g:my_pytest_cmd="pytest tests -v --ff -p no:warnings --pdb -k"
-nnoremap <c-t><c-t> :let @b=''<CR>?def .*(.*):<CR>w"byw<CR>:let g:_cmd=join([my_pytest_cmd, getreg('b'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
-nnoremap <c-t><c-l> :lua require('harpoon.term').sendCommand(4, "pytest test"); require('harpoon.term').gotoTerminal(4)<cr>i
-" tmux send-keys -t "0:1.2" "pytest" C-p Enter
 
 nnoremap <leader>Y y$
 nnoremap n nzzzv
@@ -303,9 +299,7 @@ nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:c
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
 nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
 
-" TODO wip:
-vnoremap <C-t><C-e> Ay<cr>:let g:_cmd = getreg("A")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
-nnoremap <leader>tst :lua require("harpoon.term").sendCommand(1, "pytest tests -x --pdb\n")<cr>
+nnoremap <leader>nt ?##<cr>yy<C-o>pj2dwA
 
 " Sort lines in alphabetical order
 vnoremap <leader>s :'<,'>!sort -f<cr>
@@ -358,7 +352,7 @@ source $DOTFILES/vim/plugins/git.vim
 " source $DOTFILES/vim/plugins/grepper.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
-source $DOTFILES/vim/plugins/vim-ultest.vim
+source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/indentlines.vim
 source $DOTFILES/vim/plugins/jupytext.vim
 " source $DOTFILES/vim/plugins/latex_unicoder.vim

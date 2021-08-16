@@ -13,33 +13,30 @@ nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.sho
 nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 
-" let g:completion_chain_complete_list = {
-" 			\'default' : {
-" 			\	'default' : [
-" 			\		{'complete_items' : ['lsp', 'snippet']},
-" 			\	],
-" 			\	'comment' : [],
-" 			\	'string' : []
-" 			\	},
-" 			\'vim' : [
-" 			\	{'complete_items': ['snippet']},
-" 			\	{'mode' : 'cmd'}
-" 			\	],
-" 			\'c' : [
-" 			\	{'complete_items': ['ts']}
-" 			\	],
-" 			\'python' : [
-" 			\	{'complete_items': ['lsp', 'snippet']}
-" 			\	],
-" 			\'lua' : [
-" 			\	{'complete_items': ['ts']}
-" 			\	],
-" 			\}
+let g:completion_chain_complete_list = {
+			\	'default' : [
+			\		{'complete_items' : ['lsp', 'snippet']},
+                \	{'comment' : []},
+                \	{'string' : []}
+			\	],
+			\'vim' : [
+			\	{'complete_items': ['snippet']},
+			\	{'mode' : 'cmd'}
+			\	],
+			\'c' : [
+			\	{'complete_items': ['ts']}
+			\	],
+			\'python' : [
+			\	{'complete_items': ['lsp', 'snippet']}
+			\	],
+			\'lua' : [
+			\	{'complete_items': ['ts']}
+			\	],
+			\}
 
-" set completeopt=menuone,noinsert,noselect
-" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" let g:completion_enable_snippet = 'vim-vsnip'
-set completeopt=menuone,noselect
+let g:completion_enable_snippet = 'vim-vsnip'
+set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 fun! LspLocationList()
@@ -77,5 +74,6 @@ let g:compe.source.calc = v:true
 let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
 let g:compe.source.vsnip = v:true
+let g:compe.source.tmux = v:true
 
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
