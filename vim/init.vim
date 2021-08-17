@@ -351,7 +351,6 @@ source $DOTFILES/vim/plugins/git.vim
 " source $DOTFILES/vim/plugins/grepper.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
-source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/indentlines.vim
 source $DOTFILES/vim/plugins/jupytext.vim
 " source $DOTFILES/vim/plugins/latex_unicoder.vim
