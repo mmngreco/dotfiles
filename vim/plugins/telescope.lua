@@ -90,7 +90,23 @@ mmngreco.git_branches = function()
     })
 end
 
+
+-- mmngreco.project_files = function()
+--   local opts = {} -- define here if you want to define something
+--   local ok = pcall(require'telescope.builtin'.git_files, opts)
+--   if not ok then require'telescope.builtin'.find_files(opts) end
+-- end
+
+
+mmngreco.search_dotfiles = function()
+    require("telescope.builtin").live_grep({
+        prompt_title = "< dotfiles >",
+        cwd = "$DOTFILES",
+    })
+end
+
 require('telescope').mmngreco = mmngreco
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('coc')
 require("telescope").load_extension("git_worktree")
+-- require("telescope").load_extension("mapper")

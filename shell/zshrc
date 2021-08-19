@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 export DOTFILES="$HOME/.dotfiles"
 source $DOTFILES/shell/functions
 source $DOTFILES/shell/variables
@@ -9,6 +9,9 @@ export GEM_HOME="$HOME/.gem"
 export PATH="$GEM_HOME/bin:$PATH"
 
 export ZSH=~/.oh-my-zsh
+plugins=(
+    zsh-autosuggestions
+)
 source $ZSH/oh-my-zsh.sh
 
 # -----------------------------------------------------------------------------

@@ -7,6 +7,7 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
+" Plug 'lazytanuki/nvim-mapper'
 Plug 'numtostr/FTerm.nvim'
 
 " ==== javascript
@@ -390,3 +391,4 @@ endfunction
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
