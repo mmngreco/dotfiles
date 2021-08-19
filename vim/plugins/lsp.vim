@@ -1,5 +1,7 @@
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 set completeopt=menuone,noinsert,noselect
+" let g:completion_enable_snippet = 'vim-vsnip'
+
 " ==== lsp
 " Configure the completion chains
 luafile $DOTFILES/vim/plugins/lsp.lua
@@ -15,7 +17,6 @@ nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.sho
 nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 
-" let g:completion_enable_snippet = 'vim-vsnip'
 " set completeopt=menuone,noselect
 
 " fun! LspLocationList()
@@ -29,6 +30,20 @@ nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 "     autocmd!
 "     autocmd! BufWrite,BufEnter,InsertLeave * :call LspLocationList()
 " augroup END
+"
+" augroup
+" augroup
+"
+" === compe
+inoremap <silent><expr> <C-Space> compe#complete()
+" inoremap <silent><expr> <C-l>      compe#confirm({ 'keys': '<C-l>', 'select': v:true })
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" === vsnip
+" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
 highlight link CompeDocumentation NormalFloat

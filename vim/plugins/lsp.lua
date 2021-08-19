@@ -43,45 +43,27 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
-local function setup_servers()
+-- local function setup_servers()
 
-  require'lspinstall'.setup()
+--   require'lspinstall'.setup()
 
-  local servers = require'lspinstall'.installed_servers()
-  local on_attach = require'completion'.on_attach
+--   local servers = require'lspinstall'.installed_servers()
+--   local on_attach = require'completion'.on_attach
 
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup {
-        -- on_attach = require'completion'.on_attach,
-        capabilities = capabilities,
-    }
-  end
-end
-
-setup_servers()
-
--- local nvim_lsp = require('lspconfig')
--- local on_attach = require'completion'.on_attach
--- nvim_lsp.python.setup {
---   cmd = {"pyls"};
---   cmd_env = {VIRTUAL_ENV = "$CONDA_PREFIX"};
-  -- on_attach = require'completion'.on_attach;
--- }
-
-
--- FIXME why this doesn't work???
--- npm i -g pyright  -- done
--- require'lspconfig'.pyright.setup{}
--- require'lspconfig'.pyright.setup{
---     cmd_env = {VIRTUAL_ENV = "$CONDA_PREFIX"};
---     on_attach = require'completion'.on_attach;
---     settings = {
---         python = {
---             -- venvPath = "$CONDA_PREFIX",
---             }
+--   for _, server in pairs(servers) do
+--     require'lspconfig'[server].setup {
+--         -- on_attach = require'completion'.on_attach,
+--         capabilities = capabilities,
 --     }
--- }
---
+--   end
+-- end
+
+-- setup_servers()
+
+
+-- ===========================================================================
+-- compe
+-- ===========================================================================
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -94,29 +76,31 @@ end
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
--- _G.tab_complete = function()
---   if vim.fn.pumvisible() == 1 then
---     return t "<C-n>"
---   elseif vim.fn['vsnip#available'](1) == 1 then
---     return t "<Plug>(vsnip-expand-or-jump)"
---   elseif check_back_space() then
---     return t "<Tab>"
---   else
---     return vim.fn['compe#complete']()
---   end
--- end
 
--- _G.s_tab_complete = function()
---   if vim.fn.pumvisible() == 1 then
---     return t "<C-p>"
---   elseif vim.fn['vsnip#jumpable'](-1) == 1 then
---     return t "<Plug>(vsnip-jump-prev)"
---   else
---     -- If <S-Tab> is not working in your terminal, change it to <C-h>
---     return t "<S-Tab>"
---   end
--- end
--- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+_G.tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-n>"
+    elseif vim.fn['vsnip#available'](1) == 1 then
+        return t "<Plug>(vsnip-expand-or-jump)"
+    elseif check_back_space() then
+        return t "<Tab>"
+    else
+        return vim.fn['compe#complete']()
+    end
+end
+
+_G.s_tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-p>"
+    elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+        return t "<Plug>(vsnip-jump-prev)"
+    else
+        -- If <S-Tab> is not working in your terminal, change it to <C-h>
+        return t "<S-Tab>"
+    end
+end
+
+vim.api.nvim_set_keymap("i", "<C-l>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<C-l>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
