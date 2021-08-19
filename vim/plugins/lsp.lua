@@ -86,6 +86,7 @@ _G.tab_complete = function()
         return t "<Tab>"
     else
         return vim.fn['compe#complete']()
+        -- return vim.fn['compe#complete']({ keys = '<C-l>', select = 'v:true' })
     end
 end
 
