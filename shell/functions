@@ -233,7 +233,7 @@ txs() {
             ;;
         vpn)
             tmux new-session -d -s vpn
-            tmux send-keys -t vpn "etsvpn" Enter
+            tmux send-keys -t vpn "ets-vpn" Enter
             ;;
         gitlab)
             tmux new-session -d -s "gitlab" -c ~/gitlab

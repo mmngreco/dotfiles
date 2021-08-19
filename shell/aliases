@@ -174,9 +174,3 @@ alias pip-doc='pipm install -r ./requirements-doc.txt'
 alias pip-lint='pipm install -r ./requirements-lint.txt'
 alias pip-all='for req in $(ls requirements*.txt); do; pipm install -r $req; done'
 alias pip-dev='pipsm install -r requirements-build.txt ; pipsm install -r requirements.txt ; pipsm install -r requirements-lint.txt ;pipsm install -r requirements-test.txt ; pipsm install -r requirements-dev ; pipsm install  -e .'
-
-
-# move to hide
-export ETS_PIP_OPS='--index-url=http://etspip.ets.es/ets/pypi/+simple --trusted-host etspip.ets.es'
-alias ets-pipsm='pythonsm pip $PIP_ETS_OPS'
-alias ets-pip-dev='ets-pipsm install -r requirements-build.txt ; ets-pipsm install -r requirements.txt ; ets-pipsm install -r requirements-lint.txt ; ets-pipsm install -r requirements-test.txt ; ets-pipsm install -r requirements-dev ; ets-pipsm install  -e .'
