@@ -100,8 +100,8 @@ ipytdd ()  {
 }
 
 conda-here () {
-    local name="$(basename $PWD)"
-    local prefix=".venv/$name"
+    local name="$1"
+    local prefix="./.venv/$name"
 
     if [ $# -eq 0 ]; then
         conda create --prefix $prefix python=3.7 pip -y
@@ -109,10 +109,10 @@ conda-here () {
         conda create --prefix $prefix $@
     fi
 
-    conda activate "$prefix"
+    conda activate "$PWD/$prefix"
 
     if [ ! -f .env ]; then
-        echo conda activate $prefix >> .env
+        echo conda activate \"$PWD/$prefix\" >> .env
         echo .env >> .git/info/exclude
     fi
 }

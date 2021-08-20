@@ -37,7 +37,7 @@ export AUTOENV_FILE_ENTER=".env"
 export LESS=' -R '
 export CONDA_DIR="$HOME/miniconda3"
 
-export MYGITPROJECTS="$HOME/github:$HOME/gitlab"
+export MYGITPROJECTS="$HOME/github:$HOME/gitlab:$HOME/etsgit"
 # ============================================================================
 
 export GOPATH="$HOME/go"
