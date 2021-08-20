@@ -63,6 +63,8 @@ mmngreco.search_scio = function()
     require("telescope.builtin").find_files({
         prompt_title = "< scio >",
         cwd = "~/github/mmngreco/scio",
+        hidden = true,
+        no_ignore = true,
     })
 end
 
@@ -70,6 +72,8 @@ mmngreco.search_matlab = function()
     require("telescope.builtin").find_files({
         prompt_title = "< matlab toolbox >",
         cwd = "~/matlab/ets/",
+        hidden = true,
+        no_ignore = true,
     })
 end
 
@@ -77,8 +81,18 @@ mmngreco.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< dotfiles >",
         cwd = "$DOTFILES",
+        hidden = true,
+        no_ignore = true,
     })
 end
+
+mmngreco.find_files = function()
+    require("telescope.builtin").find_files({
+        hidden = true,
+        no_ignore = true,
+    })
+end
+
 
 mmngreco.git_branches = function()
     require("telescope.builtin").git_branches({
@@ -90,7 +104,25 @@ mmngreco.git_branches = function()
     })
 end
 
+
+-- mmngreco.project_files = function()
+--   local opts = {} -- define here if you want to define something
+--   local ok = pcall(require'telescope.builtin'.git_files, opts)
+--   if not ok then require'telescope.builtin'.find_files(opts) end
+-- end
+
+
+mmngreco.grep_dotfiles = function()
+    require("telescope.builtin").live_grep({
+        prompt_title = "< dotfiles >",
+        cwd = "$DOTFILES",
+        hidden = true,
+        no_ignore = true,
+    })
+end
+
 require('telescope').mmngreco = mmngreco
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('coc')
 require("telescope").load_extension("git_worktree")
+-- require("telescope").load_extension("mapper")

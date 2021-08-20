@@ -3,14 +3,20 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/github/mmngreco/dotfiles
+cd ~/.dotfiles
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +1 vim/init.vim
+badd +7 vim/plugins/workspace.vim
 argglobal
 %argdel
 $argadd vim/init.vim
+set stal=2
+tabnew
+tabnew
+tabrewind
 argglobal
 enew
 balt vim/init.vim
@@ -22,10 +28,31 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-tabnext 1
-badd +1 vim/init.vim
-badd +7 vim/plugins/workspace.vim
-if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+tabnext
+argglobal
+enew
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+tabnext
+argglobal
+enew
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+tabnext 3
+set stal=1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf

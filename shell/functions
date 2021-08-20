@@ -100,18 +100,19 @@ ipytdd ()  {
 }
 
 conda-here () {
-    local name="$(basename $PWD)"
+    local name="$1"
+    local prefix="./.venv/$name"
 
     if [ $# -eq 0 ]; then
-        conda create -n $name python=3.6 pip=18 -y
+        conda create --prefix $prefix python=3.7 pip -y
     else
-        conda create -n $name $@ -y
+        conda create --prefix $prefix $@
     fi
 
-    conda activate "$name"
+    conda activate "$PWD/$prefix"
 
     if [ ! -f .env ]; then
-        echo conda activate $name >> .env
+        echo conda activate \"$PWD/$prefix\" >> .env
         echo .env >> .git/info/exclude
     fi
 }
@@ -233,7 +234,7 @@ txs() {
             ;;
         vpn)
             tmux new-session -d -s vpn
-            tmux send-keys -t vpn "etsvpn" Enter
+            tmux send-keys -t vpn "ets-vpn" Enter
             ;;
         gitlab)
             tmux new-session -d -s "gitlab" -c ~/gitlab
