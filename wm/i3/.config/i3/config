@@ -33,11 +33,11 @@ exec --no-startup-id caffeine-indicator
 # workspace 8 :
 # workspace 9 :
 # exec --no-startup-id i3-msg 'workspace 1; exec kitty'
-exec --no-startup-id i3-msg 'workspace 1; exec xterm'
-exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
-exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'
+# exec --no-startup-id i3-msg 'workspace 1; exec xterm'
+# exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
+# exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
+# exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
+# exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'
 
 # ============================================================================
 
@@ -158,17 +158,17 @@ bindsym $super+r mode "resize"
 
 # =============================================================================
 # Focus
-workspace 1 output $monitor_main
-workspace 2 output $monitor_main
-workspace 3 output $monitor_main
-workspace 4 output $monitor_main
-workspace 5 output $monitor_main
+workspace 1 output $monitor_secondary
+workspace 2 output $monitor_secondary
+workspace 3 output $monitor_secondary
+workspace 4 output $monitor_secondary
+workspace 5 output $monitor_secondary
 
-workspace 6 output $monitor_secondary
-workspace 7 output $monitor_secondary
-workspace 8 output $monitor_secondary
-workspace 9 output $monitor_secondary
-workspace 0 output $monitor_secondary
+workspace 6 output $monitor_main
+workspace 7 output $monitor_main
+workspace 8 output $monitor_main
+workspace 9 output $monitor_main
+workspace 0 output $monitor_main
 
 bindsym $super+1 workspace 1
 bindsym $super+2 workspace 2
