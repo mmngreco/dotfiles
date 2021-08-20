@@ -14,7 +14,7 @@ floating_modifier $super
 
 # ============================================================================
 # autostart
-exec --no-startup-id xrandr --output eDP-1 --off
+exec --no-startup-id xrandr --output eDP-1 --off --auto
 exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
@@ -32,7 +32,6 @@ exec --no-startup-id caffeine-indicator
 # workspace 7 : passwords
 # workspace 8 :
 # workspace 9 :
-# exec --no-startup-id i3-msg 'workspace 1; exec kitty'
 exec --no-startup-id i3-msg 'workspace 1; exec xterm'
 exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
 exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
@@ -220,13 +219,14 @@ for_window [class=".*"] split toggle
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 4
 
-assign [class=xterm] 1
-assign [class=brave-browser|Brave-browser] 2
+# assign [class=XTerm] 1
+# assign [class=Brave-browser] 2
 assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=keepassxc] 7
 assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
 # assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
 assign [class=TelegramDesktop|telegram-desktop] 6
+assign [class=obs] 9
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 for_window [class=brave-browser|firefox|telegram-desktop|Gimp*|Inkscape|Vlc] focus
@@ -238,5 +238,4 @@ client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background           #2f343f
-
 
