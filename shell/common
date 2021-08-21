@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+source $DOTFILES/shell/variables
+source $DOTFILES/shell/customization
+source $DOTFILES/shell/functions
+source $DOTFILES/shell/aliases
+
+[ -f $HOME/.autoenv/activate.sh ] && source $HOME/.autoenv/activate.sh
+
+# bin
+addToPath "/usr/local/bin"
+addToPath "$HOME/bin"
+addToPath "$HOME/.cargo/bin"
+addToPath "$HOME/.local/bin"
+
+# go
+addToPathFront "$HOME/go/bin"
+addToPathFront "/home/mgreco/.go/bin"
+
+# db
+addToPathFront "/opt/mssql-tools/bin"
+addToPath "/opt/mssql-tools/bin"
+
+# ruby
+addToPathFront "$GEM_HOME/bin"
+
+# projects folders
+addToMyGitProjects $HOME/github
+addToMyGitProjects $HOME/gitlab
+[ -f $HOME/etsgit ] && addToMyGitProjects $HOME/etsgit

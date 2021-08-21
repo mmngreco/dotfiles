@@ -1,12 +1,6 @@
-#!/bin/bash
-export DOTFILES="$HOME/.dotfiles"
-source $DOTFILES/shell/variables
-source $DOTFILES/shell/customization
-source $DOTFILES/shell/functions
-source $DOTFILES/shell/aliases
+#!/usr/bin/env bash
+source $DOTFILES/shell/common
 source $DOTFILES/shell/best_bash_prompt.sh
-
-export PATH="$PATH:/opt/mssql-tools/bin"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -23,7 +17,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source $HOME/.autoenv/activate.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.bashrc ] && dotfilesLink

@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ================ COLORS
-#
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rb=90'
 # Setup some colors to use later in interactive shell or scripts
 export COLOR_NC='\e[0m' # No Color
@@ -21,33 +20,16 @@ export COLOR_YELLOW='\e[1;33m'
 export COLOR_GRAY='\e[1;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 
-
 # ================ OPTIONS
-
-# Path to your oh-my-zsh installation.
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-# export LS_OPTIONS='--color=always'
-# export GREP_OPTIONS='--color=always'
-# export TERM=xterm
-export EDITOR="nvim"
-export AUTOENV_FILE_ENTER=".env"
-# export SHELL="zsh"
 # https://superuser.com/questions/71588/how-to-syntax-highlight-via-less
 # export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+export EDITOR="/usr/bin/nvim"
+export AUTOENV_FILE_ENTER=".autoenv"
 export CONDA_DIR="$HOME/miniconda3"
-
-export MYGITPROJECTS="$HOME/github:$HOME/gitlab:$HOME/etsgit"
-# ============================================================================
-
+export GEM_HOME="$HOME/.gem"
 export GOPATH="$HOME/go"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:/home/mgreco/.go/bin"
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:/opt/mssql-tools/bin"
-export PYTHON_NEOVIM="/home/mgreco/miniconda3/envs/neovim/bin/python"
-export PATH="$HOME/.local/bin:$PATH"
-export DOTFILES="$HOME/.dotfiles"
 export DEFAULT_IMG="python:3.8"
-# export npm_config_node_gyp="/usr/local/lib/node_modules/node-gyp/bin/node-gyp.js"
+export PYTHON_NEOVIM="/home/mgreco/miniconda3/envs/neovim/bin/python"
+export MYGITPROJECTS="$HOME/github:$HOME/gitlab:$HOME/etsgit"

@@ -1,21 +1,92 @@
 #!/usr/bin/env bash
 
-listGitProjects () {
-    # find projects using .git folder as reference
-    setopt shwordsplit
-    for val in ${MYGITPROJECTS//:/ }; do
-        find $val -type d -name '.git' -not -path "**/.git/*"  | xargs -I FOLDER bash -c 'realpath "FOLDER/.."'
-    done
-    unsetopt shwordsplit
+dotfiles() {
+    case $1 in
+        help)
+            echo "Commands: go, commit, source, pull, link, *";;
+        cd)
+            goDotfiles ;;
+        go)
+            goDotfiles ;;
+        cm)
+            dotfilesCommit ;;
+        commit)
+            dotfilesCommit ;;
+        source)
+            dotfilesSource ;;
+        pull)
+            dotfilesSource ;;
+        link)
+            dotfilesLink ;;
+        *)
+            pushd $DOTFILES > /dev/null
+            nvim .
+            dotfilesCommit
+            popd $DOTFILES > /dev/null
+            ;;
+    esac
 }
 
 goDotfiles() {
-    cd $DOTFILES
+    pushd $DOTFILES
 }
 
+dotfilesCommit() {
+    pushd $DOTFILES
+    git fetch --all --prune && \
+    git pull && \
+    git secret hide && \
+    git add . && \
+    git commit -m "auto commit" && \
+    git push && \
+    git secret reveal -f -p $GIT_SECRET_PASS
+    popd
+}
+
+dotfilesPull () {
+
+    pushd $DOTFILES
+    git pull
+    git secret reveal -p $GIT_SECRET_PASS
+    popd
+
+}
+
+dotfilesSource() {
+    if [[ -z "$DOTFILES" ]]; then
+        export DOTFILES="${1:-$HOME/.dotfiles}"
+    fi
+    source $DOTFILES/shell/common
+}
+
+dotfilesLink() {
+    pushd $DOTFILES && ./install -Q ; popd
+    # clear
+}
+
+
+dotfilesInstall() {
+    if [[ -z "$@" ]]
+    then
+        echo Here is the list of available scripts:
+        find ~/.dotfiles/software/ \
+            | fzf --select-1 --height 50% --multi --bind "space:toggle" \
+            | xargs -L1 -I FILES bash -c "FILES"
+    else
+        echo "$@"
+        for pkg in "$@"
+        do
+            echo Installing $pkg
+            source $HOME/.dotfiles/software/$pkg
+        done
+    fi
+}
+
+
 addToMyGitProjects(){
+    # only if exists the folder
     if [[ "$MYGITPROJECTS" != *"$1"*  ]]; then
-        export MYGITPROJECTS="$MYGITPROJECTS:$1"
+        [ -f $1 ] && export MYGITPROJECTS="$MYGITPROJECTS:$1"
     fi
 }
 
@@ -53,41 +124,12 @@ set_rand_wallpaper(){
         | xargs -L1 -I IMG hsetroot -fill IMG
 }
 
-dotfilesCommit() {
-    pushd $DOTFILES
-    git fetch  && \
-    git pull && \
-    git secret hide && \
-    git add . && \
-    git commit -m "auto commit" && \
-    git push && \
-    git secret reveal -f -p $GIT_SECRET_PASS
-    popd
-}
-
-dotfilesPull () {
-
-    pushd $DOTFILES
-    git pull
-    git secret reveal -p $GIT_SECRET_PASS
-    popd
-
-}
-
-dotfilesSource() {
-    if [[ -z "$DOTFILES" ]]; then
-        export DOTFILES="${1:-$HOME/.dotfiles}"
-    fi
-    source $DOTFILES/shell/variables
-    source $DOTFILES/shell/customization
-    source $DOTFILES/shell/functions
-    source $DOTFILES/shell/aliases
-}
 
 
 pip-lastest() {
     pip install $1==kk |& grep -oP '.*\b\K\d+\.\d+\.\d+\b'
 }
+
 
 ipytdd ()  {
     ipython
@@ -132,39 +174,38 @@ dfix() {
 
 
 drun() {
+    DIR=$PWD
+
     # docker run image with ssh support and dotfiles
     # DEFAULT_IMG=python:3.8
     IMAGE_NAME=${1:-$DEFAULT_IMG}
     echo $IMAGE_NAME
-    DIR=$PWD
-    UUID="$(uuidgen)"
-    CONTAINER_NAME="$(basename $DIR)-${UUID:0:7}"
+
+    SUFFIX="${2:-$(uuidgen)}"
+    CONTAINER_NAME="$(basename $DIR)-$SUFFIX-$(echo $IMAGE_NAME | tr : _)"
+    echo $CONTAINER_NAME
 
     docker run \
-        --rm \
         --env TERM="xterm-256color" \
         --env DOTFILES="/root/.dotfiles" \
-        --volume $HOME/.ssh:/root/.ssh \
-        --volume $HOME/.dotfiles:/root/.dotfiles \
-        --volume $DIR:/git/$(basename $DIR) \
-        --workdir /git/$(basename $DIR) \
-        --name $CONTAINER_NAME \
+        --volume "$HOME/.ssh:/root/.ssh" \
+        --volume "$HOME/.dotfiles:/root/.dotfiles" \
+        --volume "$DIR:/git/$(basename $DIR)" \
+        --workdir "/git/$(basename $DIR)" \
+        --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
-        $IMAGE_NAME \
+        "$IMAGE_NAME" \
         /bin/bash --rcfile /root/.dotfiles/shell/bashrc
 }
 
 
 ddev() {
 
-    # docker run image with ssh support and dotfiles
-    # DEFAULT_IMG=python:3.8
-    IMAGE_NAME=${1:-$DEFAULT_IMG}
-    echo $IMAGE_NAME
     DIR=$PWD
-    CONTAINER_NAME="$(basename $DIR)-dev"
-    echo $CONTAINER_NAME
+    IMAGE_NAME=${1:-$DEFAULT_IMG}
+    SUFFIX="${2:-dev}"
+    CONTAINER_NAME="$(basename $DIR)-$SUFFIX-$(echo $IMAGE_NAME | tr : _)"
 
     if [ "$(docker ps -a -q -f name=$CONTAINER_NAME)" ]
     then
@@ -173,18 +214,7 @@ ddev() {
         docker start -ia $CONTAINER_NAME
     else
         echo "Creating the container..."
-        docker run \
-            --env TERM="xterm-256color" \
-            --env DOTFILES="/root/.dotfiles" \
-            --volume "$HOME/.ssh:/root/.ssh" \
-            --volume "$DOTFILES:/root/.dotfiles" \
-            --volume "$DIR:/git/$(basename $DIR)" \
-            --workdir /git/$(basename $DIR) \
-            --name $CONTAINER_NAME \
-            --interactive \
-            --tty \
-            $IMAGE_NAME \
-            /bin/bash --rcfile /root/.dotfiles/shell/bashrc
+        drun $IMAGE_NAME $SUFFIX
     fi
 
 }
@@ -254,29 +284,6 @@ txs() {
     esac
 }
 
-
-dotfilesLink() {
-    pushd $DOTFILES && ./install -Q && popd
-    clear
-}
-
-
-dotfilesInstall() {
-    if [[ -z "$@" ]]
-    then
-        echo Here is the list of available scripts:
-        find ~/.dotfiles/software/ \
-            | fzf --select-1 --height 50% --multi --bind "space:toggle" \
-            | xargs -L1 -I FILES bash -c "FILES"
-    else
-        echo "$@"
-        for pkg in "$@"
-        do
-            echo Installing $pkg
-            source $HOME/.dotfiles/software/$pkg
-        done
-    fi
-}
 
 # =============================================================================
 # cheat sheet

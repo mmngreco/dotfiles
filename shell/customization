@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # fast keyboard delay (ms) and speed (keys by sec)
 # keyboard typing speed
 xset r rate 250 60

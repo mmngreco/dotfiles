@@ -31,11 +31,10 @@
     ~/.Xdefaults: terminal/Xdefaults
     ~/.config/kitty/kitty.conf: terminal/kitty.conf
     ~/.alacritty.yml: terminal/alacritty.yml
-    ~/.local/bin/fullscreen: terminal/alacritty-fullscreen
 
     # vim
-    # ~/.vimrc: vim/init.vim
     ~/.config/nvim/init.vim: vim/init.vim
+    # ~/.vimrc: vim/init.vim
     # ~/.ultisnips: vim/ultisnips
 
     # Python

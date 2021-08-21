@@ -11,7 +11,7 @@ matches:
   - trigger: ':books:'
     replace: "\U0001F4DA"
 
-  - trigger: ':wedidit'
+  - trigger: ':yayay'
     replace: "ヽ(ﾟ▽ﾟ)乂(ﾟ▽ﾟ)ﾉ"
 
   - trigger: ':shrug:'
@@ -23,17 +23,23 @@ matches:
   - trigger: ':kiss'
     replace: '( ˘ ³˘)♥'
 
-  - trigger: ':flipping table:'
+  - trigger: ':fuck:'
     replace: '(┛ಠ_ಠ)┛彡┻━┻'
 
   - trigger: ':no:'
     replace: "ಠ_ಠ"
 
-  - trigger: ':yay:'
-    replace: "\U0001F37E"
+  - trigger: ':sad:'
+    replace: '( ´•̥̥̥⌓•̥̥̥`)'
 
-  - trigger: ':fp:'
-    replace: "(－‸ლ)"
+  - trigger: ':yay:'
+    replace: "＼(＾O＾)／"
+
+  - trigger: ':leave:'
+    replace: 'ᕕ( ᐛ )ᕗ...'
+
+  - trigger: ':facepalm:'
+    replace: '(－‸ლ)'
 
   - trigger: ':fpp:'
     replace: "\U0001F926‍♂"
@@ -215,14 +221,14 @@ matches:
   - trigger: ':unamused:'
     replace: "\U0001F612"
 
-  - trigger: ':meh:'
-    replace: "\U0001F612"
+  # - trigger: ':meh:'
+  #   replace: "\U0001F612"
 
   - trigger: ':disappointed:'
     replace: "\U0001F61E"
 
-  - trigger: ':sad:'
-    replace: "\U0001F61E"
+  # - trigger: ':sad:'
+  #   replace: "\U0001F61E"
 
   - trigger: ':pensive:'
     replace: "\U0001F614"
