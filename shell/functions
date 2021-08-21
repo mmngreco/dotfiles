@@ -23,25 +23,25 @@ dotfiles() {
         link)
             dotfilesLink ;;
         edit)
-            pushd $DOTFILES
+            pushd $DOTFILES > /dev/null
             nvim .
-            popd
+            popd > /dev/null
             ;;
         ec)
-            pushd $DOTFILES
+            pushd $DOTFILES > /dev/null
             nvim .
             dotfilesCommit
-            popd
+            popd > /dev/null
             ;;
     esac
 }
 
 goDotfiles() {
-    pushd $DOTFILES
+    pushd $DOTFILES > /dev/null
 }
 
 dotfilesCommit() {
-    pushd $DOTFILES
+    pushd $DOTFILES > /dev/null
     case $1 in
         all)
             dotfilesCommit && \
@@ -60,16 +60,16 @@ dotfilesCommit() {
             git push
             ;;
     esac
-    popd
+    popd > /dev/null
 }
 
 dotfilesPull () {
 
-    pushd $DOTFILES
+    pushd $DOTFILES > /dev/null
     git fetch
     git pull
     git secret reveal -p $GIT_SECRET_PASS
-    popd
+    popd > /dev/null
 
 }
 
@@ -81,7 +81,8 @@ dotfilesSource() {
 }
 
 dotfilesLink() {
-    pushd $DOTFILES && ./install -Q ; popd
+    echo Linking dotfiles...
+    pushd $DOTFILES > /dev/null && ./install -Q ; popd > /dev/null
     # clear
 }
 

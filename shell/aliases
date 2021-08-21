@@ -136,8 +136,6 @@ alias tmuxrc="pushd_edit_pop $DOTFILES tmux/tmux.conf"
 alias vimrc="pushd_edit_pop $DOTFILES vim/init.vim"
 alias zshrc="pushd_edit_pop $DOTFILES shell/zshrc"
 alias bashrc="pushd_edit_pop $DOTFILES shell/bashrc"
-alias zshreload="source ~/.zshrc"
-alias bashreload="source ~/.bashrc"
 alias reload="exec $SHELL"
 
 # system
