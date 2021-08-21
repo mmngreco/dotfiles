@@ -22,8 +22,13 @@ dotfiles() {
             dotfilesPull ;;
         link)
             dotfilesLink ;;
-        *)
-            pushd
+        edit)
+            pushd $DOTFILES
+            nvim .
+            popd
+            ;;
+        ec)
+            pushd $DOTFILES
             nvim .
             dotfilesCommit
             popd
