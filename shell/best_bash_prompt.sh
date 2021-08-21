@@ -62,7 +62,9 @@ function set_bash_prompt () {
 	fi
 
 	if ! test -z "$CONDA_PROMPT_MODIFIER" ; then
-        PS1="${PS1}:${COLOR_VENV}`echo $CONDA_PROMPT_MODIFIER | tr ( '' | tr ) ''`${COLOR_DIVIDER}"
+        conda_prompt=`echo $CONDA_PROMPT_MODIFIER | tr "(" "" | tr ")" ""`
+        conda_prompt=$(basename $conda_prompt)
+        PS1="${PS1}:${COLOR_VENV}$conda_prompt${COLOR_DIVIDER}"
 	fi
 	# Close out the prompt, this adds "]\n[username@hostname] "
 	PS1="${PS1}]\n${COLOR_DIVIDER}[${COLOR_USERNAME}\u${COLOR_USERHOSTAT}@${COLOR_HOSTNAME}\h${COLOR_DIVIDER}]${COLOR_NONE} "
