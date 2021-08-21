@@ -12,17 +12,21 @@ dotfiles() {
             dotfilesCommit ;;
         commit)
             dotfilesCommit ;;
+        ca)
+            dotfilesCommit all ;;
+        cs)
+            dotfilesCommit secret ;;
         source)
             dotfilesSource ;;
         pull)
-            dotfilesSource ;;
+            dotfilesPull ;;
         link)
             dotfilesLink ;;
         *)
-            pushd $DOTFILES > /dev/null
+            pushd
             nvim .
             dotfilesCommit
-            popd $DOTFILES > /dev/null
+            popd
             ;;
     esac
 }
@@ -33,19 +37,31 @@ goDotfiles() {
 
 dotfilesCommit() {
     pushd $DOTFILES
-    git fetch --all --prune && \
-    git pull && \
-    git secret hide && \
-    git add . && \
-    git commit -m "auto commit" && \
-    git push && \
-    git secret reveal -f -p $GIT_SECRET_PASS
+    case $1 in
+        all)
+            dotfilesCommit
+            dotfilesCommit secret
+            ;;
+        secret)
+            git secret hide && \
+            git add . && \
+            git commit -m "auto commit secrets" && \
+            git push && \
+            git secret reveal -f -p $GIT_SECRET_PASS
+            ;;
+        *)
+            git add . && \
+            git commit -m "auto commit" && \
+            git push && \
+            ;;
+    esac
     popd
 }
 
 dotfilesPull () {
 
     pushd $DOTFILES
+    git fetch
     git pull
     git secret reveal -p $GIT_SECRET_PASS
     popd
