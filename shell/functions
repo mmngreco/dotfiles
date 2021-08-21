@@ -48,7 +48,7 @@ dotfilesCommit() {
             dotfilesCommit secret
             ;;
         secret)
-            echo ${COLOR_RED}Commiting secret dotfiles.${COLOR_NC}
+            echo -e "${COLOR_RED}Commiting secret dotfiles.${COLOR_NC}"
             git secret hide && \
             git add . && \
             git commit -m "auto commit secrets" && \
@@ -56,7 +56,7 @@ dotfilesCommit() {
             git secret reveal -f -p $GIT_SECRET_PASS
             ;;
         *)
-            echo ${COLOR_RED}Commiting dotfiles.${COLOR_NC}
+            echo -e "${COLOR_RED}Commiting dotfiles.${COLOR_NC}"
             git add . && \
             git commit -m "auto commit" && \
             git push
