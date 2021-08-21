@@ -62,7 +62,7 @@ function set_bash_prompt () {
 	fi
 
 	if ! test -z "$CONDA_PROMPT_MODIFIER" ; then
-        conda_prompt=`echo $CONDA_PROMPT_MODIFIER | tr "(" "" | tr ")" ""`
+        conda_prompt=`echo $CONDA_PROMPT_MODIFIER | tr -d "(" | tr -d ")"`
         conda_prompt=$(basename $conda_prompt)
         PS1="${PS1}:${COLOR_VENV}$conda_prompt${COLOR_DIVIDER}"
 	fi
