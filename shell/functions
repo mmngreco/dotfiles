@@ -163,17 +163,16 @@ ipytdd ()  {
 }
 
 conda-here () {
-    local folder="$(basename $PWD)"
-    local name="${1:-$folder}"
-    local prefix="$PWD/.venv"
+    local name="$1"
+    local prefix="$PWD/.venv/$name"
 
     if [ $# -eq 0 ]; then
-        conda create --name $name --prefix $prefix python=3.7 pip -y
+        conda create --prefix $prefix python=3.7 pip -y
     else
-        conda create --name $name --prefix $prefix $@
+        conda create --prefix $prefix $@
     fi
 
-    conda activate "$PWD/$prefix"
+    conda activate "$prefix"
 
     if [ ! -f ./$AUTOENV_ENV_FILENAME ]; then
         echo conda activate \"$PWD/$prefix\" >> $AUTOENV_ENV_FILENAME
