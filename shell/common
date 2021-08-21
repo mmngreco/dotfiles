@@ -4,8 +4,6 @@ source $DOTFILES/shell/customization
 source $DOTFILES/shell/functions
 source $DOTFILES/shell/aliases
 
-[ -f $HOME/.autoenv/activate.sh ] && source $HOME/.autoenv/activate.sh
-
 # bin
 addToPath "/usr/local/bin"
 addToPath "$HOME/bin"
@@ -26,4 +24,4 @@ addToPathFront "$GEM_HOME/bin"
 # projects folders
 addToMyGitProjects $HOME/github
 addToMyGitProjects $HOME/gitlab
-[ -f $HOME/etsgit ] && addToMyGitProjects $HOME/etsgit
+addToMyGitProjects $HOME/etsgit

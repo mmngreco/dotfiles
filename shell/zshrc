@@ -27,6 +27,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# always after any prompt changes
+[ -f $HOME/.autoenv/activate.sh ] && source $HOME/.autoenv/activate.sh
+
 # ----------------------------------------------------------------------------
 # shortcuts
 join-lines() {

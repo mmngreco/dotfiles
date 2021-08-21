@@ -105,8 +105,8 @@ dotfilesInstall() {
 
 
 addToMyGitProjects(){
-    # only if exists the folder
     if [[ "$MYGITPROJECTS" != *"$1"*  ]]; then
+        # only if exists the folder it will be exported
         [ -f $1 ] && export MYGITPROJECTS="$MYGITPROJECTS:$1"
     fi
 }
