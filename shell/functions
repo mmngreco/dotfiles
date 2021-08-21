@@ -163,7 +163,8 @@ ipytdd ()  {
 }
 
 conda-here () {
-    local name="$1"
+    local folder="$(basename $PWD)"
+    local name="${1:-$folder}"
     local prefix="$PWD/.venv"
 
     if [ $# -eq 0 ]; then
