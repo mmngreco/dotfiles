@@ -1,12 +1,15 @@
 #!/usr/bin/env zsh
-export ZSH=~/.oh-my-zsh
+
 source $DOTFILES/shell/common
+export ZSH=~/.oh-my-zsh
+
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # define always before before sourcing oh-my-zsh.sh
 plugins=(
     zsh-autosuggestions
 )
+
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES/shell/zsh_prompt
 

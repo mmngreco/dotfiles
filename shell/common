@@ -4,6 +4,8 @@ source $DOTFILES/shell/customization
 source $DOTFILES/shell/functions
 source $DOTFILES/shell/aliases
 
+[ -f ~/.bashrc ] && dotfilesLink
+
 # bin
 addToPath "/usr/local/bin"
 addToPath "$HOME/bin"

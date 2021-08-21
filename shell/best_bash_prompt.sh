@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
 # Bash History Replacement Script
 #    Author: Caesar Kabalan
 #    Last Modified: June 6th, 2017
@@ -58,6 +59,10 @@ function set_bash_prompt () {
 	# Add Python VirtualEnv portion of the prompt, this adds ":venvname"
 	if ! test -z "$VIRTUAL_ENV" ; then
 		PS1="${PS1}:${COLOR_VENV}`basename \"$VIRTUAL_ENV\"`${COLOR_DIVIDER}"
+	fi
+
+	if ! test -z "$CONDA_PROMPT_MODIFIER" ; then
+        PS1="${PS1}:${COLOR_VENV}`echo $CONDA_PROMPT_MODIFIER | tr ( '' | tr ) ''`${COLOR_DIVIDER}"
 	fi
 	# Close out the prompt, this adds "]\n[username@hostname] "
 	PS1="${PS1}]\n${COLOR_DIVIDER}[${COLOR_USERNAME}\u${COLOR_USERHOSTAT}@${COLOR_HOSTNAME}\h${COLOR_DIVIDER}]${COLOR_NONE} "

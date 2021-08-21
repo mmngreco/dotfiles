@@ -44,7 +44,7 @@ dotfilesCommit() {
     pushd $DOTFILES
     case $1 in
         all)
-            dotfilesCommit
+            dotfilesCommit && \
             dotfilesCommit secret
             ;;
         secret)
@@ -57,7 +57,7 @@ dotfilesCommit() {
         *)
             git add . && \
             git commit -m "auto commit" && \
-            git push && \
+            git push
             ;;
     esac
     popd

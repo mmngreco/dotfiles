@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+
 source $DOTFILES/shell/common
 source $DOTFILES/shell/best_bash_prompt.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -17,8 +20,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
 # always after any prompt changes
 [ -f $HOME/.autoenv/activate.sh ] && source $HOME/.autoenv/activate.sh
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bashrc ] && dotfilesLink
