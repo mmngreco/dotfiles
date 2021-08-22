@@ -4,6 +4,8 @@ dotfiles() {
     case $1 in
         help)
             echo "Commands: go, commit, source, pull, link, *";;
+        install)
+            dotfilesInstall ${@:2};;
         cd)
             goDotfiles ;;
         go)
@@ -22,16 +24,17 @@ dotfiles() {
             dotfilesPull ;;
         link)
             dotfilesLink ;;
+        e)
+            dotfiles edit
+            ;;
         edit)
             pushd $DOTFILES > /dev/null
             nvim .
             popd > /dev/null
             ;;
         ec)
-            pushd $DOTFILES > /dev/null
-            nvim .
-            dotfilesCommit
-            popd > /dev/null
+            dotfiles edit
+            dotfiles commit
             ;;
     esac
 }
