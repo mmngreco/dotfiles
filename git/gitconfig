@@ -50,6 +50,7 @@
     cp = cherry-pick
     gr = grep -Ii
 
+    fdiff  = "!f() { git diff -u $@ | diff-so-fancy ; }; f"
     diff = diff --word-diff
     branch = branch -ra
     grep = grep -Ii
