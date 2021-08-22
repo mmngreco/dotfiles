@@ -181,7 +181,7 @@ conda-here () {
     conda activate "$prefix"
 
     if [ ! -f ./$AUTOENV_ENV_FILENAME ]; then
-        echo conda activate \"$PWD/$prefix\" >> $AUTOENV_ENV_FILENAME
+        echo conda activate \"$prefix\" >> $AUTOENV_ENV_FILENAME
         echo $AUTOENV_ENV_FILENAME >> .git/info/exclude
     fi
 }
