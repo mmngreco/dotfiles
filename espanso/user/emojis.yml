@@ -11,6 +11,21 @@ matches:
   - trigger: ':books:'
     replace: "\U0001F4DA"
 
+  - trigger: ':what:'
+    replace: '⊙﹏⊙'
+
+  - trigger: ':hug:'
+    replace: '(⊃｡•́‿•̀｡)⊃'
+
+  - trigger: ':worried:'
+    replace: '(´･_･`)'
+
+  - trigger: ':love:'
+    replace: '♥‿♥'
+
+  - trigger: ':desole:'
+    replace: '(._.)'
+
   - trigger: ':yayay'
     replace: "ヽ(ﾟ▽ﾟ)乂(ﾟ▽ﾟ)ﾉ"
 
@@ -146,8 +161,8 @@ matches:
   - trigger: ':heart eyes:'
     replace: "\U0001F60D"
 
-  - trigger: ':love:'
-    replace: "\U0001F60D"
+  # - trigger: ':love:'
+  #   replace: "\U0001F60D"
 
   - trigger: ':crush:'
     replace: "\U0001F60D"
