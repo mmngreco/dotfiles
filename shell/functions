@@ -169,13 +169,14 @@ ipytdd ()  {
 }
 
 conda-here () {
-    local name="$1"
+    local pyver="python=3.7"
+    local name="${1:-$(echo $pyver | tr -d = | tr -d .)}"
     local prefix="$PWD/.venv/$name"
 
     if [ $# -eq 0 ]; then
-        conda create --prefix $prefix python=3.7 pip -y
+        conda create --prefix $prefix $pyver pip -y
     else
-        conda create --prefix $prefix $@
+        conda create --prefix $prefix ${@:2}
     fi
 
     conda activate "$prefix"
@@ -184,6 +185,13 @@ conda-here () {
         echo conda activate \"$prefix\" >> $AUTOENV_ENV_FILENAME
         echo $AUTOENV_ENV_FILENAME >> .git/info/exclude
     fi
+}
+
+
+conda-activate() {
+    local prefix="$PWD/.venv"
+    local selected=$(find $prefix -maxdepth 1 -mindepth 1 -type d | fzf --select-1 --ansi -q "$1" --height 10%)
+    conda activate $selected
 }
 
 # =============================================================================
