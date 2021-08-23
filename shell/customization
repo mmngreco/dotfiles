@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # fast keyboard delay (ms) and speed (keys by sec)
 # keyboard typing speed
-[ -x "$(command -v xset)" ] && xset r rate 250 60
-[ -x "$(command -v setxkbmap)" ] && setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+
+if [ -x "$(command -v xset)" ]; then
+    xset r rate 250 60
+fi
+
+if [ -x "$(command -v setxkbmap)" ]; then
+    setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+fi
