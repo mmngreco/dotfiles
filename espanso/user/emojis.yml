@@ -11,6 +11,9 @@ matches:
   - trigger: ':books:'
     replace: "\U0001F4DA"
 
+  - trigger: ':cute:'
+    replace: '( ◠‿◠ )'
+
   - trigger: ':what:'
     replace: '⊙﹏⊙'
 
