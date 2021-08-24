@@ -26,6 +26,9 @@ matches:
   - trigger: ':desole:'
     replace: '(._.)'
 
+  - trigger: ':cool:'
+    replace: '(⌐■_■)'
+
   - trigger: ':yayay'
     replace: "ヽ(ﾟ▽ﾟ)乂(ﾟ▽ﾟ)ﾉ"
 
@@ -4529,8 +4532,8 @@ matches:
   - trigger: ':up:'
     replace: "\U0001F199"
 
-  - trigger: ':cool:'
-    replace: "\U0001F192"
+  # - trigger: ':cool:'
+  #   replace: "\U0001F192"
 
   - trigger: ':new:'
     replace: "\U0001F195"

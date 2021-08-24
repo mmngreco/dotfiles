@@ -297,6 +297,8 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
 nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
+nnoremap <leader>cn :cnext<cr>
+nnoremap <leader>cp :cprev<cr>
 
 " scrum get date from title
 nnoremap <leader>nt ?##<cr>yy<C-o>pj2dwA
