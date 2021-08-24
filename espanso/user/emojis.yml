@@ -32,7 +32,7 @@ matches:
   - trigger: ':cool:'
     replace: '(⌐■_■)'
 
-  - trigger: ':yayay'
+  - trigger: ':yayay:'
     replace: "ヽ(ﾟ▽ﾟ)乂(ﾟ▽ﾟ)ﾉ"
 
   - trigger: ':shrug:'
