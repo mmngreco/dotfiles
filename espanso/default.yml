@@ -60,5 +60,5 @@ matches:
 
   # gitlab
   - trigger: ":tags:"
-    replace: "/label ~\"assignee:mgreco\" ~ToDo ~\"year:2021\" ~\"role:it\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:43\"\n/assign @mgreco"
+    replace: "/label ~\"assignee:mgreco\" ~\"assignee:ajimenez\" ~ToDo ~\"year:2021\" ~\"role:it\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:44\"\n/assign @mgreco"
     force_clipboard: true
