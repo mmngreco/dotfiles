@@ -3,7 +3,6 @@
 source $DOTFILES/shell/common
 export ZSH=~/.oh-my-zsh
 
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # define always before before sourcing oh-my-zsh.sh
 plugins=(
@@ -32,6 +31,7 @@ unset __conda_setup
 
 # always after any prompt changes
 [ -f $HOME/.autoenv/activate.sh ] && source $HOME/.autoenv/activate.sh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # ----------------------------------------------------------------------------
 # shortcuts
@@ -52,5 +52,5 @@ bind-git-wrapper() {
 }
 bind-git-wrapper f b t r h s
 unset -f bind-git-wrapper
-# bindkey -s ^t^w "txw\n"
-# bindkey -s ^t^s "txs\n"
+bindkey -s ^t^w "txw\n"
+bindkey -s ^t^s "txs\n"

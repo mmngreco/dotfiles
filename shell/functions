@@ -228,11 +228,10 @@ mmngreco-dev() {
             docker run \
                 --user $(id -u):$(id -g) \
                 --env TERM="xterm-256color" \
-                --env HOME="/home/docker" \
-                --volume "$(pwd):/home/docker/$(basename ${DIR})" \
-                --volume "${DOTFILES}:/home/docker/.dotfiles" \
-                --volume "${HOME}/.ssh:/home/docker/.ssh/" \
-                --workdir "/home/docker/$(basename ${DIR})" \
+                --volume "$(pwd):/home/${USERNAME}/$(basename ${DIR})" \
+                --volume "${DOTFILES}:/home/${USERNAME}/.dotfiles" \
+                --volume "${HOME}/.ssh:/home/${USERNAME}/.ssh/" \
+                --workdir "/home/${USERNAME}/$(basename ${DIR})" \
                 --name ${CONTAINER_NAME} \
                 --interactive \
                 --tty \

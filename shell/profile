@@ -31,5 +31,5 @@ fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-google-drive-ocamlfuse /mnt/google-drive
-xrdb ~/.Xresources
+[ -x "$(command -v google-drive-ocamlfuse)" ] && google-drive-ocamlfuse /mnt/google-drive
+[ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources
