@@ -211,32 +211,35 @@ dfix() {
 mmngreco-dev() {
     DIR=$PWD
     # docker run image with ssh support and dotfiles
-    # DEFAULT_IMG=python:3.8
-    IMAGE_NAME=${1:-mmngreco:0.3.0}
-    echo $IMAGE_NAME
-    UUID=$(uuidgen)
-    SUFFIX="${2:-${UUID:0:7}}"
-    CONTAINER_NAME="$(basename $DIR)-$SUFFIX-$(echo $IMAGE_NAME | tr : _)"
-    echo $CONTAINER_NAME
-    UNAME=docker
+    GH_DIR="$HOME/github/mmngreco/docker-base"
 
     case $1 in
+        clone)
+            [ ! -d $GH_DIR ] && git clone https://github.com/mmngreco/docker-base $GH_DIR
+            ;;
         attach)
             selected=$(docker container ls -a | tail +2 | fzf --height 10% | awk '{print $1}')
             docker start -ia $selected
             ;;
-        *)
-            docker run \
-                --user $(id -u):$(id -g) \
-                --volume "$(pwd):/home/${UNAME}/$(basename ${DIR})" \
-                --volume "${DOTFILES}:/home/${UNAME}/.dotfiles" \
-                --volume "${HOME}/.ssh:/home/${UNAME}/.ssh/" \
-                --workdir "/home/${UNAME}/$(basename ${DIR})" \
-                --name ${CONTAINER_NAME} \
-                --interactive \
-                --tty \
-                "$IMAGE_NAME"
+        run)
+            pushd $GH_DIR > /dev/null
+            case $2 in
+                .)
+                    make run DIR=$PWD
+                    ;;
+                *)
+                    make run DIR=$(selectProjectFzf)
+                    ;;
+            esac
+            popd > /dev/null
             ;;
+        build)
+            pushd $GH_DIR > /dev/null
+            make build IMAGE_BASE=${2:-mmngreco}
+            popd > /dev/null
+            ;;
+        *)
+            echo "execute: clone | attach | run | build"
     esac
 
 }
@@ -299,9 +302,8 @@ selectProjectFzf () {
 
 nvp () {
     # neovim project
-    # query="${1:-tesser}"
     query="${1}"
-    selectProjectFzf $query | xargs -L1 -i "pushd {} && nvim {} && popd"
+    selectProjectFzf $query | xargs -I DIR bash -c "pushd DIR > /dev/null && nvim DIR && popd > /dev/null"
 }
 
 
