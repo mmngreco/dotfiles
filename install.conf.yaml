@@ -13,6 +13,7 @@
 - link:
     ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig
+    ~/.docker/config.json: docker/config.json
 
     # tmux
     ~/.tmux.conf: tmux/tmux.conf
