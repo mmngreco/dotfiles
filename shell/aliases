@@ -173,3 +173,6 @@ alias pip-all='for req in $(ls requirements*.txt); do; pipsm install -r $req; do
 alias pip-dev='pipsm install -r requirements-build.txt ; pipsm install -r requirements.txt ; pipsm install -r requirements-lint.txt ;pipsm install -r requirements-test.txt ; pipsm install -r requirements-dev ; pipsm install  -e .'
 alias pip-install-test='pip install . -r requirements.txt -r requirements-test.txt --progress-bar off && pytest --ff'
 alias pip-upgrade='python -s -m pip install -U setuptools pip wheel'
+
+alias qwer='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
+alias dvor='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'

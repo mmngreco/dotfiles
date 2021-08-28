@@ -51,9 +51,7 @@ Plug 'tyru/open-browser.vim'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 Plug 'chrisbra/unicode.vim'
-" Plug 'cjrh/vim-conda'
 Plug 'mmngreco/slimux'
-" Plug 'janko/vim-test'
 Plug 'vim-test/vim-test'
 Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/gist-vim'
@@ -63,13 +61,10 @@ Plug 'chriskempson/base16-vim'
 Plug 'mileszs/ack.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
-" Plug 'cjrh/vim-conda'
 " Plug 'kristijanhusak/vim-dadbod-ui'
 " Plug 'szymonmaszke/vimpyter' "vim-plug needs pip install notedown
 " Plug 'christoomey/vim-tmux-navigator'
 " Plug 'stevearc/vim-rduino', { 'for': 'ino' }
-" Plug 'edkolev/tmuxline.vim'
-" Plug 'tmux-plugins/vim-tmux-focus-events'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'jreybert/vimagit'  " git manager
 " Plug 'blindFS/vim-taskwarrior'
@@ -88,8 +83,6 @@ Plug 'kyazdani42/nvim-tree.lua'
     " Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 " Plug 'liuchengxu/vista.vim'   " modern ctag
 " Plug 'Konfekt/FastFold'
-" Plug 'junegunn/fzf', { 'do': './install --bin' }
-" Plug 'ctrlpvim/ctrlp.vim'
 
 " ==== diagrams
 Plug 'gyim/vim-boxdraw'
@@ -101,15 +94,9 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sainnhe/gruvbox-material'
-" Plug 'hoob3rt/lualine.nvim'
 Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
 Plug 'mhinz/vim-startify'
-" Plug 'itchyny/lightline.vim'
-" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 " Plug 'ryanoasis/vim-devicons'
-" Plug 'vim-syntastic/syntastic'
-" Plug 'kshenoy/vim-signature'  " add tag into lines
-" Plug 'mhinz/vim-signify'  " shows differences in the file
 
 " ==== effective programming
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
@@ -134,12 +121,9 @@ Plug 'haorenW1025/completion-nvim'
 Plug 'nvie/vim-flake8'
 Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
-" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
 " Plug 'vim-scripts/VisIncr'
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
-" Plug 'jacoborus/tender.vim'
-" Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'ntpeters/vim-better-whitespace'
 " Plug 'radenling/vim-dispatch-neovim'
 " Plug 'ruanyl/vim-gh-line'
@@ -347,33 +331,25 @@ nnoremap <F10> :setl ai cin si inde=<CR>
 " ==== source plugin conf
 source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/lualine.vim
-" source $DOTFILES/vim/plugins/airline.vim
 " source $DOTFILES/vim/plugins/arduino.vim
 source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
-" source $DOTFILES/vim/plugins/conda.vim
 " source $DOTFILES/vim/plugins/fastfold.vim
-" source $DOTFILES/vim/plugins/firenvim.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/functions.vim
 source $DOTFILES/vim/plugins/git.vim
-" source $DOTFILES/vim/plugins/grepper.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
-" source $DOTFILES/vim/plugins/indentlines.vim
 source $DOTFILES/vim/plugins/jupytext.vim
 " source $DOTFILES/vim/plugins/latex_unicoder.vim
 source $DOTFILES/vim/plugins/lsp.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
-" source $DOTFILES/vim/plugins/nerdtree.vim
 source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
-" source $DOTFILES/vim/plugins/reply.vim
 source $DOTFILES/vim/plugins/slimux.vim
-" source $DOTFILES/vim/plugins/statusline.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
