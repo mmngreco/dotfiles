@@ -23,26 +23,11 @@ exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
 exec --no-startup-id caffeine-indicator
 
-# workspace 1 : terminal
-# workspace 2 : browser
-# workspace 3 : workstuff
-# workspace 4 : files
-# workspace 5 :
-# workspace 6 : chats
-# workspace 7 : passwords
-# workspace 8 :
-# workspace 9 :
-# exec --no-startup-id i3-msg 'workspace 1; exec xterm'
-# exec --no-startup-id i3-msg 'workspace 2; exec brave-browser'
-# exec --no-startup-id i3-msg 'workspace 4; exec nautilus'
-# exec --no-startup-id i3-msg 'workspace 6; exec telegram-desktop'
-# exec --no-startup-id i3-msg 'workspace 7; exec keepassxc'
-
 # ============================================================================
 
 # start a terminal
-# bindsym $super+Return exec kitty; workspace 1; focus
-bindsym $super+Return workspace 1; focus; exec xterm
+bindsym $super+Return exec xterm
+bindsym $super+Shift+Return workspace 1; focus; exec xterm
 bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
@@ -56,11 +41,12 @@ bindsym $super+Ctrl+Shift+m exec rofi-randr
 bindsym $super+Ctrl+Shift+x exec xrandr --auto
 bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
 
-# launch tmux
-bindsym $super+s exec rofi-txs
+# tmux
+# bindsym $super+s exec rofi-txs
 # bindsym $super+w exec rofi-txw
 
 # change wallpaper
+bindsym $super+Ctrl+Shift+e exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 bindsym $super+Ctrl+Shift+w exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 
 # Screenshots
@@ -74,10 +60,10 @@ bindsym $super+Ctrl+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/000
 
 # browsers
 bindsym $super+Shift+w workspace 2; focus; exec brave-browser
-# bindsym $super+Shift+w exec google-chrome
-# bindsym $super+Shift+w exec firefox
+bindsym $super+w exec brave-browser
 
 # open file browser
+# bindsym $super+Shift+f workspace 4; focus; exec nautilus
 bindsym $super+Shift+f exec nautilus
 
 # ============================================================================
@@ -188,10 +174,10 @@ bindsym $super+0 workspace 0
 bindsym $super+Shift+r restart
 
 # close session
-bindsym $super+Shift+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+bindsym $super+Shift+q exec i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'
 
 # power off
-bindsym $super+Shift+Ctrl+q exec --no-startup-id systemctl poweroff -i, mode "default"
+bindsym $super+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' 'exec systemctl poweroff -i', mode "default"
 
 # panel
 bar {
@@ -221,7 +207,7 @@ for_window [class=".*"] border pixel 4
 
 # assign [class=XTerm] 1
 # assign [class=Brave-browser] 2
-assign [class=org.gnome.Nautilus|Org.gnome.Nautilus|Thunar|File-roller] 4
+assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=keepassxc] 7
 assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 5
 # assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 6
@@ -229,7 +215,7 @@ assign [class=TelegramDesktop|telegram-desktop] 6
 assign [class=obs] 9
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
-for_window [class=brave-browser|firefox|telegram-desktop|Gimp*|Inkscape|Vlc] focus
+for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
 
 # colour of border, background, text, indicator, and child_border
 client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
