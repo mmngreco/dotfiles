@@ -224,19 +224,22 @@ mmngreco-dev() {
         run)
             pushd $GH_DIR > /dev/null
             case $2 in
+                here)
+                    make run DIR=$PWD IMAGE_NAME=$(docker image ls | tail +2 | fzf --height 10% | awk '{print $1}')
+                    ;;
                 .)
-                    make run DIR=$PWD
+                    make run DIR=$PWD IMAGE_NAME=$(docker image ls | tail +2 | fzf --height 10% | awk '{print $1}')
                     ;;
                 *)
-                    make run DIR=$(selectProjectFzf)
+                    make run DIR=$(selectProjectFzf) IMAGE_NAME=$(docker image ls | tail +2 | fzf --height 10% | awk '{print $1}')
                     ;;
             esac
-            popd > /dev/null
+            popd &> /dev/null
             ;;
         build)
             pushd $GH_DIR > /dev/null
             make build IMAGE_BASE=${2:-mmngreco}
-            popd > /dev/null
+            popd &> /dev/null
             ;;
         *)
             echo "execute: clone | attach | run | build"
