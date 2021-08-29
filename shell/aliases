@@ -174,5 +174,5 @@ alias pip-dev='pipsm install -r requirements-build.txt ; pipsm install -r requir
 alias pip-install-test='pip install . -r requirements.txt -r requirements-test.txt --progress-bar off && pytest --ff'
 alias pip-upgrade='python -s -m pip install -U setuptools pip wheel'
 
-alias qwer='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
-alias dvor='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
+alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
+alias aoeu='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
