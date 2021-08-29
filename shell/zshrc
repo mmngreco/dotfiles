@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-
+export DOTFILES=$HOME/.dotfiles
 source $DOTFILES/shell/common
 export ZSH=~/.oh-my-zsh
 

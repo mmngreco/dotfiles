@@ -238,7 +238,7 @@ mmngreco-dev() {
             ;;
         build)
             pushd $GH_DIR > /dev/null
-            make build IMAGE_BASE=${2:-mmngreco}
+            make build IMAGE_BASE=${2:-continuumio/miniconda3}
             popd &> /dev/null
             ;;
         *)
