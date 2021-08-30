@@ -13,11 +13,10 @@
 - link:
     ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig
-    ~/.docker/config.json: docker/config.json
+    ~/.docker/config.json: docker/.docker/config.json
 
     # tmux
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.config/tmuxinator: tmux/tmuxinator
 
     # shell
     # ~/.aliases: shell/aliases
@@ -35,10 +34,9 @@
 
     # vim
     ~/.config/nvim/init.vim: vim/init.vim
-    # ~/.vimrc: vim/init.vim
-    # ~/.ultisnips: vim/ultisnips
 
     # Python
+    ~/.condarc: conda/.condarc
     ~/.pdbrc.py: python/pdbrc.py
     ~/.config/pip/pip.conf: python/pip.conf
     ~/.ipython/profile_default/ipython_config.py: python/ipython_config.py

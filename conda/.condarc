@@ -1,0 +1,1 @@
+env_prompt: '($(basename {default_env})) '
