@@ -5,6 +5,42 @@ parent: default
 # https://looks.wtf/
 
 matches:
+  - trigger: ':hello:'
+    replace: 'https://media3.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif'
+
+  - trigger: ":yeah!:"
+    replace: "https://youtu.be/GxBSyx85Kp8?t=11"
+
+  - trigger: ":oui:"
+    replace: "https://media.giphy.com/media/m9oruywyYbHL6A2wWp/giphy.gif"
+
+  - trigger: ":lookatmenow:"
+    replace: '[look at me now!](https://www.youtube.com/watch?v=8gyLR4NfMiI&t=63s)'
+
+  - trigger: ":hmm:"
+    replace: 'https://media.giphy.com/media/26gJyn3amIsjsPWuc/giphy.gif'
+
+  - trigger: ":rollingdeep:"
+    replace: 'https://www.youtube.com/watch?v=_sXrTpOVnak'
+
+  - trigger: ":giveup:"
+    replace: 'https://www.youtube.com/watch?v=0xyxtzD54rM'
+
+  - trigger: ":guitar:"
+    replace: 'https://i.imgur.com/GsANt4M.mp4'
+
+  - trigger: ':debugging:'
+    replace: 'https://i.imgur.com/SUzvblu.mp4'
+
+  - trigger: ":amazing:"
+    replace: 'https://i.imgur.com/Q18IbZg.gif'
+
+  - trigger: ":bugfix:"
+    replace: 'https://i.imgur.com/1ttkG9C.mp4'
+
+  - trigger: ":bug:"
+    replace: "https://i.imgur.com/5Lm6jdW.gif"
+
   - trigger: ":ok:"
     replace: "👍"
 
@@ -1757,8 +1793,8 @@ matches:
   - trigger: ':bee:'
     replace: "\U0001F41D"
 
-  - trigger: ':bug:'
-    replace: "\U0001F41B"
+  # - trigger: ':bug:'
+  #   replace: "\U0001F41B"
 
   - trigger: ':butterfly:'
     replace: "\U0001F98B"
