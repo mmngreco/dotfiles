@@ -8,42 +8,42 @@ general {
 		color_bad = '#ba5e57'
 }
 
-order += "load"
-order += "cpu_temperature 0"
+/* order += "load" */
+/* order += "cpu_temperature 0" */
 order += "disk /"
-order += "disk /home"
-order += "ethernet enx3c18a054c684"
+/* order += "disk /home" */
+order += "ethernet enp0s31f6"
 order += "wireless wlp0s20f3"
 order += "volume master"
-order += "battery 0"
+/* order += "battery 0" */
 order += "tztime local"
 
 
-load {
-        format = "<span background='#f59335'>  %5min Load </span>"
-}
+/* load { */
+/*         format = "<span background='#f59335'>  %5min Load </span>" */
+/* } */
 
-cpu_temperature 0 {
-        format = "<span background='#bf616a'>   %degrees °C </span>"
-        path = "/sys/class/thermal/thermal_zone0/temp"
-}
+/* cpu_temperature 0 { */
+/*         format = "<span background='#bf616a'>   %degrees °C </span>" */
+/*         path = "/sys/class/thermal/thermal_zone0/temp" */
+/* } */
 
 disk "/" {
         format = "<span background='#fec7cd'>  %free Free </span>"
 }
 
-disk "/home" {
-        format = "<span background='#a1d569'>  %free Free </span>"
-}
+/* disk "/home" { */
+/*         format = "<span background='#a1d569'>  %free Free </span>" */
+/* } */
 
 ethernet enp0s31f6 {
-        format_up = "<span background='#88c0d0'> %ip </span>"
+        format_up = "<span background='#88c0d0'>  %ip </span>"
         format_down = "<span background='#88c0d0'>  Disconnected </span>"
 }
 
 wireless wlp0s20f3 {
         format_up = "<span background='#b48ead'>  %essid </span>"
-        format_down = "<span background='#b48ead'> Disconnected </span>"
+        format_down = "<span background='#b48ead'> Off </span>"
 }
 
 volume master {
@@ -54,20 +54,19 @@ volume master {
         mixer_idx = 0
 }
 
-battery 0 {
-	last_full_capacity = true
-        format = "<span background='#a3be8c'>  %status %percentage </span>"
-        format_down = " No Battery"
-        status_chr = "Charging"
-        status_bat = " Battery"
-        status_unk = "Unknown"
-        status_full = " Charged"
-        path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 10
-}
+/* battery 0 { */
+/* 	last_full_capacity = true */
+/*         format = "<span background='#a3be8c'>  %status %percentage </span>" */
+/*         format_down = " No Battery" */
+/*         status_chr = " Charging" */
+/*         status_bat = " Battery" */
+/*         status_unk = " Unk" */
+/*         status_full = " Charged" */
+/*         path = "/sys/class/power_supply/BAT%d/uevent" */
+/*         low_threshold = 10 */
+/* } */
 
 tztime local {
 		format = "<span background='#81a1c1'> %time </span>"
 		format_time = "  %a %-d %b %H:%M"
 }
-

@@ -3,11 +3,12 @@ set $super Mod4
 set $alt Mod1
 
 # check this with the command: xrandr
+set $monitor_third HDMI-2
 set $monitor_secondary HDMI-1
 set $monitor_main eDP-1
 
 # set font
-font pango:mplus 9
+font pango:mplus 12
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -181,18 +182,33 @@ bindsym $super+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' '
 
 # panel
 bar {
-        colors {
-            background #2f343f
-            statusline #2f343f
-            separator #4b5262
 
-            # colour of border, background, and text
-            focused_workspace       #2f343f #bf616a #d8dee8
-            active_workspace        #2f343f #2f343f #d8dee8
-            inactive_workspace      #2f343f #2f343f #d8dee8
-            urgent_workspacei       #2f343f #ebcb8b #2f343f
+    colors {
+        background #2f343f
+        statusline #2f343f
+        separator #4b5262
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspacei       #2f343f #ebcb8b #2f343f
     }
-        status_command i3status
+
+    font pango:mplus 12
+    position top
+    status_command i3status
+    tray_output primary
+
+    # mode hide
+    # hidden_state hide
+    # modifier Mod1
+
+    output $monitor_main
+    output $monitor_third
+    output $monitor_secondary
+
+    status_command i3status
 }
 
 default_orientation vertical #start in opposite orientation from your monitor
