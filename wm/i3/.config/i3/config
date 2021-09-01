@@ -8,7 +8,7 @@ set $monitor_secondary HDMI-1
 set $monitor_main eDP-1
 
 # set font
-font pango:mplus 12
+font pango:mplus 10
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -32,10 +32,10 @@ bindsym $super+Shift+Return workspace 1; focus; exec xterm
 bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
-bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'mplus:size=8'"
+bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'mplus:size=12'"
 
 # open rofi
-bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 12'
 
 # monitor settings using rofi
 bindsym $super+Ctrl+Shift+m exec rofi-randr
@@ -195,7 +195,7 @@ bar {
         urgent_workspacei       #2f343f #ebcb8b #2f343f
     }
 
-    font pango:mplus 12
+    font pango:mplus 10
     position top
     status_command i3status
     tray_output primary
