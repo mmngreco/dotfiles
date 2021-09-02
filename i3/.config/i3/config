@@ -8,14 +8,14 @@ set $monitor_secondary HDMI-1
 set $monitor_main eDP-1
 
 # set font
-font pango:mplus 10
+font pango:mplus 8
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
 # ============================================================================
 # autostart
-exec --no-startup-id xrandr --output eDP-1 --off --auto
+# exec --no-startup-id xrandr --output eDP-1 --off --auto
 exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
@@ -195,7 +195,7 @@ bar {
         urgent_workspacei       #2f343f #ebcb8b #2f343f
     }
 
-    font pango:mplus 8
+    # font pango:mplus 8
     position top
     tray_output primary
 
@@ -204,8 +204,8 @@ bar {
     # modifier Mod1
 
     output $monitor_main
-    output $monitor_third
     output $monitor_secondary
+    output $monitor_third
 
     status_command i3status
 }
