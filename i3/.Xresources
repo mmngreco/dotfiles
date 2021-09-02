@@ -7,7 +7,7 @@
 ! -----------------------------------------------------------------------------
 !xterm*font: -*-mplus*-*-*-*-14-*-*-*-*-*-iso10646-1
 !xrdb ~/.Xresources
-Xft.dpi: 192
+!Xft.dpi: 192
 XTerm*termName: xterm-256color
 XTerm.VT100.translations: #override \
 Meta <Key> minus: smaller-vt-font() \n\
