@@ -8,7 +8,7 @@ set $monitor_secondary HDMI-1
 set $monitor_main eDP-1
 
 # set font
-font pango:mplus 8
+font pango:mplus 12
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
