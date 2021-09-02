@@ -27,10 +27,13 @@
     ~/.profile: shell/profile
 
     # terminal
-    ~/.Xresources: terminal/Xresources
-    ~/.Xdefaults: terminal/Xdefaults
-    ~/.config/kitty/kitty.conf: terminal/kitty.conf
-    ~/.alacritty.yml: terminal/alacritty.yml
+    ~/.config:
+      path: i3/.config/**
+      glob: true
+    ~/.Xdefaults: i3/.Xdefaults
+    ~/.Xresources: i3/.Xresources
+    ~/.xprofile: i3/.xprofile
+    ~/.xsettingsd: i3/.xsettingsd
 
     # vim
     ~/.config/nvim/init.vim: vim/init.vim
