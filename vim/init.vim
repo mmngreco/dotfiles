@@ -13,6 +13,7 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
+Plug 'tpope/vim-speeddating'
 
 " Plug 'lazytanuki/nvim-mapper'
 Plug 'numtostr/FTerm.nvim'
