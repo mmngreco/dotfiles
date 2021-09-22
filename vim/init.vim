@@ -255,9 +255,6 @@ com! W w
 
 " ==== theprimeagen
 " https://www.youtube.com/watch?v=hSHATqh8svM
-nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(3, "txs\n");require("harpoon.term").gotoTerminal(3)<cr>i
-nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(3, "txw\n");require("harpoon.term").gotoTerminal(3)<cr>i
-
 
 nnoremap <leader>Y y$
 nnoremap n nzzzv

@@ -43,20 +43,16 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  local on_attach = require'completion'.on_attach
+require'lspinstall'.setup()
+local servers = require'lspinstall'.installed_servers()
+local on_attach = require'completion'.on_attach
 
-  for _, server in pairs(servers) do
+for _, server in pairs(servers) do
     require'lspconfig'[server].setup {
         -- on_attach = require'completion'.on_attach,
         capabilities = capabilities,
     }
-  end
 end
-
-setup_servers()
 
 
 -- ===========================================================================

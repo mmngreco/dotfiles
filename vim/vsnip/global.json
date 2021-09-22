@@ -2,7 +2,7 @@
   "Task": {
     "prefix": "task",
     "body": [
-        "${VIM:strftime('%Y-%m-%d')}\t$1\t$2\t$3\t$4\n$0"
+        "${VIM:strftime('%Y-%m-%d')}\t$1\t$2\tmgreco\t$3\n$0"
     ]
   },
   "uuid": {
