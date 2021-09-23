@@ -71,7 +71,7 @@ end
 mmngreco.search_matlab = function()
     require("telescope.builtin").find_files({
         prompt_title = "< matlab toolbox >",
-        cwd = "~/matlab/ets/",
+        cwd = "~/etsgit/COM/matlab/ets/",
         hidden = true,
         no_ignore = true,
     })
