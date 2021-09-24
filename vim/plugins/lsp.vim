@@ -37,15 +37,15 @@ nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 "
 " === compe
 
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <C-l> compe#confirm({ 'keys': '<C-l>', 'select': v:true })
-" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e> compe#close('<C-e>')
-inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
+" inoremap <silent><expr> <C-Space> compe#complete()
+" inoremap <silent><expr> <C-l> compe#confirm({ 'keys': '<C-l>', 'select': v:true })
+" " inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" inoremap <silent><expr> <C-e> compe#close('<C-e>')
+" inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
+" inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
 
 " === vsnip
 " imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 " smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
-highlight link CompeDocumentation NormalFloat
+" highlight link CompeDocumentation NormalFloat

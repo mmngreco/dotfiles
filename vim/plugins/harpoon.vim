@@ -32,7 +32,11 @@ nnoremap <leader>is :lua require("harpoon.term").sendCommand(1, "clab issue ls")
 nnoremap <C-t><C-s> :lua require("harpoon.term").sendCommand(3, "txs\n");require("harpoon.term").gotoTerminal(3)<cr>i
 nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(3, "txw\n");require("harpoon.term").gotoTerminal(3)<cr>i
 
+nnoremap <C-y><C-b> :let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>
+
+# send breakpoint to terminal 4
 nnoremap <C-t><C-b> :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
+# send current line to terminal 4
 nnoremap <C-t><C-l> :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
 
 let g:pytst_cmd='pytest tests -v --ff -p no:warnings --pdb'
