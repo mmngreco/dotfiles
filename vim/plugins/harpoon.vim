@@ -34,9 +34,9 @@ nnoremap <C-t><C-w> :lua require("harpoon.term").sendCommand(3, "txw\n");require
 
 nnoremap <C-y><C-b> :let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>
 
-# send breakpoint to terminal 4
+" send breakpoint to terminal 4
 nnoremap <C-t><C-b> :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
-# send current line to terminal 4
+" send current line to terminal 4
 nnoremap <C-t><C-l> :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
 
 let g:pytst_cmd='pytest tests -v --ff -p no:warnings --pdb'

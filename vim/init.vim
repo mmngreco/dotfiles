@@ -336,7 +336,6 @@ source $DOTFILES/vim/plugins/commentary.vim
 " source $DOTFILES/vim/plugins/fastfold.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/functions.vim
-source $DOTFILES/vim/plugins/git.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
 source $DOTFILES/vim/plugins/jupytext.vim

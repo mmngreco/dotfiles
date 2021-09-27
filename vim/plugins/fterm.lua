@@ -1,4 +1,4 @@
-require('FTerm').setup()
+-- require('FTerm').setup()
 
 local term = require("FTerm.terminal")
 -- local map = vim.api.nvim_set_keymap
