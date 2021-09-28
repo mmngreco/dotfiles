@@ -2,40 +2,25 @@
 local cmp = require'cmp'
 
 cmp.setup({
-snippet = {
-  expand = function(args)
-    vim.fn["vsnip#anonymous"](args.body) -- For vsnip user.
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For vsnip user.
+      end,
+    },
 
-    -- For luasnip user.
-    -- require('luasnip').lsp_expand(args.body)
+    mapping = {
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-l>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<C-l>'] = cmp.mapping.confirm({ select = true }),
+    },
 
-    -- For ultisnips user.
-    -- vim.fn["UltiSnips#Anon"](args.body)
-  end,
-},
-
-mapping = {
-  ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-  ['<C-f>'] = cmp.mapping.scroll_docs(4),
-  ['<C-Space>'] = cmp.mapping.complete(),
-  ['<C-e>'] = cmp.mapping.close(),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }),
-},
-
-sources = {
-  { name = 'nvim_lsp' },
-
-  -- For vsnip user.
-  { name = 'vsnip' },
-
-  -- For luasnip user.
-  -- { name = 'luasnip' },
-
-  -- For ultisnips user.
-  -- { name = 'ultisnips' },
-
-  { name = 'buffer' },
-}
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+      { name = 'buffer' },
+    }
 })
 
 require'lspinstall'.setup()
@@ -43,8 +28,13 @@ require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
     require'lspconfig'[server].setup {
-        on_attach = require'completion'.on_attach,
+        -- on_attach = require'completion'.on_attach,
         capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }
 end
 
+require'lspconfig'.pyright.setup {
+  on_attach = function(client)
+      client.server_capabilities.completionProvider = false
+  end
+}

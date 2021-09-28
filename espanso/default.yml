@@ -8,6 +8,12 @@
 # it gets replaced by the "replace" string.
 
 matches:
+  - trigger: ":pd:"
+    replace: "import pandas as pd\n"
+  - trigger: ":np:"
+    replace: "import numpy as np\n"
+  - trigger: ":mpl:"
+    replace: "from matplotlib import pyplot as plt\n"
 
   # mermaid
   - trigger: ":linestyle:"

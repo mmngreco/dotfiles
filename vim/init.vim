@@ -218,7 +218,7 @@ nnoremap <leader>- :vertical resize -5<CR>
 " maximizes current window
 nnoremap <leader>rp :resize 100<CR>
 
-" add bash dead
+" add bash dead shbang!
 nnoremap <leader>sh :1<cr>O#!/usr/bin/env bash<esc>
 
 " ==== todo list
