@@ -37,6 +37,11 @@ Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-nvim-lua'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-vsnip'
 
 " ==== syntax
 Plug 'cespare/vim-toml'
@@ -103,7 +108,7 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'  " gcc to comment
-Plug 'tpope/vim-dadbod'  " database interface
+" Plug 'tpope/vim-dadbod'  " database interface
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
 Plug 'tpope/vim-rhubarb'  " allow open github urls
 Plug 'tpope/vim-surround'
