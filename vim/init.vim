@@ -54,7 +54,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'mmngreco/slimux'
 Plug 'vim-test/vim-test'
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
@@ -349,7 +349,7 @@ source $DOTFILES/vim/plugins/pydocstring.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
-source $DOTFILES/vim/plugins/test.vim
+" source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/treesitter.vim
 source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
