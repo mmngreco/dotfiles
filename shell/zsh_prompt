@@ -30,7 +30,7 @@ function precmd() {
 
 # robbyrussell
 PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-PROMPT+='%{$fg[magenta]%}(${ETIME:-0}s)%{$reset_color%}'
+PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
 PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"

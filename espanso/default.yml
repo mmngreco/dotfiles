@@ -8,6 +8,9 @@
 # it gets replaced by the "replace" string.
 
 matches:
+  - trigger: ":fold:"
+    replace: "<details><summary>Click to expand</summary>\n\n</details>"
+
   - trigger: ":pd:"
     replace: "import pandas as pd\n"
   - trigger: ":np:"
