@@ -14,7 +14,6 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
 Plug 'tpope/vim-speeddating'
-
 " Plug 'lazytanuki/nvim-mapper'
 Plug 'numtostr/FTerm.nvim'
 
@@ -53,6 +52,7 @@ Plug 'tpope/vim-markdown'
 " ==== thirdparty
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'tyru/open-browser.vim'
+Plug 'joshzcold/DrawIt'
 
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
