@@ -277,16 +277,21 @@ inoremap <Right> <c-g>U<Right>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+"
 
 " moves selected lines down/up
+set wildignorecase
+" bug here!
+"
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
+noremap gV `[v`]
 
-" bug here!
-" inoremap <C-j> <esc>:m .+1<cr>==
-" inoremap <C-k> <esc>:m .-2<cr>==
-" nnoremap <leader>k :m .-2<cr>==
-" nnoremap <leader>j :m .+1<cr>==
+inoremap <C-j> <esc>:m .+1<cr>==
+inoremap <C-k> <esc>:m .-2<cr>==
+
+nnoremap <leader>k :m .-2<cr>==
+nnoremap <leader>j :m .+1<cr>==
 
 nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
@@ -332,35 +337,32 @@ nnoremap <F9> :setl noai nocin nosi inde=<CR>
 nnoremap <F10> :setl ai cin si inde=<CR>
 
 " ==== source plugin conf
-source $DOTFILES/vim/plugins/sets.vim
-source $DOTFILES/vim/plugins/lualine.vim
 " source $DOTFILES/vim/plugins/arduino.vim
 source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
-" source $DOTFILES/vim/plugins/fastfold.vim
+source $DOTFILES/vim/plugins/dbee.vim
+source $DOTFILES/vim/plugins/drawit.vim
+source $DOTFILES/vim/plugins/fterm.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/functions.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
 source $DOTFILES/vim/plugins/jupytext.vim
-" source $DOTFILES/vim/plugins/latex_unicoder.vim
 source $DOTFILES/vim/plugins/lsp.vim
+source $DOTFILES/vim/plugins/lualine.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
+source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
-" source $DOTFILES/vim/plugins/test.vim
-" source $DOTFILES/vim/plugins/treesitter.vim
 source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
-source $DOTFILES/vim/plugins/fterm.vim
 source $DOTFILES/vim/plugins/workspace.vim
-source $DOTFILES/vim/plugins/dbee.vim
 
 " TODO move to functions.vim
 let g:show_hidden_symbols=1
