@@ -52,7 +52,7 @@ Plug 'tpope/vim-markdown'
 " ==== thirdparty
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'tyru/open-browser.vim'
-Plug 'joshzcold/DrawIt'
+Plug 'mmngreco/DrawIt'
 
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
