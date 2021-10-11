@@ -25,7 +25,7 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 # export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-export EDITOR="/usr/bin/nvim"
+export EDITOR="nvim"
 
 export AUTOENV_ENV_FILENAME=".autoenv"
 export AUTOENV_ASSUME_YES=1
