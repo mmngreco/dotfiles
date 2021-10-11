@@ -34,7 +34,7 @@ matches:
         params:
           format: "## %A %Y-%m-%d"
 
-  - trigger: ":ddate"
+  - trigger: ":ddate:"
     replace: "{{mydate}}"
     vars:
       - name: mydate
@@ -42,7 +42,7 @@ matches:
         params:
           format: "%A %Y-%m-%d"
 
-  - trigger: ":date"
+  - trigger: ":date:"
     replace: "{{mydate}}"
     vars:
       - name: mydate
@@ -59,7 +59,7 @@ matches:
   - trigger: ":calle:"
     replace: "Calle Benigno Granizo, 45, BJO, B"
 
-  - trigger: ":sshcom"
+  - trigger: ":sshcom:"
     replace: "sshpass -p {{pass}} ssh mgreco@etstea10\nclear\n"
     vars:
       - name: pass
