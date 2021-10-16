@@ -1,3 +1,15 @@
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -28,14 +40,14 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " ==== telescope extensions
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'fannheyward/telescope-coc.nvim'
+" Plug 'fannheyward/telescope-coc.nvim'
 
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
-Plug 'tjdevries/nlua.nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'glepnir/lspsaga.nvim'
+" Plug 'tjdevries/nlua.nvim'
+" Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
-" Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
@@ -47,7 +59,7 @@ Plug 'cespare/vim-toml'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-markdown'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
-" Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim'
 
 " ==== thirdparty
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
@@ -122,7 +134,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'haorenW1025/completion-nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " Plug 'nvim-treesitter/completion-treesitter'
 Plug 'nvie/vim-flake8'
 Plug 'tweekmonster/impsort.vim'  " color and sort imports
@@ -151,7 +163,7 @@ if &diff
 endif
 
 filetype plugin indent on  " Enable file type based indentation.
-" filetype plugin on
+filetype plugin on
 
 let loaded_matchparen = 1  " allow usage of local vimrc in projects
 let mapleader = " "
@@ -184,6 +196,11 @@ fun! ColorMyPencils()
     hi SignColumn guibg=none
     hi CursorLineNR guibg=None
     highlight Normal guibg=none
+
+    highlight CursorLine term=bold cterm=bold guibg=Grey40
+    highlight NonText ctermbg=none
+    highlight Normal  ctermbg=none
+
     " highlight LineNr guifg=#ff8659
     " highlight LineNr guifg=#aed75f
     highlight LineNr guifg=#5eacd3
@@ -197,11 +214,9 @@ call ColorMyPencils()
 nnoremap <leader>vwm :call ColorMyPencils()<CR>
 nnoremap <leader>vwb :let g:my_colorscheme =
 
-" nnoremap <C-w> :wa<cr>
 nnoremap <leader>q :wqa<cr>
 
-" title underline
-nnoremap <leader>tu <esc>VypVr-
+nnoremap <leader>tu <esc>Vypv$r-
 
 " edit ini.vim
 nnoremap <leader>vrc :tabedit ~/.config/nvim/init.vim<CR>
@@ -219,7 +234,7 @@ nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>rp :resize 100<CR>
 
 " add bash dead shbang!
-nnoremap <leader>sh :1<cr>O#!/usr/bin/env bash<esc>
+nnoremap <leader>sh :1<cr>O#!/usr/bin/env bash<esc><C-o>
 
 " ==== todo list
 command! Gtodo noautocmd vimgrep /TODO\|FIXME\|!!!\|???\|NOBUG\|HACK\|IDEA\|TODOC\|BUG\|XXX/j **/*.{py,md,txt} | cw
@@ -237,13 +252,14 @@ nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
 " explore with netrw
-nnoremap <leader>pv :Ex<CR>
+nnoremap <leader>pv :Ex %:h<CR>
 
 " snippets in pure vim
+"
 " nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 " nnoremap <Leader>cpu a%" PRIu64 "<esc>
 nnoremap <leader>dow :put =strftime(\"## %A %Y-%m-%d\")<cr><esc>j
-nnoremap <leader>dt :put =strftime(\"%Y-%m-%d\ttt\tww\tbb\tcc\")<cr><esc>
+nnoremap <leader>ddt :put =strftime(\"%Y-%m-%d\ttt\tww\tbb\tcc\")<cr><esc>
 
 " yank/paste
 nnoremap <leader>y "+y
@@ -252,16 +268,17 @@ nnoremap <leader>p "+p
 " paste last copied/yanked
 nnoremap <leader>pl "0p
 vnoremap <leader>p "_dP
+nnoremap <leader>Y y$
 nnoremap <leader>YY gg"+yG
 " yank current file's path
 nnoremap <leader>yp :let @+ = expand("%:p")<cr>
 
+" common typo
 com! W w
 
 " ==== theprimeagen
 " https://www.youtube.com/watch?v=hSHATqh8svM
 
-nnoremap <leader>Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
@@ -274,41 +291,37 @@ inoremap ? ?<c-g>u
 inoremap <Left> <c-g>U<Left>
 inoremap <Right> <c-g>U<Right>
 
+" smart replace
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-"
 
 " moves selected lines down/up
 set wildignorecase
-" bug here!
-"
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" select previous selection
 noremap gV `[v`]
 
-inoremap <C-j> <esc>:m .+1<cr>==
-inoremap <C-k> <esc>:m .-2<cr>==
+" https://vi.stackexchange.com/a/14683
+inoremap <c-k> <esc>:.m-2 \| startinsert<cr>
+inoremap <c-j> <esc>:.m+1 \| startinsert<cr>
 
 nnoremap <leader>k :m .-2<cr>==
 nnoremap <leader>j :m .+1<cr>==
 
+
+nnoremap <leader>cn :cnext<cr>
+nnoremap <leader>cp :cprev<cr>
 nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
 nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
 nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
-nnoremap <leader>cn :cnext<cr>
-nnoremap <leader>cp :cprev<cr>
 
-" scrum get date from title
-nnoremap <leader>nt ?##<cr>yy<C-o>pj2dwA
 
+" sort numerically according 2nd column
+nnoremap <leader>sn :'<,'>!sort -n -k 2
 " Sort lines in alphabetical order
 vnoremap <leader>s :'<,'>!sort -f<cr>
-nnoremap <leader>f :StripWhitespace<cr>
-
-highlight CursorLine term=bold cterm=bold guibg=Grey40
-highlight NonText ctermbg=none
-highlight Normal  ctermbg=none
 
 augroup highlight_yank
     autocmd!
@@ -319,18 +332,24 @@ augroup mmngreco
     autocmd!
     " unfold by default
     autocmd BufRead * normal zR
+    " removes spaces at the end of a line
     autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs,*.py :lua require'lsp_extensions'.inlay_hints{}
+    " autocmd BufEnter,BufWinEnter,TabEnter *.rs,*.py :lua require'lsp_extensions'.inlay_hints{}
     autocmd FileType markdown setl conceallevel=2 spl=en,es
     " makefiles indentation
     autocmd FileType make setl noexpandtab shiftwidth=8 softtabstop=0
+
+    " ==== black
+    " https://github.com/psf/black/issues/1293#issuecomment-623237094
+    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
+    autocmd FileType python vnoremap <buffer> <F8> :silent !black -l79 -c '<,'><CR><CR>
+
+    " remove numbers from terminal buffer
+    autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
 
-" ==== black
-" https://github.com/psf/black/issues/1293#issuecomment-623237094
-au FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-au FileType python vnoremap <buffer> <F8> :silent !black -l79 -c '<,'><CR><CR>
+
 
 " ==== indents
 nnoremap <F9> :setl noai nocin nosi inde=<CR>
@@ -381,4 +400,12 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
-autocmd TermOpen * setlocal nonumber norelativenumber
+
+
+:lua require'lspsaga'.init_lsp_saga()
+nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
