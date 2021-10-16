@@ -23,23 +23,28 @@ cmp.setup({
     }
 })
 
-local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+
+-- LspInstall side
 require'lspinstall'.setup()
-require'lspconfig'.pylsp.setup{
-    capabilities = capabilities,
-}
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+    require'lspconfig'[server].setup {
+        -- on_attach = require'completion'.on_attach,
+        capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    }
+end
+
+-- manual installations
+local function on_attach()
+end
+local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+
+-- require'lspconfig'.pyls.setup{ on_attach=on_attach }
+require'lspconfig'.pylsp.setup{ capabilities = capabilities, on_attach=on_attach, }
+require'lspconfig'.vimls.setup{}
 require'lspconfig'.bash.setup{}
-
--- local servers = require'lspinstall'.installed_servers()
--- for _, server in pairs(servers) do
---     require'lspconfig'[server].setup {
---         -- on_attach = require'completion'.on_attach,
---         capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
---     }
--- end
-
-require'lspconfig'.pyright.setup {
-  on_attach = function(client)
-      client.server_capabilities.completionProvider = false
-  end
+require'lspconfig'.clangd.setup {
+    on_attach = on_attach,
+    root_dir = function() return vim.loop.cwd() end
 }
+-- require'lspconfig'.pyright.setup {}

@@ -1,3 +1,6 @@
+:lua require'nvim-web-devicons'.setup()
+:lua require 'nvim-tree'.setup()
+
 " https://github.com/mhinz/neovim-remote
 let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 40 "30 by default

@@ -25,10 +25,7 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-Plug 'tpope/vim-speeddating'
-" Plug 'lazytanuki/nvim-mapper'
 Plug 'numtostr/FTerm.nvim'
-
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'pangloss/vim-javascript'
@@ -38,9 +35,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'simrat39/symbols-outline.nvim'
 " ==== telescope extensions
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-" Plug 'fannheyward/telescope-coc.nvim'
 
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
@@ -60,6 +57,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-markdown'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
 Plug 'chrisbra/csv.vim'
+Plug 'dhruvasagar/vim-table-mode'
 
 " ==== thirdparty
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
@@ -70,8 +68,10 @@ Plug 'mmngreco/DrawIt'
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 Plug 'chrisbra/unicode.vim'
 Plug 'mmngreco/slimux'
+
 Plug 'vim-test/vim-test'
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+"
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
@@ -79,11 +79,9 @@ Plug 'chriskempson/base16-vim'
 Plug 'mileszs/ack.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
-" Plug 'kristijanhusak/vim-dadbod-ui'
 " Plug 'szymonmaszke/vimpyter' "vim-plug needs pip install notedown
 " Plug 'christoomey/vim-tmux-navigator'
-" Plug 'stevearc/vim-rduino', { 'for': 'ino' }
-" Plug 'dhruvasagar/vim-table-mode'
+" Plug 'stevearc/vim-arduino', { 'for': 'ino' }
 " Plug 'jreybert/vimagit'  " git manager
 " Plug 'blindFS/vim-taskwarrior'
 " Plug 'lervag/vimtex'
@@ -118,9 +116,11 @@ Plug 'mhinz/vim-startify'
 
 " ==== effective programming
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'  " gcc to comment
 " Plug 'tpope/vim-dadbod'  " database interface
+" Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
 Plug 'tpope/vim-rhubarb'  " allow open github urls
 Plug 'tpope/vim-surround'
@@ -216,6 +216,7 @@ nnoremap <leader>vwb :let g:my_colorscheme =
 
 nnoremap <leader>q :wqa<cr>
 
+" underline
 nnoremap <leader>tu <esc>Vypv$r-
 
 " edit ini.vim
@@ -270,8 +271,18 @@ nnoremap <leader>pl "0p
 vnoremap <leader>p "_dP
 nnoremap <leader>Y y$
 nnoremap <leader>YY gg"+yG
+
+" nnoremap <leader>d "_d
+" vnoremap <leader>d "_d
 " yank current file's path
 nnoremap <leader>yp :let @+ = expand("%:p")<cr>
+
+fun! EmptyRegisters()
+    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+    for r in regs
+        call setreg(r, [])
+    endfor
+endfun
 
 " common typo
 com! W w
@@ -309,7 +320,6 @@ inoremap <c-j> <esc>:.m+1 \| startinsert<cr>
 
 nnoremap <leader>k :m .-2<cr>==
 nnoremap <leader>j :m .+1<cr>==
-
 
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprev<cr>
@@ -400,12 +410,3 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
-
-
-:lua require'lspsaga'.init_lsp_saga()
-nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-nnoremap <silent> gh :Lspsaga lsp_finder<CR>
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
