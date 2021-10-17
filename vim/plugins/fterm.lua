@@ -4,7 +4,7 @@ local term = require("FTerm.terminal")
 -- local map = vim.api.nvim_set_keymap
 -- local opts = { noremap = true, silent = true }
 local pip_install = term:new():setup({
-    cmd = 'pip install "python-lsp-server[all]" neovim',
+    cmd = 'pip install "python-lsp-server[all]" pynvim',
     dimensions = {
         height = 0.8,
         width = 0.8
