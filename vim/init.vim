@@ -6,6 +6,7 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
 set wildignore+=**/node_modules/*
+set wildignore+=**/.venv/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
@@ -20,24 +21,23 @@ call plug#begin()
 
 " mmngreco
 Plug 'mmngreco/dbee.nvim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-Plug 'numtostr/FTerm.nvim'
+
 " ==== javascript
 Plug 'gko/vim-coloresque'
-Plug 'pangloss/vim-javascript'
+Plug 'mattn/emmet-vim'
+" Plug 'pangloss/vim-javascript'
 
 " ==== telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'simrat39/symbols-outline.nvim'
-" ==== telescope extensions
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
@@ -52,6 +52,7 @@ Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-vsnip'
 
 " ==== syntax
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'cespare/vim-toml'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-markdown'
@@ -60,6 +61,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
 
 " ==== thirdparty
+Plug 'numtostr/FTerm.nvim'
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'tyru/open-browser.vim'
 Plug 'mmngreco/DrawIt'
@@ -76,7 +78,7 @@ Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
 Plug 'chriskempson/base16-vim'
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 " Plug 'szymonmaszke/vimpyter' "vim-plug needs pip install notedown
@@ -91,9 +93,9 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'ThePrimeagen/harpoon'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
-Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
+" Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
 Plug 'majutsushi/tagbar'
-Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Plug 'ervandew/supertab'
     " Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
@@ -110,8 +112,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sainnhe/gruvbox-material'
-Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
 Plug 'mhinz/vim-startify'
+" Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
 " Plug 'ryanoasis/vim-devicons'
 
 " ==== effective programming
@@ -133,11 +135,12 @@ Plug 'thaerkh/vim-workspace'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
-Plug 'haorenW1025/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug 'romgrk/nvim-treesitter-context'
+" Plug 'haorenW1025/completion-nvim'
 " Plug 'nvim-treesitter/completion-treesitter'
-Plug 'nvie/vim-flake8'
-Plug 'tweekmonster/impsort.vim'  " color and sort imports
+" Plug 'nvie/vim-flake8'
+" Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
 " Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
 " Plug 'vim-scripts/VisIncr'
@@ -162,8 +165,8 @@ if &diff
     syntax off
 endif
 
-filetype plugin indent on  " Enable file type based indentation.
-filetype plugin on
+" filetype plugin indent on  " Enable file type based indentation.
+" filetype plugin on
 
 let loaded_matchparen = 1  " allow usage of local vimrc in projects
 let mapleader = " "
@@ -341,7 +344,7 @@ augroup END
 augroup mmngreco
     autocmd!
     " unfold by default
-    autocmd BufRead * normal zR
+    " autocmd BufRead * normal zR
     " removes spaces at the end of a line
     autocmd BufWritePre * %s/\s\+$//e
     " autocmd BufEnter,BufWinEnter,TabEnter *.rs,*.py :lua require'lsp_extensions'.inlay_hints{}
@@ -362,11 +365,12 @@ augroup END
 
 
 " ==== indents
-nnoremap <F9> :setl noai nocin nosi inde=<CR>
-nnoremap <F10> :setl ai cin si inde=<CR>
+" nnoremap <F9> :setl noai nocin nosi inde=<CR>
+" nnoremap <F10> :setl ai cin si inde=<CR>
 
 " ==== source plugin conf
 " source $DOTFILES/vim/plugins/arduino.vim
+source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
@@ -379,13 +383,12 @@ source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
 source $DOTFILES/vim/plugins/jupytext.vim
 source $DOTFILES/vim/plugins/lsp.vim
-source $DOTFILES/vim/plugins/lualine.vim
+" source $DOTFILES/vim/plugins/lualine.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/netrw.vim
-source $DOTFILES/vim/plugins/nvim-tree.vim
+" source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
-source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
@@ -410,3 +413,7 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+let g:user_emmet_settings = {
+            \ 'svelte' : { 'extends' : 'html', },
+            \}

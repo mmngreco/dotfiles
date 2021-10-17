@@ -10,7 +10,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-set nu
+set number
 set nowrap
 set noswapfile
 set nobackup
@@ -27,7 +27,7 @@ set isfname+=@-@
 set cmdheight=1
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set timeoutlen=300
+set timeoutlen=200
 set updatetime=50
 
 set colorcolumn=80
