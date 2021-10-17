@@ -361,13 +361,6 @@ augroup mmngreco
     autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
-
-
-
-" ==== indents
-" nnoremap <F9> :setl noai nocin nosi inde=<CR>
-" nnoremap <F10> :setl ai cin si inde=<CR>
-
 " ==== source plugin conf
 " source $DOTFILES/vim/plugins/arduino.vim
 source $DOTFILES/vim/plugins/sets.vim
@@ -390,24 +383,11 @@ source $DOTFILES/vim/plugins/netrw.vim
 " source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
 source $DOTFILES/vim/plugins/slimux.vim
-source $DOTFILES/vim/plugins/tagbar.vim
+" source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
-
-" TODO move to functions.vim
-let g:show_hidden_symbols=1
-function! ShowHidenSymbols()
-    if g:show_hidden_symbols
-        set listchars=tab:▸\ ,eol:¬,space:·
-        let g:show_hidden_symbols=0
-    else
-        set listchars=tab:>\ ,trail:-,nbsp:+
-        let g:show_hidden_symbols=1
-    endif
-endfunction
-
 
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
@@ -417,3 +397,5 @@ lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlig
 let g:user_emmet_settings = {
             \ 'svelte' : { 'extends' : 'html', },
             \}
+
+nnoremap <c-t> :SymbolsOutline<cr>

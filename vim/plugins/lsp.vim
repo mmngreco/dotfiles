@@ -5,7 +5,7 @@ set completeopt=menuone,noinsert,noselect
 
 lua <<EOF
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -45,7 +45,7 @@ require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
     require'lspconfig'[server].setup {
-        -- on_attach = require'completion'.on_attach,
+        on_attach = on_attach,
         capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }
 end
@@ -56,28 +56,31 @@ local function config(_config)
     }, _config or {})
 end
 
-require'lspconfig'.jedi_language_server.setup{
+require'lspconfig'.jedi_language_server.setup({
     on_attach=on_attach,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-}
-
--- require'lspconfig'.pylsp.setup{config()}
+})
+-- require'lspconfig'.pylsp.setup({
+--     on_attach=on_attach,
+--     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+-- })
 -- require'lspconfig'.pyls.setup{ on_attach=py_on_attach }
 -- require'lspconfig'.jedi_language_server.setup{ on_attach=py_on_attach, }
-require'lspconfig'.vimls.setup{ on_attach=on_attach, }
-require'lspconfig'.bash.setup{ on_attach=on_attach, }
-require'lspconfig'.clangd.setup {
+require'lspconfig'.vimls.setup({ on_attach=on_attach, })
+require'lspconfig'.bash.setup({ on_attach=on_attach, })
+require'lspconfig'.clangd.setup({
     on_attach = on_attach,
     root_dir = function() return vim.loop.cwd() end
-}
+})
 -- require'lspconfig'.pyright.setup {}
-require'lspsaga'.init_lsp_saga()
+-- require'lspsaga'.init_lsp_saga()
+
 EOF
 
 
 nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap gr <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap gh <cmd>Lspsaga lsp_finder<CR>
+" nnoremap gh <cmd>Lspsaga lsp_finder<CR>
 " nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 " nnoremap <leader>ca :Lspsaga code_action<CR>
 " vnoremap <leader>ca :<C-U>Lspsaga range_code_action<CR>
@@ -97,4 +100,3 @@ nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>sd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
-
