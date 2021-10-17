@@ -136,10 +136,10 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvie/vim-flake8'
 " Plug 'romgrk/nvim-treesitter-context'
 " Plug 'haorenW1025/completion-nvim'
 " Plug 'nvim-treesitter/completion-treesitter'
-" Plug 'nvie/vim-flake8'
 " Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
 " Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
