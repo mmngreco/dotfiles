@@ -49,4 +49,11 @@ nnoremap <leader>tst :lua require("harpoon.term").sendCommand(4, vim.g['pytst_cm
 " TODO wip:
 " vnoremap <C-t><C-e> Ay<cr>:let g:_cmd = getreg("A")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
 " nnoremap <leader>tst :lua require("harpoon.term").sendCommand(1, 'pytest tests -x --pdb\n')<cr>
+" nnoremap <leader>pip :lua require("harpoon.term").sendCommand(6, 'pip install "python-lsp-server[all]" neovim\n')<cr>
 
+" nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
+" nnoremap <C-m> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+" nnoremap <C-y> :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
+
+nnoremap <leader>cu :lua require("harpoon.term").sendCommand(1, 1)<CR>
+nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
