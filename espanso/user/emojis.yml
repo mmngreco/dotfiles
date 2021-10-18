@@ -3944,8 +3944,8 @@ matches:
   - trigger: ':schedule:'
     replace: "\U0001F4C6"
 
-  - trigger: ':date:'
-    replace: "\U0001F4C5"
+  # - trigger: ':date:'
+  #   replace: "\U0001F4C5"
 
   - trigger: ':card index:'
     replace: "\U0001F4C7"

@@ -46,6 +46,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'cespare/vim-toml'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-markdown'
+Plug 'chazmcgarvey/vim-mermaid'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
 " Plug 'chrisbra/csv.vim'
 

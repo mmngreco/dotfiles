@@ -44,6 +44,7 @@ matches:
 
   - trigger: ":date:"
     replace: "{{mydate}}"
+    force_clipboard: true
     vars:
       - name: mydate
         type: date

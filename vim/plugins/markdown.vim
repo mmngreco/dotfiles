@@ -19,5 +19,5 @@ let g:mkdp_page_title = "${name}"
 " let g:pandoc#syntax#conceal#urls = 1
 
 " ==== tpope/markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql', 'mermaid']
 let g:markdown_minlines = 50
