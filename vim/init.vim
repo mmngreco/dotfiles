@@ -118,6 +118,7 @@ Plug 'mhinz/vim-startify'
 " Plug 'ryanoasis/vim-devicons'
 
 " ==== effective programming
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
@@ -138,10 +139,10 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvie/vim-flake8'
+Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'romgrk/nvim-treesitter-context'
 " Plug 'haorenW1025/completion-nvim'
 " Plug 'nvim-treesitter/completion-treesitter'
-" Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
 " Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
 " Plug 'vim-scripts/VisIncr'
@@ -399,4 +400,5 @@ let g:user_emmet_settings = {
             \ 'svelte' : { 'extends' : 'html', },
             \}
 
-nnoremap <c-t> :SymbolsOutline<cr>
+nnoremap <c-s> :SymbolsOutline<cr>
+nnoremap <c-t> :Tagbar<cr>

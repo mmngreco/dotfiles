@@ -52,18 +52,13 @@ end
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+        on_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }, _config or {})
 end
 
-require'lspconfig'.jedi_language_server.setup({
-    on_attach=on_attach,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-})
--- require'lspconfig'.pylsp.setup({
---     on_attach=on_attach,
---     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
--- })
+-- require'lspconfig'.jedi_language_server.setup(config())
+require'lspconfig'.pylsp.setup(config())
 -- require'lspconfig'.pyls.setup{ on_attach=py_on_attach }
 -- require'lspconfig'.jedi_language_server.setup{ on_attach=py_on_attach, }
 require'lspconfig'.vimls.setup({ on_attach=on_attach, })
