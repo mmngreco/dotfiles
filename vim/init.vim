@@ -402,3 +402,8 @@ let g:user_emmet_settings = {
 
 nnoremap <c-s> :SymbolsOutline<cr>
 nnoremap <c-t> :Tagbar<cr>
+
+command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
+nnoremap <leader>ts :Space2Tab<cr>
+vnoremap <leader>ts :Space2Tab<cr>
+
