@@ -11,6 +11,8 @@ set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
+" set mouse=nv
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -122,6 +124,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'  " gcc to comment
 " Plug 'tpope/vim-dadbod'  " database interface
 " Plug 'kristijanhusak/vim-dadbod-ui'
