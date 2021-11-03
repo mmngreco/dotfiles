@@ -27,7 +27,7 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-
+Plug 'AndrewRadev/diffurcate.vim'
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'

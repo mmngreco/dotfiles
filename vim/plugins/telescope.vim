@@ -31,3 +31,4 @@ nnoremap <leader>dot :lua require('telescope').mmngreco.search_dotfiles()<CR>
 nnoremap <leader>fg :lua require('telescope').mmngreco.no_preview()<CR>
 " mat files
 nnoremap <leader>mat :lua require('telescope').mmngreco.search_matlab()<CR>
+nnoremap <leader>gwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
