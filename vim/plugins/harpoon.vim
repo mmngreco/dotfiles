@@ -1,31 +1,30 @@
 " ==== harpoon
-nnoremap <leader>1 :lua require("harpoon.ui").nav_file(1)<cr>
-nnoremap <leader>2 :lua require("harpoon.ui").nav_file(2)<cr>
-nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<cr>
-nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<cr>
-nnoremap <leader>5 :lua require("harpoon.ui").nav_file(5)<cr>
+" asdf jkl;
+nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<cr>
+nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<cr>
+nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<cr>
+nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<cr>
+nnoremap <C-;> :lua require("harpoon.ui").nav_file(5)<cr>
 
-" nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<cr>
-" nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<cr>
-" nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<cr>
-" nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<cr>
-" nnoremap <C-;> :lua require("harpoon.ui").nav_file(5)<cr>
+nnoremap <C-h><C-h> :lua require("harpoon.term").gotoTerminal(1)<cr>i
+nnoremap <C-j><C-j> :lua require("harpoon.term").gotoTerminal(2)<cr>i
+nnoremap <C-k><C-k> :lua require("harpoon.term").gotoTerminal(3)<cr>i
+nnoremap <C-l><C-l> :lua require("harpoon.term").gotoTerminal(4)<cr>i
 
-nnoremap <leader>11 :lua require("harpoon.term").gotoTerminal(1)<cr>
-nnoremap <leader>22 :lua require("harpoon.term").gotoTerminal(2)<cr>
-nnoremap <leader>33 :lua require("harpoon.term").gotoTerminal(3)<cr>
-nnoremap <leader>44 :lua require("harpoon.term").gotoTerminal(4)<cr>
-nnoremap <leader>55 :lua require("harpoon.term").gotoTerminal(5)<cr>
-nnoremap <C-5> :lua require("harpoon.term").gotoTerminal(5)<cr>
+" make it repeatable
+" https://github.com/tpope/vim-repeat/issues/55
+nnoremap <silent> <Plug>SendToHarpoon1 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon1", v:count)<cr>
+nmap <leader>l6  <Plug>SendToHarpoon1
+nnoremap <silent> <Plug>SendToHarpoon2 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(2, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon2", v:count)<cr>
+nmap <leader>l7  <Plug>SendToHarpoon2
+nnoremap <silent> <Plug>SendToHarpoon3 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(3, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon3", v:count)<cr>
+nmap <leader>l8  <Plug>SendToHarpoon3
+nnoremap <silent> <Plug>SendToHarpoon4 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr> \ call repeat#set("\<Plug>SendToHarpoon4", v:count)<cr>
+nmap <leader>l9  <Plug>SendToHarpoon
 
-" nnoremap <C-a> :lua require("harpoon.term").gotoTerminal(1)<cr>
-" nnoremap <C-s> :lua require("harpoon.term").gotoTerminal(2)<cr>
-" nnoremap <C-d> :lua require("harpoon.term").gotoTerminal(3)<cr>
-" nnoremap <C-f> :lua require("harpoon.term").gotoTerminal(4)<cr>
-" nnoremap <C-g> :lua require("harpoon.term").gotoTerminal(5)<cr>
 
-nnoremap <leader>hh :lua require("harpoon.mark").add_file()<cr>
-nnoremap <leader>hm :lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>hh :lua require("harpoon.ui").toggle_quick_menu()<cr>
 
 nnoremap <leader>is :lua require("harpoon.term").sendCommand(1, "clab issue ls")<cr>
 
@@ -39,40 +38,8 @@ nnoremap <C-t><C-b> :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n"
 " send current line to terminal 4
 nnoremap <C-t><C-l> :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
 
-" make it repeatable
-" https://github.com/tpope/vim-repeat/issues/55
-nnoremap <silent> <Plug>SendToHarpoon5 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(5, vim.g['_cmd'])<cr> \ call repeat#set("\<Plug>SendToHarpoon5", v:count)<cr>
-nmap <leader>l5  <Plug>SendToHarpoon5
-nnoremap <silent> <Plug>SendToHarpoon4 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr> \ call repeat#set("\<Plug>SendToHarpoon4", v:count)<cr>
-nmap <leader>l4  <Plug>SendToHarpoon
-nnoremap <silent> <Plug>SendToHarpoon3 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(3, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon3", v:count)<cr>
-nmap <leader>l3  <Plug>SendToHarpoon3
-nnoremap <silent> <Plug>SendToHarpoon2 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(2, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon2", v:count)<cr>
-nmap <leader>l2  <Plug>SendToHarpoon2
-nnoremap <silent> <Plug>SendToHarpoon1 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon1", v:count)<cr>
-nmap <leader>l1  <Plug>SendToHarpoon1
 
-" nnoremap <leader>l1 :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr>
-" nnoremap <leader>l2 :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(2, vim.g['_cmd'])<cr>
-" nnoremap <leader>l3 :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(3, vim.g['_cmd'])<cr>
-" nnoremap <leader>l4 :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
-" nnoremap <leader>l5 :let g:_cmd = (trim(getline('.')) . "\n")<CR>:lua require("harpoon.term").sendCommand(5, vim.g['_cmd'])<cr>
-
-let g:pytst_cmd='pytest tests -v --ff -p no:warnings --pdb'
+" let g:pytst_cmd='pytest tests -v --ff -p no:warnings --pdb'
 " nnoremap <C-t><C-l> :let @b=''<CR>?\s*def \w.*(<CR>w"byw<CR>:let g:_cmd=join([pytst_cmd, "-k", getreg('b'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
-nnoremap <C-t><C-f> :let g:_cmd=join(["pytest -v -p no:warnings", expand('%:s'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>
-nnoremap <leader>tst :lua require("harpoon.term").sendCommand(4, vim.g['pytst_cmd'] .. "\n");require("harpoon.term").gotoTerminal(4)<cr>
-
-" nnoremap <C-t><C-a> :lua require('harpoon.term').gotoTerminal(4)<CR>:lua require('harpoon.term').sendCommand(4, 'pytest test')i<cr>
-" tmux send-keys -t \"0:1.2\" \"pytest\" C-p Enter
-" TODO wip:
-" vnoremap <C-t><C-e> Ay<cr>:let g:_cmd = getreg("A")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>i
-" nnoremap <leader>tst :lua require("harpoon.term").sendCommand(1, 'pytest tests -x --pdb\n')<cr>
-" nnoremap <leader>pip :lua require("harpoon.term").sendCommand(6, 'pip install "python-lsp-server[all]" neovim\n')<cr>
-
-nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
-" nnoremap <C-m> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-" nnoremap <C-y> :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
-
-" nnoremap <leader>cu :lua require("harpoon.term").sendCommand(1, 1)<CR>
-" nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
+" nnoremap <C-t><C-f> :let g:_cmd=join(["pytest -v -p no:warnings", expand('%:s'), "\n"], " ")<cr>:lua require('harpoon.term').sendCommand(4, vim.g["_cmd"]); require('harpoon.term').gotoTerminal(4)<cr>
+" nnoremap <leader>tst :lua require("harpoon.term").sendCommand(4, vim.g['pytst_cmd'] .. "\n");require("harpoon.term").gotoTerminal(4)<cr>

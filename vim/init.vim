@@ -390,6 +390,7 @@ source $DOTFILES/vim/plugins/pydocstring.vim
 source $DOTFILES/vim/plugins/slimux.vim
 " source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
+source $DOTFILES/vim/plugins/test.vim
 source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
@@ -407,6 +408,6 @@ nnoremap <c-s> :SymbolsOutline<cr>
 nnoremap <c-t> :Tagbar<cr>
 
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
-nnoremap <leader>ts :Space2Tab<cr>
-vnoremap <leader>ts :Space2Tab<cr>
+" nnoremap <leader>st :Space2Tab<cr>
+" vnoremap <leader>st :Space2Tab<cr>
 
