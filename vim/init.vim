@@ -156,6 +156,7 @@ Plug 'tweekmonster/impsort.vim'  " color and sort imports
 "
 " ==== debugger plugins
 Plug 'puremourning/vimspector'
+Plug 'sagi-z/vimspectorpy', { 'do': { -> vimspectorpy#update() } }
 Plug 'szw/vim-maximizer'
 Plug 'johngrib/vim-game-code-break'
 

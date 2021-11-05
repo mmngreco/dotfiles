@@ -81,7 +81,6 @@ function! Latexize()
    :silent !pdflatex ./report.tex --output-directory=./tmp
    :redraw!
 endfunction
-" command Latexize_small execute 'silent !pdflatex ./report.tex --output-directory=./tmp'
 
 " ==== show maps
 " https://stackoverflow.com/questions/24842063/how-to-search-in-the-vim-mapping-listing
@@ -105,47 +104,7 @@ function! s:ShowMaps()
 endfunction
 
 com! ShowMaps call s:ShowMaps()      " Enable :ShowMaps to call the function
-nnoremap \m :ShowMaps<CR>            " Map keys to call the function
-
-" ==== gitlab
-function! YankCurrentFileInGitLab()
-  let gitlab_domain = "https://" . $GITLAB_ETS_URI
-  " example of url
-  " https://xxxx.xxx.es/ggg/pppp/-/blob/master/pppp/file.py#L15-17
-  let file_dir = expand('%:h')
-  let git_root = system('cd ' . file_dir . '; git rev-parse --show-toplevel | tr -d "\n"')
-  let file_path = substitute(expand('%:p'), git_root . '/', '', '')
-
-  " Take into account that file could came from another repo
-  let branch = system('cd ' . file_dir . ';git rev-parse HEAD | tr -d "\n"')
-  let git_remote = system('cd ' . file_dir . '; git remote get-url origin')
-  let repo_path = matchlist(git_remote, ':\(.*\)\.')[1]
-  let url = gitlab_domain . '/' . repo_path . '/-/blob/' . branch . '/' . file_path
-  let url .= '#L' . line('.')
-  let @+ = url
-endfunction
-
-noremap <C-g> :call YankCurrentFileInGitLab()<cr>
-vnoremap <C-g> :<c-u>call YankCurrentFileInGitLab()<cr>
-
-function! OpenCurrentFileInGitLab()
-  let gitlab_domain = "https://" . $GITLAB_ETS_URI
-  " example of url
-  " https://host/Group/project/-/blob/commit-id/project/file.py#L15-17
-  let file_dir = expand('%:h')
-  let git_root = system('cd ' . file_dir . '; git rev-parse --show-toplevel | tr -d "\n"')
-  let file_path = substitute(expand('%:p'), git_root . '/', '', '')
-
-  " Take into account that file could came from another repo
-  let branch = system('cd ' . file_dir . ';git symbolic-ref --short -q HEAD | tr -d "\n"')
-  let git_remote = system('cd ' . file_dir . '; git remote get-url origin')
-  let repo_path = matchlist(git_remote, ':\(.*\)\.')[1]
-  let url = gitlab_domain . '/' . repo_path . '/-/blob/' . branch . '/' . file_path
-  let url .= '#L' . line('.')
-  call system('xdg-open ' . url)
-endfunction
-noremap <C-g><C-b> :call OpenCurrentFileInGitLab()<cr>
-vnoremap <C-g><C-b> :<c-u>call OpenCurrentFileInGitLab()<cr>
+nnoremap \\ :ShowMaps<CR>            " Map keys to call the function
 
 nnoremap <leader>c :call ToggleColumnWidth()<cr>
 let g:wide_column = 0
@@ -155,8 +114,8 @@ function! ToggleColumnWidth()
         set colorcolumn=79
         let g:wide_column = 0
     else
-        set textwidth=110
-        set colorcolumn=110
+        set textwidth=119
+        set colorcolumn=119
         let g:wide_column = 1
     endif
 endfunction

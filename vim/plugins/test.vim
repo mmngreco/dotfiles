@@ -1,7 +1,9 @@
-" let test#python#pytest#options = '--ff -v -p no:warnings'
+let test#python#pytest#options = '--ff -v -p no:warnings'
+let test#python#pytest#options = '--ff -v -p no:warnings --pdb'
 " let test#javascript#jest#options = '--color=always'
 " let test#strategy = 'harpoon'
 " let g:test#harpoon_term = 5
+" let test#strategy = 'vimspectorpy'
 
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>tf :TestFile<CR>
