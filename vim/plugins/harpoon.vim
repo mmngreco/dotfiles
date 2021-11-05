@@ -1,6 +1,6 @@
 " ==== harpoon
-nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
-nnoremap <C-m> :lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>aa :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>a :lua require("harpoon.ui").toggle_quick_menu()<cr>
 
 nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<cr>
 nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<cr>

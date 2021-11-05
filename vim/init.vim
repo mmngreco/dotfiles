@@ -411,4 +411,3 @@ nnoremap <c-t> :Tagbar<cr>
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
 " nnoremap <leader>st :Space2Tab<cr>
 " vnoremap <leader>st :Space2Tab<cr>
-
