@@ -28,6 +28,8 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
 Plug 'AndrewRadev/diffurcate.vim'
+Plug 'chipsenkbeil/distant.nvim'
+
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'
@@ -156,7 +158,6 @@ Plug 'tweekmonster/impsort.vim'  " color and sort imports
 "
 " ==== debugger plugins
 Plug 'puremourning/vimspector'
-Plug 'sagi-z/vimspectorpy', { 'do': { -> vimspectorpy#update() } }
 Plug 'szw/vim-maximizer'
 Plug 'johngrib/vim-game-code-break'
 
@@ -411,3 +412,42 @@ nnoremap <c-t> :Tagbar<cr>
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
 " nnoremap <leader>st :Space2Tab<cr>
 " vnoremap <leader>st :Space2Tab<cr>
+
+" ===== Distant
+" Mover a un archivo
+lua <<EOL
+local actions = require('distant.nav.actions')
+require('distant').setup {
+    -- Any settings defined here are applied to all hosts
+    ['*'] = {
+        distant = {
+            args = '--shutdown-after 3600',
+            },
+        file = {
+            mappings = {
+                ['-']         = actions.up,
+                },
+            },
+        dir = {
+            mappings = {
+                ['<Return>']  = actions.edit,
+                ['-']         = actions.up,
+                ['K']         = actions.mkdir,
+                ['N']         = actions.newfile,
+                ['R']         = actions.rename,
+                ['D']         = actions.remove,
+                }
+            },
+        },
+    ['linode'] = {
+        mode = 'ssh',
+        ssh = {
+            user = 'root',
+            port = '22'
+            }
+        },
+}
+EOL
+
+nnoremap <leader>ssh :Distant 139.162.167.149 ssh.user=root ssh.port=22 mode=ssh<cr>
+nnoremap <leader>. :DistantOpen .<cr>
