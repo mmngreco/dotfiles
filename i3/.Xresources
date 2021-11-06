@@ -22,14 +22,20 @@ Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 XTerm*transparent: true
 xterm*renderFont: true
-xterm*faceName: mplus Nerd Font Mono
-xterm*faceSize: 18
-xterm*vt100*geometry: 80x50
+/* xterm*faceName: mplus Nerd Font Mono */
+/* xterm*faceName: Fura Code Regular Nerd Font Complete Mono */
+xterm*faceName: DejaVuSansMono
+/* xterm*faceName: UbuntuMono-R */
+xterm*faceSize: 16
+/* xterm*vt100*geometry: 80x50 */
 xterm*loginShell: true
 xterm*saveLines: 10000
 xterm*boldMode: false
 xterm*selectToClipboard: true
 
+! ------------------------------------------------------------------------------
+! gruvbox-dark
+! ------------------------------------------------------------------------------
 ! hard contrast: *background: #1d2021
 xterm*background: #282828
 ! soft contrast: xterm*background: #32302f

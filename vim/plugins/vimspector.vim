@@ -4,9 +4,16 @@ fun! GotoWindow(id)
     MaximizerToggle
 endfun
 
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+
 " Debugger remaps
 nnoremap <leader>m :MaximizerToggle!<CR>
 nnoremap <leader>dd :call vimspector#Launch()<CR>
+
+" go to
 nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
 nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
 nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
@@ -15,7 +22,7 @@ nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<C
 nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
 nnoremap <leader>de :call vimspector#Reset()<CR>
 
-nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+nnoremap <leader>dcl :call vimspector#CleanLineBreakpoint()<CR>
 
 nmap <leader>dl <Plug>VimspectorStepInto
 nmap <leader>dj <Plug>VimspectorStepOver
@@ -25,7 +32,7 @@ nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
-nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+nmap <leader>dcp <Plug>VimspectorToggleConditionalBreakpoint
 
 " <Plug>VimspectorStop
 " <Plug>VimspectorPause

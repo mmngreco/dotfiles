@@ -1,7 +1,24 @@
-" let test#python#pytest#options = '--ff -v -p no:warnings'
+let g:toggle_pdb_on=1
+let test#python#pytest#options = '--ff -v -p no:warnings --pdb'
+
+function TogglePdb() abort
+    if g:toggle_pdb_on
+        let test#python#pytest#options = '--ff -v -p no:warnings'
+        let g:toggle_pdb_on=0
+        echo test#python#pytest#options
+    else
+        let test#python#pytest#options = '--ff -v -p no:warnings --pdb'
+        let g:toggle_pdb_on=1
+        echo test#python#pytest#options
+    endif
+endfunction
+
+nnoremap <leader>tb :call TogglePdb()<cr>
+
 " let test#javascript#jest#options = '--color=always'
 " let test#strategy = 'harpoon'
 " let g:test#harpoon_term = 5
+" let test#strategy = 'vimspectorpy'
 
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>tf :TestFile<CR>

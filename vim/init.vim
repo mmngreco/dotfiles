@@ -156,6 +156,7 @@ Plug 'tweekmonster/impsort.vim'  " color and sort imports
 "
 " ==== debugger plugins
 Plug 'puremourning/vimspector'
+Plug 'sagi-z/vimspectorpy', { 'do': { -> vimspectorpy#update() } }
 Plug 'szw/vim-maximizer'
 Plug 'johngrib/vim-game-code-break'
 
@@ -410,4 +411,3 @@ nnoremap <c-t> :Tagbar<cr>
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
 " nnoremap <leader>st :Space2Tab<cr>
 " vnoremap <leader>st :Space2Tab<cr>
-
