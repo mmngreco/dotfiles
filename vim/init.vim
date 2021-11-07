@@ -414,7 +414,7 @@ command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
 " vnoremap <leader>st :Space2Tab<cr>
 
 " ===== Distant
-" Mover a un archivo
+" TODO: Mover a un archivo
 lua <<EOL
 local actions = require('distant.nav.actions')
 require('distant').setup {
