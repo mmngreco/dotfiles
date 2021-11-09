@@ -15,10 +15,16 @@ echo "Installing neovim..."
 echo ""
 
 NEOVIM_DIR="$HOME/github/neovim/neovim"
+NEOVIM_URL="https://github.com/neovim/neovim.git"
 
 rm -rf $NEOVIM_DIR
 
-git clone --depth 1 -b v0.5.0 https://github.com/neovim/neovim.git $NEOVIM_DIR
+NEOVIM_VER=$(git -c 'versionsort.suffix=-' \
+    ls-remote --exit-code --refs --sort='version:refname' --tags $NEOVIM_URL '*.*.*' \
+    | tail --lines=1 \
+    | cut --delimiter='/' --fields=3)
+
+git clone --depth 1 -b $NEOVIM_VER $NEOVIM_URL $NEOVIM_DIR
 
 pushd  $NEOVIM_DIR
 make CMAKE_BUILD_TYPE=Release -j8

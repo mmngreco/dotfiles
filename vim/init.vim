@@ -119,6 +119,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sainnhe/gruvbox-material'
 Plug 'mhinz/vim-startify'
 " Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
+Plug 'hoob3rt/lualine.nvim'
 " Plug 'ryanoasis/vim-devicons'
 
 " ==== effective programming
@@ -230,7 +231,7 @@ nnoremap <leader>q :wqa<cr>
 nnoremap <leader>tu <esc>Vypv$r-
 
 " edit ini.vim
-nnoremap <leader>vrc :tabedit ~/.config/nvim/init.vim<CR>
+nnoremap <leader>rc :tabedit ~/.config/nvim/init.vim<CR>
 
 " reload vimrc
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
@@ -383,7 +384,7 @@ source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
 source $DOTFILES/vim/plugins/jupytext.vim
 source $DOTFILES/vim/plugins/lsp.vim
-" source $DOTFILES/vim/plugins/lualine.vim
+source $DOTFILES/vim/plugins/lualine.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/netrw.vim

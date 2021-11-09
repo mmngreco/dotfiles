@@ -22,7 +22,7 @@ nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim
 " project word
 nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 " view help tags
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>th :lua require('telescope.builtin').help_tags()<CR>
 " git branches
 nnoremap <leader>gc :lua require('telescope').mmngreco.git_branches()<CR>
 nnoremap <leader>sc :lua require('telescope').mmngreco.search_scio()<CR>

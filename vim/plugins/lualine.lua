@@ -1,9 +1,9 @@
-require'lualine'.setup {
+require('lualine').setup({
   options = {
-    icons_enabled = true,
+    icons_enabled = false,
     theme = 'gruvbox',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
+    component_separators = {'', ''},
+    section_separators = {'', ''},
     disabled_filetypes = {}
   },
   sections = {
@@ -24,6 +24,4 @@ require'lualine'.setup {
   },
   tabline = {},
   extensions = {}
-}
-
-require('lualine').setup()
+})
