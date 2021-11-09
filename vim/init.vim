@@ -226,7 +226,7 @@ nnoremap <leader>vwb :let g:my_colorscheme =
 
 nnoremap <leader>q :wqa<cr>
 
-" underline
+" underline current line
 nnoremap <leader>tu <esc>Vypv$r-
 
 " edit ini.vim
@@ -390,7 +390,7 @@ source $DOTFILES/vim/plugins/netrw.vim
 " source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
 source $DOTFILES/vim/plugins/slimux.vim
-" source $DOTFILES/vim/plugins/tagbar.vim
+source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
 source $DOTFILES/vim/plugins/vimspector.vim
@@ -407,47 +407,5 @@ let g:user_emmet_settings = {
             \}
 
 nnoremap <c-s> :SymbolsOutline<cr>
-nnoremap <c-t> :Tagbar<cr>
 
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
-" nnoremap <leader>st :Space2Tab<cr>
-" vnoremap <leader>st :Space2Tab<cr>
-
-" ===== Distant
-" TODO: Mover a un archivo
-lua <<EOL
-local actions = require('distant.nav.actions')
-require('distant').setup {
-    -- Any settings defined here are applied to all hosts
-    ['*'] = {
-        distant = {
-            args = '--shutdown-after 3600',
-            },
-        file = {
-            mappings = {
-                ['-']         = actions.up,
-                },
-            },
-        dir = {
-            mappings = {
-                ['<Return>']  = actions.edit,
-                ['-']         = actions.up,
-                ['K']         = actions.mkdir,
-                ['N']         = actions.newfile,
-                ['R']         = actions.rename,
-                ['D']         = actions.remove,
-                }
-            },
-        },
-    ['linode'] = {
-        mode = 'ssh',
-        ssh = {
-            user = 'root',
-            port = '22'
-            }
-        },
-}
-EOL
-
-nnoremap <leader>ssh :Distant 139.162.167.149 ssh.user=root ssh.port=22 mode=ssh<cr>
-nnoremap <leader>. :DistantOpen .<cr>
