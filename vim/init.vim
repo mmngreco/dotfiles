@@ -319,7 +319,10 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 " moves selected lines down/up
-set wildignorecase
+"
+" problems with {{cookiecutter}} directories
+" set wildignorecase
+"
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 " select previous selection
@@ -346,7 +349,7 @@ vnoremap <leader>s :'<,'>!sort -f<cr>
 
 augroup highlight_yank
     autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+    autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({timeout = 40})
 augroup END
 
 augroup mmngreco
@@ -398,9 +401,6 @@ source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
 
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:user_emmet_settings = {
