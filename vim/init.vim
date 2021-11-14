@@ -29,7 +29,7 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
 Plug 'AndrewRadev/diffurcate.vim'
 Plug 'chipsenkbeil/distant.nvim'
-
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'
@@ -91,7 +91,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 " Plug 'stevearc/vim-arduino', { 'for': 'ino' }
 " Plug 'jreybert/vimagit'  " git manager
 " Plug 'blindFS/vim-taskwarrior'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Plug 'joom/latex-unicoder.vim'
 
 " ==== navegation
@@ -410,3 +410,11 @@ let g:user_emmet_settings = {
 nnoremap <c-s> :SymbolsOutline<cr>
 
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
+
+
+let g:livepreview_engine = 'xelatex'
+let g:livepreview_previewer = 'evince'
+" let g:vimtex_compiler_generic = 'xelatex'
+let g:vimtex_compiler_latexmk_engines = {
+    \ '_'                : '-xelatex',
+    \}
