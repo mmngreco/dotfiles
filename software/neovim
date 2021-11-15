@@ -16,19 +16,17 @@ echo ""
 
 NEOVIM_DIR="$HOME/github/neovim/neovim"
 NEOVIM_URL="https://github.com/neovim/neovim.git"
-
-rm -rf $NEOVIM_DIR
-
 NEOVIM_VER=$(git -c 'versionsort.suffix=-' \
     ls-remote --exit-code --refs --sort='version:refname' --tags $NEOVIM_URL '*.*.*' \
     | tail --lines=1 \
     | cut --delimiter='/' --fields=3)
 
+rm -rf $NEOVIM_DIR
 git clone --depth 1 -b $NEOVIM_VER $NEOVIM_URL $NEOVIM_DIR
 
 pushd  $NEOVIM_DIR
-make CMAKE_BUILD_TYPE=Release -j8
-sudo make install
+    make CMAKE_BUILD_TYPE=Release -j8
+    sudo make install
 popd
 
 
