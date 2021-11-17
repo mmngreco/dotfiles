@@ -1,93 +1,109 @@
 {
-  "Main": {
-    "prefix": ["ifmain"],
-    "body": [
-      "if __name__ == \"__main__\":",
-      "    main()"
-    ],
-    "description": "Write main."
-  },
+    "Main": {
+        "prefix": ["ifmain"],
+        "body": [
+            "if __name__ == \"__main__\":",
+            "    main()"
+        ],
+        "description": "Write main."
+    },
 
-  "Class": {
-    "prefix": ["class"],
-    "body": [
-      "class $1:",
-      "    \"\"\"$1.\"\"\"",
-      "    def __init__(self, args, $2):",
-      "        \"\"\"Constructor\"\"\"",
-      "        self.args = args",
-      "        self.$2 = $2",
-      "",
-      "$0"
-    ],
-    "description": "Class definition template."
-  },
+    "Class": {
+        "prefix": ["class"],
+        "body": [
+            "class $1:",
+            "    \"\"\"$1.\"\"\"",
+            "    def __init__(self, args, $2):",
+            "        \"\"\"Constructor\"\"\"",
+            "        self.args = args",
+            "        self.$2 = $2",
+            "",
+            "$0"
+        ],
+        "description": "Class definition template."
+    },
 
-  "Numpy Test": {
-    "prefix": ["nptst"],
-    "body": [
-      "def test_$1():",
-      "    obtained = $0",
-      "    expected = None",
-      "    np.assert_almost_close(obtained, expected)"
-    ],
-    "description": "Numpy test structure"
-  },
+    "Numpy Test": {
+        "prefix": ["npt"],
+        "body": [
+            "def test_$1():",
+            "    obtained = $0",
+            "    expected = None",
+            "    np.assert_almost_close(obtained, expected)"
+        ],
+        "description": "Numpy test structure"
+    },
 
-  "Test": {
-    "prefix": ["tst"],
-    "body": [
-      "def test_$1():",
-      "    obtained = $0",
-      "    expected = None",
-      "    assert obtained==expected, \"wrong!\""
-    ],
-    "description": "Test structure"
-  },
+    "Test": {
+        "prefix": ["tst"],
+        "body": [
+            "def test_$1():",
+            "    obtained = $0",
+            "    expected = None",
+            "    assert obtained==expected, \"wrong!\""
+        ],
+        "description": "Test structure"
+    },
 
-  "Array Random": {
-    "prefix": ["nprand"],
-    "body": [
-      "$1 = np.random.randn(10)",
-      "$0"
-    ],
-    "description": "Break point"
-  },
+    "Array Random": {
+        "prefix": ["nprand"],
+        "body": [
+            "$1 = np.random.randn(10)",
+            "$0"
+        ],
+        "description": "Break point"
+    },
 
-  "Doc": {
-    "prefix": ["doc"],
-    "body": [
-      "\"\"\"$0",
-      "",
-      "Parameters",
-      "----------",
-      "$1 : $2",
-      "",
-      "Returns",
-      "-------",
-      "$3 : $4",
-      "",
-      "Notes",
-      "-----",
-      "\"\"\""
-    ],
-    "description": "Add docstring"
-  },
+    "Doc": {
+        "prefix": ["doc"],
+        "body": [
+            "\"\"\"$0",
+            "",
+            "Parameters",
+            "----------",
+            "$1 : $2",
+            "",
+            "Returns",
+            "-------",
+            "$3 : $4",
+            "",
+            "Notes",
+            "-----",
+            "\"\"\""
+        ],
+        "description": "Add docstring"
+    },
 
-  "Pdb": {
-    "prefix": ["pdb"],
-    "body": [
-      "__import__(\"pdb\").set_trace()"
-    ],
-    "description": "Break point"
-  },
+    "Multiprocessing": {
+        "prefix": ["mp"],
+        "body": [
+            "import multiprocessing as mp",
+            "",
+            "ncores=mp.cpu_count() # number of cores",
+            "f = sum",
+            "args = [range(int(1e6))] * 12",
+            "",
+            "with mp.Pool(processes=ncores) as pool:",
+            "    out = pool.map(f, args)",
+            "out"
+        ],
+        "description": "Multiprocessing script"
+    },
 
-  "Imports": {
-    "prefix": ["imp"],
-    "body": [
-      "import pandas as pd",
-      "import numpy as np"
-    ],
-    "description": "Import pandas and numpy"
-  }
+    "Pdb": {
+        "prefix": ["pdb"],
+        "body": [
+            "__import__(\"pdb\").set_trace()"
+        ],
+        "description": "Break point"
+    },
+
+    "Imports": {
+        "prefix": ["imp"],
+        "body": [
+            "import pandas as pd",
+            "import numpy as np"
+        ],
+        "description": "Import pandas and numpy"
+    }
 }

@@ -49,6 +49,7 @@
     r = reset
     cp = cherry-pick
     gr = grep -Ii
+    track = "!f() { git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD); }; f"
 
     # https://github.com/dandavison/delta/tree/0.8.3#side-by-side-view
     delta  = "!f() { git diff $@ | DELTA_FEATURES='side-by-side line-numbers navigate' delta ; }; f"

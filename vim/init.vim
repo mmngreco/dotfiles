@@ -225,7 +225,10 @@ call ColorMyPencils()
 nnoremap <leader>vwm :call ColorMyPencils()<CR>
 nnoremap <leader>vwb :let g:my_colorscheme =
 
-nnoremap <leader>q :wqa<cr>
+nnoremap <silent> <Plug>GenerateRandom :read! python -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>GenerateRandom", v:count)<cr>
+nmap <C-g><C-r> <Plug>GenerateRandom
+
+tnoremap <leader>q :wqa<cr>
 
 " underline current line
 nnoremap <leader>tu <esc>Vypv$r-
