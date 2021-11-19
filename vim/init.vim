@@ -88,6 +88,7 @@ Plug 'goerz/jupytext.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 " Plug 'szymonmaszke/vimpyter' "vim-plug needs pip install notedown
 " Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 " Plug 'stevearc/vim-arduino', { 'for': 'ino' }
 " Plug 'jreybert/vimagit'  " git manager
 " Plug 'blindFS/vim-taskwarrior'
@@ -421,3 +422,11 @@ let g:livepreview_previewer = 'evince'
 let g:vimtex_compiler_latexmk_engines = {
     \ '_'                : '-xelatex',
     \}
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <leader>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <leader>j :TmuxNavigateDown<cr>
+nnoremap <silent> <leader>k TmuxNavigateUp<cr>
+nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
+nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
