@@ -16,10 +16,12 @@ echo "========================================================================"
 
 NEOVIM_DIR="$HOME/github/neovim/neovim"
 NEOVIM_URL="https://github.com/neovim/neovim.git"
-NEOVIM_VER=$(git -c 'versionsort.suffix=-' \
-    ls-remote --exit-code --refs --sort='version:refname' --tags $NEOVIM_URL '*.*.*' \
-    | tail --lines=1 \
-    | cut --delimiter='/' --fields=3)
+NEOVIM_VER="v0.5.1"
+
+# NEOVIM_VER=$(git -c 'versionsort.suffix=-' \
+#     ls-remote --exit-code --refs --sort='version:refname' --tags $NEOVIM_URL '*.*.*' \
+#     | tail --lines=1 \
+#     | cut --delimiter='/' --fields=3)
 
 [ -d $NEOVIM_DIR ] && rm -rf $NEOVIM_DIR
 git clone --depth 1 -b $NEOVIM_VER $NEOVIM_URL $NEOVIM_DIR
