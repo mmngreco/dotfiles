@@ -324,7 +324,7 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
 
 " moves selected lines down/up
 "
-" problems with {{cookiecutter}} directories
+" below is commented due to problems with {{cookiecutter}} directories
 " set wildignorecase
 "
 vnoremap J :m '>+1<CR>gv=gv

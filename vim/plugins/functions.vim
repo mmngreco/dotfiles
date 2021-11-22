@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 fun! OpenScrum()
     split /home/mgreco/gitlab/mgreco/scrums/latest.md
     lcd /home/mgreco/gitlab/mgreco/scrums/
@@ -120,3 +121,9 @@ function! ToggleColumnWidth()
     endif
 endfunction
 
+
+function! ShowChars()
+    set list
+    set listchars=tab:>-
+endfunction
+nnoremap <leader>shc :call ShowChars()<cr>
