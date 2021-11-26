@@ -70,6 +70,7 @@ Plug 'numtostr/FTerm.nvim'
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'tyru/open-browser.vim'
 Plug 'mmngreco/DrawIt'
+Plug 'itchyny/calendar.vim'
 
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
