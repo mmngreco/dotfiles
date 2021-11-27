@@ -61,6 +61,7 @@ end
 -- then use it on whatever picker you want
 -- ex:
 -- require('telescope').load_extension('fzy_native')
+local ignore_patterns = { ".venv/", ".git/", "node_modules/", "%.pyc", "__.*cache.*/" }
 local mmngreco = {}
 
 mmngreco.no_preview = function()
@@ -96,8 +97,10 @@ end
 
 mmngreco.find_files = function()
     require("telescope.builtin").find_files({
+        file_ignore_patterns = ignore_patterns,
         hidden = true,
         no_ignore = true,
+        follow = true,
     })
 end
 
