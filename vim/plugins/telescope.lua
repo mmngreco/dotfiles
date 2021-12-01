@@ -110,6 +110,7 @@ mmngreco.git_branches = function()
         attach_mappings = function(_, map)
             map('i', '<c-d>', actions.git_delete_branch)
             map('n', '<c-d>', actions.git_delete_branch)
+            map('i', '<c-b>', actions.git_create_branch)
             return true
         end
     })
