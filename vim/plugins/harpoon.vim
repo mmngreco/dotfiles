@@ -28,8 +28,15 @@ nmap <leader>ll  <Plug>SendToHarpoon4
 nnoremap <leader>is :lua require("harpoon.term").sendCommand(7, "clab issue ls\nexit\n")<cr>:split<cr>:lua require("harpoon.term").gotoTerminal(7)<cr>
 nnoremap <C-y><C-b> :let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>
 
-" send breakpoint
+
+" debugging with pdb: send breakpoint
 nnoremap <leader>bh :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr>
 nnoremap <leader>bj :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(2, vim.g['_cmd'])<cr>
 nnoremap <leader>bk :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(3, vim.g['_cmd'])<cr>
 nnoremap <leader>bl :let g:_cmd = ("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr>
+
+" send pytest
+nnoremap <C-t><C-h> :lua require("harpoon.term").sendCommand(1, "pytest\n")<cr>
+nnoremap <C-t><C-j> :lua require("harpoon.term").sendCommand(2, "pytest\n")<cr>
+nnoremap <C-t><C-k> :lua require("harpoon.term").sendCommand(3, "pytest\n")<cr>
+nnoremap <C-t><C-l> :lua require("harpoon.term").sendCommand(4, "pytest\n")<cr>
