@@ -6,6 +6,8 @@ dotfiles() {
             echo "Commands: go, commit, source, pull, link, *";;
         install)
             dotfilesInstall ${@:2};;
+        i)
+            dotfiles install ${@:2};;
         cd)
             goDotfiles ;;
         go)
