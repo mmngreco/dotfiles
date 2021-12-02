@@ -7,7 +7,7 @@ dotfiles() {
         install)
             dotfilesInstall ${@:2};;
         i)
-            dotfiles install ${@:2};;
+            dotfilesInstall ${@:2};;
         cd)
             goDotfiles ;;
         go)
