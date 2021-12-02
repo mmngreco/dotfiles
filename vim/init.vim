@@ -34,6 +34,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'
 " Plug 'pangloss/vim-javascript'
+Plug 'camgraff/telescope-tmux.nvim'
 
 " ==== telescope
 Plug 'nvim-lua/popup.nvim'
@@ -431,3 +432,7 @@ nnoremap <silent> <leader>j :TmuxNavigateDown<cr>
 nnoremap <silent> <leader>k :TmuxNavigateUp<cr>
 nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
 nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
+nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
+" go substitute because the default map for sleeping is silly
+nnoremap gs :%s//g<left><left>
+
