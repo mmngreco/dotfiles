@@ -434,4 +434,5 @@ nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
 nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
 nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
 " go substitute because the default map for sleeping is silly
-nnoremap gs :%s//g<Left><Left>
+nnoremap gs :%s/<cword>/<cword>/g<Left><Left>
+
