@@ -5,9 +5,9 @@ dotfiles() {
         help)
             echo "Commands: go, commit, source, pull, link, *";;
         install)
-            dotfilesInstall ${@:2};;
+            dotfilesInstall ${@:2} ;;
         i)
-            dotfilesInstall ${@:2};;
+            dotfilesInstall ${@:2} ;;
         cd)
             goDotfiles ;;
         go)
@@ -27,8 +27,7 @@ dotfiles() {
         link)
             dotfilesLink ;;
         e)
-            dotfiles edit
-            ;;
+            dotfiles edit ;;
         edit)
             pushd $DOTFILES > /dev/null
             nvim .
