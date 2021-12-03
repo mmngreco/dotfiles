@@ -492,3 +492,4 @@ parse_svn_repository_root() {
     svn info 2>/dev/null | grep -e '^Repository Root:*' | sed -e 's#^Repository Root: *\(.*\)#\1\/#g '
     #svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
 }
+
