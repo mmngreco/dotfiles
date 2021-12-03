@@ -26,7 +26,7 @@ xterm*renderFont: true
 /* xterm*faceName: Fura Code Regular Nerd Font Complete Mono */
 xterm*faceName: DejaVuSansMono
 /* xterm*faceName: UbuntuMono-R */
-xterm*faceSize: 14
+xterm*faceSize: 12
 /* xterm*vt100*geometry: 80x50 */
 xterm*loginShell: true
 xterm*saveLines: 10000
