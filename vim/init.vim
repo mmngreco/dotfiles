@@ -49,7 +49,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
-Plug 'kabouzeid/nvim-lspinstall'
+" Plug 'kabouzeid/nvim-lspinstall' " deprecated use below instead
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
@@ -65,6 +66,7 @@ Plug 'chazmcgarvey/vim-mermaid'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
 Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'numToStr/Comment.nvim'
 
 " ==== thirdparty
 Plug 'numtostr/FTerm.nvim'
@@ -99,7 +101,8 @@ Plug 'lervag/vimtex'
 
 " ==== navegation
 Plug 'ThePrimeagen/harpoon'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 Plug 'godlygeek/tabular'
 " Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
 Plug 'majutsushi/tagbar'
@@ -120,7 +123,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sainnhe/gruvbox-material'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 " Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
 Plug 'hoob3rt/lualine.nvim'
 " Plug 'ryanoasis/vim-devicons'
@@ -131,7 +134,7 @@ Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'  " gcc to comment
+" Plug 'tpope/vim-commentary'  " gcc to comment
 " Plug 'tpope/vim-dadbod'  " database interface
 " Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
@@ -436,3 +439,8 @@ nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
 nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
 " go substitute because the default map for sleeping is silly
 
+
+" ==== hop (easymotion like)
+" TODO move to lua file
+lua require'hop'.setup()
+nn <leader><leader>w :HopWord<cr>
