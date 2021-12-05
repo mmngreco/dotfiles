@@ -321,6 +321,7 @@ inoremap <Right> <c-g>U<Right>
 
 " smart replace
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
+nnoremap gs :%s//g<left><left>
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
@@ -343,9 +344,9 @@ nnoremap <leader>j :m .+1<cr>==
 
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprev<cr>
-nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
-nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
-nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
+nnoremap <leader>gls :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
+nnoremap <leader>gln :cnext<cr>:call search(g:_search_term)<cr>
+nnoremap <leader>glp :cprev<cr>:call search(g:_search_term)<cr>
 
 
 " sort numerically according 2nd column
@@ -434,5 +435,4 @@ nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
 nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
 nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
 " go substitute because the default map for sleeping is silly
-nnoremap gs :%s//g<left><left>
 
