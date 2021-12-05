@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # source ~/.bashrc
 if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+. "$HOME/.cargo/env"

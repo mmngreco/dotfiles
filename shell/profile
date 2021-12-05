@@ -34,7 +34,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -x "$(command -v google-drive-ocamlfuse)" ] && google-drive-ocamlfuse /mnt/google-drive
 [ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources
+. "$HOME/.cargo/env"
