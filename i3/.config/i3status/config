@@ -9,6 +9,8 @@ general {
 }
 
 order += "disk /"
+order += "battery 0"
+order += "memory"
 order += "ethernet enp0s31f6"
 order += "wireless wlp0s20f3"
 order += "volume master"
@@ -20,10 +22,19 @@ disk "/" {
         format = "<span background='#fec7cd'>  %free Free </span>"
 }
 
+battery 0 {
+        last_full_capacity=True
+        integer_battery_capacity=True
+        format = "<span background='#7aefe1'> %status %percentage </span>"
+}
+
+memory {
+        format = "<span background='#fc5f50'> %used used (%free/%available), </span>"
+}
 
 ethernet enp0s31f6 {
         format_up = "<span background='#88c0d0'> %ip </span>"
-        format_down = "<span background='#88c0d0'> Off </span>"
+        format_down = "<span background='#88c0d0'>eth: Off </span>"
 }
 
 wireless wlp0s20f3 {

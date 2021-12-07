@@ -30,10 +30,11 @@ Plug 'lambdalisue/suda.vim'
 Plug 'AndrewRadev/diffurcate.vim'
 Plug 'chipsenkbeil/distant.nvim'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'
-" Plug 'pangloss/vim-javascript'
+" Plug pangloss/vim-javascript'
 Plug 'camgraff/telescope-tmux.nvim'
 
 " ==== telescope
@@ -47,9 +48,7 @@ Plug 'simrat39/symbols-outline.nvim'
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
-" Plug 'tjdevries/nlua.nvim'
-" Plug 'tjdevries/lsp_extensions.nvim'
-Plug 'kabouzeid/nvim-lspinstall'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
@@ -65,14 +64,15 @@ Plug 'chazmcgarvey/vim-mermaid'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
 Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'numToStr/Comment.nvim'
 
 " ==== thirdparty
-Plug 'numtostr/FTerm.nvim'
+" Plug 'numtostr/FTerm.nvim'
 Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'tyru/open-browser.vim'
 Plug 'mmngreco/DrawIt'
 Plug 'itchyny/calendar.vim'
-
+Plug 'mhartington/formatter.nvim'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 Plug 'chrisbra/unicode.vim'
@@ -99,7 +99,8 @@ Plug 'lervag/vimtex'
 
 " ==== navegation
 Plug 'ThePrimeagen/harpoon'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 Plug 'godlygeek/tabular'
 " Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
 Plug 'majutsushi/tagbar'
@@ -114,16 +115,15 @@ Plug 'majutsushi/tagbar'
 Plug 'gyim/vim-boxdraw'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
 " Plug 'heavenshell/vim-pydocstring'  "overwrites Ctrl-L shortcut
+" Plug 'wfxr/minimap.vim'
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 " ==== aspect
 Plug 'gruvbox-community/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sainnhe/gruvbox-material'
-Plug 'mhinz/vim-startify'
-" Plug 'hoob3rt/lualine.nvim', {'commit': 'dc2c711'}
 Plug 'hoob3rt/lualine.nvim'
-" Plug 'ryanoasis/vim-devicons'
 
 " ==== effective programming
 Plug 'tpope/vim-obsession'
@@ -131,7 +131,7 @@ Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'  " gcc to comment
+" Plug 'tpope/vim-commentary'  " gcc to comment
 " Plug 'tpope/vim-dadbod'  " database interface
 " Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
@@ -321,6 +321,7 @@ inoremap <Right> <c-g>U<Right>
 
 " smart replace
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
+nnoremap gs :%s//g<left><left>
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
@@ -343,9 +344,9 @@ nnoremap <leader>j :m .+1<cr>==
 
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprev<cr>
-nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
-nnoremap <leader>gln :cnext<cr>:call serach(_search_term)<cr>
-nnoremap <leader>glp :cprev<cr>:call serach(_search_term)<cr>
+nnoremap <leader>gls :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>
+nnoremap <leader>gln :cnext<cr>:call search(g:_search_term)<cr>
+nnoremap <leader>glp :cprev<cr>:call search(g:_search_term)<cr>
 
 
 " sort numerically according 2nd column
@@ -386,7 +387,6 @@ source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
 source $DOTFILES/vim/plugins/dbee.vim
 source $DOTFILES/vim/plugins/drawit.vim
-source $DOTFILES/vim/plugins/fterm.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/functions.vim
 source $DOTFILES/vim/plugins/harpoon.vim
@@ -397,7 +397,6 @@ source $DOTFILES/vim/plugins/lualine.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/netrw.vim
-" source $DOTFILES/vim/plugins/nvim-tree.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/tagbar.vim
@@ -434,5 +433,16 @@ nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
 nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
 nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
 " go substitute because the default map for sleeping is silly
-nnoremap gs :%s//g<left><left>
 
+
+" ==== hop (easymotion like)
+" TODO move to lua file
+lua require'hop'.setup()
+nn <leader><leader>w :HopWord<cr>
+
+
+
+" ==== formatter
+lua require('formatter').setup()
+" Provided by setup function
+nnoremap <silent> <leader>f :Format<CR>

@@ -41,13 +41,34 @@ local function py_on_attach()
 end
 
 -- LspInstall side
-require'lspinstall'.setup()
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-    require'lspconfig'[server].setup {
-        on_attach = on_attach,
-        capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    }
+local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
+
+
+function setup_server(server_name)
+    -- print(vim.inspect(server_name))
+    local server_available, requested_server = lsp_installer_servers.get_server(server_name)
+
+    if server_available then
+        -- print("on_ready: ", vim.inspect(server_name))
+        requested_server:on_ready(
+            function ()
+                local opts = {}
+                opts.on_attach = on_attach
+                opts.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+                if requested_server.name == "clangd" then
+                    opts.root_dir = function() return vim.loop.cwd() end
+                end
+                requested_server:setup(opts)
+            end
+        )
+
+    if not requested_server:is_installed() then
+        -- print("installing: ", vim.inspect(server_name))
+        requested_server:install()
+        end
+    end
+
 end
 
 local function config(_config)
@@ -57,18 +78,17 @@ local function config(_config)
     }, _config or {})
 end
 
--- require'lspconfig'.jedi_language_server.setup(config())
-require'lspconfig'.pylsp.setup(config())
--- require'lspconfig'.pyls.setup{ on_attach=py_on_attach }
--- require'lspconfig'.jedi_language_server.setup{ on_attach=py_on_attach, }
-require'lspconfig'.vimls.setup({ on_attach=on_attach, })
-require'lspconfig'.bash.setup({ on_attach=on_attach, })
-require'lspconfig'.clangd.setup({
-    on_attach = on_attach,
-    root_dir = function() return vim.loop.cwd() end
-})
--- require'lspconfig'.pyright.setup {}
--- require'lspsaga'.init_lsp_saga()
+setup_server("bashls")
+setup_server("pyls")
+setup_server("vimls")
+setup_server("bashls")
+setup_server("sumneko_lua")
+setup_server("texlab")
+setup_server("sqlls")
+setup_server("yamlls")
+setup_server("lemminx")  -- xml
+setup_server("dockerls")  -- xml
+setup_server("clangd")
 
 EOF
 
