@@ -6,7 +6,7 @@
 
 __tmux_fzf_get_session__() {
     session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0 --preview='tmux capture-pane -ep -t {}')
-    tmux-sessionizer "$session"
+    tmux switch-session "$session"
 }
 
 __tmux_fzf_get_session__  $1
