@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-
 # inspired by:
 # https://stackoverflow.com/questions/51780445/how-can-i-see-a-preview-of-a-tmux-session-window-from-outside-of-tmux
 # https://github.com/sainnhe/tmux-fzf/blob/master/scripts/.preview
-
-__tmux_fzf_get_session__() {
-    session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0 --preview='tmux capture-pane -ep -t {}')
-    tmux switch-client -t "$session"
-}
-
-__tmux_fzf_get_session__  $1
+selected=$(
+    tmux list-sessions -F "#{session_name}" 2>/dev/null \
+    | fzf --exit-0 --preview='tmux capture-pane -ep -t {}'
+)
+tmux switch-client -t "$selected"

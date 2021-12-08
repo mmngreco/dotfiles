@@ -44,7 +44,6 @@ Plug 'simrat39/symbols-outline.nvim'
 
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -124,7 +123,6 @@ Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-commentary'  " gcc to comment
 " Plug 'tpope/vim-dadbod'  " database interface
 " Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
@@ -142,14 +140,8 @@ Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvie/vim-flake8'
 Plug 'tweekmonster/impsort.vim'  " color and sort imports
-Plug 'romgrk/nvim-treesitter-context'
-" Plug 'haorenW1025/completion-nvim'
-" Plug 'nvim-treesitter/completion-treesitter'
 " Plug 'neomake/neomake'
-" Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
-" Plug 'vim-scripts/VisIncr'
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
-" Plug 'ntpeters/vim-better-whitespace'
 " Plug 'radenling/vim-dispatch-neovim'
 " Plug 'ruanyl/vim-gh-line'
 "
