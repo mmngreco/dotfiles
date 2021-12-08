@@ -2,8 +2,9 @@
 # inspired by:
 # https://stackoverflow.com/questions/51780445/how-can-i-see-a-preview-of-a-tmux-session-window-from-outside-of-tmux
 # https://github.com/sainnhe/tmux-fzf/blob/master/scripts/.preview
-selected=$(
+selected=$(\
     tmux list-sessions -F "#{session_name}" 2>/dev/null \
-    | fzf --exit-0 --preview='tmux capture-pane -ep -t {}'
+    | fzf --preview='tmux capture-pane -ep -t {}' --preview-window=right:70% --layout=reverse --exit-0 \
+
 )
 tmux switch-client -t "$selected"
