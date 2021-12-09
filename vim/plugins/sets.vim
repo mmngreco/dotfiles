@@ -39,4 +39,3 @@ set shortmess+=c
 set textwidth=79
 
 set formatprg="par -rTbgqR -B=.,?_A_a -Q=_s>\| -w" . textwidth
-set formatprg=par\ -rTbgqR\ -B=.,?_A_a\ -Q=_s>\|\
