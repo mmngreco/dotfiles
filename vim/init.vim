@@ -69,7 +69,7 @@ Plug 'chipsenkbeil/distant.nvim'
 Plug 'tyru/open-browser.vim'
 Plug 'mmngreco/DrawIt'
 Plug 'itchyny/calendar.vim'
-Plug 'mhartington/formatter.nvim'
+" Plug 'mhartington/formatter.nvim'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 Plug 'chrisbra/unicode.vim'
