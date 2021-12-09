@@ -37,5 +37,5 @@ set shortmess+=c
 
 " ==== column limits
 set textwidth=79
-set formatprg='par -rTbgqR -B=.,?_A_a -Q=_s>\| -w' . textwidth
+set formatprg="par -rTbgqR -B=.,?_A_a -Q=_s>\| -w" . textwidth
 " Toggle between column widths
