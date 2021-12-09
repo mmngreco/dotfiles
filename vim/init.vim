@@ -24,12 +24,9 @@ call plug#begin()
 " mmngreco
 Plug 'mmngreco/dbee.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
-Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-Plug 'AndrewRadev/diffurcate.vim'
-Plug 'chipsenkbeil/distant.nvim'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'AndrewRadev/programmerdiffurcate.vim'
 
 " ==== javascript
 Plug 'gko/vim-coloresque'
@@ -47,7 +44,6 @@ Plug 'simrat39/symbols-outline.nvim'
 
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -68,7 +64,8 @@ Plug 'numToStr/Comment.nvim'
 
 " ==== thirdparty
 " Plug 'numtostr/FTerm.nvim'
-Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
+" Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
+Plug 'chipsenkbeil/distant.nvim'
 Plug 'tyru/open-browser.vim'
 Plug 'mmngreco/DrawIt'
 Plug 'itchyny/calendar.vim'
@@ -85,25 +82,21 @@ Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
 Plug 'chriskempson/base16-vim'
-" Plug 'mileszs/ack.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
-" Plug 'szymonmaszke/vimpyter' "vim-plug needs pip install notedown
-" Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'stevearc/vim-arduino', { 'for': 'ino' }
-" Plug 'jreybert/vimagit'  " git manager
 " Plug 'blindFS/vim-taskwarrior'
 Plug 'lervag/vimtex'
 " Plug 'joom/latex-unicoder.vim'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 " ==== navegation
 Plug 'ThePrimeagen/harpoon'
-" Plug 'easymotion/vim-easymotion'
-Plug 'phaazon/hop.nvim'
+Plug 'phaazon/hop.nvim' " easymotion like
 Plug 'godlygeek/tabular'
-" Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
 Plug 'majutsushi/tagbar'
+" Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
 " Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Plug 'ervandew/supertab'
@@ -115,7 +108,6 @@ Plug 'majutsushi/tagbar'
 Plug 'gyim/vim-boxdraw'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
 " Plug 'heavenshell/vim-pydocstring'  "overwrites Ctrl-L shortcut
-" Plug 'wfxr/minimap.vim'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 " ==== aspect
@@ -131,7 +123,6 @@ Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-commentary'  " gcc to comment
 " Plug 'tpope/vim-dadbod'  " database interface
 " Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
@@ -149,21 +140,19 @@ Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvie/vim-flake8'
 Plug 'tweekmonster/impsort.vim'  " color and sort imports
-" Plug 'romgrk/nvim-treesitter-context'
-" Plug 'haorenW1025/completion-nvim'
-" Plug 'nvim-treesitter/completion-treesitter'
 " Plug 'neomake/neomake'
-" Plug 'jiangmiao/auto-pairs' " Auto close parens, braces, brackets, etc
-" Plug 'vim-scripts/VisIncr'
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
-" Plug 'ntpeters/vim-better-whitespace'
 " Plug 'radenling/vim-dispatch-neovim'
 " Plug 'ruanyl/vim-gh-line'
 "
 " ==== debugger plugins
 Plug 'puremourning/vimspector'
+
 Plug 'szw/vim-maximizer'
+
+" === better vimmer
 Plug 'johngrib/vim-game-code-break'
+Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 

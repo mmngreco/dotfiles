@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # taken from https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/bin/tmux-sessionizer
 
-selected=`listProjects | fzf --ansi --query "$1" --height 10% -m`
+selected=`listProjects | fzf --header=Projects --reverse --ansi --query "$1" --height 10% -m`
 
 if [[ -z $selected ]]; then
     exit 0
