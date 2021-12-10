@@ -432,6 +432,6 @@ nn <leader><leader>w :HopWord<cr>
 
 
 " ==== formatter
-lua require('formatter').setup()
-" Provided by setup function
-nnoremap <silent> <leader>f :Format<CR>
+" lua require('formatter').setup()
+" " Provided by setup function
+" nnoremap <silent> <leader>f :Format<CR>
