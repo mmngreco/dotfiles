@@ -79,7 +79,8 @@ local function config(_config)
 end
 
 setup_server("bashls")
-setup_server("pylsp")
+-- setup_server("pylsp")
+setup_server("pyright")
 setup_server("vimls")
 setup_server("bashls")
 setup_server("sumneko_lua")
