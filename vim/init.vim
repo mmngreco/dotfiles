@@ -433,9 +433,3 @@ vn <leader>sf :!sqlformat -k upper -a -<cr>
 nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>
 nn <leader>day :Calendar -first_day=monday<cr>
 
-" === calendar
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-let g:calendar_google_api_key = $CALENDAR_GOOGLE_API_KEY
-let g:calendar_google_client_id = $CALENDAR_GOOGLE_CLIENT_ID
-let g:calendar_google_client_secret = $CALENDAR_GOOGLE_CLIENT_SECRET
