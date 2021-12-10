@@ -435,3 +435,6 @@ nn <leader><leader>w :HopWord<cr>
 " lua require('formatter').setup()
 " " Provided by setup function
 " nnoremap <silent> <leader>f :Format<CR>
+
+
+vn <leader>sqf :!sqlformat -k upper -a -<cr>
