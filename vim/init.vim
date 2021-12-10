@@ -69,7 +69,6 @@ Plug 'chipsenkbeil/distant.nvim'
 Plug 'tyru/open-browser.vim'
 Plug 'mmngreco/DrawIt'
 Plug 'itchyny/calendar.vim'
-" Plug 'mhartington/formatter.nvim'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 Plug 'chrisbra/unicode.vim'
@@ -430,11 +429,5 @@ lua require'hop'.setup()
 nn <leader><leader>w :HopWord<cr>
 
 
-
-" ==== formatter
-" lua require('formatter').setup()
-" " Provided by setup function
-" nnoremap <silent> <leader>f :Format<CR>
-
-
-vn <leader>sqf :!sqlformat -k upper -a -<cr>
+vn <leader>sf :!sqlformat -k upper -a -<cr>
+nn <leader>cal :Calendar -view=year -split=vertical -width=27<cr>
