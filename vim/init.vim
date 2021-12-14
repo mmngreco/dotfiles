@@ -430,6 +430,7 @@ nn <leader><leader>w :HopWord<cr>
 
 
 vn <leader>sf :!sqlformat -k upper -a -<cr>
+
 nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>
 nn <leader>day :Calendar -first_day=monday<cr>
 
