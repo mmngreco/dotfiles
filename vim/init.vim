@@ -26,7 +26,6 @@ Plug 'mmngreco/dbee.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-Plug 'AndrewRadev/programmerdiffurcate.vim'
 
 " ==== javascript
 Plug 'gko/vim-coloresque'
@@ -433,4 +432,3 @@ vn <leader>sf :!sqlformat -k upper -a -<cr>
 
 nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>
 nn <leader>day :Calendar -first_day=monday<cr>
-
