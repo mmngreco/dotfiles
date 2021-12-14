@@ -58,7 +58,7 @@ function setup_server(server_name)
                 opts.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
                 if requested_server.name == "pyright" then
-                    opts.settings = { pyright = { disableLanguageServices = true, ignore = "deps" } }
+                    opts.settings = { pyright = { disableLanguageServices = false, ignore = "deps" } }
                 end
 
                 if requested_server.name == "clangd" then
