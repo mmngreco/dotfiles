@@ -56,6 +56,11 @@ function setup_server(server_name)
                 local opts = {}
                 opts.on_attach = on_attach
                 opts.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+                -- if requested_server.name == "pyright" then
+                --     opts.settings = { pyright = { disableLanguageServices = false, ignore = "deps" } }
+                -- end
+
                 if requested_server.name == "clangd" then
                     opts.root_dir = function() return vim.loop.cwd() end
                 end
