@@ -498,3 +498,11 @@ parse_svn_repository_root() {
     #svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
 }
 
+pyright-config-here() {
+    cp $DOTFILES/python/pyrightconfig.json .
+}
+
+pip-dev-tools() {
+    pip install -r $DOTFILES/python/requirements-dev.txt
+}
+

@@ -3,17 +3,22 @@ pynvim
 
 # linting
 black; python_version>='3.6'
-wemake-python-styleguide
-python-language-server[all]
+flake8
+isort
+# wemake-python-styleguide
+# python-lsp-server[all]
 
 # testing
 pytest
 pytest-cov
 pytest-xdist
-pytest-aggreport
-pytest-sugar
+# pytest-aggreport
+# pytest-sugar
 pytest-notifier
 
 # debugging
 pdbpp
+
+# ipython
+ipython
 
