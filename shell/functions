@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+etsIndex() {
+    export PIP_INDEX_URL=$ETS_PIP_INDEX_URL
+    export PIP_TRUSTED_HOST=$ETS_PIP_TRUSTED_HOST
+}
 
 dotfiles() {
     case $1 in
