@@ -25,8 +25,8 @@ exec --no-startup-id compton -b
 exec --no-startup-id caffeine-indicator
 
 # ============================================================================
-exec --no-startup-id i3-msg 'workspace 2; exec brave-browser-stable --user-data-dir=.config/brave/personal; workspace 3'
-exec --no-startup-id i3-msg 'workspace 3; exec brave-browser-stable --user-data-dir=.config/brave/ets'
+exec --no-startup-id i3-msg 'exec brave-browser-stable --user-data-dir=.config/brave/ets; move to workspace 2'
+exec --no-startup-id i3-msg 'exec brave-browser-stable --user-data-dir=.config/brave/personal; move to workspace 3'
 exec --no-startup-id i3-msg 'exec xterm'
 exec --no-startup-id i3-msg 'exec nautilus'
 exec --no-startup-id i3-msg 'exec Telegram'
@@ -223,7 +223,6 @@ for_window [class=".*"] split toggle
 for_window [class=".*"] border pixel 4
 
 assign [class=XTerm] 1
-# assign [class=brave-browser*] 2
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=libreoffice*] 5
 assign [class=TelegramDesktop] 6
@@ -231,8 +230,8 @@ assign [class=keepassxc] 7
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 8
 assign [class=obs] 9
 
-# for_window [class="brave-browser (~/.config/brave/ets)"] move to workspace 2
-# for_window [class="brave-browser (~/.config/brave/personal)"] move to workspace 3
+# for_window [instance=".config/brave/personal"] move to workspace 3
+# for_window [instance=".config/brave/ets"] move to workspace 2
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
 
@@ -243,4 +242,3 @@ client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background           #2f343f
-
