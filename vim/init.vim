@@ -538,8 +538,11 @@ dap.configurations.go = {
 }
 EOF
 
-nn <leader>do :lua require("dapui").open()
-nn <leader>dc :lua require("dapui").close()
-nn <leader>dt :lua require("dapui").toggle()
-nn <leader>db :lua require'dap'.toggle_breakpoint()
+nn <leader>do :lua require("dapui").open()<cr>
+nn <leader>dx :lua require("dapui").close()<cr>
+nn <leader>dt :lua require("dapui").toggle()<cr>
+nn <leader>db :lua require("dap").toggle_breakpoint()<cr>
+nn <leader>dc :lua require("dap").continue()<cr>
+nn <leader>dl :lua require("dap").step_into()<cr>
+nn <leader>dj :lua require("dap").step_over()<cr>
 vnoremap <M-k> :lua require("dapui").eval()<CR>
