@@ -15,6 +15,9 @@ nnoremap <leader>gf :lua vim.lsp.buf.references()<CR>
 
 nnoremap <leader>ga :lua vim.lsp.buf.code_action()<CR>
 
-nnoremap <leader>sd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
-nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
+" nnoremap <leader>sd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+" nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
+" nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <leader>dq <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <leader>dn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>dp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
