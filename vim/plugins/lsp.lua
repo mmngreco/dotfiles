@@ -81,7 +81,7 @@ end
 -- setup_server("pyright")
 -- setup_server("vimls")
 -- setup_server("gopls")
--- setup_server("groovyls")
+setup_server("groovyls")
 -- setup_server("bashls")
 -- setup_server("sumneko_lua")
 -- setup_server("texlab")
