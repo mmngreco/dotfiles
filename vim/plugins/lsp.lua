@@ -29,12 +29,12 @@ local function on_attach()
     -- vim.lsp.buf.remove_workspace_folder(".venv")
 end
 
-local function py_on_attach()
-    vim.lsp.buf.remove_workspace_folder(".venv")
-end
+-- local function py_on_attach()
+--     vim.lsp.buf.remove_workspace_folder(".venv")
+-- end
 
 -- LspInstall side
-local lsp_installer = require("nvim-lsp-installer")
+-- local lsp_installer = require("nvim-lsp-installer")
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 
@@ -92,10 +92,10 @@ end
 -- setup_server("clangd")
 
 setup_server("bashls")
-setup_server("clangd")
+-- setup_server("clangd")
 setup_server("cssmodules_ls")
 setup_server("dockerls")
-setup_server("efm")
+-- setup_server("efm")
 setup_server("eslint")
 setup_server("gopls")
 setup_server("html")
