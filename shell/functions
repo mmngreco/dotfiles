@@ -173,10 +173,11 @@ ipytdd ()  {
     fi
 }
 
+
 conda-here () {
+    # conda-here [prefix] [*conda-args]
     local pyver="python=3.7"
-    local name="${1:-$(echo $pyver | tr -d = | tr -d .)}"
-    local prefix="$PWD/.venv/$name"
+    local prefix="${1:-$PWD/.venv/$(echo $pyver | tr -d = | tr -d .)}"
 
     if [ $# -eq 0 ]; then
         conda create --prefix $prefix $pyver pip -y
@@ -188,7 +189,7 @@ conda-here () {
 
     if [ ! -f ./$AUTOENV_ENV_FILENAME ]; then
         echo conda activate \"$prefix\" >> $AUTOENV_ENV_FILENAME
-        echo $AUTOENV_ENV_FILENAME >> .git/info/exclude
+        echo $AUTOENV_ENV_FILENAME >> .gitignore
     fi
 }
 
