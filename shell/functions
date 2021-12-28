@@ -188,7 +188,7 @@ conda-here () {
     conda activate "$(abspath $prefix)"
 
     if [ ! -f ./$AUTOENV_ENV_FILENAME ]; then
-        echo conda activate \"$prefix\" >> $AUTOENV_ENV_FILENAME
+        echo conda activate \""$(abspath $prefix)"\" >> $AUTOENV_ENV_FILENAME
         echo $AUTOENV_ENV_FILENAME >> .gitignore
     fi
 }
