@@ -185,7 +185,7 @@ conda-here () {
         conda create --prefix $prefix ${@:2}
     fi
 
-    conda activate "$prefix"
+    conda activate "$(abspath $prefix)"
 
     if [ ! -f ./$AUTOENV_ENV_FILENAME ]; then
         echo conda activate \"$prefix\" >> $AUTOENV_ENV_FILENAME
