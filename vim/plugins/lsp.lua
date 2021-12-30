@@ -92,6 +92,7 @@ setup_server("groovyls")
 -- setup_server("clangd")
 
 setup_server("bashls")
+setup_server("jsonls")
 -- setup_server("clangd")
 setup_server("cssmodules_ls")
 setup_server("dockerls")
