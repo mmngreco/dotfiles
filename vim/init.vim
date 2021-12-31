@@ -41,6 +41,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'simrat39/symbols-outline.nvim'
 
+
 " ==== lsp config
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -64,6 +65,8 @@ Plug 'numToStr/Comment.nvim'
 " ==== thirdparty
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'oberblastmeister/neuron.nvim'
+
 " Plug 'numtostr/FTerm.nvim'
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 Plug 'chipsenkbeil/distant.nvim'
