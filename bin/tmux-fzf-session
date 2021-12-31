@@ -5,8 +5,7 @@
 # https://mmngreco.github.io/blog/tmux-fzf-session/
 selected=$(\
     tmux list-sessions -F "#{session_name}" 2>/dev/null \
-    | fzf --preview='tmux capture-pane -ep -t {}' --preview-window=right:70% --layout=reverse --exit-0 --header=Sessions \
+    | fzf --preview='tmux capture-pane -ep -t {}' --preview-window=right:70% --layout=reverse --exit-0 --header="Switch Session" \
 
 )
-tmux-sessionazer $selected
-# tmux switch-client -t "$selected"
+tmux switch-client -t "$selected"
