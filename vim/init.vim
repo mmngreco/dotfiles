@@ -550,3 +550,16 @@ nn <leader>dc :lua require("dap").continue()<cr>
 nn <leader>dl :lua require("dap").step_into()<cr>
 nn <leader>dj :lua require("dap").step_over()<cr>
 vnoremap <M-k> :lua require("dapui").eval()<CR>
+
+
+
+lua <<EOF
+-- these are all the default values
+require('neuron').setup {
+    virtual_titles = true,
+    mappings = true,
+    run = nil, -- function to run when in neuron dir
+    neuron_dir = "~/github/mmngreco/scio", -- the directory of all of your notes, expanded by default (currently supports only one directory for notes, find a way to detect neuron.dhall to use any directory)
+    leader = "gz", -- the leader key to for all mappings, remember with 'go zettel'
+}
+EOF
