@@ -31,6 +31,7 @@ function precmd() {
 # robbyrussell
 # PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 PROMPT='%{$fg[cyan]%}%c%{$reset_color%} '
+PROMPT+='$(git_prompt_info) '
 PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
 PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
 
