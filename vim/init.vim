@@ -26,7 +26,7 @@ Plug 'mmngreco/dbee.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-
+Plug 'beauwilliams/focus.nvim'
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'
@@ -679,3 +679,5 @@ nnoremap <leader>z :lua require('telekasten').panel()<CR>
 
 
 
+"You must run setup() to begin using focus
+lua require("focus").setup()
