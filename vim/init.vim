@@ -680,4 +680,4 @@ nnoremap <leader>z :lua require('telekasten').panel()<CR>
 
 
 "You must run setup() to begin using focus
-lua require("focus").setup()
+lua require("focus").setup({cursorline = false, number = false})
