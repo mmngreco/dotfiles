@@ -409,6 +409,10 @@ nnoremap <c-s> :SymbolsOutline<cr>
 
 command! -range -nargs=0 Space2Tab execute '<line1>,<line2>s#\(\s\+\)#\t#g'
 
+function! Cwd() abort
+    return fnamemodify(getcwd(), ':t')
+endfunction
+
 
 let g:livepreview_engine = 'xelatex'
 let g:livepreview_previewer = 'evince'
@@ -672,3 +676,6 @@ nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
 
 " on hesitation, bring up the panel
 nnoremap <leader>z :lua require('telekasten').panel()<CR>
+
+
+
