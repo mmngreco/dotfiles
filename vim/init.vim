@@ -143,7 +143,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvie/vim-flake8'
-" Plug 'tweekmonster/impsort.vim'  " color and sort imports
+Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
 " Plug 'radenling/vim-dispatch-neovim'
