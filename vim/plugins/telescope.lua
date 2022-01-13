@@ -61,7 +61,7 @@ end
 -- then use it on whatever picker you want
 -- ex:
 -- require('telescope').load_extension('fzy_native')
-local ignore_patterns = { ".venv/", ".git/", "node_modules/", "%.pyc", "__.*cache.*/" }
+local ignore_patterns = { ".venv/", ".git/", "node_modules/", "%.pyc", "__.*cache.*/", "*.pkl", "*.pickle" }
 local mmngreco = {}
 
 mmngreco.no_preview = function()
