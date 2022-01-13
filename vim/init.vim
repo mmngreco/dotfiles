@@ -23,7 +23,7 @@ call plug#begin()
 
 " mmngreco
 Plug 'mmngreco/dbee.nvim'
-Plug 'ThePrimeagen/refactoring.nvim'
+" Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
 Plug 'beauwilliams/focus.nvim'
@@ -143,20 +143,20 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvie/vim-flake8'
-Plug 'tweekmonster/impsort.vim'  " color and sort imports
+" Plug 'tweekmonster/impsort.vim'  " color and sort imports
 " Plug 'neomake/neomake'
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
 " Plug 'radenling/vim-dispatch-neovim'
 " Plug 'ruanyl/vim-gh-line'
 "
 " ==== debugger plugins
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 
 Plug 'szw/vim-maximizer'
 
 " === better vimmer
-Plug 'johngrib/vim-game-code-break'
-Plug 'ThePrimeagen/vim-be-good'
+" Plug 'johngrib/vim-game-code-break'
+" Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 
