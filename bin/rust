@@ -1,2 +1,2 @@
 #!/usr/bin/env bash -x
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+curl https://sh.rustup.rs -sSf | sh -s -- -y
