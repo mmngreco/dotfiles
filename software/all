@@ -16,11 +16,11 @@ install_absent git-secret
 install_absent glab
 install_absent rust
 install_absent go
+install_absent conda
 install_absent gh
 install_absent keepassxc
 install_absent latex
-install_absent conda
-install_absent nvim
 install_absent node
-install_absent tmux
 install_absent ctags
+install_absent nvim
+install_absent tmux
