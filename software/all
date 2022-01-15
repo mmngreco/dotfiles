@@ -4,7 +4,7 @@ function install_absent () {
     echo Installing $1
     if ! command -v $1 &> /dev/null
     then
-        ${DOTFILES}/software/$1
+        bash -x ${DOTFILES}/software/$1
     fi
 }
 
