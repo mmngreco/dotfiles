@@ -51,11 +51,3 @@
 
     # text expander
     ~/.config/espanso: espanso
-
-- shell:
-  - git pull
-  -
-    command: bash -x ${DOTFILES}/software/all
-    quiet: false
-    stdout: true
-    stderr: true
