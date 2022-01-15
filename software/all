@@ -15,7 +15,7 @@ install_absent fzf
 install_absent git-secret
 install_absent glab
 install_absent rust
-install_absent golang
+install_absent go
 install_absent gh
 install_absent keepassxc
 install_absent latex

@@ -53,4 +53,8 @@
     ~/.config/espanso: espanso
 
 - shell:
-  - bash -x ${DOTFILES}/software/all
+  -
+    command: bash -x ${DOTFILES}/software/all
+    quiet: false
+    stdout: true
+    stderr: true
