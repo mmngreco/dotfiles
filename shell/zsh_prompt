@@ -26,7 +26,7 @@ function precmd() {
     typeset -gi CALCTIME=0
 }
 
-if [ "${IS_DOCKER}" -eq "1" ]; then
+if [ ! -n "${IS_DOCKER}" ]; then
     DOCKER_PROMT ="[docker]"
 else
     DOCKER_PROMT =""

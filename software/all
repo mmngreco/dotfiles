@@ -1,29 +1,23 @@
 #!/usr/bin/env bash
-. ag
-. autoenv
-. brave
-. cpu
-. docker
-. fonts
-. fzf
-. git_secret
-. glab
-. golang
-. hub
-. keepassxc
-. kitty
-. latex
-. miniconda3
-. neovim
-. neovim_env_pyenv
-. nodejs
-. ocamlfuse
-. odbc
-. ohmyzsh
-. s_search
-. sxkhd
-. tmux
-. tmux_plugins
-. tmuxinator
-. universal_ctags
-. zsh
+function install_absent () {
+    if ! command -v $1 &> /dev/null
+    then
+        . $1
+    fi
+}
+
+
+install_absent zsh
+install_absent fzf
+install_absent git-secret
+install_absent glab
+install_absent rust
+install_absent golang
+install_absent gh
+install_absent keepassxc
+install_absent latex
+install_absent conda
+install_absent nvim
+install_absent node
+install_absent tmux
+install_absent ctags

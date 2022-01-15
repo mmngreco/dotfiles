@@ -51,3 +51,6 @@
 
     # text expander
     ~/.config/espanso: espanso
+
+- shell:
+  - $DOTFILES/software/all
