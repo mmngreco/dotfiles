@@ -38,3 +38,5 @@ fi
 [ -x "$(command -v google-drive-ocamlfuse)" ] && google-drive-ocamlfuse /mnt/google-drive
 [ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources
 . "$HOME/.cargo/env"
+
+export PATH="$HOME/.poetry/bin:$PATH"

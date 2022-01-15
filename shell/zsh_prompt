@@ -26,13 +26,17 @@ function precmd() {
     typeset -gi CALCTIME=0
 }
 
+if [ "${IS_DOCKER}" -eq "1" ]; then
+    DOCKER_PROMT ="[docker]"
+else
+    DOCKER_PROMT =""
+fi
 # PS1='${ETIME} %'
-
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 # robbyrussell
 # PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-PROMPT='%{$fg[cyan]%}%c%{$reset_color%} '
+PROMPT='$DOCKER_PROMT%{$fg[cyan]%}%c%{$reset_color%} '
 PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
 PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
 PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
