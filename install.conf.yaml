@@ -53,4 +53,4 @@
     ~/.config/espanso: espanso
 
 - shell:
-  - bash -c '${DOTFILES}/software/all'
+  - bash -x ${DOTFILES}/software/all
