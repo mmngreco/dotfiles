@@ -26,11 +26,13 @@ function precmd() {
     typeset -gi CALCTIME=0
 }
 
-if [ ! -n "${IS_DOCKER}" ]; then
-    DOCKER_PROMT="[docker]"
-else
+if [ -z ${IS_DOCKER+x} ]; then
+    # unset variable
     DOCKER_PROMT=""
+else
+    DOCKER_PROMT="[docker]"
 fi
+
 # PS1='${ETIME} %'
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
