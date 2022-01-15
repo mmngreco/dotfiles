@@ -6,6 +6,8 @@ etsIndex() {
 
 dotfiles() {
     case $1 in
+        h)
+            echo "Commands: go, commit, source, pull, link, *";;
         help)
             echo "Commands: go, commit, source, pull, link, *";;
         install)
