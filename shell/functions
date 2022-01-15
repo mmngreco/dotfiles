@@ -258,7 +258,7 @@ drun() {
     DIR=$PWD
 
     # docker run image with ssh support and dotfiles
-    # DEFAULT_IMG=python:3.8
+    DEFAULT_IMG=mmngreco/dev:0.3.1
     IMAGE_NAME=${1:-$DEFAULT_IMG}
     echo $IMAGE_NAME
 
