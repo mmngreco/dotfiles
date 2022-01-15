@@ -1,12 +1,14 @@
 #!/usr/bin/env bash -x
 set -e
 function install_absent () {
+    echo Installing $1
     if ! command -v $1 &> /dev/null
     then
         ${DOTFILES}/software/$1
     fi
 }
 
+echo Cloning ohmyzsh...
 ${DOTFILES}/software/ohmyzsh
 install_absent zsh
 install_absent fzf
