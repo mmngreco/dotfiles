@@ -288,7 +288,7 @@ ddev() {
     DIR=$PWD
     IMAGE_NAME=${1:-$DEFAULT_IMG}
     SUFFIX="${2:-dev}"
-    CONTAINER_NAME="$(basename $DIR)-$SUFFIX-$(echo $IMAGE_NAME | tr : _)"
+    CONTAINER_NAME="$(basename $DIR)-${SUFFIX}"
 
     if [ "$(docker ps -a -q -f name=$CONTAINER_NAME)" ]
     then
