@@ -60,3 +60,5 @@ if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.n
 export PATH="$PATH:/home/mgreco/.local/bin"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+eval "$(pyenv virtualenv-init -)"
