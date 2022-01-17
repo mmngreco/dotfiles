@@ -260,13 +260,12 @@ drun() {
     DIR=$PWD
 
     # docker run image with ssh support and dotfiles
-    DEFAULT_IMG=mmngreco/dev:0.3.1
     IMAGE_NAME=${1:-$DEFAULT_IMG}
-    echo $IMAGE_NAME
+    echo Docker image: $IMAGE_NAME
 
     SUFFIX="${2:-$(uuidgen)}"
-    CONTAINER_NAME="$(basename $DIR)-$SUFFIX-$(echo $IMAGE_NAME | tr : _)"
-    echo $CONTAINER_NAME
+    CONTAINER_NAME="$(basename $DIR)-$(echo $SUFFIX | tr -d .)"
+    echo Container name: $CONTAINER_NAME
 
     docker run \
         --env TERM="xterm-256color" \
@@ -278,8 +277,8 @@ drun() {
         --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
-        "$IMAGE_NAME" \
-        /bin/bash --rcfile /root/.dotfiles/shell/bashrc
+        "$IMAGE_NAME"
+        # /bin/bash --rcfile /root/.dotfiles/shell/bashrc
 }
 
 
