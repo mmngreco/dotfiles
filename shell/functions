@@ -278,7 +278,7 @@ drun() {
         --interactive \
         --tty \
         "$IMAGE_NAME"
-        # /bin/bash --rcfile /root/.dotfiles/shell/bashrc
+        /bin/bash --rcfile /root/.dotfiles/shell/bashrc
 }
 
 
@@ -287,7 +287,7 @@ ddev() {
     DIR=$PWD
     IMAGE_NAME=${1:-$DEFAULT_IMG}
     SUFFIX="${2:-dev}"
-    CONTAINER_NAME="$(basename $DIR)-${SUFFIX}"
+    CONTAINER_NAME="$(basename $DIR)-$(echo $SUFFIX | tr -d .)"
 
     if [ "$(docker ps -a -q -f name=$CONTAINER_NAME)" ]
     then
@@ -296,7 +296,15 @@ ddev() {
         docker start -ia $CONTAINER_NAME
     else
         echo "Creating the container..."
-        drun $IMAGE_NAME $SUFFIX
+        docker run \
+            --env TERM="xterm-256color" \
+            --volume "$HOME/.ssh:/root/.ssh" \
+            --volume "$DIR:/git/$(basename $DIR)" \
+            --workdir "/git/$(basename $DIR)" \
+            --name "$CONTAINER_NAME" \
+            --interactive \
+            --tty \
+            "$IMAGE_NAME"
     fi
 
 }
