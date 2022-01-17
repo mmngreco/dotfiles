@@ -5,10 +5,14 @@ Actually, it is what the author uses daily :-). Put it into ~/.pdbrc.py to use
 it.
 """
 import pdb
-import numpy as np
+
+try:
+    import numpy as np
+    np.set_printoptions(linewidth=120)
+except Exception:
+    pass
 
 
-np.set_printoptions(linewidth=120)
 
 
 def show_variables(variables):
