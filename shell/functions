@@ -277,7 +277,7 @@ drun() {
         --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
-        "$IMAGE_NAME"
+        "$IMAGE_NAME" \
         /bin/bash --rcfile /root/.dotfiles/shell/bashrc
 }
 
