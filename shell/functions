@@ -269,16 +269,16 @@ drun() {
 
     docker run \
         --env TERM="xterm-256color" \
-        --env DOTFILES="/root/.dotfiles" \
+        --env DOTFILES="/.dotfiles" \
         --volume "$HOME/.ssh:/root/.ssh" \
-        --volume "$HOME/.dotfiles:/root/.dotfiles" \
+        --volume "$HOME/.dotfiles:/.dotfiles" \
         --volume "$DIR:/git/$(basename $DIR)" \
         --workdir "/git/$(basename $DIR)" \
         --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
         "$IMAGE_NAME" \
-        /bin/bash --rcfile '$HOME/.dotfiles/shell/bashrc'
+        /bin/bash --rcfile "/.dotfiles/shell/bashrc"
 }
 
 
@@ -298,6 +298,7 @@ ddev() {
         echo "Creating the container..."
         docker run \
             --env TERM="xterm-256color" \
+            --user "$(id -u):$(id -g)" \
             --volume "$HOME/.ssh:/root/.ssh" \
             --volume "$DIR:/git/$(basename $DIR)" \
             --workdir "/git/$(basename $DIR)" \
