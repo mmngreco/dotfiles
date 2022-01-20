@@ -278,7 +278,7 @@ drun() {
         --interactive \
         --tty \
         "$IMAGE_NAME" \
-        /bin/bash --rcfile /root/.dotfiles/shell/bashrc
+        /bin/bash --rcfile '$HOME/.dotfiles/shell/bashrc'
 }
 
 
