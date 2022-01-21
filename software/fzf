@@ -2,5 +2,5 @@
 # https://salsa.debian.org/debian/fzf/blob/master/debian/README.Debian
 # sudo apt-get install -y fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --completion --no-key-bindings --no-update-rc
 
