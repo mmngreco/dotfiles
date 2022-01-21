@@ -256,7 +256,7 @@ mmngreco-dev() {
 }
 
 
-mydev() {
+mdev() {
 
     DIR=$PWD
     IMAGE_NAME=${1:-mmngreco/dev:0.3.2}
@@ -265,10 +265,10 @@ mydev() {
     echo Container name: $CONTAINER_NAME
 
     docker run \
-        --user "$(id -u):$(id -g)" \
-        --volume "$HOME/.ssh:/root/.ssh" \
-        --volume "$DIR:/git/$(basename $DIR)" \
-        --workdir "/git/$(basename $DIR)" \
+        --user "docker:$(id -g)" \
+        --volume "$HOME/.ssh:/home/docker/.ssh" \
+        --volume "$DIR:/home/docker/projects/$(basename $DIR)" \
+        --workdir "/home/docker/projects/$(basename $DIR)" \
         --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
