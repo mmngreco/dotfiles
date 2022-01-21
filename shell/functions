@@ -256,6 +256,25 @@ mmngreco-dev() {
 }
 
 
+mydev() {
+
+    DIR=$PWD
+    IMAGE_NAME=${1:-mmngreco/dev:0.3.2}
+    SUFFIX="${2:-$(uuidgen)}"
+    CONTAINER_NAME="$(basename $DIR)-$(echo $SUFFIX | tr -d .)"
+    echo Container name: $CONTAINER_NAME
+
+    docker run \
+        --volume "$HOME/.ssh:/root/.ssh" \
+        --volume "$DIR:/git/$(basename $DIR)" \
+        --workdir "/git/$(basename $DIR)" \
+        --name "$CONTAINER_NAME" \
+        --interactive \
+        --tty \
+        "$IMAGE_NAME" \
+}
+
+
 drun() {
     DIR=$PWD
 
