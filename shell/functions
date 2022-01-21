@@ -265,6 +265,7 @@ mydev() {
     echo Container name: $CONTAINER_NAME
 
     docker run \
+        --user "$(id -u):$(id -g)" \
         --volume "$HOME/.ssh:/root/.ssh" \
         --volume "$DIR:/git/$(basename $DIR)" \
         --workdir "/git/$(basename $DIR)" \
@@ -287,6 +288,7 @@ drun() {
     echo Container name: $CONTAINER_NAME
 
     docker run \
+        --user "$(id -u):$(id -g)" \
         --env TERM="xterm-256color" \
         --env DOTFILES="/.dotfiles" \
         --volume "$HOME/.ssh:/root/.ssh" \
