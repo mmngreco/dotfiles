@@ -26,7 +26,6 @@ Plug 'mmngreco/dbee.nvim'
 " Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'lambdalisue/suda.vim'
-Plug 'beauwilliams/focus.nvim'
 " ==== javascript
 Plug 'gko/vim-coloresque'
 Plug 'mattn/emmet-vim'
@@ -100,19 +99,12 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'phaazon/hop.nvim' " easymotion like
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
-" Plug 'junegunn/gv.vim'  " git commit browser (git log alternative)
-" Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-" Plug 'ervandew/supertab'
-    " Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-" Plug 'liuchengxu/vista.vim'   " modern ctag
-" Plug 'Konfekt/FastFold'
 
 " ==== diagrams
 Plug 'gyim/vim-boxdraw'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
 " Plug 'heavenshell/vim-pydocstring'  "overwrites Ctrl-L shortcut
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 " ==== aspect
 Plug 'gruvbox-community/gruvbox'
@@ -676,8 +668,3 @@ nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
 
 " on hesitation, bring up the panel
 nnoremap <leader>z :lua require('telekasten').panel()<CR>
-
-
-
-"You must run setup() to begin using focus
-lua require("focus").setup({cursorline = false, number = false})
