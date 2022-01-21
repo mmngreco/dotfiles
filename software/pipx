@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo apt install -y python3.8-venv python3-pip
 python3 -m pip install --user pipx
 pipx install cookiecutter
 pipx install pydoro
