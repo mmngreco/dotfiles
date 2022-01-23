@@ -667,6 +667,16 @@ nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
 nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
 nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
 nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
+nnoremap <leader>za :lua require('telekasten').show_tags()<CR>
+inoremap <leader>] :lua require('telekasten').insert_link({ i=true })<CR>
+inoremap <leader>[ <cmd>:lua require('telekasten').insert_link({ i=true })<CR>
+inoremap <leader>zt <cmd>:lua require('telekasten').toggle_todo({ i=true })<CR>
+inoremap <leader># <cmd>lua require('telekasten').show_tags({i = true})<cr>
+
 
 " on hesitation, bring up the panel
 nnoremap <leader>z :lua require('telekasten').panel()<CR>
+
+" for gruvbox
+hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+hi tkBrackets ctermfg=gray guifg=gray
