@@ -14,6 +14,8 @@
 # ... but here it says that the problems can be fixed by adding xterm-256color
 # in tmux.conf https://github.com/tmux/tmux/issues/321
 # export TERM=xterm
+
+# dotfiles
 export DOTFILES="$HOME/.dotfiles"
 
 # if running bash
@@ -34,11 +36,20 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# google drive
+if [ -x "$(command -v google-drive-ocamlfuse)" ]; then
+    if [ -z "$(ls -A /mnt/google-drive)" ]; then
+        google-drive-ocamlfuse /mnt/google-drive
+    fi
+fi
 
-[ -x "$(command -v google-drive-ocamlfuse)" ] && google-drive-ocamlfuse /mnt/google-drive
+# xterm config
 [ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources
+
+# rust
 [ -d "$HOME/.cargo/" ] && . "$HOME/.cargo/env"
 
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 [ -x "$(command -v pyenv)" ] && eval "$(pyenv init --path)"

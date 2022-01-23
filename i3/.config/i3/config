@@ -13,7 +13,6 @@ font pango:ubuntu 12
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
-# ============================================================================
 # autostart
 # exec --no-startup-id xrandr --output eDP-1 --off --auto
 exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
@@ -24,10 +23,9 @@ exec --no-startup-id volumeicon &
 exec --no-startup-id compton -b
 exec --no-startup-id caffeine-indicator
 
-# ============================================================================
 exec --no-startup-id i3-msg 'exec xterm'
 exec --no-startup-id i3-msg 'exec nautilus'
-exec --no-startup-id i3-msg 'exec Telegram'
+exec --no-startup-id i3-msg 'exec /home/mgreco/.local/bin/Telegram'
 exec --no-startup-id i3-msg 'exec keepassxc'
 
 # start a terminal
@@ -47,7 +45,7 @@ bindsym $super+Ctrl+Shift+x exec xrandr --auto
 bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
 
 # change wallpaper
-bindsym $super+Ctrl+Shift+e exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+bindsym $super+Ctrl+Shift+e exec --no-startup-id feh -D 3600 --bg-fill $HOME/github/mmngreco/wallpapers/*
 bindsym $super+Ctrl+Shift+w exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 
 # Screenshots
@@ -60,12 +58,11 @@ bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.
 bindsym $super+Ctrl+l exec i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
 
 # browsers
-bindsym $super+Shift+w exec brave-browser-stable --user-data-dir=".config/brave/ets"
-bindsym $super+w exec brave-browser-stable --user-data-dir=".config/brave/personal"
+bindsym $super+w exec brave-browser-stable
 
 # open file browser
-# bindsym $super+Shift+f workspace 4; focus; exec nautilus
 bindsym $super+Shift+f exec nautilus
+# bindsym $super+Shift+f workspace 4; focus; exec nautilus
 
 # ============================================================================
 # Focus
@@ -133,12 +130,12 @@ bindsym $super+Ctrl+less move workspace to output left
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
-        bindsym Return mode "default"
-        }
+    bindsym h resize shrink width 5 px or 5 ppt
+    bindsym j resize grow height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+    bindsym Return mode "default"
+}
 bindsym $super+r mode "resize"
 
 
@@ -195,7 +192,7 @@ bar {
         inactive_workspace      #2f343f #2f343f #d8dee8
         urgent_workspace        #2f343f #ebcb8b #2f343f
 
-        }
+    }
 
     # font pango:mplus 8
     position top
@@ -211,10 +208,10 @@ bar {
 
     status_command i3status
 
-    }
+}
 
 
-default_orientation vertical #start in opposite orientation from your monitor
+# default_orientation vertical #start in opposite orientation from your monitor
 for_window [class=".*"] split toggle
 # toggles split at each new window
 # bindsym $mod+shift+q split toggle kill #kill command resets the split
