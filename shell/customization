@@ -3,7 +3,7 @@
 # keyboard typing speed
 
 if [ -x "$(command -v xset)" ]; then
-    xset r rate 250 60
+    [ -z ${IS_DOCKER+x} ] && xset r rate 250 60
 fi
 
 if [ -x "$(command -v setxkbmap)" ]; then
