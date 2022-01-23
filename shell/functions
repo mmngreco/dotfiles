@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
-etsIndex() {
-    export PIP_INDEX_URL=$ETS_PIP_INDEX_URL
-    export PIP_TRUSTED_HOST=$ETS_PIP_TRUSTED_HOST
+toggleEtsIndex() {
+
+    if [ -z ${ETS_INDEX+x} ]; then
+        echo now pip will use pypi.
+        export ETS_INDEX=0
+        unset PIP_INDEX_URL
+        unset PIP_TRUSTED_HOST
+    else
+        echo now pip will use etspip.
+        export ETS_INDEX=1
+        export PIP_INDEX_URL=$ETS_PIP_INDEX_URL
+        export PIP_TRUSTED_HOST=$ETS_PIP_TRUSTED_HOST
+    fi
+
 }
 
 dotfiles() {
@@ -216,47 +227,7 @@ dfix() {
 }
 
 
-mmngreco-dev() {
-    DIR=$PWD
-    # docker run image with ssh support and dotfiles
-    GH_DIR="$HOME/github/mmngreco/docker-base"
-
-    case $1 in
-        clone)
-            [ ! -d $GH_DIR ] && git clone https://github.com/mmngreco/docker-base $GH_DIR
-            ;;
-        attach)
-            selected=$(docker container ls -a | tail +2 | fzf --height 10% | awk '{print $1}')
-            docker start -ia $selected
-            ;;
-        run)
-            pushd $GH_DIR > /dev/null
-            case $2 in
-                here)
-                    make run DIR=$PWD IMAGE_NAME=$(docker image ls | tail +2 | fzf --height 10% | awk '{print $1}')
-                    ;;
-                .)
-                    make run DIR=$PWD IMAGE_NAME=$(docker image ls | tail +2 | fzf --height 10% | awk '{print $1}')
-                    ;;
-                *)
-                    make run DIR=$(selectProjectFzf) IMAGE_NAME=$(docker image ls | tail +2 | fzf --height 10% | awk '{print $1}')
-                    ;;
-            esac
-            popd &> /dev/null
-            ;;
-        build)
-            pushd $GH_DIR > /dev/null
-            make build IMAGE_BASE=${2:-continuumio/miniconda3}
-            popd &> /dev/null
-            ;;
-        *)
-            echo "execute: clone | attach | run | build"
-    esac
-
-}
-
-
-mdev() {
+drun() {
 
     DIR=$PWD
     IMAGE_NAME=${1:-mmngreco/dev:0.3.2}
@@ -274,33 +245,7 @@ mdev() {
         --interactive \
         --tty \
         "$IMAGE_NAME"
-}
-
-
-drun() {
-    DIR=$PWD
-
-    # docker run image with ssh support and dotfiles
-    IMAGE_NAME=${1:-$DEFAULT_IMG}
-    echo Docker image: $IMAGE_NAME
-
-    SUFFIX="${2:-$(uuidgen)}"
-    CONTAINER_NAME="$(basename $DIR)-$(echo $SUFFIX | tr -d .)"
-    echo Container name: $CONTAINER_NAME
-
-    docker run \
-        --user "$(id -u):$(id -g)" \
-        --env TERM="xterm-256color" \
-        --env DOTFILES="/.dotfiles" \
-        --volume "$HOME/.ssh:/root/.ssh" \
-        --volume "$HOME/.dotfiles:/.dotfiles" \
-        --volume "$DIR:/git/$(basename $DIR)" \
-        --workdir "/git/$(basename $DIR)" \
-        --name "$CONTAINER_NAME" \
-        --interactive \
-        --tty \
-        "$IMAGE_NAME" \
-        /bin/bash --rcfile "/.dotfiles/shell/bashrc"
+        $3
 }
 
 
