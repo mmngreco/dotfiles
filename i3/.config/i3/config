@@ -45,7 +45,7 @@ bindsym $super+Ctrl+Shift+x exec xrandr --auto
 bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
 
 # change wallpaper
-bindsym $super+Ctrl+Shift+e exec --no-startup-id feh -D 3600 --bg-fill $HOME/github/mmngreco/wallpapers/*
+bindsym $super+Ctrl+Shift+e exec --no-startup-id feh -D 3600 --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 bindsym $super+Ctrl+Shift+w exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
 
 # Screenshots
