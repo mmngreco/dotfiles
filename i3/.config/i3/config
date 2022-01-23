@@ -25,8 +25,6 @@ exec --no-startup-id compton -b
 exec --no-startup-id caffeine-indicator
 
 # ============================================================================
-exec --no-startup-id i3-msg 'exec brave-browser-stable --user-data-dir=.config/brave/ets; move to workspace 2'
-exec --no-startup-id i3-msg 'exec brave-browser-stable --user-data-dir=.config/brave/personal; move to workspace 3'
 exec --no-startup-id i3-msg 'exec xterm'
 exec --no-startup-id i3-msg 'exec nautilus'
 exec --no-startup-id i3-msg 'exec Telegram'
@@ -140,7 +138,7 @@ mode "resize" {
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
         bindsym Return mode "default"
-}
+        }
 bindsym $super+r mode "resize"
 
 
@@ -186,6 +184,7 @@ bindsym $super+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' '
 bar {
 
     colors {
+
         background #2f343f
         statusline #2f343f
         separator #4b5262
@@ -194,8 +193,9 @@ bar {
         focused_workspace       #2f343f #bf616a #d8dee8
         active_workspace        #2f343f #2f343f #d8dee8
         inactive_workspace      #2f343f #2f343f #d8dee8
-        urgent_workspacei       #2f343f #ebcb8b #2f343f
-    }
+        urgent_workspace        #2f343f #ebcb8b #2f343f
+
+        }
 
     # font pango:mplus 8
     position top
@@ -210,7 +210,9 @@ bar {
     output $monitor_third
 
     status_command i3status
-}
+
+    }
+
 
 default_orientation vertical #start in opposite orientation from your monitor
 for_window [class=".*"] split toggle
@@ -230,8 +232,6 @@ assign [class=keepassxc] 7
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 8
 assign [class=obs] 9
 
-# for_window [instance=".config/brave/personal"] move to workspace 3
-# for_window [instance=".config/brave/ets"] move to workspace 2
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
 

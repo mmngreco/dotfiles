@@ -61,6 +61,8 @@ Plug 'chazmcgarvey/vim-mermaid'
 Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'numToStr/Comment.nvim'
+Plug 'mboughaba/i3config.vim'
+
 
 " ==== thirdparty
 Plug 'mfussenegger/nvim-dap'

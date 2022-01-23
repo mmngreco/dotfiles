@@ -7,12 +7,12 @@
 
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
-#umask 022
+# umask 022
 
-# Here says it's better define TERM in the Xresources
-#     https://github.com/tmux/tmux/issues/2818
-# ... but here says that the problems can be fixed by adding xterm-256color in tmux.conf
-#     https://github.com/tmux/tmux/issues/321
+# Here it says it's better define TERM in the Xresources
+# https://github.com/tmux/tmux/issues/2818
+# ... but here it says that the problems can be fixed by adding xterm-256color
+# in tmux.conf https://github.com/tmux/tmux/issues/321
 # export TERM=xterm
 export DOTFILES="$HOME/.dotfiles"
 
@@ -37,8 +37,8 @@ fi
 
 [ -x "$(command -v google-drive-ocamlfuse)" ] && google-drive-ocamlfuse /mnt/google-drive
 [ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources
-. "$HOME/.cargo/env"
+[ -d "$HOME/.cargo/" ] && . "$HOME/.cargo/env"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+[ -x "$(command -v pyenv)" ] && eval "$(pyenv init --path)"
