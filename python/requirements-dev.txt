@@ -5,6 +5,8 @@ pynvim
 black; python_version>='3.6'
 flake8
 isort
+pydocstyle
+numpydoc
 # wemake-python-styleguide
 # python-lsp-server[all]
 

@@ -273,7 +273,7 @@ mdev() {
         --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
-        "$IMAGE_NAME" \
+        "$IMAGE_NAME"
 }
 
 
@@ -510,10 +510,6 @@ _gr() {
     fzf --height 40% --tac | awk '{print $1}'
 }
 
-# parse_git_branch() {
-#      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-# }
-
 parse_git_branch () {
     git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# [git:\1]#'
 }
@@ -538,4 +534,3 @@ pyright-config-here() {
 pip-dev-tools() {
     pip install -r $DOTFILES/python/requirements-dev.txt
 }
-
