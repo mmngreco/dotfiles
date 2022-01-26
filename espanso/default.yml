@@ -70,7 +70,7 @@ matches:
 
   # gitlab
   - trigger: ":tags:"
-    replace: "/label ~\"assignee:mgreco\" ~\"assignee:ajimenez\" ~ToDo ~\"year:2021\" ~\"role:it\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:48\"\n/assign @mgreco"
+    replace: "/label ~\"assignee:mgreco\" ~\"assignee:afraile\"  ~\"assignee:ajimenez\" ~ToDo ~\"year:2021\" ~\"role:it\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:49\"\n/assign @mgreco"
     force_clipboard: true
 
   - trigger: ":task:"
