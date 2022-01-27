@@ -265,7 +265,6 @@ ddev() {
         echo "Creating the container..."
         docker run \
             --env TERM="xterm-256color" \
-            --user "$(id -u):$(id -g)" \
             --volume "$HOME/.ssh:/root/.ssh" \
             --volume "$DIR:/git/$(basename $DIR)" \
             --workdir "/git/$(basename $DIR)" \
@@ -277,6 +276,10 @@ ddev() {
 
 }
 
+
+chown-here () {
+    sudo chown -R $USERNAME:$USERNAME ./
+}
 
 selectProjectFzf () {
     # Print out the abslute path of every project (which has .git) at HOME dir.
