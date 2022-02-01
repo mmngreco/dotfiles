@@ -24,8 +24,9 @@ XTerm*transparent: true
 xterm*renderFont: true
 /* xterm*faceName: mplus Nerd Font Mono */
 /* xterm*faceName: Fura Code Regular Nerd Font Complete Mono */
-xterm*faceName: DejaVuSansMono
-/* xterm*faceName: UbuntuMono-R */
+! xterm*faceName: DejaVuSansMono
+! xterm*faceName: UbuntuMono-R
+xterm*faceName: Cascadia Code PL
 xterm*faceSize: 12
 /* xterm*vt100*geometry: 80x50 */
 xterm*loginShell: true
