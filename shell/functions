@@ -235,10 +235,10 @@ drun() {
     echo $CONTAINER_NAME
 
     docker run \
-        --volume "$HOME/.ssh:/home/docker/.ssh" \
-        --volume "$DIR:/home/docker/projects/$(basename $DIR)" \
-        --volume "$HOME/.dotfiles:/home/docker/.dotfiles" \
-        --workdir "/home/docker/projects/$(basename $DIR)" \
+        --volume "$HOME/.ssh:/root/.ssh" \
+        --volume "$DIR:/root/$(basename $DIR)" \
+        --volume "$HOME/.dotfiles:/root/.dotfiles" \
+        --workdir "/root/$(basename $DIR)" \
         --name "$CONTAINER_NAME" \
         --interactive \
         --tty \
