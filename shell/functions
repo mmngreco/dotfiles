@@ -235,8 +235,6 @@ drun() {
     echo $CONTAINER_NAME
 
     docker run \
-        # --env "PIP_INDEX_URL=http://etspip.ets.es/ets/pypi/+simple" \
-        # --env "PIP_TRUSTED_HOST=etspip.ets.es" \
         --volume "$HOME/.ssh:/home/docker/.ssh" \
         --volume "$DIR:/home/docker/projects/$(basename $DIR)" \
         --volume "$HOME/.dotfiles:/home/docker/.dotfiles" \
