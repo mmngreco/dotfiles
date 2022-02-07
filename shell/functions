@@ -231,12 +231,12 @@ drun() {
 
     DIR=$PWD
     IMAGE_NAME=${1:-mmngreco/dev:0.3.2}
-    SUFFIX="${2:-$(uuidgen)}"
-    CONTAINER_NAME="$(basename $DIR)-$(echo $SUFFIX | tr -d .)"
-    echo Container name: $CONTAINER_NAME
+    echo Container name:
+    echo $CONTAINER_NAME
 
     docker run \
-        --user "docker:$(id -g)" \
+        # --env "PIP_INDEX_URL=http://etspip.ets.es/ets/pypi/+simple" \
+        # --env "PIP_TRUSTED_HOST=etspip.ets.es" \
         --volume "$HOME/.ssh:/home/docker/.ssh" \
         --volume "$DIR:/home/docker/projects/$(basename $DIR)" \
         --volume "$HOME/.dotfiles:/home/docker/.dotfiles" \
