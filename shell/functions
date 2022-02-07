@@ -235,9 +235,11 @@ drun() {
     echo $CONTAINER_NAME
 
     docker run \
+        --env "DOTFILES=/root/.dotfiles" \
         --volume "$HOME/.ssh:/root/.ssh" \
         --volume "$DIR:/root/$(basename $DIR)" \
         --volume "$HOME/.dotfiles:/root/.dotfiles" \
+        --volume "$HOME/.dotfiles/shell/bashrc:/root/.bashrc" \
         --workdir "/root/$(basename $DIR)" \
         --name "$CONTAINER_NAME" \
         --interactive \
