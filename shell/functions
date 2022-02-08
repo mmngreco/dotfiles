@@ -231,21 +231,16 @@ drun() {
 
     DIR=$PWD
     IMAGE_NAME=${1:-mmngreco/dev:0.3.2}
-    SUFFIX="${2:-$(uuidgen)}"
-    CONTAINER_NAME="$(basename $DIR)-$(echo $SUFFIX | tr -d .)"
-    echo Container name: $CONTAINER_NAME
 
     docker run \
-        --user "docker:$(id -g)" \
-        --volume "$HOME/.ssh:/home/docker/.ssh" \
-        --volume "$DIR:/home/docker/projects/$(basename $DIR)" \
-        --volume "$HOME/.dotfiles:/home/docker/.dotfiles" \
-        --workdir "/home/docker/projects/$(basename $DIR)" \
-        --name "$CONTAINER_NAME" \
+        --volume "$HOME/.ssh:/root/.ssh" \
+        --volume "$DIR:/root/projects/$(basename $DIR)" \
+        --volume "$HOME/.dotfiles:/root/.dotfiles" \
+        --workdir "/root/projects/$(basename $DIR)" \
         --interactive \
         --tty \
-        "$IMAGE_NAME"
-        $3
+        "$IMAGE_NAME" \
+        "$2"
 }
 
 

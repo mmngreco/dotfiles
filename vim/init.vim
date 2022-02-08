@@ -50,7 +50,9 @@ Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-vsnip'
-
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'Microsoft/vscode-python'
 " ==== syntax
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'cespare/vim-toml'
@@ -132,8 +134,6 @@ Plug 'vim-utils/vim-man'
 Plug 'vuciv/vim-bujo'  " todos
 Plug 'wellle/targets.vim'  " text wrapper: cin,
 Plug 'thaerkh/vim-workspace'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvie/vim-flake8'

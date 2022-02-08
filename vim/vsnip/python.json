@@ -57,15 +57,15 @@
     "Doc": {
         "prefix": ["doc"],
         "body": [
-            "\"\"\"$0",
+            "\"\"\"$1",
             "",
             "Parameters",
             "----------",
-            "$1 : $2",
+            "$2 : $3",
             "",
             "Returns",
             "-------",
-            "$3 : $4",
+            "$4 : $5",
             "",
             "Notes",
             "-----",
@@ -90,12 +90,61 @@
         "description": "Multiprocessing script"
     },
 
+    "try-except": {
+        "prefix": ["try"],
+        "body": [
+            "try:",
+            "    $1",
+            "except Exception:",
+            "    $2"
+        ],
+        "description": "try except"
+    },
+
     "Pdb": {
         "prefix": ["pdb"],
         "body": [
             "__import__(\"pdb\").set_trace()"
         ],
         "description": "Break point"
+    },
+
+    "setup": {
+        "prefix": ["setup"],
+        "body": [
+            "from setuptools import setup, find_packages",
+            "from os import path",
+            "",
+            "here = path.abspath(path.dirname(__file__))",
+            "",
+            "with open(path.join(here, 'README.md'), encoding='utf-8') as f:",
+            "    long_description = f.read()",
+            "",
+            "setup(",
+            "    name='$1',",
+            "    description='$2',",
+            "    version='0.0.0',",
+            "    url='',",
+            "    author='',",
+            "    long_description=long_description,",
+            "    long_description_content_type='text/markdown',",
+            "    classifiers=[",
+            "        'Development Status :: 3 - Alpha',",
+            "        'Intended Audience :: Developers',",
+            "        'Topic :: Software Development :: Build Tools',",
+            "        'License :: OSI Approved :: MIT License',",
+            "        'Programming Language :: Python :: 3',",
+            "        'Programming Language :: Python :: 3.6',",
+            "        'Programming Language :: Python :: 3.7',",
+            "        'Programming Language :: Python :: 3.8',",
+            "        'Programming Language :: Python :: 3 :: Only',",
+            "    ],",
+            "    packages=find_packages(where='src'),",
+            "    python_requires='>=3.5, <4',",
+            "    package_dir={'': 'src'},",
+            "    install_requires=[],",
+            ")"
+        ]
     },
 
     "Imports": {
@@ -106,4 +155,5 @@
         ],
         "description": "Import pandas and numpy"
     }
+
 }
