@@ -277,6 +277,13 @@ ddev() {
 }
 
 
+dclean() {
+    docker system prune -a -f
+    sudo service docker stop
+    sudo rm -rf /var/lib/docker
+    sudo service docker start
+}
+
 chown-here () {
     sudo chown -R $USERNAME:$USERNAME ./
 }
