@@ -282,8 +282,8 @@ dclean() {
     sudo systemctl stop docker
     sudo systemctl stop docker.socket
     sudo rm -rf /var/lib/docker
-    sudo systemctl start docker
     sudo systemctl start docker.socket
+    sudo systemctl start docker
 
 }
 
