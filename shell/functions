@@ -279,9 +279,12 @@ ddev() {
 
 dclean() {
     docker system prune -a -f
-    sudo service docker stop
+    sudo systemctl stop docker
+    sudo systemctl stop docker.socket
     sudo rm -rf /var/lib/docker
-    sudo service docker start
+    sudo systemctl start docker
+    sudo systemctl start docker.socket
+
 }
 
 chown-here () {
