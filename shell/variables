@@ -40,3 +40,5 @@ export PYTHON_NEOVIM="$HOME/miniconda3/envs/neovim/bin/python"
 export MYGITPROJECTS="$HOME/github"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 export LINODE_HOST="139.162.167.149"
+
+export KITTY_LISTEN_ON=unix:/tmp/mykitty-$PPID
