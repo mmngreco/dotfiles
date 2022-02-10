@@ -57,9 +57,6 @@ matches:
   - trigger: ":name:"
     replace: "Maximiliano Greco"
 
-  - trigger: ":calle:"
-    replace: "Calle Benigno Granizo, 45, BJO, B"
-
   - trigger: ":sshcom:"
     replace: "sshpass -p {{pass}} ssh mgreco@etstea10\nclear\n"
     vars:
