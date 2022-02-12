@@ -41,3 +41,9 @@ nnoremap <C-t><C-h> :lua require("harpoon.term").sendCommand(1, "pytest\n")<cr>
 nnoremap <C-t><C-j> :lua require("harpoon.term").sendCommand(2, "pytest\n")<cr>
 nnoremap <C-t><C-k> :lua require("harpoon.term").sendCommand(3, "pytest\n")<cr>
 nnoremap <C-t><C-l> :lua require("harpoon.term").sendCommand(4, "pytest\n")<cr>
+
+" lua require("harpoon.tmux").gotoTerminal(1)
+" lua require("harpoon.tmux").sendCommand(1, "ls -La")
+" lua require("harpoon.tmux").sendCommand(1, 1)
+" lua require('harpoon.cmd-ui').toggle_quick_menu()
+" lua require("harpoon.term").sendCommand(1, 1)
