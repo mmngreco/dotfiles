@@ -21,136 +21,105 @@ endif
 
 call plug#begin()
 
-" mmngreco
-Plug 'mmngreco/dbee.nvim'
-" Plug 'ThePrimeagen/refactoring.nvim'
-Plug 'ThePrimeagen/git-worktree.nvim'
-Plug 'lambdalisue/suda.vim'
-" ==== javascript
+Plug 'cespare/vim-toml'
+" Plug 'chipsenkbeil/distant.nvim'
+Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/unicode.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'flazz/vim-colorschemes'
 Plug 'gko/vim-coloresque'
-Plug 'mattn/emmet-vim'
-" Plug pangloss/vim-javascript'
-" Plug 'camgraff/telescope-tmux.nvim'
-
-" ==== telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-media-files.nvim'
-
-Plug 'simrat39/symbols-outline.nvim'
-Plug 'sbdchd/neoformat'
-
-" ==== lsp config
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'hrsh7th/nvim-cmp'
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'godlygeek/tabular'
+Plug 'goerz/jupytext.vim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'gyim/vim-boxdraw'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'hoschi/yode-nvim'
+    Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
-    Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'Microsoft/vscode-python'
-" ==== syntax
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'cespare/vim-toml'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'tpope/vim-markdown'
-Plug 'chazmcgarvey/vim-mermaid'
-" Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
-Plug 'chrisbra/csv.vim'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'numToStr/Comment.nvim'
-Plug 'mboughaba/i3config.vim'
-
-
-" ==== thirdparty
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'renerocksai/telekasten.nvim'
-
-" Plug 'numtostr/FTerm.nvim'
-" Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
-Plug 'chipsenkbeil/distant.nvim'
-Plug 'tyru/open-browser.vim'
-Plug 'mmngreco/DrawIt'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
 Plug 'itchyny/calendar.vim'
-" Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
-" Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
-Plug 'chrisbra/unicode.vim'
-Plug 'mmngreco/slimux'
-
-Plug 'vim-test/vim-test'
-" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
-"
+" Plug 'johngrib/vim-game-code-break'
+" Plug 'joom/latex-unicoder.vim'
+Plug 'kristijanhusak/vim-carbon-now-sh'
+" Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'lambdalisue/suda.vim'
+Plug 'lervag/vimtex'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
-Plug 'chriskempson/base16-vim'
-Plug 'goerz/jupytext.vim'
-Plug 'kristijanhusak/vim-carbon-now-sh'
-Plug 'christoomey/vim-tmux-navigator'
-" Plug 'stevearc/vim-arduino', { 'for': 'ino' }
-" Plug 'blindFS/vim-taskwarrior'
-Plug 'lervag/vimtex'
-" Plug 'joom/latex-unicoder.vim'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-
-" ==== navegation
-Plug 'ThePrimeagen/harpoon'
-Plug 'phaazon/hop.nvim' " easymotion like
-Plug 'godlygeek/tabular'
-Plug 'majutsushi/tagbar'
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-" ==== diagrams
-Plug 'gyim/vim-boxdraw'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync(v:true) }}
-" Plug 'heavenshell/vim-pydocstring'  "overwrites Ctrl-L shortcut
-
-" ==== aspect
-Plug 'gruvbox-community/gruvbox'
-Plug 'flazz/vim-colorschemes'
-Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'mboughaba/i3config.vim'
+" Plug 'mfussenegger/nvim-dap'
+Plug 'Microsoft/vscode-python'
+Plug 'mmngreco/dbee.nvim'
+" Plug 'mmngreco/DrawIt'
+Plug 'mmngreco/slimux'
+" Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
+" Plug 'neomake/neomake'
+Plug 'neovim/nvim-lspconfig'
+Plug 'numToStr/Comment.nvim'
+" Plug 'numtostr/FTerm.nvim'
+Plug 'nvie/vim-flake8'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug pangloss/vim-javascript'
+" Plug 'phaazon/hop.nvim' " easymotion like
+" Plug 'puremourning/vimspector'
+" Plug 'radenling/vim-dispatch-neovim'
+Plug 'rcarriga/nvim-dap-ui'
+" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+Plug 'renerocksai/telekasten.nvim'
+" Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
+" Plug 'ruanyl/vim-gh-line'
 Plug 'sainnhe/gruvbox-material'
-Plug 'hoob3rt/lualine.nvim'
-
-" ==== effective programming
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-fugitive'  " offers git commands in vim
-Plug 'tpope/vim-speeddating'
+Plug 'sbdchd/neoformat'
+" Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
+" Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
+Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
+" Plug 'simrat39/symbols-outline.nvim'
+" Plug 'stevearc/vim-arduino', { 'for': 'ino' }
+Plug 'szw/vim-maximizer'
+" Plug 'thaerkh/vim-workspace'
+Plug 'ThePrimeagen/git-worktree.nvim'
+Plug 'ThePrimeagen/harpoon'
+" Plug 'ThePrimeagen/refactoring.nvim'
+" Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-dadbod'  " database interface
-" Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
+Plug 'tpope/vim-fugitive'  " offers git commands in vim
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'  " allow open github urls
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tweekmonster/impsort.vim'  " color and sort imports
+Plug 'tyru/open-browser.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-test/vim-test'
 Plug 'vim-utils/vim-man'
 Plug 'vuciv/vim-bujo'  " todos
 Plug 'wellle/targets.vim'  " text wrapper: cin,
-Plug 'thaerkh/vim-workspace'
-Plug 'shumphrey/fugitive-gitlab.vim' " allow open gitlab url
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'nvie/vim-flake8'
-Plug 'tweekmonster/impsort.vim'  " color and sort imports
-" Plug 'neomake/neomake'
-" Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
-" Plug 'radenling/vim-dispatch-neovim'
-" Plug 'ruanyl/vim-gh-line'
-"
-" ==== debugger plugins
-" Plug 'puremourning/vimspector'
-
-Plug 'szw/vim-maximizer'
-
-" === better vimmer
-" Plug 'johngrib/vim-game-code-break'
-" Plug 'ThePrimeagen/vim-be-good'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 call plug#end()
 
@@ -211,6 +180,9 @@ fun! ColorMyPencils()
     hi TelescopeBorder guifg=#5eacd3
 endfun
 call ColorMyPencils()
+" for gruvbox
+hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+hi tkBrackets ctermfg=gray guifg=gray
 
 " Vim with me
 nnoremap <leader>vwm :call ColorMyPencils()<CR>
@@ -218,6 +190,7 @@ nnoremap <leader>vwb :let g:my_colorscheme =
 
 nnoremap <silent> <Plug>GenerateRandom :read! python -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>GenerateRandom", v:count)<cr>
 nmap <C-g><C-r> <Plug>GenerateRandom
+
 
 tnoremap <leader>q :wqa<cr>
 
@@ -240,7 +213,7 @@ nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>rp :resize 100<CR>
 
 " add bash dead shbang!
-nnoremap <leader>sh :1<cr>O#!/usr/bin/env bash<esc><C-o>
+nnoremap <leader>sh :1<cr>O#!/usr/bin/env bash<esc>
 
 " ==== todo list
 command! Gtodo noautocmd vimgrep /TODO\|FIXME\|!!!\|???\|NOBUG\|HACK\|IDEA\|TODOC\|BUG\|XXX/j **/*.{py,md,txt} | cw
@@ -308,7 +281,7 @@ inoremap <Left> <c-g>U<Left>
 inoremap <Right> <c-g>U<Right>
 
 " smart replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>
+nnoremap <leader>s :%s/<C-r><C-w>/<C-r><C-w>/gI<left><left><left>
 nnoremap gs :%s//g<left><left>
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
@@ -323,8 +296,8 @@ vnoremap K :m '<-2<CR>gv=gv
 " select previous selection
 noremap gV `[v`]
 
-" https://vi.stackexchange.com/a/14683
 inoremap <c-k> <esc>:.m-2 \| startinsert<cr>
+" https://vi.stackexchange.com/a/14683
 inoremap <c-j> <esc>:.m+1 \| startinsert<cr>
 
 nnoremap <leader>k :m .-2<cr>==
@@ -374,7 +347,7 @@ source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
 source $DOTFILES/vim/plugins/dbee.vim
-source $DOTFILES/vim/plugins/drawit.vim
+" source $DOTFILES/vim/plugins/drawit.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/functions.vim
 source $DOTFILES/vim/plugins/harpoon.vim
@@ -393,9 +366,10 @@ source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
+source $DOTFILES/vim/plugins/neoformat.vim
+workspace
 
-
-lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:user_emmet_settings = {
             \ 'svelte' : { 'extends' : 'html', },
             \}
@@ -409,6 +383,7 @@ function! Cwd() abort
 endfunction
 
 
+" === live preview
 let g:livepreview_engine = 'xelatex'
 let g:livepreview_previewer = 'evince'
 " let g:vimtex_compiler_generic = 'xelatex'
@@ -426,280 +401,11 @@ nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
 nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
 " go substitute because the default map for sleeping is silly
 
-
-" ==== hop (easymotion like)
-" TODO move to lua file
-lua require'hop'.setup()
-nn <leader><leader>w :HopWord<cr>
-
-
+" format sql parse
 vn <leader>sf :!sqlformat -k upper -a -<cr>
 
 nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>
 nn <leader>day :Calendar -first_day=monday<cr>
 
-" === DAP config
 
-lua <<EOF
-require("dapui").setup({
-  icons = { expanded = "▾", collapsed = "▸" },
-  mappings = {
-    -- Use a table to apply multiple mappings
-    expand = { "<CR>", "<2-LeftMouse>" },
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-  },
-  sidebar = {
-    -- You can change the order of elements in the sidebar
-    elements = {
-      -- Provide as ID strings or tables with "id" and "size" keys
-      {
-        id = "scopes",
-        size = 0.25, -- Can be float or integer > 1
-      },
-      { id = "breakpoints", size = 0.25 },
-      { id = "stacks", size = 0.25 },
-      { id = "watches", size = 00.25 },
-    },
-    size = 40,
-    position = "left", -- Can be "left", "right", "top", "bottom"
-  },
-  tray = {
-    elements = { "repl" },
-    size = 10,
-    position = "bottom", -- Can be "left", "right", "top", "bottom"
-  },
-  floating = {
-    max_height = nil, -- These can be integers or a float between 0 and 1.
-    max_width = nil, -- Floats will be treated as percentage of your screen.
-    border = "single", -- Border style. Can be "single", "double" or "rounded"
-    mappings = {
-      close = { "q", "<Esc>" },
-    },
-  },
-  windows = { indent = 1 },
-})
-
-local dap = require('dap')
-dap.adapters.go = function(callback, config)
-local stdout = vim.loop.new_pipe(false)
-local handle
-local pid_or_err
-local port = 38697
-local opts = {
-    stdio = {nil, stdout},
-    args = {"dap", "-l", "127.0.0.1:" .. port},
-    detached = true
-    }
-handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
-stdout:close()
-handle:close()
-if code ~= 0 then
-    print('dlv exited with code', code)
-end
-    end)
-    assert(handle, 'Error running dlv: ' .. tostring(pid_or_err))
-    stdout:read_start(function(err, chunk)
-    assert(not err, err)
-    if chunk then
-        vim.schedule(function()
-        require('dap.repl').append(chunk)
-    end)
-end
-    end)
-    -- Wait for delve to start
-    vim.defer_fn(
-    function()
-        callback({type = "server", host = "127.0.0.1", port = port})
-    end,
-    100)
-end
--- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
-dap.configurations.go = {
-    {
-            type = "go",
-            name = "Debug",
-            request = "launch",
-            program = "${file}"
-    },
-    {
-            type = "go",
-            name = "Debug test", -- configuration for debugging test files
-            request = "launch",
-            mode = "test",
-            program = "${file}"
-    },
-    -- works with go.mod packages and sub packages
-    {
-            type = "go",
-            name = "Debug test (go.mod)",
-            request = "launch",
-            mode = "test",
-            program = "./${relativeFileDirname}"
-    }
-}
-EOF
-
-nn <leader>do :lua require("dapui").open()<cr>
-nn <leader>dx :lua require("dapui").close()<cr>
-nn <leader>dt :lua require("dapui").toggle()<cr>
-nn <leader>db :lua require("dap").toggle_breakpoint()<cr>
-nn <leader>dc :lua require("dap").continue()<cr>
-nn <leader>dl :lua require("dap").step_into()<cr>
-nn <leader>dj :lua require("dap").step_over()<cr>
-vnoremap <M-k> :lua require("dapui").eval()<CR>
-
-
-
-lua <<EOF
-local home = vim.fn.expand("~/github/mmngreco/scio")
-require('telekasten').setup({
-    home         = home,
-
-    -- if true, telekasten will be enabled when opening a note within the configured home
-    take_over_my_home = true,
-
-    -- auto-set telekasten filetype: if false, the telekasten filetype will not be used
-    --                               and thus the telekasten syntax will not be loaded either
-    auto_set_filetype = true,
-
-    dailies      = home .. '/' .. 'daily',
-    weeklies     = home .. '/' .. 'weekly',
-    templates    = home .. '/' .. 'templates',
-
-    -- image subdir for pasting
-    -- subdir name
-    -- or nil if pasted images shouldn't go into a special subdir
-    image_subdir = "img",
-
-    -- markdown file extension
-    extension    = ".md",
-
-    -- following a link to a non-existing note will create it
-    follow_creates_nonexisting = true,
-    dailies_create_nonexisting = true,
-    weeklies_create_nonexisting = true,
-
-    -- template for new notes (new_note, follow_link)
-    -- set to `nil` or do not specify if you do not want a template
-    template_new_note = home .. '/' .. 'templates/new_note.md',
-
-    -- template for newly created daily notes (goto_today)
-    -- set to `nil` or do not specify if you do not want a template
-    template_new_daily = home .. '/' .. 'templates/daily.md',
-
-    -- template for newly created weekly notes (goto_thisweek)
-    -- set to `nil` or do not specify if you do not want a template
-    template_new_weekly= home .. '/' .. 'templates/weekly.md',
-
-    -- image link style
-    -- wiki:     ![[image name]]
-    -- markdown: ![](image_subdir/xxxxx.png)
-    image_link_style = "markdown",
-
-    -- integrate with calendar-vim
-    plug_into_calendar = true,
-    calendar_opts = {
-        -- calendar week display mode: 1 .. 'WK01', 2 .. 'WK 1', 3 .. 'KW01', 4 .. 'KW 1', 5 .. '1'
-        weeknm = 4,
-        -- use monday as first day of week: 1 .. true, 0 .. false
-        calendar_monday = 1,
-        -- calendar mark: where to put mark for marked days: 'left', 'right', 'left-fit'
-        calendar_mark = 'left-fit',
-    },
-
-    -- telescope actions behavior
-    close_after_yanking = false,
-    insert_after_inserting = true,
-
-    -- tag notation: '#tag', ':tag:', 'yaml-bare'
-    tag_notation = "#tag",
-
-    -- command palette theme: dropdown (window) or ivy (bottom panel)
-    -- command_palette_theme = "ivy",
-    command_palette_theme = "dropdown",
-
-    -- tag list theme:
-    -- get_cursor: small tag list at cursor; ivy and dropdown like above
-    show_tags_theme = "ivy",
-
-    -- when linking to a note in subdir/, create a [[subdir/title]] link
-    -- instead of a [[title only]] link
-    subdirs_in_links = true,
-
-    -- template_handling
-    -- What to do when creating a new note via `new_note()` or `follow_link()`
-    -- to a non-existing note
-    -- - prefer_new_note: use `new_note` template
-    -- - smart: if day or week is detected in title, use daily / weekly templates (default)
-    -- - always_ask: always ask before creating a note
-    template_handling = "smart",
-
-    -- path handling:
-    --   this applies to:
-    --     - new_note()
-    --     - new_templated_note()
-    --     - follow_link() to non-existing note
-    --
-    --   it does NOT apply to:
-    --     - goto_today()
-    --     - goto_thisweek()
-    --
-    --   Valid options:
-    --     - smart: put daily-looking notes in daily, weekly-looking ones in weekly,
-    --              all other ones in home, except for notes/with/subdirs/in/title.
-    --              (default)
-    --
-    --     - prefer_home: put all notes in home except for goto_today(), goto_thisweek()
-    --                    except for notes with subdirs/in/title.
-    --
-    --     - same_as_current: put all new notes in the dir of the current note if
-    --                        present or else in home
-    --                        except for notes/with/subdirs/in/title.
-    new_note_location = "smart",
-
-})
-EOF
-
-" nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
-" nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
-" nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
-" nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
-" nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
-" nnoremap <leader>za :lua require('telekasten').show_tags()<CR>
-" inoremap <leader>] :lua require('telekasten').insert_link({ i=true })<CR>
-" inoremap <leader>[ <cmd>:lua require('telekasten').insert_link({ i=true })<CR>
-" inoremap <leader>zt <cmd>:lua require('telekasten').toggle_todo({ i=true })<CR>
-" inoremap <leader># <cmd>lua require('telekasten').show_tags({i = true})<cr>
-
-
-" on hesitation, bring up the panel
-" nnoremap <leader>z :lua require('telekasten').panel()<CR>
-
-" for gruvbox
-hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-hi tkBrackets ctermfg=gray guifg=gray
-
-
-
-let g:neoformat_python_black = {
-            \ 'exe': 'black',
-            \ 'args': ['-l79'],
-            \ 'replace': 1,
-            \ 'stdin': 1,
-            \ 'valid_exit_codes': [0, 23],
-            \ 'no_append': 1,
-            \ }
-
-let g:neoformat_enabled_python = ['black']
-" Enable alignment
-let g:neoformat_basic_format_align = 1
-
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 0
-
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
 nnoremap <leader>m :MaximizerToggle!<CR>
