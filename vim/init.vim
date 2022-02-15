@@ -207,7 +207,8 @@ fun! ColorMyPencils()
     highlight LineNr guifg=#5eacd3
     highlight netrwDir guifg=#5eacd3
     highlight qfFileName guifg=#aed75f
-    hi TelescopeBorder guifg=#5eacd
+    highlight NonText guifg=#5eacd3
+    hi TelescopeBorder guifg=#5eacd3
 endfun
 call ColorMyPencils()
 
@@ -701,3 +702,4 @@ let g:neoformat_basic_format_retab = 0
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+nnoremap <leader>m :MaximizerToggle!<CR>
