@@ -341,8 +341,8 @@ augroup mmngreco
 augroup END
 
 " ==== source plugin conf
+"
 " source $DOTFILES/vim/plugins/arduino.vim
-source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
@@ -357,8 +357,10 @@ source $DOTFILES/vim/plugins/lsp.vim
 source $DOTFILES/vim/plugins/lualine.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
+source $DOTFILES/vim/plugins/neoformat.vim
 source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
+source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
@@ -366,7 +368,7 @@ source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
-source $DOTFILES/vim/plugins/neoformat.vim
+source $DOTFILES/vim/plugins/yode.vim
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:user_emmet_settings = {
@@ -405,6 +407,5 @@ vn <leader>sf :!sqlformat -k upper -a -<cr>
 
 nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>
 nn <leader>day :Calendar -first_day=monday<cr>
-
 
 nnoremap <leader>m :MaximizerToggle!<CR>
