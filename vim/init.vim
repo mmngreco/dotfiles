@@ -367,7 +367,6 @@ source $DOTFILES/vim/plugins/test.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
 source $DOTFILES/vim/plugins/neoformat.vim
-workspace
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:user_emmet_settings = {
