@@ -307,7 +307,7 @@ fzfProjects () {
 nvp () {
     # neovim project
     query="${1}"
-    selectProjectFzf $query | xargs -I DIR bash -c "pushd DIR > /dev/null && nvim DIR && popd > /dev/null"
+    fzfProjects $query | xargs -I DIR bash -c "pushd DIR > /dev/null && nvim DIR && popd > /dev/null"
 }
 
 
