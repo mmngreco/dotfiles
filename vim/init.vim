@@ -26,7 +26,7 @@ Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'flazz/vim-colorschemes'
 Plug 'gko/vim-coloresque'
@@ -392,14 +392,13 @@ let g:vimtex_compiler_latexmk_engines = {
     \ '_'                : '-xelatex',
     \}
 
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <leader>h :TmuxNavigateLeft<cr>
-nnoremap <silent> <leader>j :TmuxNavigateDown<cr>
-nnoremap <silent> <leader>k :TmuxNavigateUp<cr>
-nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
-nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
-nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
+" let g:tmux_navigator_no_mappings = 1
+" nnoremap <silent> <leader>h :TmuxNavigateLeft<cr>
+" nnoremap <silent> <leader>j :TmuxNavigateDown<cr>
+" nnoremap <silent> <leader>k :TmuxNavigateUp<cr>
+" nnoremap <silent> <leader>l :TmuxNavigateRight<cr>
+" nnoremap <silent> <leader>ll :TmuxNavigatePrevious<cr>
+" nnoremap  <c-t><c-s> :Telescope tmux sessions<cr>
 " go substitute because the default map for sleeping is silly
 
 " format sql parse
