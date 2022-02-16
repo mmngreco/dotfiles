@@ -298,6 +298,11 @@ selectProjectFzf () {
     listProjects | fzf --select-1 --ansi -q "$query" --height 10% -m --bind "space:toggle"
 }
 
+fzfProjects () {
+    # Print out the abslute path of every project (which has .git) at HOME dir.
+    # query="${1:-tesser}"
+    selectProjectFzf $@
+}
 
 nvp () {
     # neovim project
