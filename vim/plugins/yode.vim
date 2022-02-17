@@ -1,5 +1,5 @@
 lua require('yode-nvim').setup({})
-vnoremap <leader>yc <cmd>YodeCreateSeditorFloating<CR>
+vnoremap <leader>yc :YodeCreateSeditorFloating<CR>
 nnoremap <leader>yc <cmd>YodeCreateSeditorFloating<CR>
 map <leader>yr <cmd>YodeCreateSeditorReplace<CR>
 nmap <leader>bd <cmd>YodeBufferDelete<cr>

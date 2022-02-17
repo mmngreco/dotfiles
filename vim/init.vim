@@ -36,7 +36,7 @@ Plug 'goerz/jupytext.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
-" Plug 'hoschi/yode-nvim'
+Plug 'hoschi/yode-nvim'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
@@ -368,7 +368,7 @@ source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
-" source $DOTFILES/vim/plugins/yode.vim
+source $DOTFILES/vim/plugins/yode.vim
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:user_emmet_settings = {
