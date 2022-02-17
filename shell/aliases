@@ -176,4 +176,3 @@ alias pip-upgrade='python -s -m pip install -U setuptools pip wheel'
 
 alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
 alias aoeu='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
-
