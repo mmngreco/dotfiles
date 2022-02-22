@@ -161,4 +161,4 @@ alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP
 alias pyServer='python -s -m http.server'
 # alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
 # alias aoeu='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
-alias pipenv='pix run pipenv'
+alias pipenv='pipx run pipenv'
