@@ -158,21 +158,7 @@ alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP
 
 
 # python
-alias pythonServer='python -s -m http.server'
-alias pythonm='python -m'
-alias pythons='python -s'
-alias pythonsm='python -s -m'
-alias pipsm='pythonsm pip'
-alias pytestm='pythonsm pytest'
-alias pip-mine='pipsm install -r $DOTFILES/python/requirements-dev.txt'
-alias pip-req='pipsm install -r  ./requirements.txt'
-alias pip-test='pipsm install -r ./requirements-test.txt'
-alias pip-doc='pipsm install -r ./requirements-doc.txt'
-alias pip-lint='pipsm install -r ./requirements-lint.txt'
-alias pip-all='for req in $(ls requirements*.txt); do; pipsm install -r $req; done'
-alias pip-dev='pipsm install -r requirements-build.txt ; pipsm install -r requirements.txt ; pipsm install -r requirements-lint.txt ;pipsm install -r requirements-test.txt ; pipsm install -r requirements-dev ; pipsm install  -e .'
-alias pip-install-test='pip install . -r requirements.txt -r requirements-test.txt --progress-bar off && pytest --ff'
-alias pip-upgrade='python -s -m pip install -U setuptools pip wheel'
-
-alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
-alias aoeu='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
+alias pyServer='python -s -m http.server'
+# alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
+# alias aoeu='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
+alias pipenv='pix run pipenv'
