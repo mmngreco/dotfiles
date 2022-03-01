@@ -2,8 +2,6 @@ lua require('yode-nvim').setup({})
 vnoremap <leader>yc :YodeCreateSeditorFloating<CR>
 nnoremap <leader>yc <cmd>YodeCreateSeditorFloating<CR>
 map <leader>yr <cmd>YodeCreateSeditorReplace<CR>
-nmap <leader>bd <cmd>YodeBufferDelete<cr>
-imap <leader>bd <esc>:YodeBufferDelete<cr>
 " these commands fall back to overwritten keys when cursor is in split window
 map <C-W>r :YodeLayoutShiftWinDown<CR>
 map <C-W>R :YodeLayoutShiftWinUp<CR>

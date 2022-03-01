@@ -253,7 +253,7 @@ nnoremap <leader>YY gg"+yG
 " nnoremap <leader>d "_d
 " vnoremap <leader>d "_d
 " yank current file's path
-nnoremap <leader>yp :let @+ = expand("%:p")<cr>
+nnoremap <leader>yf :let @+ = expand("%:p")<cr>
 
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
