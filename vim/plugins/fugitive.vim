@@ -10,8 +10,8 @@ let g:gitlab_api_keys = {$GITLAB_PERSONAL_URI : $GITLAB_PERSONAL_TOKEN, $GITLAB_
 " nnoremap <C-g><C-h> :diffget //2<CR> " get right change
 "
 nnoremap <leader>w :Git<cr>
-nnoremap <C-g><C-f> :Git fetch<CR>
 nnoremap <C-g><C-t> :Git push<CR>
+nnoremap <C-g><C-f> :Git fetch<CR>
 nnoremap <C-g><C-b> :Git pull<CR>
 nnoremap <C-g> :GBrowse<cr>
 vnoremap <C-g> :GBrowse<cr>
