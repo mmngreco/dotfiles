@@ -4433,6 +4433,9 @@ matches:
   - trigger: ':environment:'
     replace: ♻️
 
+  - trigger: ':check:'
+    replace: ✅
+
   - trigger: ':white check mark:'
     replace: ✅
 
