@@ -90,6 +90,24 @@
         "description": "Multiprocessing script"
     },
 
+    "post-mortem": {
+        "prefix": ["pm"],
+        "body": [
+            "try:",
+            "    main()",
+            "except Exception:",
+            "    import pdb",
+            "    import sys",
+            "    import traceback",
+            "",
+            "    extype, value, tb = sys.exc_info()",
+            "    traceback.print_exc()",
+            "    pdb.post_mortem(tb)"
+        ],
+        "description": "Post mortem"
+    },
+
+
     "try-except": {
         "prefix": ["try"],
         "body": [
