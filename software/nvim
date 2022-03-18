@@ -16,7 +16,7 @@ echo "========================================================================"
 
 NEOVIM_DIR="$HOME/github/neovim/neovim"
 NEOVIM_URL="https://github.com/neovim/neovim.git"
-NEOVIM_VER="v0.6.0"
+NEOVIM_VER="v0.6.1"
 
 # NEOVIM_VER=$(git -c 'versionsort.suffix=-' \
 #     ls-remote --exit-code --refs --sort='version:refname' --tags $NEOVIM_URL '*.*.*' \
