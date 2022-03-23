@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 # wget https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-amd64.deb
-wget https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-x11-amd64.deb
-sudo apt install ./espanso-debian-x11-amd64.deb
-rm ./espanso-debian-x11-amd64.deb
+# wget https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-x11-amd64.deb
+# wget https://github.com/federico-terzi/espanso/releases/download/v2.1.4-beta/espanso-debian-x11-amd64.deb
+# sudo apt install ./espanso-debian-x11-amd64.deb
+# rm ./espanso-debian-x11-amd64.deb
+wget https://github.com/federico-terzi/espanso/releases/download/v0.7.3/espanso-debian-amd64.deb
+sudo apt install ./espanso-debian-amd64.deb
+rm ./espanso-debian-amd64.deb
+# espanso service register
 espanso start
 
