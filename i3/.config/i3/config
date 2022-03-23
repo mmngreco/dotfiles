@@ -3,6 +3,7 @@ set $super Mod4
 set $alt Mod1
 
 # check this with the command: xrandr
+set $monitor_fourth HDMI-A-0
 set $monitor_third HDMI-2
 set $monitor_secondary HDMI-1
 set $monitor_main eDP-1
@@ -206,6 +207,7 @@ bar {
     output $monitor_main
     output $monitor_secondary
     output $monitor_third
+    output $monitor_fourth
 
     status_command i3status
 
