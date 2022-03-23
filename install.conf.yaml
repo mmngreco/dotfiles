@@ -34,6 +34,7 @@
     ~/.Xresources: i3/.Xresources
     ~/.xprofile: i3/.xprofile
     ~/.xsettingsd: i3/.xsettingsd
+    ~/.config/kitty/kitty.conf: terminal/kitty.conf
 
     # vim
     ~/.config/nvim/init.vim: vim/init.vim
