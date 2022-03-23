@@ -1,5 +1,5 @@
-let g:toggle_pdb_on=1
-let test#python#pytest#options = '--ff -v -p no:warnings --pdb'
+let g:toggle_pdb_on=0
+let test#python#pytest#options = '--ff -v -p no:warnings'
 
 function TogglePdb() abort
     if g:toggle_pdb_on
