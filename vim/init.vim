@@ -36,7 +36,7 @@ Plug 'goerz/jupytext.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
-" Plug 'hoschi/yode-nvim'
+Plug 'hoschi/yode-nvim'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
@@ -188,11 +188,12 @@ hi tkBrackets ctermfg=gray guifg=gray
 nnoremap <leader>vwm :call ColorMyPencils()<CR>
 nnoremap <leader>vwb :let g:my_colorscheme =
 
-nnoremap <silent> <Plug>GenerateRandom :read! python -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>GenerateRandom", v:count)<cr>
+nnoremap <silent> <Plug>GenerateRandom :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>GenerateRandom", v:count)<cr>
 nmap <C-g><C-r> <Plug>GenerateRandom
 
 
-tnoremap <leader>q :wqa<cr>
+" tnoremap <leader>q :wqa<cr>
+
 
 " underline current line
 nnoremap <leader>tu <esc>Vypv$r-
@@ -291,8 +292,9 @@ nnoremap gs :%s//g<left><left>
 " below is commented due to problems with {{cookiecutter}} directories
 " set wildignorecase
 "
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" I don't use below very often and but I do use J to join many lines
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 " select previous selection
 noremap gV `[v`]
 
@@ -342,6 +344,10 @@ augroup END
 
 " ==== source plugin conf
 "
+source $DOTFILES/vim/plugins/sets.vim
+source $DOTFILES/vim/plugins/netrw.vim
+source $DOTFILES/vim/plugins/functions.vim
+
 " source $DOTFILES/vim/plugins/arduino.vim
 source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
@@ -349,7 +355,6 @@ source $DOTFILES/vim/plugins/commentary.vim
 source $DOTFILES/vim/plugins/dbee.vim
 " source $DOTFILES/vim/plugins/drawit.vim
 source $DOTFILES/vim/plugins/fugitive.vim
-source $DOTFILES/vim/plugins/functions.vim
 source $DOTFILES/vim/plugins/harpoon.vim
 source $DOTFILES/vim/plugins/impsort.vim
 source $DOTFILES/vim/plugins/jupytext.vim
@@ -358,9 +363,7 @@ source $DOTFILES/vim/plugins/lualine.vim
 source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/neoformat.vim
-source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
-source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/slimux.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
