@@ -21,6 +21,7 @@ endif
 
 call plug#begin()
 
+Plug 'willchao612/vim-diagon'
 Plug 'cespare/vim-toml'
 " Plug 'chipsenkbeil/distant.nvim'
 Plug 'chrisbra/csv.vim'
@@ -411,3 +412,11 @@ nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<
 nn <leader>day :Calendar -first_day=monday<cr>
 
 nnoremap <leader>m :MaximizerToggle!<CR>
+
+
+" === diagon : diagram
+noremap <Leader>D :Diagon<Space>
+
+noremap <Leader>dm :Diagon Math<CR>
+noremap <Leader>ds :Diagon Sequence<CR>
+noremap <Leader>dt :Diagon Tree<CR>
