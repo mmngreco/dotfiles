@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -v
+
+cloneDir=~/diagon
+
+[[ -d "${cloneDir}" ]] && sudo rm -rf ${cloneDir}
+# clone project
+git clone --depth 1 https://github.com/ArthurSonzogni/Diagon ${cloneDir}
+pushd ${cloneDir} > /dev/null
+
+# install dependencies
+sudo apt install make uuid-dev libboost-graph-dev cmake
+
+# build
+mkdir ./build
+cd ./build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j
+sudo make install
+
+
+popd
