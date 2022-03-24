@@ -33,7 +33,7 @@ sudo apt-get -y update \
     zlib1g-dev
 
 
-echo "[FreeTDS]"                                             > /etc/odbcinst.ini
-echo "Description = TDS driver (Sybase/MS SQL)"              >> /etc/odbcinst.ini
-echo "Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so" >> /etc/odbcinst.ini
-echo "Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so"     >> /etc/odbcinst.ini
+sudo bash -c 'echo "[FreeTDS]"                                             >  /etc/odbcinst.ini'
+sudo bash -c 'echo "Description = TDS driver (Sybase/MS SQL)"              >> /etc/odbcinst.ini'
+sudo bash -c 'echo "Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so" >> /etc/odbcinst.ini'
+sudo bash -c 'echo "Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so"     >> /etc/odbcinst.ini'
