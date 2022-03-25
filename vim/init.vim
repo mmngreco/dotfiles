@@ -21,6 +21,7 @@ endif
 
 call plug#begin()
 Plug 'tmhedberg/SimpylFold'
+" Plug 'Konfekt/FastFold'
 Plug 'willchao612/vim-diagon'
 Plug 'cespare/vim-toml'
 " Plug 'chipsenkbeil/distant.nvim'
@@ -420,3 +421,32 @@ noremap <Leader>D :Diagon<Space>
 noremap <Leader>dm :Diagon Math<CR>
 noremap <Leader>ds :Diagon Sequence<CR>
 noremap <Leader>dt :Diagon Tree<CR>
+
+
+" === fold
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+" let g:markdown_folding = 2
+" let g:rst_fold_enabled = 2
+" let g:tex_fold_enabled = 2
+" let g:vimsyn_folding = 'af'
+" let g:xml_syntax_folding = 2
+" let g:javaScript_fold = 2
+" let g:sh_fold_enabled= 7
+" let g:zsh_fold_enable = 2
+" let g:ruby_fold = 2
+" let g:perl_fold = 2
+" let g:perl_fold_blocks = 2
+" let g:r_syntax_folding = 2
+" let g:rust_fold = 2
+" let g:python_fold = 2
+" let g:php_folding = 2
+" let g:fortran_fold=2
+" let g:clojure_fold = 2
+" let g:baan_fold=2
+augroup Fold
+    autocmd!
+    autocmd FileType python setlocal foldmethod=indent
+augroup END
