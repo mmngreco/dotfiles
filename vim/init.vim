@@ -22,6 +22,7 @@ endif
 call plug#begin()
 Plug 'tmhedberg/SimpylFold'
 " Plug 'Konfekt/FastFold'
+Plug 'python-mode/python-mode'
 Plug 'willchao612/vim-diagon'
 Plug 'cespare/vim-toml'
 " Plug 'chipsenkbeil/distant.nvim'
@@ -343,8 +344,8 @@ augroup mmngreco
     " remove numbers from terminal buffer
     autocmd TermOpen * setlocal nonumber norelativenumber
 
-    autocmd FileType python nnoremap <buffer> [[ ?^class\\|^\s*def<CR>
-    autocmd FileType python nnoremap <buffer> ]] /^class\\|^\s*def<CR>
+    " autocmd FileType python nnoremap <buffer> [[ ?^class\\|^\s*def<CR>
+    " autocmd FileType python nnoremap <buffer> ]] /^class\\|^\s*def<CR>
 augroup END
 
 " ==== source plugin conf
