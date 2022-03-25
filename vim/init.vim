@@ -342,6 +342,9 @@ augroup mmngreco
 
     " remove numbers from terminal buffer
     autocmd TermOpen * setlocal nonumber norelativenumber
+
+    autocmd FileType python nnoremap <buffer> [[ ?^class\\|^\s*def<CR>
+    autocmd FileType python nnoremap <buffer> ]] /^class\\|^\s*def<CR>
 augroup END
 
 " ==== source plugin conf
@@ -450,3 +453,5 @@ augroup Fold
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
 augroup END
+
+
