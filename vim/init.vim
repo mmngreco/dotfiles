@@ -22,7 +22,6 @@ endif
 call plug#begin()
 Plug 'tmhedberg/SimpylFold'
 " Plug 'Konfekt/FastFold'
-Plug 'python-mode/python-mode'
 Plug 'willchao612/vim-diagon'
 Plug 'cespare/vim-toml'
 " Plug 'chipsenkbeil/distant.nvim'
