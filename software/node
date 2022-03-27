@@ -13,8 +13,7 @@ fi
 if [ ! -x "$(command -v gyp)" ]
 then
     sudo npm install -g node-gyp
-    echo 'export
-    npm_config_node_gyp="/usr/local/lib/node_modules/node-gyp/bin/node-gyp.js"' >> $DOTFILES/shell/variables
+    # echo 'export npm_config_node_gyp="/usr/local/lib/node_modules/node-gyp/bin/node-gyp.js"' >> $DOTFILES/shell/variables
 fi
 
 
@@ -31,6 +30,6 @@ fi
 if [ ! -x "$(command -v browser-sync)" ]
 then
     sudo npm install -g browser-sync
-    echo 'export SERVER_IP=$(hostname -I)' >> $DOTFILES/shell/aliases
-    echo 'alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 9000"' >> $DOTFILES/shell/aliases
+    # echo 'export SERVER_IP=$(hostname -I)' >> $DOTFILES/shell/aliases
+    # echo 'alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 9000"' >> $DOTFILES/shell/aliases
 fi
