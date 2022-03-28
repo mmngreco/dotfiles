@@ -11,7 +11,9 @@ set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
-set mouse=nv
+" set ttymouse=xterm2
+set mouse=a
+" set mouse=nv
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
