@@ -162,3 +162,5 @@ alias pyServer='python -s -m http.server'
 # alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
 # alias aoeu='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
 alias pipenv='pipx run pipenv'
+
+alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
