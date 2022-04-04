@@ -28,6 +28,7 @@ exec --no-startup-id i3-msg 'exec kitty'
 exec --no-startup-id i3-msg 'exec nautilus'
 exec --no-startup-id i3-msg 'exec /home/mgreco/.local/bin/Telegram'
 exec --no-startup-id i3-msg 'exec keepassxc'
+exec --no-startup-id i3-msg 'exec noisetorch'
 
 # start a terminal
 bindsym $super+Return exec kitty
