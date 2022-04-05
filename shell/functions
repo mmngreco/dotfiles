@@ -218,7 +218,7 @@ conda-activate() {
 
 dfix() {
     # see https://serverfault.com/a/642984/573706
-    apt-get install bridge-utils
+    sudo apt-get install bridge-utils
     sudo pkill docker
     sudo iptables -t nat -F
     sudo ifconfig docker0 down
