@@ -22,6 +22,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'ckipp01/nvim-jenkinsfile-linter'
 Plug 'tmhedberg/SimpylFold'
 " Plug 'Konfekt/FastFold'
 Plug 'willchao612/vim-diagon'
