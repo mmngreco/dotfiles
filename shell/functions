@@ -17,7 +17,7 @@ toggleEtsIndex() {
 
 dotfiles() {
     case $1 in
-        h)
+        h|*)
             echo "Commands: go, commit, source, pull, link, *";;
         help)
             echo "Commands: go, commit, source, pull, link, *";;
