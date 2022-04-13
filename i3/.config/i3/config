@@ -6,6 +6,7 @@ set $alt Mod1
 set $monitor_fourth HDMI-A-0
 set $monitor_third HDMI-2
 set $monitor_secondary HDMI-1
+set $monitor_main2 eDP
 set $monitor_main eDP-1
 
 # set font
@@ -206,6 +207,7 @@ bar {
     # modifier Mod1
 
     output $monitor_main
+    output $monitor_main2
     output $monitor_secondary
     output $monitor_third
     output $monitor_fourth
@@ -229,7 +231,7 @@ assign [class=XTerm|kitty] 1
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=libreoffice*] 5
 assign [class=TelegramDesktop] 6
-assign [class=keepassxc] 7
+assign [class=keepassxc|NoiseTorch] 8
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 8
 assign [class=obs] 9
 
