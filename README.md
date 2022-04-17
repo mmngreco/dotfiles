@@ -22,17 +22,17 @@ cd ~/.dotfiles
 ### Update
 
 ```bash
-dotfilesLink
+dotfiles link
 ```
 
 ### Software
 
 it's possible execute every script in `software` folder from everywhere using
-the bash function `dotinst`:
+the bash function `dotfiles i`:
 
 ```bash
-dotinst  # allows you to choose what to install
-dotinst ag fzf
+dotfiles i  # allows you to choose what to install
+dotfiles i ag fzf
 ```
 
 ## Issues

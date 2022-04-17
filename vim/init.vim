@@ -41,12 +41,13 @@ Plug 'goerz/jupytext.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'hoschi/yode-nvim'
+" Plug 'hoschi/yode-nvim'
+Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -82,7 +83,6 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " Plug pangloss/vim-javascript'
-" Plug 'phaazon/hop.nvim' " easymotion like
 " Plug 'puremourning/vimspector'
 " Plug 'radenling/vim-dispatch-neovim'
 Plug 'rcarriga/nvim-dap-ui'
@@ -379,7 +379,7 @@ source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
-source $DOTFILES/vim/plugins/yode.vim
+" source $DOTFILES/vim/plugins/yode.vim
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:user_emmet_settings = {
