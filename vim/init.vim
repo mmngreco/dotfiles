@@ -27,6 +27,8 @@ Plug 'folke/trouble.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alec-gibson/nvim-tetris'
 
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+
 " TODO change to luasnip
 " Plug 'L3MON4D3/LuaSnip'
 
