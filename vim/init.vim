@@ -26,7 +26,7 @@ call plug#begin()
 Plug 'folke/trouble.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alec-gibson/nvim-tetris'
-
+Plug 'sunjon/shade.nvim'
 Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " TODO change to luasnip
@@ -490,3 +490,17 @@ nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+
+" === shade
+lua << EOF
+require('shade').setup({
+  overlay_opacity = 50,
+  opacity_step = 1,
+  keys = {
+    brightness_up    = '<C-Up>',
+    brightness_down  = '<C-Down>',
+    toggle           = '<Leader>t',
+  }
+})
+EOF
