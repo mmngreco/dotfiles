@@ -22,6 +22,14 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+" Vim Script
+Plug 'folke/trouble.nvim'
+Plug 'sbdchd/neoformat'
+Plug 'alec-gibson/nvim-tetris'
+
+" TODO change to luasnip
+" Plug 'L3MON4D3/LuaSnip'
+
 Plug 'ckipp01/nvim-jenkinsfile-linter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
@@ -464,3 +472,19 @@ let g:SimpylFold_fold_import = 0
 let b:SimpylFold_fold_import = 0
 let g:SimpylFold_fold_blank = 0
 let b:SimpylFold_fold_blank = 0
+
+" === trouble
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
