@@ -13,11 +13,11 @@ let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 " let g:mkdp_page_title = "${name}"
 "
-" " ==== pandoc
-" " let g:pandoc#syntax#codeblocks#embeds#use = 1
-" " let g:pandoc#syntax#codeblocks#embeds#langs = [ 'python', 'vim', 'c', 'bash', 'sql', 'csv']
-" " let g:pandoc#syntax#conceal#urls = 1
-"
-" " ==== tpope/markdown
-" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
-" let g:markdown_minlines = 50
+" ==== pandoc
+" let g:pandoc#syntax#codeblocks#embeds#use = 1
+" let g:pandoc#syntax#codeblocks#embeds#langs = [ 'python', 'vim', 'c', 'bash', 'sql', 'csv']
+" let g:pandoc#syntax#conceal#urls = 1
+
+" ==== tpope/markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
+let g:markdown_minlines = 50
