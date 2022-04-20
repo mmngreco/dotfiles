@@ -23,6 +23,7 @@ endif
 
 call plug#begin()
 " Vim Script
+Plug 'jbyuki/nabla.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alec-gibson/nvim-tetris'
@@ -504,3 +505,6 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 "   }
 " })
 " EOF
+"
+
+nnoremap <leader>p :lua require("nabla").popup()<CR>
