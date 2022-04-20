@@ -10,6 +10,9 @@
 search_shortcut: off
 
 matches:
+  - trigger: ":cfold:"
+    replace: "<details><summary><code>Click to expand</code></summary>\n\n```python\n```\n</details>"
+
   - trigger: ":fold:"
     replace: "<details><summary>Click to expand</summary>\n\n</details>"
 
@@ -65,13 +68,18 @@ matches:
       - name: pass
         type: match
         params:
-          trigger: ":amf"
+          trigger: ":amf:"
 
   # gitlab
-  - trigger: ":tags:"
-    replace: "/label ~\"assignee:mgreco\" ~\"assignee:afraile\"  ~\"assignee:ajimenez\" \n/label ~\"role:it\" ~ToDo ~\"2022\" \n/label ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:49\"\n/assign @mgreco"
+  - trigger: ":labels:"
+    replace: "/label ~\"assignee:mgreco\" ~\"assignee:afraile\" \n/label ~\"role:it\" ~ToDo \n/label ~\"2022:objective:tesser\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:51\"\n/assign @mgreco"
     force_clipboard: true
 
   - trigger: ":task:"
-    replace: "## Contexto\n\n## Problema\n\n## Objetivo\n\n## Tasks\n\n- [ ] implementar tests\n"
+    replace: "## Contexto\n\n## Problema\n\n## Objetivo\n\n## Tasks\n\n- [ ] implementar tests\n{{labels}}"
     force_clipboard: true
+    vars:
+      - name: labels
+        type: match
+        params:
+          trigger: ":labels:"
