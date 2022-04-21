@@ -508,7 +508,7 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 " EOF
 "
 
-nnoremap <leader>p :lua require("nabla").popup()<CR>
+" nnoremap <leader>p :lua require("nabla").popup()<CR>
 " nnoremap <leader>asc :let s = system(join(["asciiTeX", '"', getline('.'), '"'])) | echo s<cr>
 
 
