@@ -42,6 +42,7 @@ bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=
 
 # open rofi
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
+bindsym $super+c exec moira check | xargs -I{} notify-send Info "MOIRA:\n{}"
 
 # monitor settings using rofi
 bindsym $super+Ctrl+Shift+m exec rofi-randr
@@ -73,7 +74,7 @@ bindsym $super+Shift+f exec nautilus
 
 # kill focused window
 bindsym $super+q kill
-bindsym $super+c kill
+# bindsym $super+c kill
 
 # change focus
 bindsym $super+h focus left
