@@ -9,9 +9,9 @@
 " let g:vim_markdown_math=1
 "
 " " ==== markdown-preview
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
-" let g:mkdp_page_title = "${name}"
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 0
+let g:mkdp_page_title = "${name}"
 "
 " ==== pandoc
 " let g:pandoc#syntax#codeblocks#embeds#use = 1
