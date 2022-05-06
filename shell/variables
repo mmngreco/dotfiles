@@ -32,7 +32,7 @@ export AUTOENV_ASSUME_YES=1
 
 export CONDA_DIR="$HOME/miniconda3"
 export GEM_HOME="$HOME/.gem"
-export GOPATH="$HOME/go"
+# export GOPATH="$HOME/go"
 # export DEFAULT_IMG="python:3.8"
 export DEFAULT_IMG=mmngreco/dev:0.3.3
 export DEFAULT_IMG=mmngreco/dev:latest
@@ -40,5 +40,5 @@ export PYTHON_NEOVIM="$HOME/miniconda3/envs/neovim/bin/python"
 export MYGITPROJECTS="$HOME/github"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 export LINODE_HOST="139.162.167.149"
-
 export KITTY_LISTEN_ON=unix:/tmp/mykitty-$PPID
+export PATH=$PATH:/usr/local/go/bin
