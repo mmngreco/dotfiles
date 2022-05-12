@@ -11,6 +11,7 @@ addToPath "/usr/local/bin"
 addToPath "$HOME/bin"
 addToPath "$HOME/.cargo/bin"
 addToPath "$HOME/.local/bin"
+addToPath "$HOME/.deno/bin"
 
 # go
 addToPathFront "$HOME/go/bin"
