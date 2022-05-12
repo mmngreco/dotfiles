@@ -11,10 +11,12 @@ addToPath "/usr/local/bin"
 addToPath "$HOME/bin"
 addToPath "$HOME/.cargo/bin"
 addToPath "$HOME/.local/bin"
+addToPath "$HOME/.deno/bin"
 
 # go
 addToPathFront "$HOME/go/bin"
 addToPathFront "/home/mgreco/.go/bin"
+addToPathFront "/usr/local/go/bin"
 
 # db
 addToPathFront "/opt/mssql-tools/bin"

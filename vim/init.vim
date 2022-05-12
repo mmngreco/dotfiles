@@ -22,6 +22,9 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+
+Plug 'skanehira/denops-docker.vim'
+Plug 'vim-denops/denops.vim'
 " Vim Script
 Plug 'AndrewRadev/exercism.vim'
 Plug 'jbyuki/nabla.nvim'

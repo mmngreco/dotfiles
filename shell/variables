@@ -41,4 +41,8 @@ export MYGITPROJECTS="$HOME/github"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 export LINODE_HOST="139.162.167.149"
 export KITTY_LISTEN_ON=unix:/tmp/mykitty-$PPID
+<<<<<<< HEAD
 export PATH=$PATH:/usr/local/go/bin
+=======
+export MOIRA_HOURS_PER_DAY=6
+>>>>>>> bdcb06a2b44eb9b6aedbc7a78fa018a89bd52dbc

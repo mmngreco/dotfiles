@@ -3,11 +3,13 @@ set $super Mod4
 set $alt Mod1
 
 # check this with the command: xrandr
-set $monitor_fourth HDMI-A-0
-set $monitor_third HDMI-2
-set $monitor_secondary HDMI-1
-set $monitor_main2 eDP
-set $monitor_main eDP-1
+# set $monitor_fourth HDMI-A-0
+# set $monitor_third HDMI-2
+# set $monitor_secondary HDMI-1
+# set $monitor_main2 eDP
+# set $monitor_main eDP
+set $monitor_secondary eDP
+set $monitor_main HDMI-A-0
 
 # set font
 font pango:ubuntu 12
@@ -42,8 +44,8 @@ bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=
 
 # open rofi
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
-bindsym $super+c exec moira check | xargs -I{} notify-send Info "MOIRA:\n{}"
-bindsym $super+v exec nmcli con up ets | xargs -I{} notify-send Info "vpn:\n{}"
+bindsym $super+c exec notify-send Moira "$(moira check)"
+bindsym $super+v exec notify-send VPN "$(nmcli con up ets)"
 
 
 # monitor settings using rofi
@@ -210,10 +212,10 @@ bar {
     # modifier Mod1
 
     output $monitor_main
-    output $monitor_main2
     output $monitor_secondary
-    output $monitor_third
-    output $monitor_fourth
+    # output $monitor_main2
+    # output $monitor_third
+    # output $monitor_fourth
 
     status_command i3status
 
