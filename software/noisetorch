@@ -3,7 +3,7 @@
 # https://github.com/lawl/NoiseTorch
 
 pushd ~/ > /dev/null
-wget https://github.com/lawl/NoiseTorch/releases/download/0.11.4/NoiseTorch_x64.tgz
+wget https://github.com/lawl/NoiseTorch/releases/download/0.11.6/NoiseTorch_x64.tgz
 tar -C $HOME -xzf NoiseTorch_x64.tgz
 sudo setcap 'CAP_SYS_RESOURCE=+ep' ~/.local/bin/noisetorch
 popd > /dev/null

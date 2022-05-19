@@ -5,15 +5,15 @@ set $alt Mod1
 # Use: xrandr command to check monitor names.
 
 # personal laptop
-set $monitor_secondary1 eDP-1
-set $monitor_main1 HDMI-1
+set $monitor_personal eDP-1
+set $monitor_hdmi_personal HDMI-1
 
 # professional laptop
-set $monitor_secondary2 eDP
-set $monitor_main2 HDMI-A-0
+set $monitor_professional eDP
+set $monitor_hdmi_professional HDMI-A-0
 
 # set font
-font pango:ubuntu 12
+font pango:ubuntu 10
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -154,31 +154,31 @@ bindsym $super+r mode "resize"
 # Focus
 #
 # personal laptop
-workspace 1 output $monitor_main1
-workspace 2 output $monitor_main1
-workspace 3 output $monitor_main1
-workspace 4 output $monitor_main1
-workspace 5 output $monitor_main1
-
-workspace 6 output $monitor_secondary1
-workspace 7 output $monitor_secondary1
-workspace 8 output $monitor_secondary1
-workspace 9 output $monitor_secondary1
-workspace 0 output $monitor_secondary1
+# workspace 1 output $monitor_hdmi_personal
+# workspace 2 output $monitor_hdmi_personal
+# workspace 3 output $monitor_hdmi_personal
+# workspace 4 output $monitor_hdmi_personal
+# workspace 5 output $monitor_hdmi_personal
+#
+# workspace 6 output $monitor_personal
+# workspace 7 output $monitor_personal
+# workspace 8 output $monitor_personal
+# workspace 9 output $monitor_personal
+# workspace 0 output $monitor_personal
 
 
 # professional laptop
-workspace 1 output $monitor_main2
-workspace 2 output $monitor_main2
-workspace 3 output $monitor_main2
-workspace 4 output $monitor_main2
-workspace 5 output $monitor_main2
+workspace 1 output $monitor_hdmi_professional
+workspace 2 output $monitor_hdmi_professional
+workspace 3 output $monitor_hdmi_professional
+workspace 4 output $monitor_hdmi_professional
+workspace 5 output $monitor_hdmi_professional
 
-workspace 6 output $monitor_secondary2
-workspace 7 output $monitor_secondary2
-workspace 8 output $monitor_secondary2
-workspace 9 output $monitor_secondary2
-workspace 0 output $monitor_secondary2
+workspace 6 output $monitor_professional
+workspace 7 output $monitor_professional
+workspace 8 output $monitor_professional
+workspace 9 output $monitor_professional
+workspace 0 output $monitor_professional
 
 bindsym $super+1 workspace 1
 bindsym $super+2 workspace 2
@@ -222,7 +222,7 @@ bar {
     }
 
     # font pango:mplus 8
-    position top
+    # position top
     tray_output primary
 
     # mode hide
@@ -231,7 +231,6 @@ bar {
 
     # output $monitor_main
     # output $monitor_secondary
-    # output $monitor_main2
     # output $monitor_third
     # output $monitor_fourth
 
@@ -268,35 +267,3 @@ client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background           #2f343f
-# Review the lines below and append to ~/.config/i3/config
-
-## Volume control
-
-# Path to volume control, without trailing slash
-set $volumepath ~/i3-volume
-
-# Command for the status line
-#   ie: i3blocks, i3status
-set $statuscmd i3status
-
-# Signal used to update the status line
-#   i3blocks uses SIGRTMIN+10 by default
-#   i3status uses SIGUSR1 by default
-set $statussig SIGUSR1
-
-# Amount to increase/decrease volume as a percentage
-set $volumestep 5
-
-# alsa-utils settings
-#
-# To configure a default card, see https://www.alsa-project.org/main/index.php/Asoundrc
-#
-# Card number to control.
-#   If not specified, i3-volume will let `amixer` use a default.
-#   List cards: aplay -l
-#set $alsacard 1
-
-# append "-c $alsacard" without quotes to override default card
-bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig up $volumestep
-bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig down $volumestep
-bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig mute
