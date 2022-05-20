@@ -9,8 +9,8 @@ set $monitor_personal eDP-1
 set $monitor_hdmi_personal HDMI-1
 
 # professional laptop
-set $monitor_professional eDP
-set $monitor_hdmi_professional HDMI-A-0
+# set $monitor_professional eDP
+# set $monitor_hdmi_professional HDMI-A-0
 
 # set font
 font pango:ubuntu 10
