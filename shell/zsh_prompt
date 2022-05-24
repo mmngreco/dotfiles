@@ -35,7 +35,7 @@ fi
 
 
 function togglePrompt() {
-    input=$1
+    input=${DEFAULT_PROMPT:-$1}
     case $input in
     default)
        ZSH_THEME_GIT_PROMPT_PREFIX=""
@@ -48,9 +48,10 @@ function togglePrompt() {
     simple)
        PROMPT=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
        ;;
-
     *)
-        print Use togglePrompt [default | simple]
+       print "$input"
+       print "Use togglePrompt [default | simple]"
+       ;;
     esac
 }
 
