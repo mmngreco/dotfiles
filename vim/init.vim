@@ -23,6 +23,8 @@ endif
 
 call plug#begin()
 
+Plug 'fatih/vim-go'
+
 Plug 'skanehira/denops-docker.vim'
 Plug 'vim-denops/denops.vim'
 " Vim Script
@@ -348,10 +350,12 @@ augroup mmngreco
     " autocmd BufRead * normal zR
     " removes spaces at the end of a line
     autocmd BufWritePre * %s/\s\+$//e
+    autocmd BufWritePre *.go GoFmt
+
     " autocmd BufEnter,BufWinEnter,TabEnter *.rs,*.py :lua require'lsp_extensions'.inlay_hints{}
     autocmd FileType markdown setl conceallevel=2 spl=en,es
     " makefiles indentation
-    autocmd FileType make setl noexpandtab shiftwidth=8 softtabstop=0
+    autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
 
     " ==== black
     " https://github.com/psf/black/issues/1293#issuecomment-623237094
@@ -514,4 +518,8 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 " nnoremap <leader>p :lua require("nabla").popup()<CR>
 " nnoremap <leader>asc :let s = system(join(["asciiTeX", '"', getline('.'), '"'])) | echo s<cr>
 
-
+lua << EOF
+require'nvim-web-devicons'.setup {
+ default = true;
+}
+EOF
