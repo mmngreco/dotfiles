@@ -10,7 +10,8 @@ set $monitor_hdmi DP-2
 
 # professional laptop
 set $monitor_laptop eDP
-set $monitor_hdmi HDMI-A-0
+# set $monitor_hdmi HDMI-A-0
+set $monitor_hdmi DisplayPort-1
 
 # set font
 font pango:ubuntu 10
