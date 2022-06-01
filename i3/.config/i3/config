@@ -6,7 +6,8 @@ set $alt Mod1
 
 # professional laptop
 set $monitor_laptop eDP
-set $monitor_hdmi HDMI-A-0
+# set $monitor_hdmi HDMI-A-0
+set $monitor_hdmi DisplayPort-1
 
 # personal laptop
 set $monitor_laptop eDP-1
