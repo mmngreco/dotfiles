@@ -4,13 +4,13 @@ set $alt Mod1
 
 # Use: xrandr command to check monitor names.
 
-# personal laptop
-set $monitor_laptop eDP-1
-set $monitor_hdmi DP-2
-
 # professional laptop
 set $monitor_laptop eDP
 set $monitor_hdmi HDMI-A-0
+
+# personal laptop
+set $monitor_laptop eDP-1
+set $monitor_hdmi DP-2
 
 # set font
 font pango:ubuntu 10
@@ -153,21 +153,7 @@ bindsym $super+r mode "resize"
 # =============================================================================
 # Focus
 #
-# personal laptop
-# workspace 1 output $monitor_hdmi
-# workspace 2 output $monitor_hdmi
-# workspace 3 output $monitor_hdmi
-# workspace 4 output $monitor_hdmi
-# workspace 5 output $monitor_hdmi
-#
-# workspace 6 output $monitor_laptop
-# workspace 7 output $monitor_laptop
-# workspace 8 output $monitor_laptop
-# workspace 9 output $monitor_laptop
-# workspace 0 output $monitor_laptop
 
-
-# professional laptop
 workspace 1 output $monitor_hdmi
 workspace 2 output $monitor_hdmi
 workspace 3 output $monitor_hdmi
