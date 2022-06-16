@@ -72,7 +72,7 @@ matches:
 
   # gitlab
   - trigger: ":labels:"
-    replace: "/label ~\"assignee:mgreco\" ~\"assignee:afraile\" \n/label ~\"role:it\" ~ToDo \n/label ~\"2022:objective:tesser\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:51\"\n/assign @mgreco"
+    replace: "/label ~\"assignee:mgreco\" \n/label ~\"role:it\" ~ToDo \n/label ~\"2022:objective:tesser\" ~\"effort:normal\" ~\"priority:normal\" ~\"uncertainty:medium\"\n/milestone %\"sprint:53\"\n/assign @mgreco"
     force_clipboard: true
 
   - trigger: ":task:"
