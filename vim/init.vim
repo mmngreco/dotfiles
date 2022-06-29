@@ -23,6 +23,7 @@ endif
 
 call plug#begin()
 
+" Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
 
 Plug 'skanehira/denops-docker.vim'
@@ -523,3 +524,4 @@ require'nvim-web-devicons'.setup {
  default = true;
 }
 EOF
+
