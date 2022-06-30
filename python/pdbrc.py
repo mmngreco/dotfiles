@@ -24,6 +24,7 @@ def show_variables(variables):
 
 class Config(pdb.DefaultConfig):
 
+    prompt = ">>> "
     editor = 'e'
     stdin_paste = 'epaste'
     filename_color = pdb.Color.lightgray
