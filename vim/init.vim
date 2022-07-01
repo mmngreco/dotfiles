@@ -25,6 +25,7 @@ call plug#begin()
 
 " Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
+Plug 'nvim-orgmode/orgmode'
 
 Plug 'skanehira/denops-docker.vim'
 Plug 'vim-denops/denops.vim'
@@ -441,6 +442,7 @@ nn <leader>day :Calendar -first_day=monday<cr>
 nnoremap <leader>m :MaximizerToggle!<CR>
 
 
+" ============================================================================
 " === diagon : diagram
 noremap <Leader>D :Diagon<Space>
 
@@ -449,6 +451,7 @@ noremap <Leader>ds :Diagon Sequence<CR>
 noremap <Leader>dt :Diagon Tree<CR>
 
 
+" ============================================================================
 " === fold
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
@@ -485,6 +488,7 @@ let b:SimpylFold_fold_import = 0
 let g:SimpylFold_fold_blank = 0
 let b:SimpylFold_fold_blank = 0
 
+" ============================================================================
 " === trouble
 lua << EOF
   require("trouble").setup {
@@ -502,6 +506,7 @@ nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 
+" ============================================================================
 " " === shade
 " lua << EOF
 " require('shade').setup({
@@ -525,3 +530,28 @@ require'nvim-web-devicons'.setup {
 }
 EOF
 
+
+
+" ============================================================================
+" === org-mode
+
+lua << EOF
+-- init.lua
+-- Load custom tree-sitter grammar for org filetype
+require('orgmode').setup_ts_grammar()
+
+-- Tree-sitter configuration
+require'nvim-treesitter.configs'.setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = {'org'}, -- Required for spellcheck, some LaTex highlights and code block highlights that do not have ts grammar
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
+require('orgmode').setup({
+  org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+  org_default_notes_file = '~/Dropbox/org/refile.org',
+})
+EOF
