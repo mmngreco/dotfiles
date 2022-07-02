@@ -4,40 +4,42 @@ parent: default
 matches:
 
   # GREEK SMALL LETTER ALPHA
-  - trigger: ":alpha"
+  - trigger: ":alpha:"
     replace: "α"
 
   # GREEK SMALL LETTER BETA
-  - trigger: ":beta"
+  - trigger: ":beta:"
     replace: "β"
 
   # GREEK CAPITAL LETTER DELTA
-  - trigger: ":Delta"
+  - trigger: ":Delta:"
     replace: "Δ"
 
   # GREEK SMALL LETTER DELTA
-  - trigger: ":delta"
+  - trigger: ":delta:"
     replace: "δ"
   # GREEK SMALL LETTER EPSILON
-  - trigger: ":epsilon"
+  - trigger: ":epsilon:"
     replace: "ε"
 
   # GREEK CAPITAL LETTER PHI
-  - trigger: ":Phi"
+  - trigger: ":Phi:"
     replace: "Φ"
 
   # GREEK SMALL LETTER PHI
-  - trigger: ":phi"
+  - trigger: ":phi:"
     replace: "φ"
   # GREEK CAPITAL LETTER SIGMA
-  - trigger: ":Sigma"
+  - trigger: ":Sigma:"
     replace: "Σ"
+  - trigger: ":sigma:"
+    replace: "σ"
   # GREEK CAPITAL LETTER THETA
-  - trigger: ":Theta"
+  - trigger: ":Theta:"
     replace: "Θ"
   # GREEK SMALL LETTER THETA
-  - trigger: ":theta"
+  - trigger: ":theta:"
     replace: "θ"
   # GREEK SMALL LETTER PI
-  - trigger: ":pi"
+  - trigger: ":pi:"
     replace: "π"
