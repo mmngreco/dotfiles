@@ -23,6 +23,7 @@ endif
 
 call plug#begin()
 
+Plug 'rcarriga/nvim-notify'
 " Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
 Plug 'nvim-orgmode/orgmode'
