@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
+NEOVIM_DIR="$HOME/github/neovim/neovim"
+NEOVIM_URL="https://github.com/neovim/neovim.git"
+NEOVIM_VER="nightly"
 
 echo "========================================================================"
 echo "Installing dependencies..."
@@ -13,10 +16,6 @@ set -e
 echo "========================================================================"
 echo "Installing neovim..."
 echo "========================================================================"
-
-NEOVIM_DIR="$HOME/github/neovim/neovim"
-NEOVIM_URL="https://github.com/neovim/neovim.git"
-NEOVIM_VER="v0.7.0"
 
 # NEOVIM_VER=$(git -c 'versionsort.suffix=-' \
 #     ls-remote --exit-code --refs --sort='version:refname' --tags $NEOVIM_URL '*.*.*' \

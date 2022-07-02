@@ -1,6 +1,6 @@
 -- vim.lsp.set_log_level("debug")
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup({
     snippet = {
@@ -21,6 +21,7 @@ cmp.setup({
       { name = 'nvim_lsp' },
       { name = 'vsnip' },
       { name = 'buffer' },
+      { name = 'orgmode' },
     }
 })
 
