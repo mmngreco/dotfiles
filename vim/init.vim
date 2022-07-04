@@ -23,6 +23,7 @@ endif
 
 call plug#begin()
 
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rcarriga/nvim-notify'
 " Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
@@ -556,3 +557,4 @@ require('orgmode').setup({
   org_default_notes_file = '~/org/refile.org',
 })
 EOF
+
