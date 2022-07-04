@@ -56,7 +56,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'flazz/vim-colorschemes'
 Plug 'gko/vim-coloresque'
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
 Plug 'gruvbox-community/gruvbox'
@@ -402,6 +402,7 @@ source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 source $DOTFILES/vim/plugins/workspace.vim
+source $DOTFILES/vim/plugins/firenvim.vim
 " source $DOTFILES/vim/plugins/yode.vim
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
@@ -557,4 +558,5 @@ require('orgmode').setup({
   org_default_notes_file = '~/org/refile.org',
 })
 EOF
+
 
