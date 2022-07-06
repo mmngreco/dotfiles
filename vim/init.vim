@@ -29,8 +29,8 @@ Plug 'rcarriga/nvim-notify'
 " Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
 
-Plug 'skanehira/denops-docker.vim'
-Plug 'vim-denops/denops.vim'
+" Plug 'skanehira/denops-docker.vim'
+" Plug 'vim-denops/denops.vim'
 " Vim Script
 Plug 'AndrewRadev/exercism.vim'
 Plug 'jbyuki/nabla.nvim'
