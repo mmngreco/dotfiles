@@ -24,7 +24,7 @@ endif
 
 call plug#begin()
 
-Plug 'nvim-telescope/telescope-file-browser.nvim'
+" Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rcarriga/nvim-notify'
 " Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
@@ -32,13 +32,13 @@ Plug 'fatih/vim-go'
 " Plug 'skanehira/denops-docker.vim'
 " Plug 'vim-denops/denops.vim'
 " Vim Script
-Plug 'AndrewRadev/exercism.vim'
-Plug 'jbyuki/nabla.nvim'
-Plug 'folke/trouble.nvim'
+" Plug 'AndrewRadev/exercism.vim'
+" Plug 'jbyuki/nabla.nvim'
+" Plug 'folke/trouble.nvim'
 Plug 'sbdchd/neoformat'
-Plug 'alec-gibson/nvim-tetris'
+" Plug 'alec-gibson/nvim-tetris'
 " Plug 'sunjon/shade.nvim'
-Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+" Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " TODO change to luasnip
 " Plug 'L3MON4D3/LuaSnip'
@@ -46,7 +46,7 @@ Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'ckipp01/nvim-jenkinsfile-linter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
-Plug 'willchao612/vim-diagon'
+" Plug 'willchao612/vim-diagon'
 Plug 'cespare/vim-toml'
 " Plug 'chipsenkbeil/distant.nvim'
 Plug 'chrisbra/csv.vim'
@@ -90,7 +90,7 @@ Plug 'mbbill/undotree'
 Plug 'Microsoft/vscode-python'
 Plug 'mmngreco/dbee.nvim'
 " Plug 'mmngreco/DrawIt'
-Plug 'mmngreco/slimux'
+" Plug 'mmngreco/slimux'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 " Plug 'neomake/neomake'
 Plug 'neovim/nvim-lspconfig'
@@ -106,9 +106,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug pangloss/vim-javascript'
 " Plug 'puremourning/vimspector'
 " Plug 'radenling/vim-dispatch-neovim'
-Plug 'rcarriga/nvim-dap-ui'
+" Plug 'rcarriga/nvim-dap-ui'
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
-Plug 'renerocksai/telekasten.nvim'
+" Plug 'renerocksai/telekasten.nvim'
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 " Plug 'ruanyl/vim-gh-line'
 Plug 'sainnhe/gruvbox-material'
@@ -142,7 +142,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-test/vim-test'
 Plug 'vim-utils/vim-man'
-Plug 'vuciv/vim-bujo'  " todos
+" Plug 'vuciv/vim-bujo'  " todos
 Plug 'wellle/targets.vim'  " text wrapper: cin,
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -378,10 +378,10 @@ source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/functions.vim
 
 " source $DOTFILES/vim/plugins/arduino.vim
-source $DOTFILES/vim/plugins/bujo.vim
+" source $DOTFILES/vim/plugins/bujo.vim
 source $DOTFILES/vim/plugins/carbon.vim
 source $DOTFILES/vim/plugins/commentary.vim
-source $DOTFILES/vim/plugins/dbee.vim
+" source $DOTFILES/vim/plugins/dbee.vim
 " source $DOTFILES/vim/plugins/drawit.vim
 source $DOTFILES/vim/plugins/fugitive.vim
 source $DOTFILES/vim/plugins/harpoon.vim
@@ -444,10 +444,10 @@ nnoremap <leader>m :MaximizerToggle!<CR>
 
 " ============================================================================
 " === diagon : diagram
-noremap <Leader>D :Diagon<Space>
-noremap <Leader>dm :Diagon Math<CR>
-noremap <Leader>ds :Diagon Sequence<CR>
-noremap <Leader>dt :Diagon Tree<CR>
+" noremap <Leader>D :Diagon<Space>
+" noremap <Leader>dm :Diagon Math<CR>
+" noremap <Leader>ds :Diagon Sequence<CR>
+" noremap <Leader>dt :Diagon Tree<CR>
 
 
 " ============================================================================
@@ -488,21 +488,21 @@ let g:SimpylFold_fold_blank = 0
 let b:SimpylFold_fold_blank = 0
 
 " ============================================================================
-" === trouble
-lua << EOF
-  require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
-
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+" " === trouble
+" lua << EOF
+"   require("trouble").setup {
+"     -- your configuration comes here
+"     -- or leave it empty to use the default settings
+"     -- refer to the configuration section below
+"   }
+" EOF
+"
+" nnoremap <leader>xx <cmd>TroubleToggle<cr>
+" nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+" nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+" nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+" nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+" nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 
 " ============================================================================
