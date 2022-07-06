@@ -27,7 +27,7 @@ xterm*renderFont: true
 ! xterm*faceName: DejaVuSansMono
 ! xterm*faceName: UbuntuMono-R
 xterm*faceName: Cascadia Code PL
-xterm*faceSize: 12
+xterm*faceSize: 10
 /* xterm*vt100*geometry: 80x50 */
 xterm*loginShell: true
 xterm*saveLines: 10000
