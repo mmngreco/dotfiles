@@ -16,11 +16,16 @@ set wildignore+=**/.git/*
 " set mouse=a
 set mouse=nv
 
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+let loaded_matchparen = 1  " allow usage of local vimrc in projects
+let mapleader = " "
+let g:loaded_python_provider = 1
+let g:python3_host_prog = 'python3'
+
+" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+" if empty(glob(data_dir . '/autoload/plug.vim'))
+"   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 call plug#begin()
 
@@ -161,10 +166,6 @@ endif
 " filetype plugin indent on  " Enable file type based indentation.
 " filetype plugin on
 
-let loaded_matchparen = 1  " allow usage of local vimrc in projects
-let mapleader = " "
-" let g:loaded_python_provider = 1
-let g:python3_host_prog = 'python3'
 " let g:python_host_prog = $PYTHON_NEOVIM
 
 " color theme
