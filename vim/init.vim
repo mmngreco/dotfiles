@@ -19,7 +19,7 @@ set mouse=nv
 let loaded_matchparen = 1  " allow usage of local vimrc in projects
 let mapleader = " "
 let g:loaded_python_provider = 1
-let g:python3_host_prog = 'python3'
+" let g:python3_host_prog = 'python'
 
 " let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 " if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -141,7 +141,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'tweekmonster/impsort.vim'  " color and sort imports
+" Plug 'tweekmonster/impsort.vim'  " color and sort imports
 Plug 'tyru/open-browser.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
