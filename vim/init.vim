@@ -55,12 +55,12 @@ Plug 'Konfekt/FastFold'
 Plug 'cespare/vim-toml'
 " Plug 'chipsenkbeil/distant.nvim'
 Plug 'chrisbra/csv.vim'
-Plug 'chrisbra/unicode.vim'
-Plug 'chriskempson/base16-vim'
+" Plug 'chrisbra/unicode.vim'
+" Plug 'chriskempson/base16-vim'
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'flazz/vim-colorschemes'
-Plug 'gko/vim-coloresque'
+" Plug 'flazz/vim-colorschemes'
+" Plug 'gko/vim-coloresque'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
@@ -105,7 +105,7 @@ Plug 'nvie/vim-flake8'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-media-files.nvim'
+" Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " Plug pangloss/vim-javascript'
@@ -127,10 +127,10 @@ Plug 'szw/vim-maximizer'
 " Plug 'thaerkh/vim-workspace'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
-" Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'ThePrimeagen/refactoring.nvim'
 " Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-abolish'
-" Plug 'tpope/vim-dadbod'  " database interface
+Plug 'tpope/vim-dadbod'  " database interface
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-markdown'
@@ -140,13 +140,13 @@ Plug 'tpope/vim-rhubarb'  " allow open github urls
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'  " better netrw
 " Plug 'tweekmonster/impsort.vim'  " color and sort imports
 Plug 'tyru/open-browser.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-test/vim-test'
-Plug 'vim-utils/vim-man'
+" Plug 'vim-utils/vim-man'
 " Plug 'vuciv/vim-bujo'  " todos
 Plug 'wellle/targets.vim'  " text wrapper: cin,
 Plug 'williamboman/nvim-lsp-installer'
@@ -207,6 +207,7 @@ fun! ColorMyPencils()
     hi TelescopeBorder guifg=#5eacd3
 endfun
 call ColorMyPencils()
+
 " for gruvbox
 hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
 hi tkBrackets ctermfg=gray guifg=gray
@@ -215,8 +216,8 @@ hi tkBrackets ctermfg=gray guifg=gray
 nnoremap <leader>vwm :call ColorMyPencils()<CR>
 nnoremap <leader>vwb :let g:my_colorscheme =
 
-nnoremap <silent> <Plug>GenerateRandom :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>GenerateRandom", v:count)<cr>
-nmap <C-g><C-r> <Plug>GenerateRandom
+nnoremap <silent> <Plug>RandNorm :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>RandNorm", v:count)<cr>
+nmap <C-g><C-r> <Plug>RandNorm
 
 " tnoremap <leader>q :wqa<cr>
 
