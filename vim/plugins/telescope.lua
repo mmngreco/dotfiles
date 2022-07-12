@@ -131,6 +131,5 @@ end
 local telescope = require('telescope')
 telescope.mmngreco = mmngreco
 telescope.load_extension('fzf')
-telescope.load_extension('media_files')
 telescope.load_extension("git_worktree")
 telescope.load_extension('harpoon')

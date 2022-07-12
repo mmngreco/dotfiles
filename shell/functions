@@ -497,3 +497,7 @@ pyright-config-here() {
 pip-dev-tools() {
     pip install -r $DOTFILES/python/requirements-dev.txt
 }
+
+todo() {
+    [[ -f ./TODO.md ]] && nvim ./TODO.md || nvim ~/TODO.md
+}
