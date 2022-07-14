@@ -438,7 +438,7 @@ let g:vimtex_compiler_latexmk_engines = {
 " go substitute because the default map for sleeping is silly
 
 " format sql parse
-vn <leader>sf :!sqlformat -k upper -a -<cr>
+vn <leader>sf :!sqlformat -k upper -r -<cr>
 
 nn <leader>cal :Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>
 nn <leader>day :Calendar -first_day=monday<cr>
