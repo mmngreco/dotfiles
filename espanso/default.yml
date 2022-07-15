@@ -76,7 +76,7 @@ matches:
     force_clipboard: true
 
   - trigger: ":task:"
-    replace: "## Contexto\n\n## Problema\n\n## Objetivo\n\n## Tasks\n\n- [ ] implementar tests\n{{labels}}"
+    replace: "## Contexto\n\n## Problema\n\n## Objetivo\n\n## Tasks\n\n- [ ] implementar tests\n\n{{labels}}"
     force_clipboard: true
     vars:
       - name: labels
