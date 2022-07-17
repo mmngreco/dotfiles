@@ -56,8 +56,9 @@ function togglePrompt() {
        ZSH_THEME_GIT_PROMPT_SUFFIX=""
        PROMPT='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
        PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
-       PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}\n'
-       PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
+       PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
+       PROMPT+=$'\n'
+       PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
        ;;
 
     *)
