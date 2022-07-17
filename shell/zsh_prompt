@@ -37,6 +37,7 @@ fi
 function togglePrompt() {
     input=${DEFAULT_PROMPT:-$1}
     case $input in
+
     default)
        ZSH_THEME_GIT_PROMPT_PREFIX=""
        ZSH_THEME_GIT_PROMPT_SUFFIX=""
@@ -45,14 +46,26 @@ function togglePrompt() {
        PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
        PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
        ;;
+
     simple)
        PROMPT=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
        ;;
+
+    twoLines)
+       ZSH_THEME_GIT_PROMPT_PREFIX=""
+       ZSH_THEME_GIT_PROMPT_SUFFIX=""
+       PROMPT='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
+       PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
+       PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}\n'
+       PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
+       ;;
+
     *)
        print "$input"
        print "Use togglePrompt [default | simple]"
        ;;
+
     esac
 }
 
-togglePrompt default
+togglePrompt twoLines
