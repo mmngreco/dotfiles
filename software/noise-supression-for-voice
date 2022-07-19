@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# noise-suppression-for-voice
+# https://github.com/werman/noise-suppression-for-voice
+
+set -e
+dir=/tmp/noise-suppression-for-voice
+[[ -d "$dir" ]] && rm -rf $dir
+git clone --depth 1 https://github.com/werman/noise-suppression-for-voice $dir
+pushd $dir
+cmake -Bbuild-x64 -H. -DCMAKE_BUILD_TYPE=Release
+cd build-x64
+make
+cp ./bin/ladspa/librnnoise_ladspa.so ~/.local/bin/.
+cp ./bin/rnnoise.lv2/rnnoise_lv2.so ~/.local/bin/.
+rm -rf $dir
