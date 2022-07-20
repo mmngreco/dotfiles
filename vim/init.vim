@@ -62,7 +62,7 @@ Plug 'chrisbra/csv.vim'
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'flazz/vim-colorschemes'
-" Plug 'gko/vim-coloresque'
+Plug 'gko/vim-coloresque'  " show color of an color expression (hex, rgb)
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
@@ -294,7 +294,7 @@ endfun
 
 " common typo
 com! W w
-com! w2 w
+com! W2 w
 
 
 " ==== theprimeagen
