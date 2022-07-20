@@ -11,6 +11,7 @@
       recursive: true
 
 - link:
+    ~/.config/pulse/default.pa: pulse/default.pa
     ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig
     ~/.docker/config.json: docker/.docker/config.json
