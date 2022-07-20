@@ -294,6 +294,8 @@ endfun
 
 " common typo
 com! W w
+com! w2 w
+
 
 " ==== theprimeagen
 " https://www.youtube.com/watch?v=hSHATqh8svM
