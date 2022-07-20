@@ -294,7 +294,9 @@ endfun
 
 " common typo
 com! W w
-com! W2 w
+cabbrev q!@ q!
+cabbrev wq!@ wq!
+cabbrev w2 w
 
 
 " ==== theprimeagen
