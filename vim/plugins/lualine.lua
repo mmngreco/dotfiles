@@ -13,7 +13,7 @@ require('lualine').setup({
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'Cwd', 'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {function() return vim.fn.ObsessionStatus('Ob', 'X') end},
+        lualine_y = {'ObsessionStatus'},
         lualine_z = {'location'}
     },
     inactive_sections = {
