@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-if [ ! -d "$HOME/github/mmngreco/fonts" ]
+# https://askubuntu.com/questions/191778/how-to-install-many-font-files-quickly-and-easily
+set -e
 dir="$HOME/github/mmngreco/fonts"
+if [ ! -d "$dir" ]
 then
     git clone https://github.com/mmngreco/fonts $dir
-    cp $dir/**/*.ttf $HOME/.local/share/fonts
-    # sudo cp $HOME/github/mmngreco/fonts/*.ttf /usr/local/share/fonts
+    cp "$dir/**/*.ttf" "$HOME/.local/share/fonts"
+    fc-cache -f -v
 fi
-sudo fc-cache -fv

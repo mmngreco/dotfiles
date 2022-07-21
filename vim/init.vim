@@ -115,7 +115,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug 'radenling/vim-dispatch-neovim'
 " Plug 'rcarriga/nvim-dap-ui'
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
-" Plug 'renerocksai/telekasten.nvim'
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 " Plug 'ruanyl/vim-gh-line'
 Plug 'sainnhe/gruvbox-material'
