@@ -11,6 +11,7 @@
       recursive: true
 
 - link:
+    ~/.dotfiles: .
     ~/.config/pulse/default.pa: pulse/default.pa
     ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig

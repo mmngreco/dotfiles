@@ -10,7 +10,10 @@ function install_absent () {
 
 echo Cloning ohmyzsh...
 ${DOTFILES}/software/ohmyzsh
+install_absent keepassxc
 install_absent zsh
+# skip it as stop the installation process
+# install_absent ohmyzsh
 install_absent fzf
 install_absent git-secret
 install_absent glab
