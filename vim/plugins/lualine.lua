@@ -2,7 +2,7 @@ require('lualine').setup({
     options = {
         icons_enabled = true,
         theme = 'gruvbox',
-        separator = { left = '', right = ''},
+        -- separator = { left = '', right = ''},
         component_separators = {'', ''},
         section_separators = {'', ''},
         disabled_filetypes = {}
@@ -13,7 +13,7 @@ require('lualine').setup({
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'Cwd', 'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'ObsessionStatus'},
+        lualine_y = {function() return vim.fn.ObsessionStatus('Ob:ON', 'Ob:Off') end },
         lualine_z = {'location'}
     },
     inactive_sections = {
