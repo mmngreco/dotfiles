@@ -237,7 +237,7 @@ assign [class=XTerm|kitty] 1
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=libreoffice*] 5
 assign [class=TelegramDesktop] 6
-assign [class=keepassxc|NoiseTorch] 8
+assign [class=keepassxc|KeePassXC] 8
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 8
 assign [class=obs] 9
 

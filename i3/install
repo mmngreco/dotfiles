@@ -18,12 +18,12 @@ sudo apt install --yes \
 	xsettingsd \
 	lxappearance \
 	scrot \
-    OpenShot \
     blueman \
     ffmpeg \
     volumeicon-alsa \
     figlet
 
+# sudo apt install OpenShot
 echo ""
 echo "Linking files..."
 echo ""

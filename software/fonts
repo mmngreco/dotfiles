@@ -2,9 +2,8 @@
 # https://askubuntu.com/questions/191778/how-to-install-many-font-files-quickly-and-easily
 set -e
 dir="$HOME/github/mmngreco/fonts"
-if [ ! -d "$dir" ]
-then
-    git clone https://github.com/mmngreco/fonts $dir
-    cp "$dir/**/*.ttf" "$HOME/.local/share/fonts"
-    fc-cache -f -v
-fi
+[ -d "$dir" ] && rm -rf $dir
+git clone https://github.com/mmngreco/fonts $dir
+[ ! -d "$HOME/.local/share/fonts" ] && mkdir -p "$HOME/.local/share/fonts"
+cp $dir/**/*.ttf $HOME/.local/share/fonts
+fc-cache -f -v
