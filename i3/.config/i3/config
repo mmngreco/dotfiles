@@ -24,9 +24,9 @@ exec --no-startup-id caffeine-indicator
 # exec --no-startup-id i3-msg 'exec kitty'
 exec --no-startup-id i3-msg 'exec xterm'
 exec --no-startup-id i3-msg 'exec nautilus'
-exec --no-startup-id i3-msg 'exec /home/mgreco/.local/bin/Telegram'
+exec --no-startup-id i3-msg 'exec telegram-desktop'
 exec --no-startup-id i3-msg 'exec keepassxc'
-exec --no-startup-id i3-msg 'exec noisetorch'
+exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
 
 # start a terminal
 # bindsym $super+Return exec kitty
@@ -239,7 +239,7 @@ assign [class=libreoffice*] 5
 assign [class=TelegramDesktop] 6
 assign [class=keepassxc|KeePassXC] 8
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 8
-assign [class=obs] 9
+assign [class=obs|easyeffects] 9
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus

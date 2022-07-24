@@ -1,21 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pip3 install meson
-sudo apt-get install -y appstream-util
-sudo add-apt-repository ppa:pipewire-debian/pipewire-upstream -y
-sudo add-apt-repository ppa:pipewire-debian/wireplumber-upstream -y
-sudo apt-get install -y libzita-convolver-dev
-sudo apt-get -y install libpipewire-0.3-dev
-sudo apt install libfdk-aac2 libldacbt-{abr,enc}2 libopenaptx0
-sudo apt install gstreamer1.0-pipewire libpipewire-0.3-{0,dev,modules} libspa-0.2-{bluetooth,dev,jack,modules} pipewire{,-{audio-client-libraries,pulse,bin,locales,tests}}
-sudo apt install pipewire-doc
-sudo apt-get install wireplumber{,-doc} gir1.2-wp-0.4 libwireplumber-0.4-{0,dev}
-sudo apt install libfm-gtk4
+# https://github.com/wwmm/easyeffects
+flatpak install flathub com.github.wwmm.easyeffects
+# flatpak run com.github.wwmm.easyeffects
 
-dir=/tmp/easyeffects
-git clone --depth 1 https://github.com/wwmm/easyeffects.git $dir
-pushd $dir
-meson _build --prefix=/usr
-sudo ninja -C _build install
-rm -rf $dir
-popd

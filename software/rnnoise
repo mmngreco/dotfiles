@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# https://github.com/xiph/rnnoise
+
+dir=/tmp/rnnoise
+git clone --depth 1 https://github.com/xiph/rnnoise $dir
+pushd $dir
+./autogen.sh
+./configure
+make
+sudo make install
+popd
+rm -rf $dir
