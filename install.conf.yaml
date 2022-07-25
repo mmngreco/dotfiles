@@ -39,7 +39,10 @@
     ~/.config/kitty/kitty.conf: terminal/kitty.conf
 
     # vim
-    ~/.config/nvim/init.vim: vim/init.vim
+    ~/.config/nvim:
+      path: vim/**/*
+      force: true
+      glob: true
 
     # Python
     ~/.condarc: conda/.condarc
