@@ -89,6 +89,7 @@ return require('packer').startup(function()
 	use('williamboman/nvim-lsp-installer')
 	use({'xuhdev/vim-latex-live-preview', ft = {'tex'} })
 	use("TimUntersberger/neogit")
+    use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
 
 
 end)

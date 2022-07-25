@@ -158,11 +158,11 @@ call plug#end()
 
 
 " ==== custom settings
-syntax on " Enable syntax highlighting.
-" dissabling syntax highlighting when it's a diff
-if &diff
-    syntax off
-endif
+" syntax on " Enable syntax highlighting.
+" " dissabling syntax highlighting when it's a diff
+" if &diff
+"     syntax off
+" endif
 
 " filetype plugin indent on  " Enable file type based indentation.
 " filetype plugin on

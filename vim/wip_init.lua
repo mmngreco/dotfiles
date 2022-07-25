@@ -1,5 +1,7 @@
 
+
 local opt = vim.opt
+
 opt.wildmode = {"longest", "list", "full"}
 opt.wildmenu = true
 opt.wildignore:append("*.pyc")
@@ -12,6 +14,7 @@ opt.wildignore:append("**/android/*")
 opt.wildignore:append("**/ios/*")
 opt.wildignore:append("**/.git/*")
 opt.mouse = "nv"
+opt.syntax = true
 
 
 local g = vim.g
