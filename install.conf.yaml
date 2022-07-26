@@ -28,14 +28,15 @@
     ~/.inputrc: shell/inputrc
     ~/.profile: shell/profile
 
-    # terminal
+    # i3
     ~/.config:
       path: i3/.config/**
       glob: true
-    ~/.Xdefaults: i3/.Xdefaults
     ~/.Xresources: i3/.Xresources
     ~/.xprofile: i3/.xprofile
     ~/.xsettingsd: i3/.xsettingsd
+    # terminal
+    ~/.Xdefaults: i3/.Xdefaults
     ~/.config/kitty/kitty.conf: terminal/kitty.conf
 
     # vim
