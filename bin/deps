@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
+
+deps_file="${DEPS_FILE:-.deps}"
 
 function git_clone() {
     # clone a project
@@ -77,13 +78,28 @@ function checkout {
 function apply_to_each_dep() {
     # internal function
     func=$1
-    for dep in $(cat $DIR/deps.list); do
+    for dep in $(cat .deps); do
         $func $dep
     done
 }
 
 
+function add_dep() {
+
+    for dep in $@; do
+        echo $dep >> $deps_file
+        echo added $dep into $deps_file
+    done
+}
+
+
+function list_dep() {
+    cat $deps_file
+}
+
+
 case $1 in
+
     clone)
         apply_to_each_dep git_clone ;;
 
@@ -102,8 +118,16 @@ case $1 in
     co)
         apply_to_each_dep checkout $2 ;;
 
+    add)
+        add_dep ${@:2} ;;
+
+    list)
+        list_dep ;;
+
     *)
         echo "Usage: deps [cmd] [args]"
+        echo "   deps add : include one o more dependencies"
+        echo "   deps list : list all deps in \$DEPS_FILE"
         echo "   deps clone : will execute git clone all deps in ./deps/*"
         echo "   deps pull : will execute git pull on each ./deps/*"
         echo "   deps install : will execute pip install -e . on each deps/*"
