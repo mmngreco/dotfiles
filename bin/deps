@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
+
+function git_clone() {
+    # clone a project
+    # deps clone ssh://git@etsgit1.ets.es/com/libraries/tesser
+
+    # underhood does:
+    # check if deps/tesser exists if not then
+    # git clone deps/tesser if deps/tesser doesn't exists
+    url=$1
+    dest="deps/$(basename $url)"
+
+    echo ""
+    echo "=== cloning $url into $dest"
+    [ ! -d "$dest" ] && git clone $url $dest
+
+}
+
+function git_pull() {
+    # clone a project
+    # deps pull ssh://git@etsgit1.ets.es/com/libraries/tesser
+
+    # underhood does:
+    # check if deps/tesser exists if not then
+    # git clone ssh://git@etsgit1.ets.es/com/libraries/tesser deps/tesser
+    url=$1
+    dest="deps/$(basename $url)"
+
+    echo ""
+    echo "=== pulling $dest"
+
+    pushd $dest && git pull
+    popd
+}
+
+function pip_install() {
+    url=$1
+    dest="deps/$(basename $url)"
+
+    echo ""
+    echo "=== installing $dest"
+
+    pip install -e $dest
+}
+
+
+function pip_wheel() {
+    url=$1
+    dest="deps/$(basename $url)"
+
+    echo ""
+    echo "=== generating wheel $dest"
+
+    pip wheel -w dist/. $dest --no-deps
+}
+
+
+function checkout_b {
+    echo ""
+    echo "=== git checkout -b $1 in $dest"
+    pushd "deps/$(basename $url)" && \
+    git checkout -b $1 && \
+    popd
+}
+
+
+function checkout {
+    echo ""
+    echo "=== git checkout -b $1 in $dest"
+    pushd "deps/$(basename $url)" && \
+    git checkout $1 && \
+    popd
+}
+
+
+function apply_to_each_dep() {
+    # internal function
+    func=$1
+    for dep in $(cat $DIR/deps.list); do
+        $func $dep
+    done
+}
+
+
+case $1 in
+    clone)
+        apply_to_each_dep git_clone ;;
+
+    pull)
+        apply_to_each_dep git_pull ;;
+
+    wheel)
+        apply_to_each_dep pip_wheel ;;
+
+    install)
+        apply_to_each_dep pip_install ;;
+
+    cob)
+        apply_to_each_dep checkout_b $2 ;;
+
+    co)
+        apply_to_each_dep checkout $2 ;;
+
+    *)
+        echo "Usage: deps [cmd] [args]"
+        echo "   deps clone : will execute git clone all deps in ./deps/*"
+        echo "   deps pull : will execute git pull on each ./deps/*"
+        echo "   deps install : will execute pip install -e . on each deps/*"
+        echo "   deps cob : will execute git checkout -b <branch> on each ./deps/*"
+        echo "   deps co : will execute git checkout <branch> on each ./deps/*"
+        echo ""
+        echo "Note: All this is govern by './scripts/deps.list'"
+        ;;
+esac
