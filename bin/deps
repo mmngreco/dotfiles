@@ -3,6 +3,8 @@
 deps_file="${DEPS_FILE:-.deps.txt}"
 deps_dir="${DEPS_DIR:-$PWD/.deps}"
 
+host=${GITLAB_URI}
+token=${GITLAB_TOKEN}
 
 function git_clone() {
     # clone a project
@@ -106,12 +108,12 @@ function add_dep() {
 }
 
 
-function cat_deps() {
+function cat_deps_file() {
     cat $deps_file
 }
 
 function list_deps() {
-    ls deps
+    ls $deps_dir
 }
 
 function rmrf_deps() {
@@ -127,6 +129,23 @@ function edit() {
 function ignore() {
     echo $deps_file >> .gitignore
     echo $deps_dir >> .gitignore
+}
+
+
+function search_project() {
+    for s in $@; do
+        curl -s https://$host/api/v4/search\?scope\=projects\&search\=$s\&private_token=$token\&per_page\=100\&page\=1 \
+            | python3 -c "import sys, json; [print(d['id'], d['name'], d['ssh_url_to_repo']) for d in json.load(sys.stdin)]"
+    done
+}
+
+
+function search_url_project() {
+    for s in $@; do
+        curl -s https://$host/api/v4/search\?scope\=projects\&search\=$s\&private_token=$token\&per_page\=100\&page\=1 \
+            | python3 -c "import sys, json; [print(d['ssh_url_to_repo']) for d in json.load(sys.stdin)]" \
+            | tail -1
+    done
 }
 
 
@@ -153,6 +172,12 @@ function echo_help() {
 
 case $1 in
 
+    search)
+        search_project ${@:2} ;;
+
+    search_url)
+        search_url_project ${@:2} ;;
+
     clone)
         apply_to_each_dep git_clone ;;
 
@@ -175,7 +200,7 @@ case $1 in
         add_dep ${@:2} ;;
 
     cat)
-        cat_deps ;;
+        cat_deps_file ;;
 
     rmrf)
         rmrf_deps ;;
