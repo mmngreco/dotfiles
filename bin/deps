@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-deps_file="${DEPS_FILE:-.deps}"
+deps_file="${DEPS_FILE:-.deps.txt}"
+deps_dir="${DEPS_DIR:-$PWD/.deps}"
+
 
 function git_clone() {
     # clone a project
-    # deps clone ssh://git@etsgit1.ets.es/com/libraries/tesser
+    # deps clone ssh://git@host/parent/subdir/prj
 
     # underhood does:
-    # check if deps/tesser exists if not then
-    # git clone deps/tesser if deps/tesser doesn't exists
+    # check if $deps_dir/prj exists if not then
+    # git clone $deps_dir/prj if $deps_dir/prj doesn't exists
     url=$1
-    dest="deps/$(basename $url)"
+    dest="$deps_dir/$(basename $url)"
 
     echo ""
     echo "=== cloning $url into $dest"
@@ -20,24 +22,25 @@ function git_clone() {
 
 function git_pull() {
     # clone a project
-    # deps pull ssh://git@etsgit1.ets.es/com/libraries/tesser
+    # deps pull ssh://git@host.com/parent/subdir/prj
+    # deps clone ssh://git@host/parent/subdir/prj
 
     # underhood does:
-    # check if deps/tesser exists if not then
-    # git clone ssh://git@etsgit1.ets.es/com/libraries/tesser deps/tesser
+    # check if $deps_dir/prj exists if not then
+    # git clone ssh://git@host.com/parent/subdir/prj $deps_dir/prj
     url=$1
-    dest="deps/$(basename $url)"
+    dest="$deps_dir/$(basename $url)"
 
     echo ""
     echo "=== pulling $dest"
 
-    pushd $dest && git pull
+    pushd $dest > /dev/null && git pull
     popd
 }
 
 function pip_install() {
     url=$1
-    dest="deps/$(basename $url)"
+    dest="$deps_dir/$(basename $url)"
 
     echo ""
     echo "=== installing $dest"
@@ -48,7 +51,7 @@ function pip_install() {
 
 function pip_wheel() {
     url=$1
-    dest="deps/$(basename $url)"
+    dest="$deps_dir/$(basename $url)"
 
     echo ""
     echo "=== generating wheel $dest"
@@ -58,19 +61,27 @@ function pip_wheel() {
 
 
 function checkout_b {
+    url=$1
+    dest="$deps_dir/$(basename $url)"
+    branch=$2
+
     echo ""
-    echo "=== git checkout -b $1 in $dest"
-    pushd "deps/$(basename $url)" && \
-    git checkout -b $1 && \
+    echo "=== git checkout -b $branch from $dest"
+    pushd "$dest" > /dev/null && \
+    git checkout -b $branch && \
     popd
 }
 
 
 function checkout {
+    url=$1
+    dest="$deps_dir/$(basename $url)"
+    branch=$2
+
     echo ""
-    echo "=== git checkout -b $1 in $dest"
-    pushd "deps/$(basename $url)" && \
-    git checkout $1 && \
+    echo "=== git checkout -b $branch in $dest"
+    pushd "$dest" > /dev/null && \
+    git checkout $branch && \
     popd
 }
 
@@ -78,8 +89,10 @@ function checkout {
 function apply_to_each_dep() {
     # internal function
     func=$1
-    for dep in $(cat .deps); do
-        $func $dep
+    shift
+
+    for url in $(cat $deps_file); do
+        $func $url $@
     done
 }
 
@@ -93,8 +106,48 @@ function add_dep() {
 }
 
 
-function list_dep() {
+function cat_deps() {
     cat $deps_file
+}
+
+function list_deps() {
+    ls deps
+}
+
+function rmrf_deps() {
+    rm -rf $deps_dir/$1
+}
+
+
+function edit() {
+    $EDITOR $deps_file
+}
+
+
+function ignore() {
+    echo $deps_file >> .gitignore
+    echo $deps_dir >> .gitignore
+}
+
+
+function echo_help() {
+        echo "Usage: deps [cmd] [args]"
+        echo
+        echo "Commands"
+        echo "--------"
+        echo
+        echo "add     : include one o more [dependencies]"
+        echo "list    : list all deps in \$DEPS_FILE"
+        echo "edit    : open $deps_file in $EDITOR"
+        echo "ignore  : add $deps_file and $deps_dir into .gitignore"
+        echo "rmrf    : remove deps folder"
+        echo "clone   : git clone of all deps into $deps_dir/*"
+        echo "pull    : git pull over all deps in $deps_dir/*"
+        echo "install : pip install -e . over each deps in $deps_dir/*"
+        echo "cob     : git checkout -b [branch] on each $deps_dir/*"
+        echo "co      : git checkout [branch] on each $deps_dir/*"
+        echo ""
+        echo "Note: The commands are governed by '$deps_file'"
 }
 
 
@@ -121,19 +174,18 @@ case $1 in
     add)
         add_dep ${@:2} ;;
 
-    list)
-        list_dep ;;
+    cat)
+        cat_deps ;;
 
-    *)
-        echo "Usage: deps [cmd] [args]"
-        echo "   deps add : include one o more dependencies"
-        echo "   deps list : list all deps in \$DEPS_FILE"
-        echo "   deps clone : will execute git clone all deps in ./deps/*"
-        echo "   deps pull : will execute git pull on each ./deps/*"
-        echo "   deps install : will execute pip install -e . on each deps/*"
-        echo "   deps cob : will execute git checkout -b <branch> on each ./deps/*"
-        echo "   deps co : will execute git checkout <branch> on each ./deps/*"
-        echo ""
-        echo "Note: All this is govern by './scripts/deps.list'"
-        ;;
+    rmrf)
+        rmrf_deps ;;
+
+    list)
+        list_deps ;;
+
+    edit)
+        edit ;;
+
+    * | help | h)
+        echo_help ;;
 esac
