@@ -211,6 +211,9 @@ case $1 in
     edit)
         edit ;;
 
+    ignore)
+        ignore ;;
+
     * | help | h)
         echo_help ;;
 esac
