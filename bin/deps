@@ -128,7 +128,7 @@ function edit() {
 
 function ignore() {
     echo $deps_file >> .gitignore
-    echo $deps_dir >> .gitignore
+    echo `basename $deps_dir` >> .gitignore
 }
 
 
@@ -151,6 +151,10 @@ function search_url_project() {
 
 function echo_help() {
         echo "Usage: deps [cmd] [args]"
+        echo
+        echo "This script use the following variables to offer funtionality."
+        echo "'deps_file=$deps_file' is the file used to manage dependencies through git-url."
+        echo "'deps_dir=$deps_dir' is the file where the dependencies will be cloned and installed from."
         echo
         echo "Commands"
         echo "--------"
