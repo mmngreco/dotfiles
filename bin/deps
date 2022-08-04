@@ -172,14 +172,17 @@ function echo_help() {
         echo "co         : git checkout [branch] on each $deps_dir/*"
         echo ""
         echo "Note: The commands are governed by '$deps_file'"
-        echo "Examples"
-        echo "--------"
+        echo
+        echo "Common Workflow"
+        echo "---------------"
         echo "\$ deps serach_url boa pymo"
         echo "\$ deps serach_url boa pymo > .deps.txt"
         echo "\$ deps cat"
         echo "\$ deps clone "
         echo "\$ deps ls"
         echo "\$ deps install "
+        echo "\$ deps cob enh/feat "
+        echo "\$ deps rmrf"
 }
 
 
