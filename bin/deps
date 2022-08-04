@@ -152,25 +152,34 @@ function search_url_project() {
 function echo_help() {
         echo "Usage: deps [cmd] [args]"
         echo
-        echo "This script use the following variables to offer funtionality."
-        echo "'deps_file=$deps_file' is the file used to manage dependencies through git-url."
-        echo "'deps_dir=$deps_dir' is the file where the dependencies will be cloned and installed from."
+        echo "This script helps you to handle dependencies between projects."
+        echo "It uses the following variables to offer funtionality."
+        echo "- 'deps_file=$deps_file' is the file used to manage dependencies through git-url."
+        echo "- 'deps_dir=$deps_dir' is the file where the dependencies will be cloned and installed from."
         echo
         echo "Commands"
         echo "--------"
-        echo
-        echo "add     : include one o more [dependencies]"
-        echo "list    : list all deps in \$DEPS_FILE"
-        echo "edit    : open $deps_file in $EDITOR"
-        echo "ignore  : add $deps_file and $deps_dir into .gitignore"
-        echo "rmrf    : remove deps folder"
-        echo "clone   : git clone of all deps into $deps_dir/*"
-        echo "pull    : git pull over all deps in $deps_dir/*"
-        echo "install : pip install -e . over each deps in $deps_dir/*"
-        echo "cob     : git checkout -b [branch] on each $deps_dir/*"
-        echo "co      : git checkout [branch] on each $deps_dir/*"
+        echo "add        : include one o more [dependencies]"
+        echo "ls         : list all deps in \$DEPS_FILE"
+        echo "edit       : open $deps_file in $EDITOR"
+        echo "ignore     : add $deps_file and $deps_dir into .gitignore"
+        echo "rmrf       : remove deps folder"
+        echo "serach_url : Search in gitlab for a project name(s)."
+        echo "clone      : git clone of all deps into $deps_dir/*"
+        echo "pull       : git pull over all deps in $deps_dir/*"
+        echo "install    : pip install -e . over each deps in $deps_dir/*"
+        echo "cob        : git checkout -b [branch] on each $deps_dir/*"
+        echo "co         : git checkout [branch] on each $deps_dir/*"
         echo ""
         echo "Note: The commands are governed by '$deps_file'"
+        echo "Examples"
+        echo "--------"
+        echo "\$ deps serach_url boa pymo"
+        echo "\$ deps serach_url boa pymo > .deps.txt"
+        echo "\$ deps cat"
+        echo "\$ deps clone "
+        echo "\$ deps ls"
+        echo "\$ deps install "
 }
 
 
@@ -209,7 +218,7 @@ case $1 in
     rmrf)
         rmrf_deps ;;
 
-    list)
+    ls)
         list_deps ;;
 
     edit)
