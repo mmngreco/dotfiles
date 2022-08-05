@@ -151,7 +151,7 @@ function search_url_project() {
 
 function append() {
     for s in $@; do
-        serach_url $s | tee -a $deps_file
+        search_url_project $s | tee -a $deps_file
     done
 }
 
