@@ -149,6 +149,13 @@ function search_url_project() {
 }
 
 
+function append() {
+    for s in $@; do
+        serach_url $s | tee -a $deps_file
+    done
+}
+
+
 function echo_help() {
         echo "Usage: deps [cmd] [args]"
         echo
@@ -165,6 +172,7 @@ function echo_help() {
         echo "ignore     : add $deps_file and $deps_dir into .gitignore"
         echo "rmrf       : remove deps folder"
         echo "serach_url : Search in gitlab for a project name(s)."
+        echo "append     : Search and append output into $deps_file."
         echo "clone      : git clone of all deps into $deps_dir/*"
         echo "pull       : git pull over all deps in $deps_dir/*"
         echo "install    : pip install -e . over each deps in $deps_dir/*"
@@ -190,6 +198,9 @@ case $1 in
 
     search)
         search_project ${@:2} ;;
+
+    append)
+        append ${@:2} ;;
 
     search_url)
         search_url_project ${@:2} ;;
