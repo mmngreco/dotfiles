@@ -10,7 +10,7 @@ echo "Installing dependencies..."
 echo ""
 
 sudo apt install --yes i3
-sudo apt install --yes i3-wm dunst i3lock i3status suckless-tools
+sudo apt install --yes i3-wm i3lock i3status suckless-tools
 sudo apt install --yes compton hsetroot rxvt-unicode xsel rofi fonts-font-awesome fonts-noto fonts-mplus xsettingsd lxappearance scrot OpenShot blueman ffmpeg volumeicon-alsa figlet
 
 echo ""

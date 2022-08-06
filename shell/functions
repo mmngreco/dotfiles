@@ -298,6 +298,19 @@ selectProjectFzf () {
     listProjects | fzf --select-1 --ansi -q "$query" --height 10% -m --bind "space:toggle"
 }
 
+
+newProject () {
+    # find projects using .git folder as reference
+    dir=$(listProjectContainers | fzf --select-1 --height 10%)
+    prj=$1
+    if [ -z $prj ]; then
+        echo "Enter project name: "
+        read prj
+    fi
+    mkdir $dir/$prj
+    cd $dir/$prj
+}
+
 fzfProjects () {
     # Print out the abslute path of every project (which has .git) at HOME dir.
     # query="${1:-tesser}"
