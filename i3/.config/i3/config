@@ -230,7 +230,7 @@ for_window [class=".*"] split toggle
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 8
 
 assign [class=XTerm|kitty] 1
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
@@ -250,6 +250,7 @@ for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*
 # client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
 # client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 # client.background           #2f343f
+
 
 set $bg-color            #2f343f50
 set $border-color        #0cf4ca50
