@@ -233,6 +233,7 @@ for_window [class=".*"] split toggle
 for_window [class=".*"] border pixel 8
 
 assign [class=XTerm|kitty] 1
+assign [class=Brave-browser] 2
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=libreoffice*] 5
 assign [class=TelegramDesktop] 6
@@ -252,14 +253,14 @@ for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*
 # client.background           #2f343f
 
 
-set $bg-color            #2f343f50
+set $bg-color            #d8dee850
 set $border-color        #0cf4ca50
 set $indicator-color     #d8dee850
 set $inactive-bg-color   #ffffff00
 set $text-color          #ababab
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #2f343f
-set $ws-focused-bg       #000000
+set $ws-focused-bg       #d8dee8
 
 # window colors
 #                       border              background         text                 indicator
