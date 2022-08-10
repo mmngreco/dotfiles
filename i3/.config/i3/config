@@ -231,6 +231,7 @@ for_window [class=".*"] split toggle
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 10
+for_window [class="kitty"] border pixel 20
 
 assign [class=XTerm|kitty] 1
 assign [class=Brave-browser] 2
