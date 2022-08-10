@@ -30,7 +30,7 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
-
+Plug 'rafalbromirski/vim-aurora'
 " Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rcarriga/nvim-notify'
 " Plug 'aquach/vim-mediawiki-editor'
