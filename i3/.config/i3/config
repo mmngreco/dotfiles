@@ -230,7 +230,7 @@ for_window [class=".*"] split toggle
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 8
+for_window [class=".*"] border pixel 10
 
 assign [class=XTerm|kitty] 1
 assign [class=Brave-browser] 2
@@ -252,15 +252,14 @@ for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*
 # client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 # client.background           #2f343f
 
-
-set $bg-color            #d8dee850
-set $border-color        #0cf4ca50
-set $indicator-color     #d8dee850
+set $bg-color            #d8dee820
+set $indicator-color     #d8dee820
+set $border-color        #0cf4ca00
 set $inactive-bg-color   #ffffff00
-set $text-color          #ababab
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #2f343f
-set $ws-focused-bg       #d8dee8
+set $text-color          #ababab00
+set $inactive-text-color #676E7D00
+set $urgent-bg-color     #2f343f00
+set $ws-focused-bg       #d8dee800
 
 # window colors
 #                       border              background         text                 indicator
