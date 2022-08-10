@@ -256,7 +256,8 @@ nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 " nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " searches
-nnoremap <leader>fw <cmd>!/usr/bin/rg <cword> src .deps<cr>
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+nnoremap <leader>fw <cmd>vimgrep /<cword>/ src .deps<cr>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
