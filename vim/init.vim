@@ -256,7 +256,8 @@ nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 
 " searches
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
-nnoremap <leader>fw <cmd>vimgrep /<cword>/ ./** <cr>
+" nnoremap <leader>fw <cmd>vimgrep /<C-R>=escape(expand("<cword>"))/ ./** <cr>
+nnoremap <leader>fw <cmd>vimgrep /escape(expand("<cWORD>")/ ./** <CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
