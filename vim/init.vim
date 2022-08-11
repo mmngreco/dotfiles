@@ -104,6 +104,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 " Plug 'numtostr/FTerm.nvim'
 Plug 'nvie/vim-flake8'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -578,4 +579,13 @@ vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').r
 -- Inline variable can also pick up the identifier currently under the cursor without visual mode
 vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
 
+EOF
+
+
+
+lua <EOF
+require("indent_blankline").setup {
+    show_current_context = true,
+    show_current_context_start = true,
+}
 EOF
