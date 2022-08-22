@@ -30,6 +30,7 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
+Plug 'phaazon/mind.nvim'
 Plug 'rafalbromirski/vim-aurora'
 " Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rcarriga/nvim-notify'
@@ -539,8 +540,7 @@ require'nvim-web-devicons'.setup {
 EOF
 
 
-" refactoring
-"
+" === refactoring
 lua << EOF
 require('refactoring').setup({
     prompt_func_return_type = {
@@ -588,4 +588,10 @@ require("indent_blankline").setup {
     show_current_context = true,
     show_current_context_start = true,
 }
+EOF
+
+
+" === mind
+lua <<EOF
+require("mind").setup()
 EOF
