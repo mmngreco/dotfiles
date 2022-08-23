@@ -30,6 +30,7 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
+Plug "mrjones2014/legendary.nvim"
 Plug 'liuchengxu/vista.vim'
 Plug 'phaazon/mind.nvim'
 Plug 'rafalbromirski/vim-aurora'
