@@ -231,17 +231,17 @@ nmap <C-g><C-r> <Plug>RandNorm
 nnoremap <leader>tu <esc>Vypv$r-
 
 " edit ini.vim
-nnoremap <leader>rc :tabedit ~/.config/nvim/init.vim<CR>
+nnoremap <leader>rc <cmd>tabedit ~/.config/nvim/init.vim<CR>
 
 " reload vimrc
-nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader><CR> <cmd>so ~/.config/nvim/init.vim<CR>
 
 " exit from terminal mode
 tnoremap <Esc> <C-\><C-n>
 
 " resize window
-nnoremap <leader>+ :vertical resize +5<CR>
-nnoremap <leader>- :vertical resize -5<CR>
+nnoremap <leader>+ :vertical resize +10<CR>
+nnoremap <leader>- :vertical resize -10<CR>
 " maximizes current window
 nnoremap <leader>rp :resize 100<CR>
 
