@@ -514,3 +514,9 @@ pip-dev-tools() {
 todo() {
     [[ -f ./TODO.md ]] && nvim ./TODO.md || nvim ~/TODO.md
 }
+
+
+pdbrc-here(){
+    echo "# b $PWD/src/file.py:lineno, condition" > .pdbrc
+    ln -sf $PWD/.pdbrc $HOME/.pdbrc
+}

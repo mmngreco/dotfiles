@@ -26,8 +26,11 @@ nmap <leader>lk  <Plug>SendToHarpoon3
 nmap <leader>ll  <Plug>SendToHarpoon4
 
 " print out issues
-nnoremap <leader>is :lua require("harpoon.term").sendCommand(7, "clab issue ls\nexit\n")<cr>:split<cr>:lua require("harpoon.term").gotoTerminal(7)<cr>
-nnoremap <C-y><C-b> :let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>
+nnoremap <leader>is <cmd>lua require("harpoon.term").sendCommand(7, "clab issue ls\nexit\n")<cr>:split<cr>:lua require("harpoon.term").gotoTerminal(7)<cr>
+nnoremap <leader>by <cmd>let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:echo @b<cr>
+nnoremap <leader>ba <cmd>call writefile(["break " . expand('%:p') . ":" . line('.')], $PWD . "/.pdbrc", "a")<CR>
+nnoremap <leader>be <cmd>edit $PWD/.pdbrc<CR>
+
 
 
 " debugging with pdb: send breakpoint
