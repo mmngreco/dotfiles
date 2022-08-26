@@ -517,6 +517,6 @@ todo() {
 
 
 pdbrc-here(){
-    echo "# b $PWD/src/file.py:lineno, condition" > .pdbrc
+    echo "# b $PWD/src/file.py:lineno, condition" >> .pdbrc
     ln -sf $PWD/.pdbrc $HOME/.pdbrc
 }
