@@ -12,7 +12,7 @@ echo Cloning ohmyzsh...
 [ ! -d "$HOME/.oh-my-zsh"] && ${DOTFILES}/software/ohmyzsh
 install_absent keepassxc
 install_absent zsh
-install_absent zsh-suggestion
+install_absent zsh-suggestions
 install_absent fzf
 install_absent git-secret
 install_absent glab

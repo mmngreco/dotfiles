@@ -17,10 +17,19 @@ toggleEtsIndex() {
 
 dotfiles() {
     case $1 in
-        h)
-            echo "Commands: go, commit, source, pull, link, *";;
-        help)
-            echo "Commands: go, commit, source, pull, link, *";;
+        h*)
+            echo "Commands: "
+            echo "go,cd : go to dotfiles' folder"
+            echo "install,i : install using software's folder"
+            echo "commit,cm : commit files automatically"
+            echo "cs : commit secrets only"
+            echo "ca : commit all (files and secrets) files automatically"
+            echo "source : reload dotfiles"
+            echo "pull : pull dotfiles changes"
+            echo "link : (re)create symlinks of dotfiles"
+            echo "edit, e : edit dotfiles"
+            echo "ec : edit and commit dotfiles"
+            ;;
         install)
             dotfilesInstall ${@:2} ;;
         i)
@@ -520,3 +529,11 @@ pdbrc-here(){
     echo "# b $PWD/src/file.py:lineno, condition" >> .pdbrc
     ln -sf $PWD/.pdbrc $HOME/.pdbrc
 }
+
+
+function jenkinsLint () {
+    # https://www.jenkins.io/doc/book/pipeline/development/
+    jfile=${1:-Jenkinsfile}
+    curl --user "${JENKINS_USER_ID}:${JENKINS_API_TOKEN}" -X POST -F "jenkinsfile=<${jfile}" "${JENKINS_URL}/pipeline-model-converter/validate"
+}
+
