@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # https://www.openshot.org/ppa/
-sudo add-apt-repository ppa:openshot.developers/ppa --yes
-sudo apt-get update --yes
-sudo apt-get install openshot-qt --yes
+sudo add-apt-repository ppa:openshot.developers/ppa
+sudo apt update
+sudo apt install openshot-qt python3-openshot
