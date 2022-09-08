@@ -2,7 +2,7 @@
 # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
 NEOVIM_DIR="$HOME/github/neovim/neovim"
 NEOVIM_URL="https://github.com/neovim/neovim.git"
-NEOVIM_VER="nightly"
+NEOVIM_VER="stable"
 
 echo "========================================================================"
 echo "Installing dependencies..."
