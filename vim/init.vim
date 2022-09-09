@@ -61,7 +61,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 " Plug 'willchao612/vim-diagon'
 Plug 'cespare/vim-toml'
-" Plug 'chipsenkbeil/distant.nvim'
+Plug 'chipsenkbeil/distant.nvim'
 Plug 'chrisbra/csv.vim'
 " Plug 'chrisbra/unicode.vim'
 " Plug 'chriskempson/base16-vim'
@@ -388,6 +388,7 @@ augroup END
 
 " ==== source plugin conf
 "
+source $DOTFILES/vim/plugins/distant.vim
 source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/functions.vim

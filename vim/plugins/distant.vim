@@ -33,4 +33,5 @@ require('distant').setup {
 EOL
 
 nnoremap <leader>ssh :Distant 139.162.167.149 ssh.user=root ssh.port=22 mode=ssh<cr>
+nnoremap <leader>ssh :Distant do_etl ssh.user=mgreco ssh.port=22 mode=ssh<cr>
 nnoremap <leader>. :DistantOpen .<cr>
