@@ -198,8 +198,9 @@ ipytdd ()  {
 
 conda-here () {
     # conda-here [prefix] [*conda-args]
-    local pyver="python=3.7"
     local prefix="${1:-$PWD/.venv/$(echo $pyver | tr -d = | tr -d .)}"
+    echo $prefix
+    local pyver="python=3.7"
 
     if [ $# -eq 0 ]; then
         conda create --prefix $prefix $pyver pip -y
