@@ -30,6 +30,8 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+
 Plug 'tpope/vim-tbone'
 Plug 'mrjones2014/legendary.nvim'
 Plug 'liuchengxu/vista.vim'
@@ -54,7 +56,7 @@ Plug 'sbdchd/neoformat'
 " TODO change to luasnip
 " Plug 'L3MON4D3/LuaSnip'
 
-Plug 'ckipp01/nvim-jenkinsfile-linter'
+" Plug 'ckipp01/nvim-jenkinsfile-linter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 " Plug 'willchao612/vim-diagon'
@@ -598,3 +600,16 @@ EOF
 lua <<EOF
 require("mind").setup()
 EOF
+
+
+
+" === mind
+lua <<EOF
+vim.opt.termguicolors = true
+require("bufferline").setup{}
+EOF
+
+" " === mind
+" lua <<EOF
+" require("symbols-outline").setup()
+" EOF
