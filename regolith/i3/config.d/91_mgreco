@@ -10,24 +10,6 @@ font pango:ubuntu 10
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
-# autostart
-# exec --no-startup-id xrandr --output eDP-1 --off --auto
-exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
-exec --no-startup-id xsettingsd &
-exec --no-startup-id nm-applet &
-exec --no-startup-id blueman-applet &
-exec --no-startup-id volumeicon &
-exec --no-startup-id compton -b
-exec --no-startup-id caffeine-indicator
-
-exec --no-startup-id i3-msg 'exec kitty'
-# exec --no-startup-id i3-msg 'exec xterm'
-exec --no-startup-id i3-msg 'exec nautilus'
-exec --no-startup-id i3-msg 'exec telegram-desktop'
-exec --no-startup-id i3-msg 'exec keepassxc'
-# exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
-
-
 # default_orientation vertical #start in opposite orientation from your monitor
 for_window [class=".*"] split toggle
 # toggles split at each new window
@@ -40,8 +22,8 @@ for_window [class=".*"] border pixel 4
 for_window [class="kitty"] border pixel 10
 
 # TODO: integrate with regolith
-assign [class=XTerm|kitty] $ws1
-assign [class=Brave-browser] $ws2
+assign [class="XTerm|kitty"] workspace number $ws1
+assign [class=Brave-browser] workspace $ws2
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] $ws4
 assign [class=libreoffice*|Gimp*|Inkscape] $ws5
 assign [class=TelegramDesktop] $ws6

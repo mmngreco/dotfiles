@@ -8,15 +8,15 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-## Modify // Window Position // <><Shift> k j h l ##
+## Modify // Window Position // <ctrl><Shift> k j h l ##
 set_from_resource $i3-wm.binding.move_left i3-wm.binding.move_left Shift+h
 set_from_resource $i3-wm.binding.move_right i3-wm.binding.move_right Shift+l
 set_from_resource $i3-wm.binding.move_up i3-wm.binding.move_up Shift+k
 set_from_resource $i3-wm.binding.move_down i3-wm.binding.move_down Shift+j
-bindsym $mod+$i3-wm.binding.move_left move left
-bindsym $mod+$i3-wm.binding.move_down move down
-bindsym $mod+$i3-wm.binding.move_up move up
-bindsym $mod+$i3-wm.binding.move_right move right
+bindsym Ctrl+$i3-wm.binding.move_left move left
+bindsym Ctrl+$i3-wm.binding.move_down move down
+bindsym Ctrl+$i3-wm.binding.move_up move up
+bindsym Ctrl+$i3-wm.binding.move_right move right
 
 ## Modify // Containing Workspace // <><Ctrl><Shift> ↑ ↓ ← → ##
 set_from_resource $i3-wm.binding.move_workspace_output_left i3-wm.binding.move_workspace_output_left Ctrl+Shift+Left
@@ -81,6 +81,7 @@ bindsym $mod+Shift+$ws7_key move container to workspace number $ws7
 bindsym $mod+Shift+$ws8_key move container to workspace number $ws8
 bindsym $mod+Shift+$ws9_key move container to workspace number $ws9
 bindsym $mod+Shift+$ws10_key move container to workspace number $ws10
+
 ## Modify // Move Window to Workspace 11 - 19// <><Ctrl><Shift> 1..9 ##
 bindsym $mod+Shift+Ctrl+$ws1_key move container to workspace number $ws11
 bindsym $mod+Shift+Ctrl+$ws2_key move container to workspace number $ws12

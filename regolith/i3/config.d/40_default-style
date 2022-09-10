@@ -7,7 +7,7 @@ set_from_resource $i3-wm.floatingwindow.border.style i3-wm.floatingwindow.border
 set_from_resource $i3-wm.floatingwindow.border.size i3-wm.floatingwindow.border.size 1
 default_floating_border $i3-wm.floatingwindow.border.style $i3-wm.floatingwindow.border.size
 set_from_resource $i3-wm.window.border.style i3-wm.window.border.style pixel
-set_from_resource $i3-wm.window.border.size i3-wm.window.border.size 1
+set_from_resource $i3-wm.window.border.size i3-wm.window.border.size 2
 default_border $i3-wm.window.border.style $i3-wm.window.border.size
 
 # Enable popup during fullscreen
