@@ -1,0 +1,135 @@
+###############################################################################
+# Session Management
+###############################################################################
+
+## Session // Exit App // <><Shift> q ##
+set_from_resource $i3-wm.binding.exit_app i3-wm.binding.exit_app q
+bindsym $mod+$i3-wm.binding.exit_app [con_id="__focused__"] kill
+
+## Session // Terminate App // <><Alt> q ##
+set_from_resource $i3-wm.binding.kill_app i3-wm.binding.kill_app Shift+q
+bindsym $mod+$alt+$i3-wm.binding.kill_app [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
+
+## Session // Reload i3 Config // <><Shift> c ##
+set_from_resource $i3-wm.binding.reload i3-wm.binding.reload Shift+c
+bindsym $mod+$i3-wm.binding.reload reload
+
+## Session // Refresh Session // <><Shift> r ##
+set_from_resource $i3-wm.binding.refresh i3-wm.binding.refresh Shift+r
+set_from_resource $i3-wm.program.refresh_ui i3-wm.program.refresh_ui /usr/bin/regolith-look refresh
+bindsym $mod+$i3-wm.binding.refresh exec --no-startup-id $i3-wm.program.refresh_ui
+
+## Session // Restart i3 // <><Ctrl> r ##
+set_from_resource $i3-wm.binding.restart i3-wm.binding.restart Ctrl+r
+bindsym $mod+$i3-wm.binding.restart restart
+
+## Session // Logout // <><Shift> e ##
+set_from_resource $i3-wm.binding.logout i3-wm.binding.logout Shift+e
+set_from_resource $i3-wm.program.logout i3-wm.program.logout /usr/bin/gnome-session-quit --logout
+bindsym $mod+$i3-wm.binding.logout exec $i3-wm.program.logout
+
+## Session // Reboot // <><Shift> b ##
+set_from_resource $i3-wm.binding.reboot i3-wm.binding.reboot Shift+b
+set_from_resource $i3-wm.program.reboot i3-wm.program.reboot /usr/bin/gnome-session-quit --reboot
+bindsym $mod+$i3-wm.binding.reboot exec $i3-wm.program.reboot
+
+## Session // Power Down // <><Shift> p ##
+set_from_resource $i3-wm.binding.shutdown i3-wm.binding.shutdown Shift+p
+set_from_resource $i3-wm.program.shutdown i3-wm.program.shutdown /usr/bin/gnome-session-quit --power-off
+bindsym $mod+$i3-wm.binding.shutdown exec $i3-wm.program.shutdown
+
+## Session // Lock Screen // <> Escape ##
+set_from_resource $i3-wm.binding.lock i3-wm.binding.lock Escape
+set_from_resource $i3-wm.program.lock i3-wm.program.lock dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+bindsym $mod+$i3-wm.binding.lock exec $i3-wm.program.lock
+
+## Session // Sleep // <><Shift> s ##
+set_from_resource $i3-wm.binding.sleep i3-wm.binding.sleep Shift+s
+set_from_resource $i3-wm.program.sleep i3-wm.program.sleep systemctl suspend
+bindsym $mod+$i3-wm.binding.sleep exec $i3-wm.program.sleep
+
+
+## custom
+# set $super Mod4
+# set $alt Mod1
+
+## start dmenu (a program launcher)
+set_from_resource $i3-wm.binding.dmenu i3-wm.binding.dmenu Shift+d
+set_from_resource $i3-wm.program.dmenu i3-wm.program.dmenu i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=10'"
+bindsym $mod+$i3-wm.binding.dmenu exec $i3-wm.program.dmenu
+
+## open rofi launcher
+set_from_resource $i3-wm.binding.rofi i3-wm.binding.rofi d
+set_from_resource $i3-wm.program.rofi i3-wm.program.rofi rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
+bindsym $mod+$i3-wm.binding.rofi exec $i3-wm.program.rofi
+
+
+## select monitor settings using rofi
+set_from_resource $i3-wm.binding.monitor i3-wm.binding.monitor Ctrl+Shift+m
+set_from_resource $i3-wm.program.monitor i3-wm.program.monitor rofi-randr
+bindsym $mod+$i3-wm.binding.monitor exec $i3-wm.program.monitor
+
+## automatic monitor setup
+set_from_resource $i3-wm.binding.monitor_auto i3-wm.binding.monitor_auto Ctrl+Shift+x
+set_from_resource $i3-wm.program.monitor_auto i3-wm.program.monitor_auto xrandr --auto
+bindsym $mod+$i3-wm.binding.monitor_auto exec $i3-wm.program.monitor_auto
+
+# bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
+
+## auto rand wallpaper
+set_from_resource $i3-wm.binding.wallpaper i3-wm.binding.wallpaper Ctrl+Shift+e
+set_from_resource $i3-wm.program.wallpaper i3-wm.program.wallpaper --no-startup-id feh -D 3600 --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+bindsym $mod+$i3-wm.binding.wallpaper exec $i3-wm.program.wallpaper
+
+## rand wallpaper
+set_from_resource $i3-wm.binding.rand_wall i3-wm.binding.rand_wall Ctrl+Shift+w
+set_from_resource $i3-wm.program.rand_wall i3-wm.program.rand_wall --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+bindsym $mod+$i3-wm.binding.rand_wall exec $i3-wm.program.rand_wall
+
+# Screenshots
+set_from_resource $i3-wm.binding.screenshot i3-wm.binding.screenshot Ctrl+f
+set_from_resource $i3-wm.program.screenshot i3-wm.program.screenshot scrot '$HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png' -e 'viewnior $f'
+bindsym $alt+$i3-wm.binding.screenshot exec $i3-wm.program.screenshot
+
+set_from_resource $i3-wm.binding.screenshot_area i3-wm.binding.screenshot_area Ctrl+e
+set_from_resource $i3-wm.program.screenshot_area i3-wm.program.screenshot_area scrot -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $alt+$i3-wm.binding.screenshot_area exec $i3-wm.program.screenshot_area
+
+# old
+# bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png -s -e 'xclip -selection clipboard -t image/png -i $f'
+# bindsym $alt+Shift+Ctrl+v exec "i3-nagbar -t warning -m 'Screen Recording?' -b 'Start' 'rec_screen &' -b 'Stop' 'pkill ffmpeg'"
+
+
+## open file browser
+# bindsym $super+Shift+f exec nautilus
+# bindsym $super+Shift+f workspace 4; focus; exec nautilus
+
+# split in vertical orientation
+bindsym $super+Shift+v split h
+
+# split in horizontal orientation
+bindsym $super+Shift+h split v
+
+## change container layout split
+bindsym Ctrl+Shift+s layout toggle split
+
+## enter fullscreen mode for the focused container
+bindsym Ctrl+Shift+m fullscreen toggle
+
+## toggle tiling / floating
+bindsym Ctrl+Shift+space floating toggle
+
+## change focus between tiling / floating windows
+bindsym $alt+Ctrl+Shift+s focus mode_toggle
+
+# =============================================================================
+# System
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Ctrl+Shift+r restart
+
+# close session
+bindsym $mod+Shift+q exec i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'
+
+# power off
+bindsym $mod+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' 'exec systemctl poweroff -i', mode "default"

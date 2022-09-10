@@ -1,0 +1,64 @@
+# set modifier
+set $super Mod4
+set $alt Mod1
+
+# Use: xrandr command to check monitor names.
+
+# set font
+font pango:ubuntu 10
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+# autostart
+# exec --no-startup-id xrandr --output eDP-1 --off --auto
+exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+exec --no-startup-id xsettingsd &
+exec --no-startup-id nm-applet &
+exec --no-startup-id blueman-applet &
+exec --no-startup-id volumeicon &
+exec --no-startup-id compton -b
+exec --no-startup-id caffeine-indicator
+
+exec --no-startup-id i3-msg 'exec kitty'
+# exec --no-startup-id i3-msg 'exec xterm'
+exec --no-startup-id i3-msg 'exec nautilus'
+exec --no-startup-id i3-msg 'exec telegram-desktop'
+exec --no-startup-id i3-msg 'exec keepassxc'
+# exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
+
+
+# default_orientation vertical #start in opposite orientation from your monitor
+for_window [class=".*"] split toggle
+# toggles split at each new window
+# bindsym $mod+shift+q split toggle kill #kill command resets the split
+# bindsym $mod+e layout toggle split # should already exist but use if split orientation  messes up
+
+
+# window rules, you can find the window class using xprop
+for_window [class=".*"] border pixel 4
+for_window [class="kitty"] border pixel 10
+
+# TODO: integrate with regolith
+assign [class=XTerm|kitty] $ws1
+assign [class=Brave-browser] $ws2
+assign [class=Org.gnome.Nautilus|Thunar|File-roller] $ws4
+assign [class=libreoffice*|Gimp*|Inkscape] $ws5
+assign [class=TelegramDesktop] $ws6
+assign [class=keepassxc|KeePassXC] $ws8
+assign [class=Audacity|Vlc|mpv|Ghb|Xfburn] $ws8
+assign [class=obs|easyeffects] $ws9
+
+for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
+for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
+# # window colors
+# #                       border              background         text                 indicator
+# client.focused          $border-color       $bg-color          $text-color          $indicator-color
+# client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+# client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+
+# gaps inner all set 20
+# gaps outer current plus 5
+# gaps horizontal current plus 40
+# gaps outer current toggle 60

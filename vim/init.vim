@@ -31,6 +31,7 @@ let g:loaded_perl_provider = 0
 
 call plug#begin()
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 Plug 'tpope/vim-tbone'
 Plug 'mrjones2014/legendary.nvim'
@@ -180,49 +181,49 @@ call plug#end()
 " https://github.com/awesome-streamers/awesome-streamerrc
 " https://shorturl.at/cxUX3
 " let g:my_colorscheme = "ayu"
-let g:my_colorscheme = "gruvbox"
-fun! ColorMyPencils()
-    let g:gruvbox_contrast_dark = 'hard'
-    if exists('+termguicolors')
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    endif
-    let g:gruvbox_invert_selection='0'
-
-    set background=dark
-    if has('nvim')
-        call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:my_colorscheme])
-    else
-        " TODO: What the way to use g:my_colorscheme
-        colorscheme gruvbox
-    endif
-
-    highlight ColorColumn ctermbg=0 guibg=grey
-    hi SignColumn guibg=none
-    hi CursorLineNR guibg=None
-    highlight Normal guibg=none
-
-    highlight CursorLine term=bold cterm=bold guibg=Grey40
-    highlight NonText ctermbg=none
-    highlight Normal  ctermbg=none
-
-    " highlight LineNr guifg=#ff8659
-    " highlight LineNr guifg=#aed75f
-    highlight LineNr guifg=#5eacd3
-    highlight netrwDir guifg=#5eacd3
-    highlight qfFileName guifg=#aed75f
-    highlight NonText guifg=#5eacd3
-    hi TelescopeBorder guifg=#5eacd3
-endfun
-call ColorMyPencils()
+let g:my_colorscheme = "catppuccin"
+" fun! ColorMyPencils()
+"     let g:gruvbox_contrast_dark = 'hard'
+"     if exists('+termguicolors')
+"         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"     endif
+"     let g:gruvbox_invert_selection='0'
+"
+"     set background=dark
+"     if has('nvim')
+"         call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:my_colorscheme])
+"     else
+"         " TODO: What the way to use g:my_colorscheme
+"         colorscheme gruvbox
+"     endif
+"
+"     highlight ColorColumn ctermbg=0 guibg=grey
+"     hi SignColumn guibg=none
+"     hi CursorLineNR guibg=None
+"     highlight Normal guibg=none
+"
+"     highlight CursorLine term=bold cterm=bold guibg=Grey40
+"     highlight NonText ctermbg=none
+"     highlight Normal  ctermbg=none
+"
+"     " highlight LineNr guifg=#ff8659
+"     " highlight LineNr guifg=#aed75f
+"     highlight LineNr guifg=#5eacd3
+"     highlight netrwDir guifg=#5eacd3
+"     highlight qfFileName guifg=#aed75f
+"     highlight NonText guifg=#5eacd3
+"     hi TelescopeBorder guifg=#5eacd3
+" endfun
+" call ColorMyPencils()
 
 " for gruvbox
 hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
 hi tkBrackets ctermfg=gray guifg=gray
 
 " Vim with me
-nnoremap <leader>vwm :call ColorMyPencils()<CR>
-nnoremap <leader>vwb :let g:my_colorscheme =
+" nnoremap <leader>vwm :call ColorMyPencils()<CR>
+" nnoremap <leader>vwb :let g:my_colorscheme =
 
 nnoremap <silent> <Plug>RandNorm :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>RandNorm", v:count)<cr>
 nmap <C-g><C-r> <Plug>RandNorm

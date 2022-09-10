@@ -11,6 +11,9 @@
       recursive: true
 
 - link:
+    ~/.config/regolith2/i3/config.d/:
+      path: regolith/i3/config.d/*
+      glob: true
     ~/.dotfiles: .
     ~/.config/pulse/default.pa: pulse/default.pa
     ~/.octaverc: octave/octaverc
