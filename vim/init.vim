@@ -73,7 +73,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
-" Plug 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
 " Plug 'hoschi/yode-nvim'
@@ -125,7 +125,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 " Plug 'ruanyl/vim-gh-line'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
 Plug 'sbdchd/neoformat'
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
@@ -182,40 +182,41 @@ call plug#end()
 " https://shorturl.at/cxUX3
 " let g:my_colorscheme = "ayu"
 " let g:my_colorscheme = "catppuccin"
-" fun! ColorMyPencils()
-"     let g:gruvbox_contrast_dark = 'hard'
-"     if exists('+termguicolors')
-"         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"     endif
-"     let g:gruvbox_invert_selection='0'
-"
-"     set background=dark
-"     if has('nvim')
-"         call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:my_colorscheme])
-"     else
-"         " TODO: What the way to use g:my_colorscheme
-"         colorscheme gruvbox
-"     endif
-"
-"     highlight ColorColumn ctermbg=0 guibg=grey
-"     hi SignColumn guibg=none
-"     hi CursorLineNR guibg=None
-"     highlight Normal guibg=none
-"
-"     highlight CursorLine term=bold cterm=bold guibg=Grey40
-"     highlight NonText ctermbg=none
-"     highlight Normal  ctermbg=none
-"
-"     " highlight LineNr guifg=#ff8659
-"     " highlight LineNr guifg=#aed75f
-"     highlight LineNr guifg=#5eacd3
-"     highlight netrwDir guifg=#5eacd3
-"     highlight qfFileName guifg=#aed75f
-"     highlight NonText guifg=#5eacd3
-"     hi TelescopeBorder guifg=#5eacd3
-" endfun
-" call ColorMyPencils()
+let g:my_colorscheme = "gruvbox"
+fun! ColorMyPencils()
+    let g:gruvbox_contrast_dark = 'hard'
+    if exists('+termguicolors')
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+    let g:gruvbox_invert_selection='0'
+
+    set background=dark
+    if has('nvim')
+        call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:my_colorscheme])
+    else
+        " TODO: What the way to use g:my_colorscheme
+        colorscheme gruvbox
+    endif
+
+    highlight ColorColumn ctermbg=0 guibg=grey
+    hi SignColumn guibg=none
+    hi CursorLineNR guibg=None
+    highlight Normal guibg=none
+
+    highlight CursorLine term=bold cterm=bold guibg=Grey40
+    highlight NonText ctermbg=none
+    highlight Normal  ctermbg=none
+
+    " highlight LineNr guifg=#ff8659
+    " highlight LineNr guifg=#aed75f
+    highlight LineNr guifg=#5eacd3
+    highlight netrwDir guifg=#5eacd3
+    highlight qfFileName guifg=#aed75f
+    highlight NonText guifg=#5eacd3
+    hi TelescopeBorder guifg=#5eacd3
+endfun
+call ColorMyPencils()
 
 " for gruvbox
 hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
@@ -660,7 +661,6 @@ EOF
 " EOF
 
 " colorscheme catppuccin
-colorscheme gruvbox-material
 
 lua <<EOF
 vim.notify = require("notify")
