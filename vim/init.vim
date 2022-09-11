@@ -225,8 +225,8 @@ hi tkBrackets ctermfg=gray guifg=gray
 " nnoremap <leader>vwm :call ColorMyPencils()<CR>
 " nnoremap <leader>vwb :let g:my_colorscheme =
 
-nnoremap <silent> H <cmd>bp<cr>
-nnoremap <silent> L <cmd>bp<cr>
+nnoremap H :bp<cr>
+nnoremap L :bn<cr>
 nnoremap <silent> <Plug>RandNorm :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>RandNorm", v:count)<cr>
 nmap <C-g><C-r> <Plug>RandNorm
 
@@ -418,7 +418,7 @@ source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/vsnip.vim
-source $DOTFILES/vim/plugins/workspace.vim
+" source $DOTFILES/vim/plugins/workspace.vim
 " source $DOTFILES/vim/plugins/yode.vim
 
 lua require'nvim-treesitter.configs'.setup { indent = { enable = false }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
@@ -661,3 +661,7 @@ EOF
 
 " colorscheme catppuccin
 colorscheme gruvbox-material
+
+lua <<EOF
+vim.notify = require("notify")
+EOF
