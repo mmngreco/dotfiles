@@ -69,7 +69,7 @@ Plug 'chrisbra/csv.vim'
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'flazz/vim-colorschemes'
-" Plug 'gko/vim-coloresque'  " show color of an color expression (hex, rgb)
+Plug 'gko/vim-coloresque'  " show color of an color expression (hex, rgb)
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
@@ -661,6 +661,7 @@ EOF
 " EOF
 
 " colorscheme catppuccin
+colorscheme gruvbox
 
 lua <<EOF
 vim.notify = require("notify")
