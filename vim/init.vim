@@ -30,7 +30,6 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
-" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
 Plug 'tpope/vim-tbone'
@@ -38,9 +37,7 @@ Plug 'mrjones2014/legendary.nvim'
 Plug 'liuchengxu/vista.vim'
 Plug 'phaazon/mind.nvim'
 Plug 'rafalbromirski/vim-aurora'
-" Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rcarriga/nvim-notify'
-" Plug 'aquach/vim-mediawiki-editor'
 Plug 'fatih/vim-go'
 
 " Plug 'skanehira/denops-docker.vim'
@@ -52,7 +49,7 @@ Plug 'fatih/vim-go'
 Plug 'sbdchd/neoformat'
 " Plug 'alec-gibson/nvim-tetris'
 " Plug 'sunjon/shade.nvim'
-" Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " TODO change to luasnip
 " Plug 'L3MON4D3/LuaSnip'
@@ -61,19 +58,17 @@ Plug 'sbdchd/neoformat'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 " Plug 'willchao612/vim-diagon'
+" Plug 'aquach/vim-mediawiki-editor'
 Plug 'cespare/vim-toml'
 Plug 'chipsenkbeil/distant.nvim'
 Plug 'chrisbra/csv.vim'
 " Plug 'chrisbra/unicode.vim'
-" Plug 'chriskempson/base16-vim'
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'flazz/vim-colorschemes'
 Plug 'gko/vim-coloresque'  " show color of an color expression (hex, rgb)
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
-Plug 'gruvbox-community/gruvbox'
 Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
 " Plug 'hoschi/yode-nvim'
@@ -90,7 +85,6 @@ Plug 'itchyny/calendar.vim'
 " Plug 'johngrib/vim-game-code-break'
 " Plug 'joom/latex-unicoder.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
-" Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'lambdalisue/suda.vim'
 Plug 'lervag/vimtex'
@@ -100,16 +94,13 @@ Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree'
 " Plug 'mboughaba/i3config.vim'
-" Plug 'mfussenegger/nvim-dap'
 " Plug 'Microsoft/vscode-python'
 " Plug 'mmngreco/dbee.nvim'
 " Plug 'mmngreco/DrawIt'
 Plug 'mmngreco/slimux'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
-" Plug 'neomake/neomake'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
-" Plug 'numtostr/FTerm.nvim'
 Plug 'nvie/vim-flake8'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -120,12 +111,24 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " Plug pangloss/vim-javascript'
 " Plug 'puremourning/vimspector'
-" Plug 'radenling/vim-dispatch-neovim'
+
 " Plug 'rcarriga/nvim-dap-ui'
+" Plug 'mfussenegger/nvim-dap'
+
+" Plug 'neomake/neomake'
+" Plug 'radenling/vim-dispatch-neovim'
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
+" Plug 'numtostr/FTerm.nvim'
 " Plug 'ruanyl/vim-gh-line'
-" Plug 'sainnhe/gruvbox-material'
+"
+" === colorscheme
+" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+" Plug 'gruvbox-community/gruvbox'
+" Plug 'flazz/vim-colorschemes'
+" Plug 'chriskempson/base16-vim'
+Plug 'sainnhe/gruvbox-material'
+
 Plug 'sbdchd/neoformat'
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
 " Plug 'Shougo/neoinclude.vim', { 'for': 'cpp' }
@@ -139,7 +142,10 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/refactoring.nvim'
 " Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-abolish'
+
 Plug 'tpope/vim-dadbod'  " database interface
+" Plug 'kristijanhusak/vim-dadbod-ui'
+"
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-markdown'
@@ -155,8 +161,10 @@ Plug 'tyru/open-browser.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-test/vim-test'
+
 " Plug 'vim-utils/vim-man'
 " Plug 'vuciv/vim-bujo'  " todos
+"
 Plug 'wellle/targets.vim'  " text wrapper: cin,
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -182,45 +190,44 @@ call plug#end()
 " https://shorturl.at/cxUX3
 " let g:my_colorscheme = "ayu"
 " let g:my_colorscheme = "catppuccin"
-let g:my_colorscheme = "gruvbox"
-fun! ColorMyPencils()
-    let g:gruvbox_contrast_dark = 'hard'
-    if exists('+termguicolors')
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    endif
-    let g:gruvbox_invert_selection='0'
+" let g:my_colorscheme = "gruvbox"
+" fun! ColorMyPencils()
+"     let g:gruvbox_contrast_dark = 'hard'
+"     if exists('+termguicolors')
+"         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"     endif
+"     let g:gruvbox_invert_selection='0'
+"
+"     set background=dark
+"     if has('nvim')
+"         call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:my_colorscheme])
+"     else
+"         " TODO: What the way to use g:my_colorscheme
+"         colorscheme gruvbox
+"     endif
+"
+"     highlight ColorColumn ctermbg=0 guibg=grey
+"     hi SignColumn guibg=none
+"     hi CursorLineNR guibg=None
+"     highlight Normal guibg=none
+"
+"     highlight CursorLine term=bold cterm=bold guibg=Grey40
+"     highlight NonText ctermbg=none
+"     highlight Normal  ctermbg=none
+"
+"     " highlight LineNr guifg=#ff8659
+"     " highlight LineNr guifg=#aed75f
+"     highlight netrwDir guifg=#5eacd3
+"     highlight qfFileName guifg=#aed75f
+"     highlight NonText guifg=#5eacd3
+      " for gruvbox
+      " hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+      " hi tkBrackets ctermfg=gray guifg=gray
+"     hi TelescopeBorder guifg=#5eacd3
+" endfun
+" call ColorMyPencils()
 
-    set background=dark
-    if has('nvim')
-        call luaeval('vim.cmd("colorscheme " .. _A[1])', [g:my_colorscheme])
-    else
-        " TODO: What the way to use g:my_colorscheme
-        colorscheme gruvbox
-    endif
-
-    highlight ColorColumn ctermbg=0 guibg=grey
-    hi SignColumn guibg=none
-    hi CursorLineNR guibg=None
-    highlight Normal guibg=none
-
-    highlight CursorLine term=bold cterm=bold guibg=Grey40
-    highlight NonText ctermbg=none
-    highlight Normal  ctermbg=none
-
-    " highlight LineNr guifg=#ff8659
-    " highlight LineNr guifg=#aed75f
-    highlight LineNr guifg=#5eacd3
-    highlight netrwDir guifg=#5eacd3
-    highlight qfFileName guifg=#aed75f
-    highlight NonText guifg=#5eacd3
-    hi TelescopeBorder guifg=#5eacd3
-endfun
-call ColorMyPencils()
-
-" for gruvbox
-hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-hi tkBrackets ctermfg=gray guifg=gray
 
 " Vim with me
 " nnoremap <leader>vwm :call ColorMyPencils()<CR>
@@ -660,8 +667,17 @@ EOF
 " })
 " EOF
 
-" colorscheme catppuccin
-colorscheme gruvbox
+" colorscheme
+set termguicolors
+let g:gruvbox_material_foreground = 'original'
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_better_performance = 1
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_material_enable_bold = 0
+let g:gruvbox_material_transparent_background = 0
+colorscheme gruvbox-material
+:lua require'lualine'.setup {options = {theme = 'gruvbox-material'}}
+
 
 lua <<EOF
 vim.notify = require("notify")
