@@ -30,7 +30,7 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+" Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
 Plug 'tpope/vim-tbone'
 Plug 'mrjones2014/legendary.nvim'
@@ -682,3 +682,76 @@ colorscheme gruvbox-material
 lua <<EOF
 vim.notify = require("notify")
 EOF
+
+
+" lua <<EOF
+" require'bufferline'.setup{
+"     highlights = {
+"         buffer_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         numbers_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         diagnostic_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         hint_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         hint_diagnostic_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         info_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         info_diagnostic_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         warning_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         warning_diagnostic_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         error_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         error_diagnostic_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         duplicate_selected = {
+"             italic = false,
+"         },
+"         duplicate_visible = {
+"             italic = false
+"         },
+"         duplicate = {
+"             italic = false
+"         },
+"         pick_selected = {
+"             bold = false,
+"             italic = false,
+"         },
+"         pick_visible = {
+"             bold = false,
+"             italic = false,
+"         },
+"         pick = {
+"             bold = false,
+"             italic = false,
+"         },
+"     };
+" }
+" EOF
