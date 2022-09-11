@@ -30,8 +30,8 @@ let g:loaded_perl_provider = 0
 " endif
 
 call plug#begin()
+" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 Plug 'tpope/vim-tbone'
 Plug 'mrjones2014/legendary.nvim'
@@ -225,6 +225,8 @@ hi tkBrackets ctermfg=gray guifg=gray
 " nnoremap <leader>vwm :call ColorMyPencils()<CR>
 " nnoremap <leader>vwb :let g:my_colorscheme =
 
+nnoremap <silent> H <cmd>bp<cr>
+nnoremap <silent> L <cmd>bp<cr>
 nnoremap <silent> <Plug>RandNorm :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>RandNorm", v:count)<cr>
 nmap <C-g><C-r> <Plug>RandNorm
 
@@ -619,43 +621,43 @@ EOF
 " === catputccin
 " let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
 " let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
-let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
-
-lua << EOF
--- require("catppuccin").setup()
-require("catppuccin").setup({
-	transparent_background = false,
-	term_colors = true,
-	compile = {
-		enabled = false,
-		path = vim.fn.stdpath("cache") .. "/catppuccin",
-	},
-	dim_inactive = {
-		enabled = false,
-		shade = "dark",
-		percentage = 0.15,
-	},
-	styles = {
-		comments = {},
-		conditionals = {},
-		loops = {},
-		functions = {},
-		keywords = {},
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = {},
-	},
-	integrations = {
-		-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
-	},
-	color_overrides = {},
-	highlight_overrides = {},
-})
-EOF
+" let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
+"
+" lua << EOF
+" -- require("catppuccin").setup()
+" require("catppuccin").setup({
+" 	transparent_background = false,
+" 	term_colors = true,
+" 	compile = {
+" 		enabled = false,
+" 		path = vim.fn.stdpath("cache") .. "/catppuccin",
+" 	},
+" 	dim_inactive = {
+" 		enabled = false,
+" 		shade = "dark",
+" 		percentage = 0.15,
+" 	},
+" 	styles = {
+" 		comments = {},
+" 		conditionals = {},
+" 		loops = {},
+" 		functions = {},
+" 		keywords = {},
+" 		strings = {},
+" 		variables = {},
+" 		numbers = {},
+" 		booleans = {},
+" 		properties = {},
+" 		types = {},
+" 		operators = {},
+" 	},
+" 	integrations = {
+" 		-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
+" 	},
+" 	color_overrides = {},
+" 	highlight_overrides = {},
+" })
+" EOF
 
 " colorscheme catppuccin
 colorscheme gruvbox-material
