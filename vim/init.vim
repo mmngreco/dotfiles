@@ -615,11 +615,11 @@ EOF
 
 
 
-" === mind
-lua <<EOF
-vim.opt.termguicolors = true
-require("bufferline").setup{}
-EOF
+" " === bufferline
+" lua <<EOF
+" vim.opt.termguicolors = true
+" require("bufferline").setup{}
+" EOF
 
 " " === mind
 " lua <<EOF
@@ -674,7 +674,7 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_better_performance = 1
 let g:gruvbox_material_disable_italic_comment = 1
 let g:gruvbox_material_enable_bold = 0
-let g:gruvbox_material_transparent_background = 0
+let g:gruvbox_material_transparent_background = 1
 colorscheme gruvbox-material
 :lua require'lualine'.setup {options = {theme = 'gruvbox-material'}}
 
