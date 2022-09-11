@@ -677,6 +677,23 @@ let g:gruvbox_material_enable_bold = 0
 let g:gruvbox_material_transparent_background = 1
 colorscheme gruvbox-material
 :lua require'lualine'.setup {options = {theme = 'gruvbox-material'}}
+highlight ColorColumn ctermbg=0 guibg=grey
+hi SignColumn guibg=none
+hi CursorLineNR guibg=None
+highlight Normal guibg=none
+highlight CursorLine term=bold cterm=bold guibg=Grey40
+highlight NonText ctermbg=none
+highlight Normal  ctermbg=none
+highlight LineNr guifg=#5eacd3
+" highlight LineNr guifg=#ff8659
+" highlight LineNr guifg=#aed75f
+highlight netrwDir guifg=#5eacd3
+highlight qfFileName guifg=#aed75f
+highlight NonText guifg=#5eacd3
+" for gruvbox
+hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+hi tkBrackets ctermfg=gray guifg=gray
+hi TelescopeBorder guifg=#5eacd3
 
 
 lua <<EOF
