@@ -617,15 +617,15 @@ EOF
 " EOF
 
 " === catputccin
-" let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
 " let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
-let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
+let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
+" let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
 
 lua << EOF
 -- require("catppuccin").setup()
 require("catppuccin").setup({
 	transparent_background = false,
-	term_colors = false,
+	term_colors = true,
 	compile = {
 		enabled = false,
 		path = vim.fn.stdpath("cache") .. "/catppuccin",
