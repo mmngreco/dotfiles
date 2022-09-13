@@ -23,12 +23,6 @@ let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 " let g:python3_host_prog = 'python'
 
-" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-" if empty(glob(data_dir . '/autoload/plug.vim'))
-"   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
-
 call plug#begin()
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-telescope/telescope-symbols.nvim'
@@ -73,13 +67,13 @@ Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
 " Plug 'hoschi/yode-nvim'
 Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-nvim-lua'
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/calendar.vim'
 " Plug 'johngrib/vim-game-code-break'
@@ -221,9 +215,9 @@ call plug#end()
 "     highlight netrwDir guifg=#5eacd3
 "     highlight qfFileName guifg=#aed75f
 "     highlight NonText guifg=#5eacd3
-      " for gruvbox
-      " hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-      " hi tkBrackets ctermfg=gray guifg=gray
+" for gruvbox
+" hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+" hi tkBrackets ctermfg=gray guifg=gray
 "     hi TelescopeBorder guifg=#5eacd3
 " endfun
 " call ColorMyPencils()
@@ -448,8 +442,8 @@ let g:livepreview_engine = 'xelatex'
 let g:livepreview_previewer = 'evince'
 " let g:vimtex_compiler_generic = 'xelatex'
 let g:vimtex_compiler_latexmk_engines = {
-    \ '_'                : '-xelatex',
-    \}
+            \ '_'                : '-xelatex',
+            \}
 
 " let g:tmux_navigator_no_mappings = 1
 " nnoremap <silent> <leader>h :TmuxNavigateLeft<cr>
@@ -517,7 +511,7 @@ let b:SimpylFold_fold_blank = 0
 " ============================================================================
 " " === trouble
 " lua << EOF
-"   require("trouble").setup {
+" require("trouble").setup {
 "     -- your configuration comes here
 "     -- or leave it empty to use the default settings
 "     -- refer to the configuration section below
@@ -533,55 +527,55 @@ let b:SimpylFold_fold_blank = 0
 
 
 " ============================================================================
-" " === shade
+" === shade
 " lua << EOF
 " require('shade').setup({
 "   overlay_opacity = 50,
 "   opacity_step = 1,
 "   keys = {
-"     brightness_up    = '<C-Up>',
-"     brightness_down  = '<C-Down>',
-"     toggle           = '<Leader>t',
-"   }
-" })
+"         brightness_up    = '<C-Up>',
+"         brightness_down  = '<C-Down>',
+"         toggle           = '<Leader>t',
+"       }
+"     })
 " EOF
 "
-
+"
 " nnoremap <leader>p :lua require("nabla").popup()<CR>
 " nnoremap <leader>asc :let s = system(join(["asciiTeX", '"', getline('.'), '"'])) | echo s<cr>
 
 lua << EOF
 require'nvim-web-devicons'.setup {
- default = true;
-}
+    default = true;
+    }
 EOF
 
 
 " === refactoring
 lua << EOF
 require('refactoring').setup({
-    prompt_func_return_type = {
-        go = false,
-        java = false,
+prompt_func_return_type = {
+    go = false,
+    java = false,
 
-        cpp = false,
-        c = false,
-        h = false,
-        hpp = false,
-        cxx = false,
+    cpp = false,
+    c = false,
+    h = false,
+    hpp = false,
+    cxx = false,
     },
-    prompt_func_param_type = {
-        go = false,
-        java = false,
+prompt_func_param_type = {
+    go = false,
+    java = false,
 
-        cpp = false,
-        c = false,
-        h = false,
-        hpp = false,
-        cxx = false,
+    cpp = false,
+    c = false,
+    h = false,
+    hpp = false,
+    cxx = false,
     },
-    printf_statements = {},
-    print_var_statements = {},
+printf_statements = {},
+print_var_statements = {},
 })
 -- Remaps for the refactoring operations currently offered by the plugin
 vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
@@ -602,8 +596,8 @@ EOF
 
 lua <<EOF
 require("indent_blankline").setup {
-    show_current_context = true,
-    show_current_context_start = true,
+show_current_context = true,
+show_current_context_start = true,
 }
 EOF
 
@@ -634,41 +628,42 @@ let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
 lua << EOF
 -- require("catppuccin").setup()
 require("catppuccin").setup({
-	transparent_background = false,
-	term_colors = true,
-	compile = {
-		enabled = false,
-		path = vim.fn.stdpath("cache") .. "/catppuccin",
-	},
-	dim_inactive = {
-		enabled = false,
-		shade = "dark",
-		percentage = 0.15,
-	},
-	styles = {
-		comments = {},
-		conditionals = {},
-		loops = {},
-		functions = {},
-		keywords = {},
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = {},
-	},
-	integrations = {
-		-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
-	},
-	color_overrides = {},
-	highlight_overrides = {},
+    transparent_background = false,
+    term_colors = false,
+    compile = {
+        enabled = false,
+        path = vim.fn.stdpath("cache") .. "/catppuccin",
+    },
+    dim_inactive = {
+        enabled = false,
+        shade = "dark",
+        percentage = 0.15,
+    },
+    styles = {
+    comments = {},
+    conditionals = {},
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+    },
+    integrations = {
+    -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
+        treesitter = true,
+    },
+    color_overrides = {},
+    highlight_overrides = {},
 })
 EOF
 
 " colorscheme
-" set termguicolors
+set termguicolors
 colorscheme catppuccin
 
 " let g:gruvbox_material_foreground = 'original'
