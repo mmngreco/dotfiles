@@ -803,3 +803,6 @@ EOF
 " 			\	'python': ['python'],
 " 			\	'default': ['bash']
 " 			\	}
+"
+"
+autocmd FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
