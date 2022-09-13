@@ -117,7 +117,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 "
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 " Plug 'numtostr/FTerm.nvim'
-Plug 'sillybun/vim-repl'
+" Plug 'sillybun/vim-repl'
 "
 " Plug 'ruanyl/vim-gh-line'
 "
@@ -777,29 +777,29 @@ EOF
 "
 
 " === repl
-let g:repl_predefine_python = {
-            \   'np': 'import numpy as np',
-            \   'pd': 'import pandas as pd',
-            \   'plt': 'from matplotlib import pyplot as plt'
-            \   }
-let g:repl_cursor_down = 1
-let g:repl_python_automerge = 1
-" let g:repl_ipython_version = '7'
-let g:repl_output_copy_to_register = "t"
-let g:repl_position = 3
-" let g:repl_python_pre_launch_command = 'source .autoenv'
-nnoremap <leader>tr :REPLToggle<cr>
-nnoremap <leader>e :REPLSendSession<cr>
-autocmd Filetype python nnoremap <F1> <Esc>:REPLDebugStopAtCurrentLine<cr>
-autocmd Filetype python nnoremap <F2> <Esc>:REPLPDBN<cr>
-autocmd Filetype python nnoremap <F3> <Esc>:REPLPDBS<cr>
-
-let g:repl_sendvariable_template = {
-            \ 'python': 'print(<input>)',
-            \ 'ipython': 'print(<input>)',
-            \ 'ptpython': 'print(<input>)',
-            \ }
-let g:repl_program = {
-			\	'python': ['python'],
-			\	'default': ['bash']
-			\	}
+" let g:repl_predefine_python = {
+"             \   'np': 'import numpy as np',
+"             \   'pd': 'import pandas as pd',
+"             \   'plt': 'from matplotlib import pyplot as plt'
+"             \   }
+" let g:repl_cursor_down = 1
+" let g:repl_python_automerge = 1
+" " let g:repl_ipython_version = '7'
+" let g:repl_output_copy_to_register = "t"
+" let g:repl_position = 3
+" " let g:repl_python_pre_launch_command = 'source .autoenv'
+" nnoremap <leader>tr :REPLToggle<cr>
+" nnoremap <leader>e :REPLSendSession<cr>
+" autocmd Filetype python nnoremap <F1> <Esc>:REPLDebugStopAtCurrentLine<cr>
+" autocmd Filetype python nnoremap <F2> <Esc>:REPLPDBN<cr>
+" autocmd Filetype python nnoremap <F3> <Esc>:REPLPDBS<cr>
+"
+" let g:repl_sendvariable_template = {
+"             \ 'python': 'print(<input>)',
+"             \ 'ipython': 'print(<input>)',
+"             \ 'ptpython': 'print(<input>)',
+"             \ }
+" let g:repl_program = {
+" 			\	'python': ['python'],
+" 			\	'default': ['bash']
+" 			\	}
