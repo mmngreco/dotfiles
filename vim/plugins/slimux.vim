@@ -8,4 +8,4 @@ let g:slimux_python_press_enter = 1
 map <Leader>e :SlimuxREPLSendLine<CR>
 vmap <Leader>e :SlimuxREPLSendSelection<CR>
 " map <Leader>p :SlimuxREPLSendParagraph<CR>
-nnoremap <leader>cc v/%%<cr>n:SlimuxREPLSendSlection<cr>
+nnoremap <leader>cc v/%%<cr>n:SlimuxREPLSendSelection<cr>n
