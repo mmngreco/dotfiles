@@ -777,24 +777,17 @@ EOF
 "
 
 " === repl
-let g:repl_program = {
-            \   'python': 'ipython',
-            \   'default': 'zsh',
-            \   'r': 'R',
-            \   'lua': 'lua',
-            \   'vim': 'vim -e',
-            \   }
 let g:repl_predefine_python = {
-            \   'numpy': 'import numpy as np',
-            \   'pandas': 'import pandas as pd',
-            \   'matplotlib': 'from matplotlib import pyplot as plt'
+            \   'np': 'import numpy as np',
+            \   'pd': 'import pandas as pd',
+            \   'plt': 'from matplotlib import pyplot as plt'
             \   }
 let g:repl_cursor_down = 1
 let g:repl_python_automerge = 1
 " let g:repl_ipython_version = '7'
 let g:repl_output_copy_to_register = "t"
 let g:repl_position = 3
-let g:repl_python_pre_launch_command = 'source .autoenv'
+" let g:repl_python_pre_launch_command = 'source .autoenv'
 nnoremap <leader>tr :REPLToggle<cr>
 nnoremap <leader>e :REPLSendSession<cr>
 autocmd Filetype python nnoremap <F1> <Esc>:REPLDebugStopAtCurrentLine<cr>
