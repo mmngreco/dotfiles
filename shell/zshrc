@@ -9,6 +9,7 @@ plugins=(
     zsh-autosuggestions
 )
 
+source ~/.zsh/catppuccin-zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES/shell/zsh_prompt
 
@@ -69,5 +70,4 @@ if [ -f '/home/mgreco/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mgreco/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/mgreco/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mgreco/google-cloud-sdk/completion.zsh.inc'; fi
 
-source ~/.zsh/catppuccin-zsh-syntax-highlighting.zsh
 
