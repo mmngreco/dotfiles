@@ -143,7 +143,7 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'tpope/vim-abolish'
 
 Plug 'tpope/vim-dadbod'  " database interface
-" Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-ui'
 "
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
