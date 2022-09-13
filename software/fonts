@@ -3,7 +3,7 @@
 set -e
 dir="$HOME/github/mmngreco/fonts"
 [ -d "$dir" ] && rm -rf $dir
-git clone https://github.com/mmngreco/fonts $dir
+git clone ssh://git@github.com/mmngreco/fonts $dir
 [ ! -d "$HOME/.local/share/fonts" ] && mkdir -p "$HOME/.local/share/fonts"
 cp $dir/**/*.{ttf,otf} $HOME/.local/share/fonts
 fc-cache -f -v
