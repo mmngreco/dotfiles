@@ -31,7 +31,7 @@ let g:loaded_perl_provider = 0
 
 call plug#begin()
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-
+Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'tpope/vim-tbone'
 Plug 'mrjones2014/legendary.nvim'
 Plug 'liuchengxu/vista.vim'
