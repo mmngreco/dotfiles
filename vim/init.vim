@@ -123,7 +123,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug 'ruanyl/vim-gh-line'
 "
 " === colorscheme
-" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'chriskempson/base16-vim'
@@ -629,71 +629,73 @@ EOF
 " === catputccin
 " let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
 " let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
-" let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
-"
-" lua << EOF
-" -- require("catppuccin").setup()
-" require("catppuccin").setup({
-" 	transparent_background = false,
-" 	term_colors = true,
-" 	compile = {
-" 		enabled = false,
-" 		path = vim.fn.stdpath("cache") .. "/catppuccin",
-" 	},
-" 	dim_inactive = {
-" 		enabled = false,
-" 		shade = "dark",
-" 		percentage = 0.15,
-" 	},
-" 	styles = {
-" 		comments = {},
-" 		conditionals = {},
-" 		loops = {},
-" 		functions = {},
-" 		keywords = {},
-" 		strings = {},
-" 		variables = {},
-" 		numbers = {},
-" 		booleans = {},
-" 		properties = {},
-" 		types = {},
-" 		operators = {},
-" 	},
-" 	integrations = {
-" 		-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
-" 	},
-" 	color_overrides = {},
-" 	highlight_overrides = {},
-" })
-" EOF
+let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
+
+lua << EOF
+-- require("catppuccin").setup()
+require("catppuccin").setup({
+	transparent_background = false,
+	term_colors = true,
+	compile = {
+		enabled = false,
+		path = vim.fn.stdpath("cache") .. "/catppuccin",
+	},
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	styles = {
+		comments = {},
+		conditionals = {},
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
+	},
+	integrations = {
+		-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
+	},
+	color_overrides = {},
+	highlight_overrides = {},
+})
+EOF
 
 " colorscheme
 set termguicolors
-let g:gruvbox_material_foreground = 'original'
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_better_performance = 1
-let g:gruvbox_material_disable_italic_comment = 1
-let g:gruvbox_material_enable_bold = 0
-let g:gruvbox_material_transparent_background = 1
-colorscheme gruvbox-material
-:lua require'lualine'.setup {options = {theme = 'gruvbox-material'}}
-highlight ColorColumn ctermbg=0 guibg=grey
-hi SignColumn guibg=none
-hi CursorLineNR guibg=None
-highlight Normal guibg=none
-highlight CursorLine term=bold cterm=bold guibg=Grey40
-highlight NonText ctermbg=none
-highlight Normal  ctermbg=none
-highlight LineNr guifg=#5eacd3
-" highlight LineNr guifg=#ff8659
-" highlight LineNr guifg=#aed75f
-highlight netrwDir guifg=#5eacd3
-highlight qfFileName guifg=#aed75f
-highlight NonText guifg=#5eacd3
-" for gruvbox
-hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
-hi tkBrackets ctermfg=gray guifg=gray
-hi TelescopeBorder guifg=#5eacd3
+colorscheme catppuccin
+
+" let g:gruvbox_material_foreground = 'original'
+" let g:gruvbox_material_background = 'hard'
+" let g:gruvbox_material_better_performance = 1
+" let g:gruvbox_material_disable_italic_comment = 1
+" let g:gruvbox_material_enable_bold = 0
+" let g:gruvbox_material_transparent_background = 1
+" colorscheme gruvbox-material
+" :lua require'lualine'.setup {options = {theme = 'gruvbox-material'}}
+" highlight ColorColumn ctermbg=0 guibg=grey
+" hi SignColumn guibg=none
+" hi CursorLineNR guibg=None
+" highlight Normal guibg=none
+" highlight CursorLine term=bold cterm=bold guibg=Grey40
+" highlight NonText ctermbg=none
+" highlight Normal  ctermbg=none
+" highlight LineNr guifg=#5eacd3
+" " highlight LineNr guifg=#ff8659
+" " highlight LineNr guifg=#aed75f
+" highlight netrwDir guifg=#5eacd3
+" highlight qfFileName guifg=#aed75f
+" highlight NonText guifg=#5eacd3
+" " for gruvbox
+" hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+" hi tkBrackets ctermfg=gray guifg=gray
+" hi TelescopeBorder guifg=#5eacd3
 
 
 lua <<EOF

@@ -11,6 +11,7 @@
       recursive: true
 
 - link:
+    ~/.config/regolith2/i3/config: regolith/i3/config
     ~/.config/regolith2/i3/config.d/:
       path: regolith/i3/config.d/*
       glob: true
