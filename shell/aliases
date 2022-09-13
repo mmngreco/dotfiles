@@ -168,3 +168,4 @@ alias mic_monitor='gst-launch-1.0 pulsesrc ! pulsesink'
 
 alias fd=fdfind
 alias easyeffects='flatpak run com.github.wwmm.easyeffects'
+alias ipy=ipython
