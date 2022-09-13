@@ -668,7 +668,7 @@ require("catppuccin").setup({
 EOF
 
 " colorscheme
-set termguicolors
+" set termguicolors
 colorscheme catppuccin
 
 " let g:gruvbox_material_foreground = 'original'
