@@ -25,6 +25,7 @@ let g:loaded_perl_provider = 0
 
 call plug#begin()
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'waylonwalker/Telegraph.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'tpope/vim-tbone'
 Plug 'mrjones2014/legendary.nvim'
@@ -113,8 +114,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug 'neomake/neomake'
 " Plug 'radenling/vim-dispatch-neovim'
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+"
 " Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
 " Plug 'numtostr/FTerm.nvim'
+Plug 'sillybun/vim-repl'
+"
 " Plug 'ruanyl/vim-gh-line'
 "
 " === colorscheme
@@ -122,7 +126,7 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'chriskempson/base16-vim'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
 
 Plug 'sbdchd/neoformat'
 " Plug 'Scuilion/markdown-drawer', { 'for': 'markdown'}
@@ -153,8 +157,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " better netrw
 " Plug 'tweekmonster/impsort.vim'  " color and sort imports
 Plug 'tyru/open-browser.vim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-test/vim-test'
 
 " Plug 'vim-utils/vim-man'

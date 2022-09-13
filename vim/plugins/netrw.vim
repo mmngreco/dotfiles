@@ -3,6 +3,7 @@ let g:netrw_browse_split = 0
 let g:netrw_winsize = 25
 let g:netrw_localrmdir='rm -r'
 let g:netrw_browsex_viewer= 'xdg-open'
+let g:netrw_hide = 0
 
 " ==== open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
