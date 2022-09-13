@@ -805,4 +805,5 @@ EOF
 " 			\	}
 "
 "
-autocmd FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
+autocmd! FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
+nnoremap <C-w> <Plug>(DBUI_SaveQuery)
