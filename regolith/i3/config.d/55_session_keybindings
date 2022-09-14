@@ -51,7 +51,7 @@ bindsym $mod+$i3-wm.binding.sleep exec $i3-wm.program.sleep
 
 ## custom
 # set $super Mod4
-# set $alt Mod1
+set $alt Mod1
 
 ## Launcher // dmenu // <win><Shift> d ##
 set_from_resource $i3-wm.binding.dmenu i3-wm.binding.dmenu Shift+d
