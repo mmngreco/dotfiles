@@ -239,6 +239,8 @@ nnoremap L :bn<cr>
 nnoremap <silent> <Plug>RandNorm :read! python3 -c "import random; print(random.gauss(0, 1))"<cr> \ :call repeat#set("\<Plug>RandNorm", v:count)<cr>
 nmap <C-g><C-r> <Plug>RandNorm
 
+
+
 " tnoremap <leader>q :wqa<cr>
 
 
@@ -257,6 +259,7 @@ tnoremap <Esc> <C-\><C-n>
 " resize window
 nnoremap <leader>+ :vertical resize +10<CR>
 nnoremap <leader>- :vertical resize -10<CR>
+
 " maximizes current window
 nnoremap <leader>rp :resize 100<CR>
 
