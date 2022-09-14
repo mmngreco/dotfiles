@@ -12,18 +12,17 @@ c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
 c.InteractiveShellApp.exec_files = ["*.ipy*"]
 # c.TerminalInteractiveShell.highlighting_style = 'GruvboxDarkHard'
 c.PlainTextFormatter.max_width = 120
+c.PlainTextFormatter.pprint = True
 # c.TerminalInteractiveShell.editor = 'nvim'
 # c.TerminalInteractiveShell.editing_mode = 'vi'
 # c.InteractiveShellApp.exec_lines = [
 #     "import pandas as pd",
 #     "import numpy as np",
-#     "import matplotlib.pyplot as plt",
 #     ]
 # c.InteractiveShellApp.extensions = ["autoreload"]
 # c.InteractiveShell.colors = 'NoColor'
 # c.TerminalInteractiveShell.highlight_matching_brackets = True
 # c.PlainTextFormatter.newline = '\\n'
-# c.PlainTextFormatter.pprint = True
 # c.TerminalInteractiveShell.xmode = "Minimal"
 # c.TerminalInteractiveShell.autoformatter = "black"
 
