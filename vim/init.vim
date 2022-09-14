@@ -25,6 +25,8 @@ let g:python3_host_prog = 'python'
 
 call plug#begin()
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+
 Plug 'waylonwalker/Telegraph.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'tpope/vim-tbone'
@@ -807,3 +809,5 @@ EOF
 "
 autocmd! FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
 nnoremap <leader>qs <Plug>(DBUI_SaveQuery)
+nnoremap <silent> `` :nohlsearch<CR>:call minimap#vim#ClearColorSearch()<CR>
+
