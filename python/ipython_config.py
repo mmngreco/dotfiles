@@ -15,10 +15,10 @@ c.PlainTextFormatter.max_width = 120
 c.PlainTextFormatter.pprint = True
 # c.TerminalInteractiveShell.editor = 'nvim'
 # c.TerminalInteractiveShell.editing_mode = 'vi'
-c.InteractiveShellApp.exec_lines = [
-    "print('hola')",
-    # "import numpy as np",
-    ]
+# c.InteractiveShellApp.exec_lines = [
+#     "print('hola')",
+#     # "import numpy as np",
+#     ]
 # c.InteractiveShellApp.extensions = ["autoreload"]
 # c.InteractiveShell.colors = 'NoColor'
 # c.TerminalInteractiveShell.highlight_matching_brackets = True
