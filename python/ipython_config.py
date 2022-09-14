@@ -15,10 +15,14 @@ c.PlainTextFormatter.max_width = 120
 c.PlainTextFormatter.pprint = True
 # c.TerminalInteractiveShell.editor = 'nvim'
 # c.TerminalInteractiveShell.editing_mode = 'vi'
-# c.InteractiveShellApp.exec_lines = [
-#     "print('hola')",
-#     # "import numpy as np",
-#     ]
+c.InteractiveShellApp.exec_lines = [
+	"from IPython.terminal.interactiveshell import TerminalInteractiveShell",
+	"shl = TerminalInteractiveShell().instance()",
+	"tbClass = shl.InteractiveTB",
+	"from pdb import Pdb",
+	"tbClass.debugger_cls = Pdb",
+	"tbClass.pdb = tbClass.debugger_cls()",
+    ]
 # c.InteractiveShellApp.extensions = ["autoreload"]
 # c.InteractiveShell.colors = 'NoColor'
 # c.TerminalInteractiveShell.highlight_matching_brackets = True
