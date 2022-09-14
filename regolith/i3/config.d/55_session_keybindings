@@ -1,6 +1,9 @@
 ###############################################################################
 # Session Management
 ###############################################################################
+#
+## custom set $super Mod4
+# set $alt Mod1
 
 ## Session // Exit App // <win><Shift> q ##
 set_from_resource $i3-wm.binding.exit_app i3-wm.binding.exit_app q
@@ -49,9 +52,6 @@ set_from_resource $i3-wm.program.sleep i3-wm.program.sleep systemctl suspend
 bindsym $mod+$i3-wm.binding.sleep exec $i3-wm.program.sleep
 
 
-## custom
-# set $super Mod4
-set $alt Mod1
 
 ## Launcher // dmenu // <win><Shift> d ##
 set_from_resource $i3-wm.binding.dmenu i3-wm.binding.dmenu Shift+d
@@ -95,6 +95,8 @@ bindsym $alt+$i3-wm.binding.screenshot exec $i3-wm.program.screenshot
 set_from_resource $i3-wm.binding.screenshot_area i3-wm.binding.screenshot_area Ctrl+e
 set_from_resource $i3-wm.program.screenshot_area i3-wm.program.screenshot_area scrot -e 'xclip -selection clipboard -t image/png -i $f'
 bindsym $alt+$i3-wm.binding.screenshot_area exec $i3-wm.program.screenshot_area
+
+bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 # old
 # bindsym --release $alt+Ctrl+s exec scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png -s -e 'xclip -selection clipboard -t image/png -i $f'
