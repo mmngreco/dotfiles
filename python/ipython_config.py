@@ -23,7 +23,7 @@ c.InteractiveShellApp.exec_lines = [
 	"tbClass.debugger_cls = Pdb",
 	"tbClass.pdb = tbClass.debugger_cls()",
     ]
-# c.InteractiveShellApp.extensions = ["autoreload"]
+c.InteractiveShellApp.extensions = ["autoreload", "rich"]
 # c.InteractiveShell.colors = 'NoColor'
 # c.TerminalInteractiveShell.highlight_matching_brackets = True
 # c.PlainTextFormatter.newline = '\\n'
