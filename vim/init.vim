@@ -26,6 +26,7 @@ let g:python3_host_prog = 'python'
 call plug#begin()
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+Plug 'psf/black', { 'branch': 'stable' }
 
 Plug 'waylonwalker/Telegraph.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
@@ -389,10 +390,9 @@ augroup mmngreco
     " makefiles indentation
     autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
 
-    " ==== black
-    " https://github.com/psf/black/issues/1293#issuecomment-623237094
-    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-    autocmd FileType python vnoremap <buffer> <F8> :silent !black -l79 -c '<,'><CR><CR>
+    " ==== python
+    " fix wrong over indent
+    autocmd FileType python setl indentexp=GetPythonIndent(v:lnum)-4
 
     " remove numbers from terminal buffer
     autocmd TermOpen * setl nonumber norelativenumber
@@ -400,6 +400,16 @@ augroup mmngreco
     " autocmd FileType python nnoremap <buffer> [[ ?^class\\|^\s*def<CR>
     " autocmd FileType python nnoremap <buffer> ]] /^class\\|^\s*def<CR>
 augroup END
+
+augroup black_stuff
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
+    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
+    autocmd BufWritePre *.py Black
+    " https://github.com/psf/black/issues/1293#issuecomment-623237094
+    " autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
+    " autocmd FileType python vnoremap <buffer> <F8> :silent !black -l79 -c '<,'><CR><CR>
+augroup end
 
 " ==== source plugin conf
 "
@@ -813,4 +823,5 @@ EOF
 autocmd! FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
 nnoremap <leader>qs <Plug>(DBUI_SaveQuery)
 nnoremap <silent> `` :nohlsearch<CR>:call minimap#vim#ClearColorSearch()<CR>
+
 
