@@ -7,7 +7,7 @@ let g:slimux_python_use_ipython=1
 let g:slimux_python_press_enter = 1
 
 nnoremap <Leader>e :SlimuxREPLSendLine<CR>j
-vnoremap <Leader>e :SlimuxREPLSendSelection<CR>`[v`]<cr><ESC>j
+vnoremap <Leader>e :SlimuxREPLSendSelection<CR>`[v`]<cr><ESC>
 nnoremap <Leader>r :SlimuxGlobalConfigure<CR>
 
 nnoremap <leader>co O%%<esc>:norm gcc<cr>
