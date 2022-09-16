@@ -392,7 +392,7 @@ augroup mmngreco
 
     " ==== python
     " fix wrong over indent
-    autocmd FileType python setl indentexp=GetPythonIndent(v:lnum)-4
+    " autocmd FileType python setl indentexp=GetPythonIndent(v:lnum)-4
 
     " remove numbers from terminal buffer
     autocmd TermOpen * setl nonumber norelativenumber
