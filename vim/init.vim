@@ -64,7 +64,7 @@ Plug 'chrisbra/csv.vim'
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'gko/vim-coloresque'  " show color of an color expression (hex, rgb)
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'godlygeek/tabular'
 Plug 'goerz/jupytext.vim'
 Plug 'gyim/vim-boxdraw'
@@ -439,6 +439,7 @@ source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
 " source $DOTFILES/vim/plugins/vimspector.vim
+source $DOTFILES/vim/plugins/firenvim.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 " source $DOTFILES/vim/plugins/workspace.vim
 " source $DOTFILES/vim/plugins/yode.vim
