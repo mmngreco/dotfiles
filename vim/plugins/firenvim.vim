@@ -24,7 +24,7 @@ let fc['https?://.*twitch.tv.*'] = { 'takeover': 'never', 'priority': 1 }
 let fc['https?://app.shortcut.com*'] = { 'takeover': 'never', 'priority': 1 }
 let fc['https?://console.cloud.google.com/bigquery*'] = { 'takeover': 'never', 'priority': 1 }
 
-let fc['https?://.*'] = { 'takeover': 'never', 'priority': 1 }
+let fc['https?://.*'] = { 'takeover': 'always', 'priority': 1 }
 
 if exists('g:started_by_firenvim')
   set laststatus=0
