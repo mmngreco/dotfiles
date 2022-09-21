@@ -22,6 +22,7 @@ cmp.setup({
       { name = 'vsnip' },
       { name = 'buffer' },
       { name = 'orgmode' },
+      { name = 'path' },
     }
 })
 
@@ -77,29 +78,20 @@ local function config(_config)
     }, _config or {})
 end
 
--- setup_server("bashls")
--- setup_server("pylsp")
--- setup_server("pyright")
--- setup_server("vimls")
--- setup_server("gopls")
-setup_server("groovyls")
--- setup_server("sumneko_lua")
--- setup_server("texlab")
--- setup_server("sqlls")
--- setup_server("yamlls")
--- setup_server("lemminx")  -- xml
--- setup_server("dockerls")  -- xml
--- setup_server("clangd")
 
+-- setup_server("bashls")
 setup_server("bashls")
-setup_server("jsonls")
+-- setup_server("clangd")
 setup_server("clangd")
 setup_server("cssmodules_ls")
 setup_server("dockerls")
 -- setup_server("efm")
 setup_server("eslint")
+-- setup_server("gopls")
 setup_server("gopls")
+setup_server("groovyls")
 setup_server("html")
+setup_server("jsonls")
 setup_server("lemminx")
 -- setup_server("pylsp")
 setup_server("pyright")
