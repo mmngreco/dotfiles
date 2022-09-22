@@ -170,4 +170,5 @@ alias fd=fdfind
 alias easyeffects='flatpak run com.github.wwmm.easyeffects'
 alias ipy=ipython
 
-alias psql_catalog='psql $METADATA_PG_URL'
+alias psql_catalog='psql $METADATA_DB_URL'
+alias psql_catalog_c='psql $METADATA_DB_URL -c'
