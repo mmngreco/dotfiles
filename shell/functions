@@ -525,8 +525,8 @@ todo() {
 }
 
 
-pdbrc-here(){
-    echo "# b $PWD/src/file.py:lineno, condition" >> .pdbrc
+pdbrc-here () {
+    echo "# b $PWD/src/file.py:lineno, condition" > .pdbrc
     ln -sf $PWD/.pdbrc $HOME/.pdbrc
 }
 
@@ -537,3 +537,18 @@ function jenkinsLint () {
     curl --user "${JENKINS_USER_ID}:${JENKINS_API_TOKEN}" -X POST -F "jenkinsfile=<${jfile}" "${JENKINS_URL}/pipeline-model-converter/validate"
 }
 
+
+function resurrect () {
+    resurrect_dir=~/.tmux/resurrect
+    trg=$resurrect_dir/last
+    set -e
+
+    if [[ -n "$1" ]]
+    then
+        src=$(grep -lri $1 $resurrect_dir | fzf --preview='bat {}' --height 20% --preview-window=right:70% --keep-right --reverse --prompt 'resurrect -> ' --header-first --filter $1)
+    else
+        src=$(fd . $resurrect_dir | fzf --preview='bat {}' --height 20% --preview-window=right:70% --keep-right --reverse --prompt 'resurrect -> ' --header-first)
+    fi
+
+    echo ln -sf $src $trg
+}
