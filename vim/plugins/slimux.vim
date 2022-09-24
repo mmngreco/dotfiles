@@ -11,9 +11,9 @@ vnoremap <Leader>e :SlimuxREPLSendSelection<CR>`[v`]<cr><ESC>
 nnoremap <Leader>r :SlimuxGlobalConfigure<CR>
 
 nnoremap <leader>co O%%<esc>:norm gcc<cr>
-nnoremap <leader>o- O<esc>77i-<esc>:norm gcc<cr>j
-nnoremap <leader>ck ?%%<cr>
-nnoremap <leader>cj /%%<cr>
+nnoremap <leader>-- O<esc>77i-<esc>:norm gcc<cr>j
+nnoremap <leader>ck ?#\s\?%%<cr>
+nnoremap <leader>cj /#\s\?%%<cr>
 
 " %%
 
