@@ -1,1 +1,0 @@
-WARN  2021-08-26T05:27:22.916 292   log_path_init:95: Failed to create directory /home/docker/.cache/nvim for writing logs: Unknown system error 1
