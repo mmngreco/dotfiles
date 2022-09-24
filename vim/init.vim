@@ -406,7 +406,7 @@ augroup black_stuff
     " https://github.com/psf/black/issues/1293#issuecomment-623237094
     autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
     " autocmd FileType python vnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-    autocmd BufWritePre *.py !black -l79 -S % \| <cr><cr>
+    autocmd BufWritePre *.py :!black -l79 -S % \| <cr><cr>
 augroup end
 
 " ==== source plugin conf
