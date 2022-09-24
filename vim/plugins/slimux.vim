@@ -19,6 +19,6 @@ nnoremap <leader>cj /%%<cr>
 
 " %%
 
-nnoremap <leader>cl V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>nn
+nnoremap <leader>cl V/#\s\?%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>nn
 
-nnoremap <leader>cc V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>
+nnoremap <leader>cc V/#\s\?%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>
