@@ -26,7 +26,7 @@ let g:python3_host_prog = 'python'
 call plug#begin()
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-Plug 'psf/black', { 'branch': 'stable' }
+" Plug 'psf/black', { 'branch': 'stable' }
 
 Plug 'waylonwalker/Telegraph.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
@@ -403,12 +403,10 @@ augroup END
 
 augroup black_stuff
     autocmd!
-    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-    autocmd BufWritePre *.py Black
     " https://github.com/psf/black/issues/1293#issuecomment-623237094
-    " autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-    " autocmd FileType python vnoremap <buffer> <F8> :silent !black -l79 -c '<,'><CR><CR>
+    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
+    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
+    autocmd BufWritePre *.py :!black -l79 -S %<cr><cr>
 augroup end
 
 " ==== source plugin conf
