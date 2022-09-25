@@ -539,8 +539,8 @@ function jenkinsLint () {
 
 
 function resurrect () {
-    resurrect_dir=~/.tmux/resurrect
-    trg=$resurrect_dir/last
+    resurrect_dir="~/.tmux/resurrect"
+    trg="$resurrect_dir/last"
     Q="${1:-*}"
     GREP_CMD='grep -lri'
     src=$(\
@@ -557,5 +557,5 @@ function resurrect () {
             --header-first \
     )
 
-    [[ -n "$src" ]] && ln -sf $src $trg && echo new last: $src
+    [[ -n "$src" ]] && ln -sf $src $trg && echo resurrect: $src
 }
