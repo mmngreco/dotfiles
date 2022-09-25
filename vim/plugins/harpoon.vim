@@ -31,8 +31,10 @@ nmap <leader>ll  <Plug>SendToHarpoon4
 
 " debugging
 nnoremap <leader>by :let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:echo @b<cr>
-nnoremap <leader>bl :!ln -sf $PWD/.pdbrc
-nnoremap <leader>ba :call writefile(["break " . expand('%:p') . ":" . line('.')], $PWD . "/.pdbrc", "a")<CR>
+
+" here're my keybinding
+nnoremap <leader>bb <cmd>ln -sf $PWD/.pdbrc
+nnoremap <leader>ba :call writefile(["break " . expand('%:p') . ":" . line('.')], $PWD . "/.pdbrc", "a")<CR><CR>
 nnoremap <leader>be :edit $PWD/.pdbrc<CR>
 
 
