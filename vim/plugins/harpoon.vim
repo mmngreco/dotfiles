@@ -30,9 +30,10 @@ nmap <leader>ll  <Plug>SendToHarpoon4
 
 
 " debugging
-nnoremap <leader>by <cmd>let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:echo @b<cr>
-nnoremap <leader>ba <cmd>call writefile(["break " . expand('%:p') . ":" . line('.')], $PWD . "/.pdbrc", "a")<CR>
-nnoremap <leader>be <cmd>edit $PWD/.pdbrc<CR>
+nnoremap <leader>by :let @b=("b " . expand('%:p') . ":" . line('.') . "\n")<CR>:echo @b<cr>
+nnoremap <leader>bl :!ln -sf $PWD/.pdbrc
+nnoremap <leader>ba :call writefile(["break " . expand('%:p') . ":" . line('.')], $PWD . "/.pdbrc", "a")<CR>
+nnoremap <leader>be :edit $PWD/.pdbrc<CR>
 
 
 
