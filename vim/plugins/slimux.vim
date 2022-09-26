@@ -13,6 +13,7 @@ nnoremap <Leader>r :SlimuxGlobalConfigure<CR>
 nnoremap <leader>cO O%%<esc>:norm gcc<cr>j
 nnoremap <leader>co o%%<esc>:norm gcc<cr>k
 nnoremap <leader>c- O<esc>77i-<esc>:norm gcc<cr>j
+
 nnoremap <leader>ck /%%<cr>N
 nnoremap <leader>cj /%%<cr>
 
