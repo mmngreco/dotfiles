@@ -14,7 +14,7 @@ c.InteractiveShellApp.exec_files = ["*.ipy*"]
 c.PlainTextFormatter.max_width = 120
 c.PlainTextFormatter.pprint = True
 c.TerminalInteractiveShell.editor = 'nvim'
-c.TerminalInteractiveShell.editing_mode = 'vi'
+# c.TerminalInteractiveShell.editing_mode = 'vi'
 c.InteractiveShellApp.exec_lines = [
     "%pdb on",
 	"from IPython.terminal.interactiveshell import TerminalInteractiveShell",
@@ -25,7 +25,7 @@ c.InteractiveShellApp.exec_lines = [
 	"tbClass.pdb = tbClass.debugger_cls()",
     "%pdb off",
     ]
-c.InteractiveShellApp.extensions = ["autoreload", "rich"]
+c.InteractiveShellApp.extensions = ["autoreload", "rich", "pyflyby"]
 # c.InteractiveShell.colors = 'NoColor'
 c.TerminalInteractiveShell.highlight_matching_brackets = True
 # c.PlainTextFormatter.newline = '\\n'
