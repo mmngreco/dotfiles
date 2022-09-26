@@ -823,4 +823,3 @@ autocmd! FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
 nnoremap <leader>qs <Plug>(DBUI_SaveQuery)
 nnoremap <silent> `` :nohlsearch<CR>:call minimap#vim#ClearColorSearch()<CR>
 
-
