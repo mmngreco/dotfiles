@@ -13,8 +13,8 @@ nnoremap <Leader>r :SlimuxGlobalConfigure<CR>
 nnoremap <leader>cO O%%<esc>:norm gcc<cr>j
 nnoremap <leader>co o%%<esc>:norm gcc<cr>k
 nnoremap <leader>-- O<esc>77i-<esc>:norm gcc<cr>j
-nnoremap <leader>ck /\s\?%%<cr>N
-nnoremap <leader>cj /\s\?%%<cr>
+nnoremap <leader>ck /%%<cr>N
+nnoremap <leader>cj /%%<cr>
 
 nnoremap <leader>cl V/#\s\?%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>n
 nnoremap <leader>cc V/#\s\?%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>
