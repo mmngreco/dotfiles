@@ -19,7 +19,7 @@ set mouse=nv
 if exists('g:started_by_firenvim')
   set laststatus=0
 else
-  set laststatus=2
+  set laststatus=3
 endif
 
 let loaded_matchparen = 1  " allow usage of local vimrc in projects
