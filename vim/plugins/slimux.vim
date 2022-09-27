@@ -17,5 +17,5 @@ nnoremap <leader>c- O<esc>77i-<esc>:norm gcc<cr>j
 nnoremap <leader>ck ?%%<cr>
 nnoremap <leader>cj /%%<cr>
 
-nnoremap <leader>cl V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>n
+nnoremap <leader>cl V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>nn
 nnoremap <leader>cc V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>
