@@ -10,9 +10,9 @@ general {
 
 order += "disk /"
 order += "battery 0"
-order += "memory"
-order += "ethernet enp0s31f6"
-order += "wireless wlp0s20f3"
+# order += "memory"
+# order += "ethernet enp0s31f6"
+# order += "wireless wlp0s20f3"
 order += "volume master"
 order += "tztime local"
 

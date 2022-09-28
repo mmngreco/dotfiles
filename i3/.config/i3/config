@@ -224,12 +224,18 @@ bar {
 for_window [class=".*"] split toggle
 # toggles split at each new window
 # bindsym $mod+shift+q split toggle kill #kill command resets the split
-# bindsym $mod+e layout toggle split # should already exist but use if split orientation  messes up
+# should already exist but use if split orientation  messes up
+bindsym $mod+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 4
-# for_window [class="kitty"] border pixel 4
+for_window [class="kitty"] border pixel 4
+# for_window [class=".*"] border pixel 0
+# gaps inner all set 20
+# gaps outer current plus 5
+# gaps horizontal current plus 40
+# gaps outer current toggle 60
 
 assign [class=XTerm|kitty] 1
 assign [class=Brave-browser] 2
