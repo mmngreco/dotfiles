@@ -147,7 +147,6 @@ bindsym $super+r mode "resize"
 # Focus
 
 set $monitor_secondary eDP-1
-set $monitor_secondary eDP
 workspace 6 output $monitor_secondary
 workspace 7 output $monitor_secondary
 workspace 8 output $monitor_secondary
@@ -155,9 +154,7 @@ workspace 9 output $monitor_secondary
 workspace 0 output $monitor_secondary
 
 
-set $monitor_primary HDMI-A-0
-set $monitor_primary DP-2
-set $monitor_primary DisplayPort-1
+set $monitor_primary HDMI-1
 workspace 1 output $monitor_primary
 workspace 2 output $monitor_primary
 workspace 3 output $monitor_primary
@@ -231,19 +228,22 @@ for_window [class=".*"] split toggle
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 4
-for_window [class="kitty"] border pixel 10
+# for_window [class="kitty"] border pixel 4
 
 assign [class=XTerm|kitty] 1
 assign [class=Brave-browser] 2
+assign [class=DBeaver] 3
 assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
 assign [class=libreoffice*|Gimp*|Inkscape] 5
 assign [class=TelegramDesktop] 6
+assign [class=slack|Slack] 6
 assign [class=keepassxc|KeePassXC] 8
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn] 8
 assign [class=obs|easyeffects] 9
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
+for_window [class=slack|Slack] focus
 
 # # colour of border, background, text, indicator, and child_border
 # client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
