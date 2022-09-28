@@ -22,4 +22,4 @@ unset __conda_setup
 
 # always after any prompt changes
 [ -f $HOME/.autoenv/activate.sh ] && source $HOME/.autoenv/activate.sh
-. "$HOME/.cargo/env"
+# [ -d $HOME/.cargo/ ] && . "$HOME/.cargo/env"
