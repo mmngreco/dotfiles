@@ -85,7 +85,8 @@ font:
   # Normal (roman) font face
   #normal:
   normal:
-    family: "mplus Nerd Font Mono"
+    # family: "mplus Nerd Font Mono"
+    family: "CaskaydiaCove Nerd Font"
     style: Medium
     # Font family
     #
