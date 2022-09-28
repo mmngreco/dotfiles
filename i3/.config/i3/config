@@ -225,7 +225,7 @@ for_window [class=".*"] split toggle
 # toggles split at each new window
 # bindsym $mod+shift+q split toggle kill #kill command resets the split
 # should already exist but use if split orientation  messes up
-bindsym $mod+e layout toggle split
+bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
