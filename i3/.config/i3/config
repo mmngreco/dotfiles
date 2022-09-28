@@ -67,6 +67,7 @@ bindsym $super+w exec brave-browser-stable
 # open file browser
 bindsym $super+Shift+f exec nautilus
 # bindsym $super+Shift+f workspace 4; focus; exec nautilus
+bindsym $super+m fullscreen toggle
 
 # ============================================================================
 # Focus
