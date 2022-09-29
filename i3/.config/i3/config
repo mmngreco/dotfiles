@@ -38,7 +38,12 @@ bindsym $super+Shift+Ctrl+v exec croma
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=10'"
 
 # open rofi
-bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
+bindsym $super+d exec sh $HOME/.config/rofi/bin/launcher
+bindsym $super+r exec sh $HOME/.config/rofi/bin/runner
+bindsym $super+p exec sh $HOME/.config/rofi/bin/powermenu
+bindsym $super+s exec sh $HOME/.config/rofi/bin/screenshot
+# bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
+
 bindsym $super+c exec notify-send Moira "$(moira check)"
 bindsym $super+v exec notify-send VPN "$(nmcli con up ets)"
 
@@ -141,7 +146,7 @@ mode "resize" {
     bindsym l resize grow width 5 px or 5 ppt
     bindsym Return mode "default"
 }
-bindsym $super+r mode "resize"
+bindsym $super+Shift+r mode "resize"
 
 
 # =============================================================================
