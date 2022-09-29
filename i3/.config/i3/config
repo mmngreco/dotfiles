@@ -32,10 +32,11 @@ exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
 bindsym $super+Return exec kitty
 # bindsym $super+Return exec xterm
 bindsym $super+Shift+Return workspace 1; focus; exec xterm
-bindsym $super+Shift+Ctrl+v exec croma
+# bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=10'"
+bindsym $super+Shift+t exec pkill compton && compton -b
 
 # open rofi
 # bindsym $super+d exec sh $HOME/.config/rofi/bin/launcher
