@@ -557,5 +557,6 @@ function resurrect () {
             --header-first \
     )
 
-    [[ -n "$src" ]] && ln -sf $src $trg && echo resurrect: $src
+    echo "ln -sf $src $trg"
+    [ -n "$src" ] && ln -sf $src $trg && echo resurrect: $src
 }
