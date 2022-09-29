@@ -11,7 +11,7 @@ function resurrect () {
             --query=$1 \
             --preview 'bat --color=always {1}' \
             --bind "change:reload:sleep 0.1; $GREP_CMD {q} $resurrect_dir | sort -r  || true" \
-            --height 30% \
+            --height 40% \
             --preview-window=right:70% \
             --keep-right \
             --reverse \
@@ -19,8 +19,8 @@ function resurrect () {
             --header-first \
     )
 
-    echo "ln -sf $src $trg"
-    [ -n "$src" ] && ln -sf $src $trg && echo resurrect: $src
+    [ -n "$src" ] && echo "ln -sf $src $trg" && ln -sf $src $trg && echo resurrect: $src
 }
 
+# echo resurrect \"${@}\"
 resurrect ${@}
