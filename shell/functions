@@ -1,146 +1,4 @@
 #!/usr/bin/env bash
-toggleEtsIndex() {
-
-    if [ -z ${ETS_INDEX+x} ]; then
-        echo now pip will use pypi.
-        export ETS_INDEX=0
-        unset PIP_INDEX_URL
-        unset PIP_TRUSTED_HOST
-    else
-        echo now pip will use etspip.
-        export ETS_INDEX=1
-        export PIP_INDEX_URL=$ETS_PIP_INDEX_URL
-        export PIP_TRUSTED_HOST=$ETS_PIP_TRUSTED_HOST
-    fi
-
-}
-
-dotfiles() {
-    case $1 in
-        install)
-            dotfilesInstall ${@:2} ;;
-        i)
-            dotfilesInstall ${@:2} ;;
-        cd)
-            goDotfiles ;;
-        go)
-            goDotfiles ;;
-        cm)
-            dotfilesCommit ;;
-        commit)
-            dotfilesCommit ;;
-        ca)
-            dotfilesCommit all ;;
-        cs)
-            dotfilesCommit secret ;;
-        source)
-            dotfilesSource ;;
-        pull)
-            dotfilesPull ;;
-        link)
-            dotfilesLink ;;
-        e)
-            dotfiles edit ;;
-        edit)
-            pushd $DOTFILES > /dev/null
-            nvim .
-            popd > /dev/null
-            ;;
-        ec)
-            dotfiles edit
-            dotfiles commit
-            ;;
-
-        new)
-            newExec $1 $2
-            ;;
-        *)
-            echo "Commands: "
-            echo "go,cd : go to dotfiles' folder"
-            echo "install,i : install using software's folder"
-            echo "commit,cm : commit files automatically"
-            echo "cs : commit secrets only"
-            echo "ca : commit all (files and secrets) files automatically"
-            echo "source : reload dotfiles"
-            echo "pull : pull dotfiles changes"
-            echo "link : (re)create symlinks of dotfiles"
-            echo "edit, e : edit dotfiles"
-            echo "ec : edit and commit dotfiles"
-            echo "new \$1 \$2: new executable in \$1 with \$2 as name"
-            ;;
-    esac
-}
-
-goDotfiles() {
-    pushd $DOTFILES > /dev/null
-}
-
-dotfilesCommit() {
-    pushd $DOTFILES > /dev/null
-    case $1 in
-        all)
-            dotfilesCommit && \
-            dotfilesCommit secret
-            ;;
-        secret)
-            echo -e "${COLOR_RED}Commiting secret dotfiles.${COLOR_NC}"
-            git secret hide && \
-            git add . && \
-            git commit -m "auto commit secrets" && \
-            git push && \
-            git secret reveal -f -p $GIT_SECRET_PASS
-            ;;
-        *)
-            echo -e "${COLOR_RED}Commiting dotfiles.${COLOR_NC}"
-            git add . && \
-            git commit -m "auto commit" && \
-            git push
-            ;;
-    esac
-    popd > /dev/null
-}
-
-dotfilesPull () {
-
-    pushd $DOTFILES > /dev/null
-    git fetch
-    git pull
-    git secret reveal -p $GIT_SECRET_PASS
-    popd > /dev/null
-
-}
-
-dotfilesSource() {
-    if [[ -z "$DOTFILES" ]]; then
-        export DOTFILES="${1:-$HOME/.dotfiles}"
-    fi
-    source $DOTFILES/shell/common
-}
-
-dotfilesLink() {
-    echo Linking dotfiles...
-    pushd $DOTFILES > /dev/null && ./install -Q ; popd > /dev/null
-    # clear
-}
-
-
-dotfilesInstall() {
-    if [[ -z "$@" ]]
-    then
-        echo Here is the list of available scripts:
-        find $DOTFILES/software/ \
-            | fzf --select-1 --height 50% --multi --bind "space:toggle" \
-            | xargs -L1 -I FILES bash -c "FILES"
-    else
-        echo "$@"
-        for pkg in "$@"
-        do
-            echo Installing $pkg
-            source $DOTFILES/software/$pkg
-        done
-    fi
-}
-
 
 addToMyGitProjects(){
     if [[ "$MYGITPROJECTS" != *"$1"*  ]]; then
@@ -357,44 +215,44 @@ txw() {
 }
 
 
-txs() {
-    case $1 in
-        com)
-            tmux new-session -d -s com -c ~/gitlab/COM
-            tmux send-keys -t com "txw $2 && clear" Enter
-            tmux attach -t com
-            ;;
-        vpn)
-            tmux new-session -d -s vpn
-            tmux send-keys -t vpn "ets-vpn" Enter
-            ;;
-        gitlab)
-            tmux new-session -d -s "gitlab" -c ~/gitlab
-            tmux send-keys -t gitlab "txw $2 && clear" Enter
-            tmux attach -t gitlab
-            ;;
-        github)
-            tmux new-session -d -s "github" -c ~/github
-            tmux send-keys "txw $2 && clear" Enter
-            tmux attach -t github
-            ;;
-        cancel)
-            ;;
-        *)
-            tmux-sessionizer $1
-            ;;
-    esac
-}
-
+# txs() {
+#     case $1 in
+#         com)
+#             tmux new-session -d -s com -c ~/gitlab/COM
+#             tmux send-keys -t com "txw $2 && clear" Enter
+#             tmux attach -t com
+#             ;;
+#         vpn)
+#             tmux new-session -d -s vpn
+#             tmux send-keys -t vpn "ets-vpn" Enter
+#             ;;
+#         gitlab)
+#             tmux new-session -d -s "gitlab" -c ~/gitlab
+#             tmux send-keys -t gitlab "txw $2 && clear" Enter
+#             tmux attach -t gitlab
+#             ;;
+#         github)
+#             tmux new-session -d -s "github" -c ~/github
+#             tmux send-keys "txw $2 && clear" Enter
+#             tmux attach -t github
+#             ;;
+#         cancel)
+#             ;;
+#         *)
+#             tmux-sessionizer $1
+#             ;;
+#     esac
+# }
+#
 
 # =============================================================================
 # cheat sheet
-cs () {
-    # cheat sheet
-    url="$(echo cht.sh/$@ | tr ' ' '+')"
-    echo $url
-    curl -s $url
-}
+# cs () {
+#     # cheat sheet
+#     url="$(echo cht.sh/$@ | tr ' ' '+')"
+#     echo $url
+#     curl -s $url
+# }
 
 csl () {
     # cheat sheet pipe less
@@ -436,18 +294,18 @@ function extract_and_remove {
   rm -f $1
 }
 
-function abspath() {
-    if [ -d "$1" ]; then
-        echo "$(cd $1; pwd)"
-    elif [ -f "$1" ]; then
-        if [[ $1 == */* ]]; then
-            echo "$(cd ${1%/*}; pwd)/${1##*/}"
-        else
-            echo "$(pwd)/$1"
-        fi
-    fi
-}
-
+# function abspath() {
+#     if [ -d "$1" ]; then
+#         echo "$(cd $1; pwd)"
+#     elif [ -f "$1" ]; then
+#         if [[ $1 == */* ]]; then
+#             echo "$(cd ${1%/*}; pwd)/${1##*/}"
+#         else
+#             echo "$(pwd)/$1"
+#         fi
+#     fi
+# }
+#
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
@@ -542,48 +400,3 @@ function jenkinsLint () {
     curl --user "${JENKINS_USER_ID}:${JENKINS_API_TOKEN}" -X POST -F "jenkinsfile=<${jfile}" "${JENKINS_URL}/pipeline-model-converter/validate"
 }
 
-
-function resurrect () {
-    resurrect_dir="$HOME/.tmux/resurrect"
-    trg="$resurrect_dir/last"
-    Q="${1:-*}"
-    GREP_CMD='grep -lri'
-    src=$(\
-        FZF_DEFAULT_COMMAND="$GREP_CMD $(printf %q $Q) $resurrect_dir | sort -r" \
-        fzf --disabled \
-            --query=$1 \
-            --preview 'bat --color=always {1}' \
-            --bind "change:reload:sleep 0.1; $GREP_CMD {q} $resurrect_dir | sort -r  || true" \
-            --height 30% \
-            --preview-window=right:70% \
-            --keep-right \
-            --reverse \
-            --prompt 'resurrect -> ' \
-            --header-first \
-    )
-
-    echo "ln -sf $src $trg"
-    [ -n "$src" ] && ln -sf $src $trg && echo resurrect: $src
-}
-
-
-function newExec() {
-    case $1 in
-        s|software)
-            file=$DOTFILES/software/$2
-            nvim $file
-            sudo chmod +x $file
-            ;;
-        b|bin)
-            file=$DOTFILES/bin/$2
-            nvim $file
-            sudo chmod +x $file
-            dotfiles link
-            ;;
-        *)
-            file=$1/$2
-            nvim $file
-            sudo chmod +x $file
-            ;;
-    esac
-}

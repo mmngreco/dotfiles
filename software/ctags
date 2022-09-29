@@ -1,4 +1,5 @@
-#!/usr/bin/env bash -x
+#!/usr/bin/env bash
+set -x
 dest=$HOME/universal_ctags
 
 git clone --depth 1 https://github.com/universal-ctags/ctags.git $dest

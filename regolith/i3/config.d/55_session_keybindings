@@ -74,7 +74,7 @@ set_from_resource $i3-wm.binding.monitor_auto i3-wm.binding.monitor_auto Ctrl+Sh
 set_from_resource $i3-wm.program.monitor_auto i3-wm.program.monitor_auto xrandr --auto
 bindsym $mod+$i3-wm.binding.monitor_auto exec $i3-wm.program.monitor_auto
 
-# bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
+# bindsym $super+Ctrl+Shift+t exec monitor_layout
 
 ## Display // Randomize wallpaper // <win><ctrl><shift> e ##
 set_from_resource $i3-wm.binding.wallpaper i3-wm.binding.wallpaper Ctrl+Shift+e

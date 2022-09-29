@@ -64,7 +64,7 @@ Logout your current session. Then login again with i3 session.
 - `$super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'`
 - `$super+Ctrl+Shift+m exec rofi-randr`
 - `$super+Ctrl+Shift+x exec xrandr --auto`
-- `$super+Ctrl+Shift+t exec monitor_layout.sh`
+- `$super+Ctrl+Shift+t exec monitor_layout`
 - `$super+s exec rofi-txs`
 - `$super+w exec rofi-txw`
 - `$super+Ctrl+Shift+w exec rand_wallpaper`
