@@ -11,12 +11,6 @@
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   #TERM: xterm-256color
-import:
-  # uncomment the flavour you want below:
-  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
-#  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
-#  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
-#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
 
 window:
   # Window dimensions (changes require restart)
@@ -87,7 +81,7 @@ font:
   normal:
     # family: "mplus Nerd Font Mono"
     family: "CaskaydiaCove Nerd Font"
-    style: Medium
+    style: Regular
     # Font family
     #
     # Default:
@@ -161,31 +155,31 @@ font:
 draw_bold_text_with_bright_colors: true
 
 # Colors (Molokai Dark)
-colors:
-  # Default colors
-  primary:
-    background: '0x262626'
-    foreground: '0xF8F8F2'
-  # Normal colors
-  normal:
-    black:   '0x333333'
-    red:     '0xC4265E'
-    green:   '0x86B42B'
-    yellow:  '0xB3B42B'
-    blue:    '0x6A7EC8'
-    magenta: '0x8C6BC8'
-    cyan:    '0x56ADBC'
-    white:   '0xE3E3DD'
-  # Bright colors
-  bright:
-    black:   '0x666666'
-    red:     '0xF92672'
-    green:   '0xA6E22E'
-    yellow:  '0xE2E22E'
-    blue:    '0x819AFF'
-    magenta: '0xAE81FF'
-    cyan:    '0x66D9EF'
-    white:   '0xF8F8F2'
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x262626'
+#     foreground: '0xF8F8F2'
+#   # Normal colors
+#   normal:
+#     black:   '0x333333'
+#     red:     '0xC4265E'
+#     green:   '0x86B42B'
+#     yellow:  '0xB3B42B'
+#     blue:    '0x6A7EC8'
+#     magenta: '0x8C6BC8'
+#     cyan:    '0x56ADBC'
+#     white:   '0xE3E3DD'
+#   # Bright colors
+#   bright:
+#     black:   '0x666666'
+#     red:     '0xF92672'
+#     green:   '0xA6E22E'
+#     yellow:  '0xE2E22E'
+#     blue:    '0x819AFF'
+#     magenta: '0xAE81FF'
+#     cyan:    '0x66D9EF'
+#     white:   '0xF8F8F2'
 
 # Colors (Tomorrow Night Bright)
 
@@ -358,6 +352,13 @@ cursor:
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
+
+import:
+  # uncomment the flavour you want below:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
 
 # Live config reload (changes require restart)
 live_config_reload: true
