@@ -17,19 +17,6 @@ toggleEtsIndex() {
 
 dotfiles() {
     case $1 in
-        h*)
-            echo "Commands: "
-            echo "go,cd : go to dotfiles' folder"
-            echo "install,i : install using software's folder"
-            echo "commit,cm : commit files automatically"
-            echo "cs : commit secrets only"
-            echo "ca : commit all (files and secrets) files automatically"
-            echo "source : reload dotfiles"
-            echo "pull : pull dotfiles changes"
-            echo "link : (re)create symlinks of dotfiles"
-            echo "edit, e : edit dotfiles"
-            echo "ec : edit and commit dotfiles"
-            ;;
         install)
             dotfilesInstall ${@:2} ;;
         i)
@@ -62,6 +49,24 @@ dotfiles() {
         ec)
             dotfiles edit
             dotfiles commit
+            ;;
+
+        new)
+            newExec $1 $2
+            ;;
+        *)
+            echo "Commands: "
+            echo "go,cd : go to dotfiles' folder"
+            echo "install,i : install using software's folder"
+            echo "commit,cm : commit files automatically"
+            echo "cs : commit secrets only"
+            echo "ca : commit all (files and secrets) files automatically"
+            echo "source : reload dotfiles"
+            echo "pull : pull dotfiles changes"
+            echo "link : (re)create symlinks of dotfiles"
+            echo "edit, e : edit dotfiles"
+            echo "ec : edit and commit dotfiles"
+            echo "new \$1 \$2: new executable in \$1 with \$2 as name"
             ;;
     esac
 }
@@ -559,4 +564,26 @@ function resurrect () {
 
     echo "ln -sf $src $trg"
     [ -n "$src" ] && ln -sf $src $trg && echo resurrect: $src
+}
+
+
+function newExec() {
+    case $1 in
+        s|software)
+            file=$DOTFILES/software/$2
+            nvim $file
+            sudo chmod +x file
+            ;;
+        b|bin)
+            file=$DOTFILES/bin/$2
+            nvim $file
+            sudo chmod +x file
+            dotfiles link
+            ;;
+        *)
+            file=$1/$2
+            nvim $file
+            sudo chmod +x file
+            ;;
+    esac
 }
