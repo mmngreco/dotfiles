@@ -539,7 +539,7 @@ function jenkinsLint () {
 
 
 function resurrect () {
-    resurrect_dir="~/.tmux/resurrect"
+    resurrect_dir="$HOME/.tmux/resurrect"
     trg="$resurrect_dir/last"
     Q="${1:-*}"
     GREP_CMD='grep -lri'
