@@ -39,9 +39,11 @@
     ~/.Xresources: i3/.Xresources
     ~/.xprofile: i3/.xprofile
     ~/.xsettingsd: i3/.xsettingsd
+
     # terminal
     ~/.Xdefaults: i3/.Xdefaults
     ~/.config/kitty/kitty.conf: terminal/kitty.conf
+    ~/.config/alacritty/alacritty.yml: terminal/alacritty.yml
 
     # vim
     ~/.config/nvim:
