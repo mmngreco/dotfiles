@@ -849,6 +849,7 @@ require'nvim-treesitter.configs'.setup {
 
 require('orgmode').setup({
   org_agenda_files = {'/mnt/google-drive/org/*', '~/orgs/**/*'},
-  org_default_notes_file = '/mnt/google-drive/org/notes.org'
+  org_default_notes_file = '/mnt/google-drive/org/notes.org',
+  org_hide_leading_stars = true,
 })
 EOF
