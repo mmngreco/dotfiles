@@ -182,3 +182,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+# [safe]
+#	directory = /home/mgreco/mnt/do_etls/home/alejandrohall/data-observatory
