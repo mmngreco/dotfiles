@@ -40,7 +40,7 @@ end
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 
-function setup_server(server_name)
+local function setup_server(server_name)
     -- print(vim.inspect(server_name))
     local server_available, requested_server = lsp_installer_servers.get_server(server_name)
 
@@ -71,12 +71,12 @@ function setup_server(server_name)
 
 end
 
-local function config(_config)
-    return vim.tbl_deep_extend("force", {
-        on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    }, _config or {})
-end
+-- local function config(_config)
+--     return vim.tbl_deep_extend("force", {
+--         on_attach = on_attach,
+--         capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+--     }, _config or {})
+-- end
 
 
 -- setup_server("bashls")
@@ -101,3 +101,9 @@ setup_server("texlab")
 setup_server("tsserver")
 setup_server("vimls")
 setup_server("yamlls")
+
+
+require('lspconfig')['sqlls'].setup{
+    on_attach = on_attach,
+    -- flags = lsp_flags,
+}
