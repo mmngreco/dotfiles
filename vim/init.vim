@@ -13,8 +13,8 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
 " set ttymouse=xterm2
-" set mouse=a
-set mouse=nv
+set mouse=a
+" set mouse=nv
 
 if exists('g:started_by_firenvim')
   set laststatus=0
