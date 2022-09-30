@@ -93,7 +93,7 @@ setup_server("groovyls")
 setup_server("html")
 setup_server("jsonls")
 setup_server("lemminx")
--- setup_server("pylsp")
+setup_server("pylsp")
 setup_server("pyright")
 setup_server("sqlls")
 setup_server("sumneko_lua")
@@ -103,7 +103,3 @@ setup_server("vimls")
 setup_server("yamlls")
 
 
-require('lspconfig')['sqlls'].setup{
-    on_attach = on_attach,
-    -- flags = lsp_flags,
-}
