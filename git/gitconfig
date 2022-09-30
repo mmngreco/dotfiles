@@ -184,3 +184,5 @@
 	required = true
 # [safe]
 #	directory = /home/mgreco/mnt/do_etls/home/alejandrohall/data-observatory
+[safe]
+	directory = /home/mgreco/mnt/do_etls/home/alejandrohall/data-observatory

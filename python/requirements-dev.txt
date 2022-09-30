@@ -6,21 +6,25 @@ black; python_version>='3.6'
 flake8
 isort
 pydocstyle
-numpydoc
+# numpydoc
 # wemake-python-styleguide
 # python-lsp-server[all]
 
 # testing
 pytest
-pytest-cov
-pytest-xdist
+# pytest-cov
+# pytest-xdist
 # pytest-aggreport
 # pytest-sugar
-pytest-notifier
+# pytest-notifier
 
 # debugging
 pdbpp
 
-# ipython
+# repl
+pyflyby
 ipython
+rich
+typer
+python-devtools
 
