@@ -1,5 +1,0 @@
-name: XTerm
-
-filter_class: "XTerm"
-fast_inject: false
-backend: Clipboard
