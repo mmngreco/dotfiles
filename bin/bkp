@@ -5,10 +5,10 @@ excludeList=$DOTFILES/bin/exclude
 
 case $1 in
     do)
-        rsync -arv --exclude-from=$excludeList $HOME $dst
+        rsync -arvpHtU --exclude-from=$excludeList $HOME $dst
         ;;
     restore)
-        rsync -arv --exclude-from=$excludeList $dst/$USER /home/
+        rsync -arvpHtU --exclude-from=$excludeList $dst/$USER /home/
         ;;
     *)
         echo

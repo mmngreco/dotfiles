@@ -13,6 +13,6 @@
   },
   "date": {
       "prefix": "date",
-      "body": ["${VIM:strftime('%Y-%m-%d)}')"]
+      "body": ["${VIM:strftime('%Y-%m-%d')}"]
   }
 }
