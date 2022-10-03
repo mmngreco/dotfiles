@@ -20,8 +20,8 @@ cmp.setup({
       -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-l>'] = cmp.mapping.complete(),
+      ['<C-l>'] = cmp.mapping.confirm({ select = true }),
       ['<C-e>'] = cmp.mapping.close(),
-      -- ['<C-l>'] = cmp.mapping.confirm({ select = true }),
     },
 
     sources = {

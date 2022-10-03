@@ -10,5 +10,9 @@
     "body": [
       "${VIM:system('python -c \"import uuid, sys;sys.stdout.write(str(uuid.uuid4()))\"')}"
     ]
+  },
+  "date": {
+      "prefix": "date",
+      "body": ["${VIM:strftime('%Y-%m-%d)}')"]
   }
 }
