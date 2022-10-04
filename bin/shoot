@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-img=/tmp/shot.png
+img=/tmp/shot$(date "+%FT%T").png
 
 scrot -s "$img"
 url=$(imgur "$img")
