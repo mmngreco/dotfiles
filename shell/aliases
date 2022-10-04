@@ -154,7 +154,7 @@ alias ca="conda activate"
 # kitty
 alias icat="kitty +kitten icat"
 
-export SERVER_IP=$(hostname -I)
+export SERVER_IP=$(hostname -i)
 alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 9000"
 
 
