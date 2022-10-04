@@ -14,12 +14,12 @@ matches:
   - trigger: ":sql_vs:"
     replace: "select * from variables where id like '%$|$%'"
 
-  # - trigger: ":sql_create:"
-  #   replace: "create or replace table `$|$` cluster by geom as (select * from `$|$`)"
-
   - trigger: ":sql_create:"
-    form: |
-      create or replace table `[[table]]` [[cluster by geom]]
-      as (
-        select * from `[[table2]]`
-      )
+    replace: "create or replace table `$|$` cluster by geom as (select * from `$|$`)"
+
+  # - trigger: ":sql_create:"
+  #   form: |
+  #     create or replace table `[[table]]` [[cluster by geom]]
+  #     as (
+  #       select * from `[[table2]]`
+  #     )
