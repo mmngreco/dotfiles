@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+[ -z "$1" ] && echo "Usage: imgur /path/to/img.png" && exit
+
+url=$(
+curl -X POST -H "Authorization: Client-ID $IMGUR_ID" \
+    -F "image=@$1" https://api.imgur.com/3/upload \
+    | jq '.data.link' \
+    | tr -d '"' \
+)
+
+echo $url
