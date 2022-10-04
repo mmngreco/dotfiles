@@ -1,0 +1,25 @@
+matches:
+  - trigger: ":sql_ds:"
+    replace: "select * from datasets where provider_id = '$|$'"
+
+  - trigger: ":sql_ly:"
+    replace: "select * from layouts where id like '%$|$%'"
+
+  - trigger: ":sql_pv:"
+    replace: "select * from providers where id like '%$|$%'"
+
+  - trigger: ":sql_g:"
+    replace: "select * from geometries where id like '%$|$%'"
+
+  - trigger: ":sql_vs:"
+    replace: "select * from variables where id like '%$|$%'"
+
+  # - trigger: ":sql_create:"
+  #   replace: "create or replace table `$|$` cluster by geom as (select * from `$|$`)"
+
+  - trigger: ":sql_create:"
+    form: |
+      create or replace table `[[table]]` [[cluster by geom]]
+      as (
+        select * from `[[table2]]`
+      )
