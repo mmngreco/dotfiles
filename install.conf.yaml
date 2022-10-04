@@ -16,8 +16,8 @@
     #   path: regolith/i3/config.d/*
     #   glob: true
     ~/.dotfiles: .
-    # ~/.config/pulse/default.pa: pulse/default.pa
-    # ~/.octaverc: octave/octaverc
+    ~/.config/pulse/default.pa: pulse/default.pa
+    ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig
     ~/.docker/config.json: docker/.docker/config.json
 
@@ -28,22 +28,22 @@
     # ~/.aliases: shell/aliases
     ~/.bash_profile: shell/bash_profile
     ~/.bashrc: shell/bashrc
-    # ~/.zshrc: shell/zshrc
+    ~/.zshrc: shell/zshrc
     ~/.inputrc: shell/inputrc
-    # ~/.profile: shell/profile
+    ~/.profile: shell/profile
 
     # i3
-    # ~/.config:
-      # path: i3/.config/**
-      # glob: true
-    # ~/.Xresources: i3/.Xresources
-    # ~/.xprofile: i3/.xprofile
-    # ~/.xsettingsd: i3/.xsettingsd
+    ~/.config:
+      path: i3/.config/**
+      glob: true
+    ~/.Xresources: i3/.Xresources
+    ~/.xprofile: i3/.xprofile
+    ~/.xsettingsd: i3/.xsettingsd
 
     # terminal
-    # ~/.Xdefaults: i3/.Xdefaults
+    ~/.Xdefaults: i3/.Xdefaults
     ~/.config/kitty/kitty.conf: terminal/kitty.conf
-    # ~/.config/alacritty/alacritty.yml: terminal/alacritty.yml
+    ~/.config/alacritty/alacritty.yml: terminal/alacritty.yml
 
     # vim
     ~/.config/nvim:
