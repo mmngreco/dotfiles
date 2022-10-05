@@ -9,3 +9,4 @@ curl -s -X POST -H "Authorization: Client-ID $IMGUR_ID" \
 )
 
 echo $url
+notify-send "imgur" "$1 uploaded.<br>url: $url"
