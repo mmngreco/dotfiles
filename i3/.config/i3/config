@@ -14,13 +14,14 @@ floating_modifier $super
 # autostart
 # exec --no-startup-id xrandr --output eDP-1 --off --auto
 exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+exec --no-startup-id dunst &
 exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
 # exec --no-startup-id compton -b
 exec --no-startup-id clipit &
-exec --no-startup-id caffeine-indicator
+exec --no-startup-id caffeine-indicator &
 
 exec --no-startup-id i3-msg 'exec kitty'
 # exec --no-startup-id i3-msg 'exec xterm'
