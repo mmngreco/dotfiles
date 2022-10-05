@@ -20,3 +20,4 @@ miniconda3
 venv
 .zoom
 mnt
+**/__pycache__/

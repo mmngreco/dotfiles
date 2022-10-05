@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 
-dst=${2:-/media/mgreco/PiStore}
+raw_folder=$HOME
+bkp_folder=${2:-/media/mgreco/PiStore}
 excludeList=$DOTFILES/bin/exclude
 
 case $1 in
     do)
-        rsync -arvpHtU --exclude-from=$excludeList $HOME $dst
+        rsync -avrz --exclude-from=$excludeList $raw_folder $bkp_folder
         ;;
     restore)
-        rsync -arvpHtU --exclude-from=$excludeList $dst/$USER /home/
+        rsync -avrz --exclude-from=$excludeList $bkp_folder/$USER /home/
         ;;
     *)
         echo
         echo "Usage: "
         echo
-        echo "$ bkp do <to/path>"
-        echo "$ bkp restore <from/path>"
+        echo "$ bkp do [<to/path>]"
+        echo "$ bkp restore [<from/path>]"
         echo
         echo "This script uses HOME,USER,DOTFILES variables."
 esac
