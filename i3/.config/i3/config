@@ -31,9 +31,9 @@ exec --no-startup-id i3-msg 'exec keepassxc'
 exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
 
 # start a terminal
-bindsym $super+Return exec kitty
-# bindsym $super+Return exec xterm
-bindsym $super+Shift+Return workspace 1; focus; exec xterm
+# bindsym $super+Return exec kitty
+bindsym $super+Return exec xterm
+# bindsym $super+Shift+Return workspace 1; focus; exec xterm
 # bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
@@ -245,7 +245,7 @@ for_window [class="kitty"] border pixel 4
 # gaps horizontal current plus 40
 # gaps outer current toggle 60
 
-assign [class=XTerm|kitty] 1
+assign [class=kitty] 1
 assign [class=Brave-browser] 2
 assign [class=DBeaver] 3
 assign [class=slack|Slack] 4
