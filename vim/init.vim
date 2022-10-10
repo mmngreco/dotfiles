@@ -14,6 +14,7 @@ set wildignore+=**/.git/*
 
 " set ttymouse=xterm2
 set mouse=a
+set cursorline
 " set mouse=nv
 
 if exists('g:started_by_firenvim')
