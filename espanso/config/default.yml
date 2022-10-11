@@ -4,6 +4,6 @@
 {
   show_icon: true,
   undo_backspace: false,
-  # ast_inject: false,
-  # backend: Clipboard
+  ast_inject: false,
+  backend: Clipboard
 }
