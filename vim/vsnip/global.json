@@ -14,5 +14,10 @@
   "date": {
       "prefix": "date",
       "body": ["${VIM:strftime('%Y-%m-%d')}"]
+  },
+  "time": {
+      "prefix": "time",
+      "body": ["${VIM:strftime('%H:%M:%S')}"]
   }
 }
+

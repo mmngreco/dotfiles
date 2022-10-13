@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
-rm -rf ~/github/tmux
+set -e
+path=/tmp/github/tmux
+
 sudo apt --yes install automake autotools-dev libevent-dev libncurses5-dev build-essential bison pkg-config
-git clone --depth 1 https://github.com/tmux/tmux.git ~/github/tmux
-pushd ~/github/tmux
+[ -d $path ] && rm -rf $path
+git clone --depth 1 https://github.com/tmux/tmux.git $path
+pushd $path
 sh autogen.sh
 ./configure && make
 sudo make install
