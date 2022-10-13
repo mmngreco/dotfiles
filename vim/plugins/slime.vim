@@ -11,11 +11,11 @@ let g:slime_no_mappings = 1
 nmap <leader>cv <Plug>SlimeConfig
 
 " vim-slime-cells
-nmap <leader>ce <Plug>SlimeRegionSend
-nmap <leader>cr <Plug>SlimeParagraphSend
+nmap <leader>cl <Plug>SlimeRegionSend
+nmap <leader>cp <Plug>SlimeParagraphSend
 nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
-nmap <leader>cv <Plug>SlimeCellsNext
-nmap <leader>cx <Plug>SlimeCellsPrev
+nmap <leader>cj <Plug>SlimeCellsNext
+nmap <leader>ck <Plug>SlimeCellsPrev
 
 nnoremap <leader>cO O%%<esc>:norm gcc<cr>j
 nnoremap <leader>co o%%<esc>:norm gcc<cr>k
