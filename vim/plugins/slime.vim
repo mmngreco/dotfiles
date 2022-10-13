@@ -7,7 +7,7 @@ let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_
 let g:slime_no_mappings = 1
 
 
-nmap <c-c>v <Plug>SlimeConfig
+nmap <c-c><c-v> <Plug>SlimeConfig
 
 " vim-slime-cells
 nmap <c-c><c-n> <Plug>SlimeCellsSendAndGoToNext
