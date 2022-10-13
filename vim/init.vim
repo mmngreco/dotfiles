@@ -31,6 +31,7 @@ let g:loaded_perl_provider = 0
 let g:python3_host_prog = 'python3'
 
 call plug#begin()
+Plug 'jpalardy/vim-slime'
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 " Plug 'psf/black', { 'branch': 'stable' }
@@ -104,7 +105,7 @@ Plug 'mbbill/undotree'
 " Plug 'Microsoft/vscode-python'
 " Plug 'mmngreco/dbee.nvim'
 " Plug 'mmngreco/DrawIt'
-Plug 'mmngreco/slimux'
+" Plug 'mmngreco/slimux'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
@@ -440,7 +441,8 @@ source $DOTFILES/vim/plugins/markdown.vim
 source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/neoformat.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
-source $DOTFILES/vim/plugins/slimux.vim
+" source $DOTFILES/vim/plugins/slimux.vim
+source $DOTFILES/vim/plugins/slime.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
