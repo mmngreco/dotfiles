@@ -10,8 +10,8 @@ let g:slime_no_mappings = 1
 
 nmap <leader>cv <Plug>SlimeConfig
 
-map <leader>e :SlimeRegionSend<cr>
-map <leader>cl :SlimeSend<cr>
+map <leader>e :SlimeSend<cr>
+xmap <leader>cl <Plug>SlimeRegionSend<cr>
 nmap <leader>cp <Plug>SlimeParagraphSend
 
 " vim-slime-cells
