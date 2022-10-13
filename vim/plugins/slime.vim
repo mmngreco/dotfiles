@@ -8,14 +8,14 @@ let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_
 let g:slime_no_mappings = 1
 
 
-nmap <c-c><c-v> <Plug>SlimeConfig
+nmap <leader>cv <Plug>SlimeConfig
 
 " vim-slime-cells
-nmap <c-c><c-e> <Plug>SlimeRegionSend
-nmap <c-c><c-r> <Plug>SlimeParagraphSend
-nmap <c-c><c-c> <Plug>SlimeCellsSendAndGoToNext
-nmap <c-c><c-v> <Plug>SlimeCellsNext
-nmap <c-c><c-x> <Plug>SlimeCellsPrev
+nmap <leader>ce <Plug>SlimeRegionSend
+nmap <leader>cr <Plug>SlimeParagraphSend
+nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
+nmap <leader>cv <Plug>SlimeCellsNext
+nmap <leader>cx <Plug>SlimeCellsPrev
 
 nnoremap <leader>cO O%%<esc>:norm gcc<cr>j
 nnoremap <leader>co o%%<esc>:norm gcc<cr>k
