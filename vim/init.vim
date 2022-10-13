@@ -32,6 +32,7 @@ let g:python3_host_prog = 'python3'
 
 call plug#begin()
 Plug 'jpalardy/vim-slime'
+Plug 'Klafyvel/vim-slime-cells'
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 " Plug 'psf/black', { 'branch': 'stable' }
