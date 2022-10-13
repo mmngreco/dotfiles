@@ -10,10 +10,10 @@ let g:slime_no_mappings = 1
 
 nmap <leader>cv <Plug>SlimeConfig
 
-" vim-slime-cells
 map <leader>cl <Plug>SlimeSend
 nmap <leader>cp <Plug>SlimeParagraphSend
 
+" vim-slime-cells
 nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
 nmap <leader>cj <Plug>SlimeCellsNext
 nmap <leader>ck <Plug>SlimeCellsPrev
