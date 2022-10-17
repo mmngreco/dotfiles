@@ -189,7 +189,7 @@ bindsym $super+0 workspace 0
 bindsym $super+Ctrl+Shift+r restart
 
 # close session
-bindsym $super+Shift+q exec i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'
+bindsym $super+Shift+q exec i3-nagbar -t warning -m 'Logout ?' -b 'Yes' 'i3-msg exit', mode "default"
 
 # power off
 bindsym $super+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' 'exec systemctl poweroff -i', mode "default"
