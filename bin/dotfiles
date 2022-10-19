@@ -58,8 +58,8 @@ dotfilesInstall() {
     then
         echo Here is the list of available scripts:
         find $DOTFILES/software/ \
-            | fzf --select-1 --height 50% --multi --bind "space:toggle" \
-            | xargs -L1 -I FILES bash -c "FILES"
+            | fzf --select-1 --height 50% --layout reverse --multi --bind "space:toggle" \
+            | xargs -I FILES bash -c "FILES"
     else
         echo "$@"
         for pkg in "$@"
