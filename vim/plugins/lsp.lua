@@ -61,7 +61,7 @@ local function setup_server(server_name)
             function ()
                 local opts = {}
                 opts.on_attach = on_attach
-                opts.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+                opts.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
                 -- if requested_server.name == "pyright" then
                 --     opts.settings = { pyright = { disableLanguageServices = false, ignore = "deps" } }
@@ -105,7 +105,7 @@ setup_server("html")
 setup_server("jsonls")
 setup_server("lemminx")
 setup_server("pylsp")
-setup_server("pyright")
+-- setup_server("pyright")
 -- setup_server("sqlls")
 setup_server("sumneko_lua")
 setup_server("texlab")
