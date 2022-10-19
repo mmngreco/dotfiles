@@ -51,9 +51,9 @@ dotfilesSource() {
 
 
 dotfilesLink() {
-    echo "Linking dotfiles..."
-    pushd $DOTFILES > /dev/null && ./install -Q -c $DOTFILES/ubuntu.yaml ; popd > /dev/null
-    # clear
+    config="$DOTFILES/${1-ubuntu}.yaml"
+    echo "Linking dotfiles using $config"
+    pushd $DOTFILES > /dev/null && ./install -Q -c $config ; popd > /dev/null
 }
 
 
