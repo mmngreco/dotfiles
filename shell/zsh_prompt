@@ -3,17 +3,9 @@
 # PROMPT
 # amuse modified
 
-# ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}\uE0A0 "
-# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}!"
-# ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-# ZSH_THEME_GIT_PROMPT_CLEAN=""
-# ZSH_THEME_RUBY_PROMPT_PREFIX="%{$fg_bold[red]%}‹"
-# ZSH_THEME_RUBY_PROMPT_SUFFIX="›%{$reset_color%}"
-# PROMPT='
-# %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info) %{$fg_bold[red]%}%*%{$reset_color%}
-# $ '
-# RPROMPT='$(ruby_prompt_info)'
+ZSH_THEME_GIT_PROMPT_PREFIX=""
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+
 function preexec() {
     typeset -gi CALCTIME=1
     typeset -gi CMDSTARTTIME=SECONDS
@@ -34,39 +26,63 @@ else
 fi
 
 
-function togglePrompt() {
+function setPrompt() {
     input=${DEFAULT_PROMPT:-$1}
     case $input in
 
-    default)
-       ZSH_THEME_GIT_PROMPT_PREFIX=""
-       ZSH_THEME_GIT_PROMPT_SUFFIX=""
-       PROMPT='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
-       PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
-       PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
-       PROMPT+=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
-       ;;
+        1)
+           PROMPT=''
+           PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
+           ;;
 
-    simple)
-       PROMPT=' %(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
-       ;;
+        2)
+           PROMPT=''
+           PROMPT+='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
+           PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
+           PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%} '
+           PROMPT+=$'\n'
+           PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
+           ;;
 
-    twoLines)
-       ZSH_THEME_GIT_PROMPT_PREFIX=""
-       ZSH_THEME_GIT_PROMPT_SUFFIX=""
-       PROMPT='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
-       PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
-       PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%}'
-       PROMPT+=$'\n'
-       PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
-       ;;
+        3)
+           PROMPT=''
+           PROMPT+='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
+           PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
+           PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%} '
+           PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
+           ;;
 
-    *)
-       print "$input"
-       print "Use togglePrompt [default | simple]"
-       ;;
+        4)
+           PROMPT=''
+           PROMPT+='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
+           PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%} '
+           PROMPT+=$'\n'
+           PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
+           ;;
+
+        *)
+           echo "Usage:"
+           echo "setPrompt [1,2,3]"
+           echo ""
+
+           echo "Examples"
+           echo ""
+           echo "setPrompt 1 ->"
+           echo "$"
+           echo ""
+           echo "setPrompt 2 ->"
+           echo "dotfiles master* (21:42|0s)"
+           echo "$"
+           echo ""
+           echo "setPrompt 3 ->"
+           echo "dotfiles master* (21:42|0s) $"
+           echo ""
+           echo "setPrompt 4 ->"
+           echo "dotfiles (21:42|0s) $"
+
+           ;;
 
     esac
 }
 
-togglePrompt twoLines
+setPrompt 2

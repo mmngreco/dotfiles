@@ -4,6 +4,7 @@ goDotfiles() {
     pushd $DOTFILES > /dev/null
 }
 
+
 dotfilesCommit() {
     pushd $DOTFILES > /dev/null
     case $1 in
@@ -29,6 +30,7 @@ dotfilesCommit() {
     popd > /dev/null
 }
 
+
 dotfilesPull () {
 
     pushd $DOTFILES > /dev/null
@@ -39,6 +41,7 @@ dotfilesPull () {
 
 }
 
+
 dotfilesSource() {
     if [[ -z "$DOTFILES" ]]; then
         export DOTFILES="${1:-$HOME/.dotfiles}"
@@ -46,9 +49,10 @@ dotfilesSource() {
     source $DOTFILES/shell/common
 }
 
+
 dotfilesLink() {
-    echo Linking dotfiles...
-    pushd $DOTFILES > /dev/null && ./install -Q ; popd > /dev/null
+    echo "Linking dotfiles..."
+    pushd $DOTFILES > /dev/null && ./install -Q -c $DOTFILES/ubuntu.yaml ; popd > /dev/null
     # clear
 }
 
@@ -69,7 +73,6 @@ dotfilesInstall() {
         done
     fi
 }
-
 
 
 dotfiles() {

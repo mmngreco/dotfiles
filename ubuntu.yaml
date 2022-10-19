@@ -11,12 +11,12 @@
       recursive: true
 
 - link:
-    ~/.config/pulse/default.pa: pulse/default.pa
-    ~/.config/regolith2/i3/config: regolith/i3/config
-    ~/.config/regolith2/i3/config.d/:
-      path: regolith/i3/config.d/*
-      glob: true
+    # ~/.config/regolith2/i3/config: regolith/i3/config
+    # ~/.config/regolith2/i3/config.d/:
+    #   path: regolith/i3/config.d/*
+    #   glob: true
     ~/.dotfiles: .
+    ~/.config/pulse/default.pa: pulse/default.pa
     ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig
     ~/.docker/config.json: docker/.docker/config.json
@@ -25,7 +25,6 @@
     ~/.tmux.conf: tmux/tmux.conf
 
     # shell
-    ~/.aliases: shell/aliases
     ~/.bash_profile: shell/bash_profile
     ~/.bashrc: shell/bashrc
     ~/.zshrc: shell/zshrc
