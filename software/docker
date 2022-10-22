@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-
 # remove old
 sudo apt remove docker-desktop
 rm -r $HOME/.docker/desktop

@@ -37,4 +37,3 @@
 - shell:
     - git submodule update --init
     - bash ~/.dotfiles/software/nvim
-
