@@ -9,7 +9,11 @@ function install_absent () {
 }
 
 echo Cloning ohmyzsh...
+
+# only if it's not present
 [ ! -d "$HOME/.oh-my-zsh"] && ${DOTFILES}/software/ohmyzsh
+[ ! -d "$HOME/.autoenv"] && ${DOTFILES}/software/autoenv
+
 install_absent keepassxc
 install_absent zsh
 install_absent zsh-suggestions

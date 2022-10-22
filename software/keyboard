@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-git clone --depth 1 ssh://git@github.com/mmngreco/keyboards ~/github/mmngreco/keyboard
+git clone --depth 1 ssh://git@github.com/mmngreco/keyboards ${HOME}/github/mmngreco/keyboard

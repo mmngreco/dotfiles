@@ -14,14 +14,13 @@ sudo apt-get install -y cmake g++ git gettext \
                 libcdio-dev libmtp-dev libgpod-dev libplist-dev libusbmuxd-dev \
                 liblastfm5-dev
 
-folder="$HOME/github/clementine"
-git clone --depth 1 https://github.com/clementine-player/Clementine.git $folder
-pushd $folder
+clone_dir="/tmp/dotfiles/clementine"
+git clone --depth 1 https://github.com/clementine-player/Clementine.git $clone_dir
+set -e
+pushd $clone_dir &> /dev/null
 cd bin
 cmake ..
 make -j8
 sudo make install
 popd
-
-
 

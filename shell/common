@@ -28,5 +28,3 @@ addToPathFront "$GEM_HOME/bin"
 # projects folders
 addToMyGitProjects $HOME/github
 addToMyGitProjects $HOME/gitlab
-addToMyGitProjects $HOME/etsgit
-addToMyGitProjects $HOME/etsgit1

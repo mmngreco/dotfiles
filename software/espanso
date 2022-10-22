@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# wget https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-amd64.deb
-# wget https://github.com/federico-terzi/espanso/releases/latest/download/espanso-debian-x11-amd64.deb
-# wget https://github.com/federico-terzi/espanso/releases/download/v2.1.4-beta/espanso-debian-x11-amd64.deb
-# sudo apt install ./espanso-debian-x11-amd64.deb
-# rm ./espanso-debian-x11-amd64.deb
-wget https://github.com/federico-terzi/espanso/releases/download/v0.7.3/espanso-debian-amd64.deb
-sudo apt install ./espanso-debian-amd64.deb
-rm ./espanso-debian-amd64.deb
-# espanso service register
+ver="v2.1.7-beta"
+wget https://github.com/federico-terzi/espanso/releases/download/${ver}/espanso-debian-x11-amd64.deb
+sudo apt install ./espanso-debian-x11-amd64.deb
+rm ./espanso-debian-x11-amd64.deb
+
+# Register espanso as a systemd service (required only once)
+espanso service register
+# Start espanso
 espanso start
 
