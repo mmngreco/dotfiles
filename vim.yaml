@@ -35,5 +35,10 @@
         glob: true
 
 - shell:
-    - git submodule update --init
-    - bash ~/.dotfiles/software/nvim
+    -
+      command: git submodule update --init
+      stdout: true
+
+    -
+      command: bash ~/.dotfiles/software/nvim
+      stdout: true
