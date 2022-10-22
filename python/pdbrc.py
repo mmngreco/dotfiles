@@ -13,8 +13,6 @@ except Exception:
     pass
 
 
-
-
 def show_variables(variables):
     for k, v in variables.items():
         msj_fmt = "{k:>15} : {type(v)}, {getattr(v, 'shape', '')}"

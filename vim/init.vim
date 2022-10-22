@@ -80,14 +80,17 @@ Plug 'goerz/jupytext.vim'
 Plug 'gyim/vim-boxdraw'
 Plug 'hoob3rt/lualine.nvim'
 " Plug 'hoschi/yode-nvim'
+
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/calendar.vim'
 " Plug 'johngrib/vim-game-code-break'
@@ -108,6 +111,7 @@ Plug 'mbbill/undotree'
 " Plug 'mmngreco/DrawIt'
 " Plug 'mmngreco/slimux'
 " Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown'}
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvie/vim-flake8'
