@@ -640,9 +640,9 @@ EOF
 
 
 " === mind
-lua <<EOF
-require("mind").setup()
-EOF
+" lua <<EOF
+" require("mind").setup()
+" EOF
 
 
 
