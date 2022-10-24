@@ -44,7 +44,7 @@ if [ -x "$(command -v google-drive-ocamlfuse)" ]; then
 fi
 
 # xterm config
-[ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources
+[ -x "$(command -v xrdb)" ] && xrdb ~/.Xresources &> /dev/null
 
 # rust
 [ -d "$HOME/.cargo/" ] && . "$HOME/.cargo/env"

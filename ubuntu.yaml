@@ -29,7 +29,7 @@
 
     # i3
     ~/.config:
-      path: i3/.config/**
+      path: i3/.config/*
       glob: true
     ~/.Xresources: i3/.Xresources
     ~/.xprofile: i3/.xprofile
@@ -42,7 +42,7 @@
 
     # vim
     ~/.config/nvim:
-      path: vim/**/*
+      path: vim/*
       force: true
       glob: true
 

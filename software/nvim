@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
-NEOVIM_DIR="$HOME/github/neovim/neovim"
+NEOVIM_DIR="/tmp/dotfiles/neovim"
 NEOVIM_URL="https://github.com/neovim/neovim.git"
 NEOVIM_VER="stable"
 
@@ -26,7 +26,7 @@ echo "========================================================================"
 git clone --depth 1 -b $NEOVIM_VER $NEOVIM_URL $NEOVIM_DIR
 
 pushd  $NEOVIM_DIR
-    make CMAKE_BUILD_TYPE=Release -j2
+    make CMAKE_BUILD_TYPE=Release -j4
     sudo make install
 popd
 

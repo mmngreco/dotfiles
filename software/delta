@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # https://github.com/dandavison/delta/tree/0.8.3#side-by-side-view
-curl -L https://github.com/dandavison/delta/releases/download/0.8.3/git-delta_0.8.3_amd64.deb -o git-delta_0.8.3_amd64.deb
-sudo dpkg -i git-delta_0.8.3_amd64.deb
-rm git-delta_0.8.3_amd64.deb
+ver="0.14.0"
+curl -L https://github.com/dandavison/delta/releases/download/${ver}/git-delta_${ver}_amd64.deb -o git-delta_${ver}_amd64.deb
+sudo dpkg -i git-delta_${ver}_amd64.deb
+rm git-delta_${ver}_amd64.deb

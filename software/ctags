@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-set -x
-dest=$HOME/universal_ctags
+set -e
 
-git clone --depth 1 https://github.com/universal-ctags/ctags.git $dest
+clone_dir=/tmp/dotfiles/universal_ctags
+git clone --depth 1 https://github.com/universal-ctags/ctags.git $clone_dir
 
-pushd $dest
+pushd $clone_dir &> /dev/null
 ./autogen.sh
 ./configure
 make
 sudo make install # may require extra privileges depending on where to install
 popd
 
-rm -rf  $dest
+rm -rf $clone_dir

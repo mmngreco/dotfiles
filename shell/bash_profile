@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # source ~/.bashrc
 if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-. "$HOME/.cargo/env"
+[ -d "$HOME/.cargo/" ] && . "$HOME/.cargo/env"
 
 # opam configuration
 test -r /home/mgreco/.opam/opam-init/init.sh && . /home/mgreco/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

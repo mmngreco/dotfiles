@@ -34,6 +34,7 @@ cmp.setup({
       { name = 'buffer' },
       { name = 'orgmode' },
       { name = 'path' },
+      { name = 'nvim_lsp_signature_help' }
     }
 })
 
