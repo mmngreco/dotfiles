@@ -50,6 +50,8 @@ bindsym $super+s exec sh $HOME/.config/rofi/bin/screenshot
 bindsym $super+c exec notify-send Moira "$(moira check)"
 bindsym $super+v exec notify-send VPN "$(nmcli con up ets)"
 
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
 
 # monitor settings using rofi
 bindsym $super+Ctrl+Shift+m exec rofi-randr

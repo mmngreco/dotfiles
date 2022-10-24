@@ -1,4 +1,11 @@
 " ==== vimspector
+lua <<EOF
+vim.lsp.set_log_level 'debug'
+if vim.fn.has 'nvim-0.5.1' == 1 then
+require('vim.lsp.log').set_format_func(vim.inspect)
+end
+EOF
+
 fun! GotoWindow(id)
     call win_gotoid(a:id)
     MaximizerToggle
@@ -10,7 +17,7 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " Debugger remaps
-nnoremap <leader>m :MaximizerToggle!<CR>
+" nnoremap <leader>m :MaximizerToggle!<CR>
 nnoremap <leader>dd :call vimspector#Launch()<CR>
 
 " go to
