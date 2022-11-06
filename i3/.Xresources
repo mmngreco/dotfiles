@@ -8,7 +8,7 @@
 !xterm*font: -*-mplus*-*-*-*-14-*-*-*-*-*-iso10646-1
 !xrdb ~/.Xresources
 !Xft.dpi: 192
-XTerm*termName: xterm-256color
+!XTerm*termName: xterm-256color
 XTerm.VT100.translations: #override \
 Meta <Key> minus: smaller-vt-font() \n\
 Meta <Key> plus: larger-vt-font() \n\
@@ -90,37 +90,37 @@ dmenu.foreground:	        #d8dee9
 ! ------------------------------------------------------------------------------
 ! Theme catpuccin
 ! ------------------------------------------------------------------------------
-xterm*background: #1E1E2E
-xterm*foreground: #CDD6F4
+*background: #1E1E2E
+*foreground: #CDD6F4
 
 ! black
-xterm*color0: #45475A
-xterm*color8: #585B70
+*color0: #45475A
+*color8: #585B70
 
 ! red
-xterm*color1: #F38BA8
-xterm*color9: #F38BA8
+*color1: #F38BA8
+*color9: #F38BA8
 
 ! green
-xterm*color2: #A6E3A1
-xterm*color10: #A6E3A1
+*color2: #A6E3A1
+*color10: #A6E3A1
 
 ! yellow
-xterm*color3: #F9E2AF
-xterm*color11: #F9E2AF
+*color3: #F9E2AF
+*color11: #F9E2AF
 
 ! blue
-xterm*color4: #89B4FA
-xterm*color12: #89B4FA
+*color4: #89B4FA
+*color12: #89B4FA
 
 ! magenta
-xterm*color5: #F5C2E7
-xterm*color13: #F5C2E7
+*color5: #F5C2E7
+*color13: #F5C2E7
 
 ! cyan
-xterm*color6: #94E2D5
-xterm*color14: #94E2D5
+*color6: #94E2D5
+*color14: #94E2D5
 
 ! white
-xterm*color7: #BAC2DE
-xterm*color15: #A6ADC8
+*color7: #BAC2DE
+*color15: #A6ADC8
