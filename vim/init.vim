@@ -31,7 +31,9 @@ let g:loaded_perl_provider = 0
 let g:python3_host_prog = 'python3'
 
 call plug#begin()
+
 Plug 'pwntester/octo.nvim'
+Plug 'stevearc/gkeep.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'folke/noice.nvim'
 Plug 'rcarriga/nvim-notify'
