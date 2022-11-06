@@ -25,10 +25,11 @@ endif
 
 let loaded_matchparen = 1  " allow usage of local vimrc in projects
 let mapleader = " "
+
+let g:python3_host_prog = 'python3'
 let g:loaded_python_provider = 1
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
-let g:python3_host_prog = 'python3'
 
 call plug#begin()
 
