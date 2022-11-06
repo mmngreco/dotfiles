@@ -33,6 +33,7 @@ let g:loaded_perl_provider = 0
 
 call plug#begin()
 
+Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 Plug 'pwntester/octo.nvim'
 Plug 'stevearc/gkeep.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -1070,4 +1071,20 @@ require"octo".setup({
     }
   }
 })
+EOF
+
+lua << EOF
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {},
+        ["core.norg.dirman"] = {
+            config = {
+                workspaces = {
+                    work = "~/notes/work",
+                    home = "~/notes/home",
+                }
+            }
+        }
+    }
+}
 EOF
