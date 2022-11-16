@@ -398,6 +398,7 @@ augroup mmngreco
     " removes spaces at the end of a line
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritePre *.go GoFmt
+    autocmd BufEnter *.dbout norm zR
 
     " autocmd BufEnter,BufWinEnter,TabEnter *.rs,*.py :lua require'lsp_extensions'.inlay_hints{}
     autocmd FileType markdown setl conceallevel=2 spl=en,es

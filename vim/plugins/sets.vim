@@ -14,7 +14,7 @@ set number
 set nowrap
 set noswapfile
 set nobackup
-set undodir=$HOME/.vim/undodir
+set undodir='$HOME/.vim/undodir'
 set undofile
 set incsearch
 set termguicolors

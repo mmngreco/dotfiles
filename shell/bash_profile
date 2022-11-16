@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
-# source ~/.bashrc
 if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 [ -d "$HOME/.cargo/" ] && . "$HOME/.cargo/env"
 
 # opam configuration
 test -r /home/mgreco/.opam/opam-init/init.sh && . /home/mgreco/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+if [[ "do-etls" = "$(hostname)" ]]; then
+    export DOTFILES=$HOME/.dotfiles
+    export TERM=xterm-256color
+    [ -f ~/.bashrc ] && source ~/.bashrc
+    exec zsh
+fi
