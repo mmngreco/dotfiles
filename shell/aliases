@@ -151,8 +151,6 @@ alias cel="conda env list"
 alias crm="conda remove -n"
 alias ca="conda activate"
 
-# kitty
-alias icat="kitty +kitten icat"
 
 export SERVER_IP=$(hostname -i)
 alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 9000"
@@ -162,6 +160,7 @@ alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP
 alias pyServer='python -s -m http.server'
 # alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
 alias kbus='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
+alias kbusnocaps='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl -option ctrl:nocaps'
 alias pipenv='pipx run pipenv'
 
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
@@ -179,3 +178,7 @@ alias psql_catalog_c='psql $METADATA_DB_URL -c'
 
 alias mount_etls='sshfs mgreco@35.225.183.218:/home/alejandrohall ~/mnt/do_etls/home/alejandrohall'
 alias unmount_etls='fusermount -u ~/mnt/do_etls/home/alejandrohall'
+
+# kitty
+alias icat="kitty +kitten icat"
+alias s="kitty +kitten ssh"

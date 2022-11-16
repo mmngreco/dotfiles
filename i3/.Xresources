@@ -1,14 +1,14 @@
-! -----------------------------------------------------------------------------
-! File: gruvbox-dark.xresources
-! Description: Retro groove colorscheme generalized
-! Author: morhetz <morhetz@gmail.com>
-! Source: https://github.com/morhetz/gruvbox-generalized
-! Last Modified: 6 Sep 2014
-! -----------------------------------------------------------------------------
 !xterm*font: -*-mplus*-*-*-*-14-*-*-*-*-*-iso10646-1
 !xrdb ~/.Xresources
 !Xft.dpi: 192
-XTerm*termName: xterm-256color
+
+XTerm.termName: xterm-256color
+
+XTerm.vt100.locale: false
+XTerm.vt100.utf8: true
+XTerm.vt100.backarrowKey: false
+! XTerm.ttyModes: erase ^?
+
 XTerm.VT100.translations: #override \
 Meta <Key> minus: smaller-vt-font() \n\
 Meta <Key> plus: larger-vt-font() \n\
@@ -20,69 +20,101 @@ Super <Key> KP_Subtract: smaller-vt-font() \n\
 Super <Key> KP_Add: larger-vt-font() \n\
 Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
-XTerm*transparent: true
-xterm*renderFont: true
-/* xterm*faceName: mplus Nerd Font Mono */
-/* xterm*faceName: Fura Code Regular Nerd Font Complete Mono */
-! xterm*faceName: DejaVuSansMono
-! xterm*faceName: UbuntuMono-R
 xterm*faceName: Cascadia Code PL
-xterm*faceSize: 10
-/* xterm*vt100*geometry: 80x50 */
-xterm*loginShell: true
-xterm*saveLines: 10000
-xterm*boldMode: false
+xterm*faceSize: 12
+!  xterm*vt100*geometry: 80x50
+! xterm*loginShell: true
+! xterm*saveLines: 100000
+! xterm*boldMode: false
 xterm*selectToClipboard: true
 
 ! ------------------------------------------------------------------------------
 ! gruvbox-dark
 ! ------------------------------------------------------------------------------
-! hard contrast: *background: #1d2021
-xterm*background: #282828
-! soft contrast: xterm*background: #32302f
-xterm*foreground: #ebdbb2
-! Black + DarkGrey
-xterm*color0:  #282828
-xterm*color8:  #928374
-! DarkRed + Red
-xterm*color1:  #cc241d
-xterm*color9:  #fb4934
-! DarkGreen + Green
-xterm*color2:  #98971a
-xterm*color10: #b8bb26
-! DarkYellow + Yellow
-xterm*color3:  #d79921
-xterm*color11: #fabd2f
-! DarkBlue + Blue
-xterm*color4:  #458588
-xterm*color12: #83a598
-! DarkMagenta + Magenta
-xterm*color5:  #b16286
-xterm*color13: #d3869b
-! DarkCyan + Cyan
-xterm*color6:  #689d6a
-xterm*color14: #8ec07c
-! LightGrey + White
-xterm*color7:  #a89984
-xterm*color15: #ebdbb2
+! ! hard contrast: *background: #1d2021
+! xterm*background: #282828
+! ! soft contrast: xterm*background: #32302f
+! xterm*foreground: #ebdbb2
+! ! Black + DarkGrey
+! xterm*color0:  #282828
+! xterm*color8:  #928374
+! ! DarkRed + Red
+! xterm*color1:  #cc241d
+! xterm*color9:  #fb4934
+! ! DarkGreen + Green
+! xterm*color2:  #98971a
+! xterm*color10: #b8bb26
+! ! DarkYellow + Yellow
+! xterm*color3:  #d79921
+! xterm*color11: #fabd2f
+! ! DarkBlue + Blue
+! xterm*color4:  #458588
+! xterm*color12: #83a598
+! ! DarkMagenta + Magenta
+! xterm*color5:  #b16286
+! xterm*color13: #d3869b
+! ! DarkCyan + Cyan
+! xterm*color6:  #689d6a
+! xterm*color14: #8ec07c
+! ! LightGrey + White
+! xterm*color7:  #a89984
+! xterm*color15: #ebdbb2
 
 
 ! ------------------------------------------------------------------------------
 ! Rofi configs
 ! ------------------------------------------------------------------------------
 
-rofi.color-enabled: true
-rofi.color-window: #2e3440, #2e3440, #2e3440
-rofi.color-normal: #2e3440, #d8dee9, #2e3440, #2e3440, #bf616a
-rofi.color-active: #2e3440, #b48ead, #2e3440, #2e3440, #93e5cc
-rofi.color-urgent: #2e3440, #ebcb8b, #2e3440, #2e3440, #ebcb8b
-rofi.modi: run,drun,window
+! rofi.color-enabled: true
+! rofi.color-window: #2e3440, #2e3440, #2e3440
+! rofi.color-normal: #2e3440, #d8dee9, #2e3440, #2e3440, #bf616a
+! rofi.color-active: #2e3440, #b48ead, #2e3440, #2e3440, #93e5cc
+! rofi.color-urgent: #2e3440, #ebcb8b, #2e3440, #2e3440, #ebcb8b
+! rofi.modi: run,drun,window
 
 ! ------------------------------------------------------------------------------
 ! Dmenu configs
 ! ------------------------------------------------------------------------------
 
-dmenu.selforeground:	    #d8dee9
-dmenu.background:	        #2e3440
-dmenu.selbackground:	    #bf616a
-dmenu.foreground:	        #d8dee9
+! dmenu.selforeground:	    #d8dee9
+! dmenu.background:	        #2e3440
+! dmenu.selbackground:	    #bf616a
+! dmenu.foreground:	        #d8dee9
+
+! ------------------------------------------------------------------------------
+! Theme catpuccin
+! ------------------------------------------------------------------------------
+*background: #1E1E2E
+*foreground: #CDD6F4
+
+! black
+*color0: #45475A
+*color8: #585B70
+
+! red
+*color1: #F38BA8
+*color9: #F38BA8
+
+! green
+*color2: #A6E3A1
+*color10: #A6E3A1
+
+! yellow
+*color3: #F9E2AF
+*color11: #F9E2AF
+
+! blue
+*color4: #89B4FA
+*color12: #89B4FA
+
+! magenta
+*color5: #F5C2E7
+*color13: #F5C2E7
+
+! cyan
+*color6: #94E2D5
+*color14: #94E2D5
+
+! white
+*color7: #BAC2DE
+*color15: #A6ADC8

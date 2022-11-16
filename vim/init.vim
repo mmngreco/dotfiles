@@ -25,13 +25,23 @@ endif
 
 let loaded_matchparen = 1  " allow usage of local vimrc in projects
 let mapleader = " "
+
+let g:python3_host_prog = 'python3'
 let g:loaded_python_provider = 1
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
-let g:python3_host_prog = 'python3'
 
 call plug#begin()
+
+Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+Plug 'pwntester/octo.nvim'
+Plug 'stevearc/gkeep.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'folke/noice.nvim'
+Plug 'rcarriga/nvim-notify'
+Plug 'MunifTanjim/nui.nvim'
 Plug 'jpalardy/vim-slime'
+
 Plug 'Klafyvel/vim-slime-cells'
 " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
@@ -41,11 +51,10 @@ Plug 'nvim-orgmode/orgmode'
 Plug 'waylonwalker/Telegraph.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'tpope/vim-tbone'
-Plug 'mrjones2014/legendary.nvim'
-Plug 'liuchengxu/vista.vim'
-Plug 'phaazon/mind.nvim'
+" Plug 'mrjones2014/legendary.nvim'
+" Plug 'liuchengxu/vista.vim'
+" Plug 'phaazon/mind.nvim'
 Plug 'rafalbromirski/vim-aurora'
-Plug 'rcarriga/nvim-notify'
 Plug 'fatih/vim-go'
 
 " Plug 'skanehira/denops-docker.vim'
@@ -123,7 +132,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " Plug pangloss/vim-javascript'
-" Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 
 " Plug 'rcarriga/nvim-dap-ui'
 " Plug 'mfussenegger/nvim-dap'
@@ -452,7 +461,7 @@ source $DOTFILES/vim/plugins/slime.vim
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
-" source $DOTFILES/vim/plugins/vimspector.vim
+source $DOTFILES/vim/plugins/vimspector.vim
 source $DOTFILES/vim/plugins/firenvim.vim
 source $DOTFILES/vim/plugins/vsnip.vim
 " source $DOTFILES/vim/plugins/workspace.vim
@@ -638,9 +647,9 @@ EOF
 
 
 " === mind
-lua <<EOF
-require("mind").setup()
-EOF
+" lua <<EOF
+" require("mind").setup()
+" EOF
 
 
 
@@ -650,7 +659,7 @@ EOF
 " require("bufferline").setup{}
 " EOF
 
-" " === mind
+" " === symbols-outline
 " lua <<EOF
 " require("symbols-outline").setup()
 " EOF
@@ -862,4 +871,221 @@ require('orgmode').setup({
   org_default_notes_file = '/mnt/google-drive/org/notes.org',
   org_hide_leading_stars = true,
 })
+EOF
+
+
+" lua <<EOF
+" local noice = require("noice")
+" noice.setup({
+"   cmdline = {
+"     enabled = true, -- enables the Noice cmdline UI
+"     view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+"     opts = {}, -- extra opts for the cmdline view. See section on views
+"     ---@type table<string, CmdlineFormat>
+"     format = {
+"       -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
+"       -- view: (default is cmdline view)
+"       -- opts: any options passed to the view
+"       -- icon_hl_group: optional hl_group for the icon
+"       cmdline = { pattern = "^:", icon = ":", lang = "vim" },
+"       search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+"       search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+"       filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+"       lua = { pattern = "^:%s*lua%s+", icon = "", lang = "lua" },
+"       help = { pattern = "^:%s*h%s+", icon = "" },
+"       -- lua = false, -- to disable a format, set to `false`
+"     },
+"   },
+"
+"   notify = {
+"     -- Noice can be used as `vim.notify` so you can route any notification like other messages
+"     -- Notification messages have their level and other properties set.
+"     -- event is always "notify" and kind can be any log level as a string
+"     -- The default routes will forward notifications to nvim-notify
+"     -- Benefit of using Noice for this is the routing and consistent history view
+"     enabled = true,
+"     view = "notify",
+"   },
+"   lsp_progress = {
+"     enabled = true,
+"     -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
+"     -- See the section on formatting for more details on how to customize.
+"     --- @type NoiceFormat|string
+"     format = "lsp_progress",
+"     --- @type NoiceFormat|string
+"     format_done = "lsp_progress_done",
+"     throttle = 1000 / 30, -- frequency to update lsp progress message
+"     view = "mini",
+"   },
+"   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+"   ---@type NoiceConfigViews
+"   views = {}, ---@see section on views
+"   ---@type NoiceRouteConfig[]
+"   routes = {}, --- @see section on routes
+"   ---@type table<string, NoiceFilter>
+"   status = {}, --- @see section on statusline components
+"   ---@type NoiceFormatOptions
+"   format = {}, --- @see section on formatting
+" })
+" EOF
+
+
+lua <<EOF
+require"octo".setup({
+  default_remote = {"upstream", "origin"}; -- order to try remotes
+  ssh_aliases = {},                        -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
+  reaction_viewer_hint_icon = "";         -- marker for user reactions
+  user_icon = " ";                        -- user icon
+  timeline_marker = "";                   -- timeline marker
+  timeline_indent = "2";                   -- timeline indentation
+  right_bubble_delimiter = "";            -- bubble delimiter
+  left_bubble_delimiter = "";             -- bubble delimiter
+  github_hostname = "";                    -- GitHub Enterprise host
+  snippet_context_lines = 4;               -- number or lines around commented lines
+  issues = {
+    order_by = {                           -- criteria to sort results of `Octo issue list`
+      field = "CREATED_AT",                -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
+      direction = "DESC"                   -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+    }
+  },
+  pull_requests = {
+    order_by = {                           -- criteria to sort the results of `Octo pr list`
+      field = "CREATED_AT",                -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
+      direction = "DESC"                   -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+    },
+    always_select_remote_on_create = "false" -- always give prompt to select base remote repo when creating PRs
+  },
+  file_panel = {
+    size = 10,                             -- changed files panel rows
+    use_icons = true                       -- use web-devicons in file panel (if false, nvim-web-devicons does not need to be installed)
+  },
+  mappings = {
+    issue = {
+      close_issue = { lhs = "<space>ic", desc = "close issue" },
+      reopen_issue = { lhs = "<space>io", desc = "reopen issue" },
+      list_issues = { lhs = "<space>il", desc = "list open issues on same repo" },
+      reload = { lhs = "<C-r>", desc = "reload issue" },
+      open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+      copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+      add_assignee = { lhs = "<space>aa", desc = "add assignee" },
+      remove_assignee = { lhs = "<space>ad", desc = "remove assignee" },
+      create_label = { lhs = "<space>lc", desc = "create label" },
+      add_label = { lhs = "<space>la", desc = "add label" },
+      remove_label = { lhs = "<space>ld", desc = "remove label" },
+      goto_issue = { lhs = "<space>gi", desc = "navigate to a local repo issue" },
+      add_comment = { lhs = "<space>ca", desc = "add comment" },
+      delete_comment = { lhs = "<space>cd", desc = "delete comment" },
+      next_comment = { lhs = "]c", desc = "go to next comment" },
+      prev_comment = { lhs = "[c", desc = "go to previous comment" },
+      react_hooray = { lhs = "<space>rp", desc = "add/remove 🎉 reaction" },
+      react_heart = { lhs = "<space>rh", desc = "add/remove ❤️ reaction" },
+      react_eyes = { lhs = "<space>re", desc = "add/remove 👀 reaction" },
+      react_thumbs_up = { lhs = "<space>r+", desc = "add/remove 👍 reaction" },
+      react_thumbs_down = { lhs = "<space>r-", desc = "add/remove 👎 reaction" },
+      react_rocket = { lhs = "<space>rr", desc = "add/remove 🚀 reaction" },
+      react_laugh = { lhs = "<space>rl", desc = "add/remove 😄 reaction" },
+      react_confused = { lhs = "<space>rc", desc = "add/remove 😕 reaction" },
+    },
+    pull_request = {
+      checkout_pr = { lhs = "<space>po", desc = "checkout PR" },
+      merge_pr = { lhs = "<space>pm", desc = "merge commit PR" },
+      squash_and_merge_pr = { lhs = "<space>psm", desc = "squash and merge PR" },
+      list_commits = { lhs = "<space>pc", desc = "list PR commits" },
+      list_changed_files = { lhs = "<space>pf", desc = "list PR changed files" },
+      show_pr_diff = { lhs = "<space>pd", desc = "show PR diff" },
+      add_reviewer = { lhs = "<space>va", desc = "add reviewer" },
+      remove_reviewer = { lhs = "<space>vd", desc = "remove reviewer request" },
+      close_issue = { lhs = "<space>ic", desc = "close PR" },
+      reopen_issue = { lhs = "<space>io", desc = "reopen PR" },
+      list_issues = { lhs = "<space>il", desc = "list open issues on same repo" },
+      reload = { lhs = "<C-r>", desc = "reload PR" },
+      open_in_browser = { lhs = "<C-b>", desc = "open PR in browser" },
+      copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+      goto_file = { lhs = "gf", desc = "go to file" },
+      add_assignee = { lhs = "<space>aa", desc = "add assignee" },
+      remove_assignee = { lhs = "<space>ad", desc = "remove assignee" },
+      create_label = { lhs = "<space>lc", desc = "create label" },
+      add_label = { lhs = "<space>la", desc = "add label" },
+      remove_label = { lhs = "<space>ld", desc = "remove label" },
+      goto_issue = { lhs = "<space>gi", desc = "navigate to a local repo issue" },
+      add_comment = { lhs = "<space>ca", desc = "add comment" },
+      delete_comment = { lhs = "<space>cd", desc = "delete comment" },
+      next_comment = { lhs = "]c", desc = "go to next comment" },
+      prev_comment = { lhs = "[c", desc = "go to previous comment" },
+      react_hooray = { lhs = "<space>rp", desc = "add/remove 🎉 reaction" },
+      react_heart = { lhs = "<space>rh", desc = "add/remove ❤️ reaction" },
+      react_eyes = { lhs = "<space>re", desc = "add/remove 👀 reaction" },
+      react_thumbs_up = { lhs = "<space>r+", desc = "add/remove 👍 reaction" },
+      react_thumbs_down = { lhs = "<space>r-", desc = "add/remove 👎 reaction" },
+      react_rocket = { lhs = "<space>rr", desc = "add/remove 🚀 reaction" },
+      react_laugh = { lhs = "<space>rl", desc = "add/remove 😄 reaction" },
+      react_confused = { lhs = "<space>rc", desc = "add/remove 😕 reaction" },
+    },
+    review_thread = {
+      goto_issue = { lhs = "<space>gi", desc = "navigate to a local repo issue" },
+      add_comment = { lhs = "<space>ca", desc = "add comment" },
+      add_suggestion = { lhs = "<space>sa", desc = "add suggestion" },
+      delete_comment = { lhs = "<space>cd", desc = "delete comment" },
+      next_comment = { lhs = "]c", desc = "go to next comment" },
+      prev_comment = { lhs = "[c", desc = "go to previous comment" },
+      select_next_entry = { lhs = "]q", desc = "move to previous changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      react_hooray = { lhs = "<space>rp", desc = "add/remove 🎉 reaction" },
+      react_heart = { lhs = "<space>rh", desc = "add/remove ❤️ reaction" },
+      react_eyes = { lhs = "<space>re", desc = "add/remove 👀 reaction" },
+      react_thumbs_up = { lhs = "<space>r+", desc = "add/remove 👍 reaction" },
+      react_thumbs_down = { lhs = "<space>r-", desc = "add/remove 👎 reaction" },
+      react_rocket = { lhs = "<space>rr", desc = "add/remove 🚀 reaction" },
+      react_laugh = { lhs = "<space>rl", desc = "add/remove 😄 reaction" },
+      react_confused = { lhs = "<space>rc", desc = "add/remove 😕 reaction" },
+    },
+    submit_win = {
+      approve_review = { lhs = "<C-a>", desc = "approve review" },
+      comment_review = { lhs = "<C-m>", desc = "comment review" },
+      request_changes = { lhs = "<C-r>", desc = "request changes review" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+    },
+    review_diff = {
+      add_review_comment = { lhs = "<space>ca", desc = "add a new review comment" },
+      add_review_suggestion = { lhs = "<space>sa", desc = "add a new review suggestion" },
+      focus_files = { lhs = "<leader>e", desc = "move focus to changed file panel" },
+      toggle_files = { lhs = "<leader>b", desc = "hide/show changed files panel" },
+      next_thread = { lhs = "]t", desc = "move to next thread" },
+      prev_thread = { lhs = "[t", desc = "move to previous thread" },
+      select_next_entry = { lhs = "]q", desc = "move to previous changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      toggle_viewed = { lhs = "<leader><space>", desc = "toggle viewer viewed state" },
+    },
+    file_panel = {
+      next_entry = { lhs = "j", desc = "move to next changed file" },
+      prev_entry = { lhs = "k", desc = "move to previous changed file" },
+      select_entry = { lhs = "<cr>", desc = "show selected changed file diffs" },
+      refresh_files = { lhs = "R", desc = "refresh changed files panel" },
+      focus_files = { lhs = "<leader>e", desc = "move focus to changed file panel" },
+      toggle_files = { lhs = "<leader>b", desc = "hide/show changed files panel" },
+      select_next_entry = { lhs = "]q", desc = "move to previous changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      toggle_viewed = { lhs = "<leader><space>", desc = "toggle viewer viewed state" },
+    }
+  }
+})
+EOF
+
+lua << EOF
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {},
+        ["core.norg.dirman"] = {
+            config = {
+                workspaces = {
+                    work = "~/notes/work",
+                    home = "~/notes/home",
+                }
+            }
+        }
+    }
+}
 EOF
