@@ -32,13 +32,13 @@ function setPrompt() {
 
         1)
             PROMPT=''
-            PROMPT+='%{$fg[green]%}${USER}%{$reset_color%}@%{$fg[blue]%}${${(%):-%M}%.local}%{$reset_color%} '
+            PROMPT+='%{$fg[blue]%}${USER}%{$reset_color%}@%{$fg[green]%}${${(%):-%M}%.local}%{$reset_color%} '
             PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
             ;;
 
         2)
             PROMPT=''
-            PROMPT+='%{$fg[green]%}${USER}%{$reset_color%}@%{$fg[blue]%}${${(%):-%M}%.local}%{$reset_color%} '
+            PROMPT+='%{$fg[blue]%}${USER}%{$reset_color%}@%{$fg[green]%}${${(%):-%M}%.local}%{$reset_color%} '
             PROMPT+='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
             PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
             PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%} '
@@ -48,7 +48,7 @@ function setPrompt() {
 
         3)
             PROMPT=''
-            PROMPT+='%{$fg[green]%}${USER}%{$reset_color%}@%{$fg[blue]%}${${(%):-%M}%.local}%{$reset_color%} '
+            PROMPT+='%{$fg[blue]%}${USER}%{$reset_color%}@%{$fg[green]%}${${(%):-%M}%.local}%{$reset_color%} '
             PROMPT+='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
             PROMPT+='%{$fg[red]%}$(git_prompt_info)%{$reset_color%} '
             PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%} '
@@ -57,7 +57,7 @@ function setPrompt() {
 
         4)
             PROMPT=''
-            PROMPT+='%{$fg[green]%}${USER}%{$reset_color%}@%{$fg[blue]%}${${(%):-%M}%.local}%{$reset_color%} '
+            PROMPT+='%{$fg[blue]%}${USER}%{$reset_color%}@%{$fg[green]%}${${(%):-%M}%.local}%{$reset_color%} '
             PROMPT+='${DOCKER_PROMT}%{$fg[cyan]%}%c%{$reset_color%} '
             PROMPT+='%{$fg[magenta]%}(%T|${ETIME:-0}s)%{$reset_color%} '
             PROMPT+=$'\n'
