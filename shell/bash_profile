@@ -6,6 +6,7 @@ if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.n
 test -r /home/mgreco/.opam/opam-init/init.sh && . /home/mgreco/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 if [[ "do-etls" = "$(hostname)" ]]; then
+    [ -f ~/.profile ] && source ~/.profile
     export DOTFILES=$HOME/.dotfiles
     export TERM=xterm-256color
     [ -f ~/.bashrc ] && source ~/.bashrc
