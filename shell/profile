@@ -17,6 +17,7 @@
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles"
+export DEFAULT_PROMPT=2
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
