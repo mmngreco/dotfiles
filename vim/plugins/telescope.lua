@@ -71,23 +71,38 @@ mmngreco.no_preview = function()
     require("telescope.builtin").current_buffer_fuzzy_find(no_preview())
 end
 
+
 mmngreco.search_scio = function()
+
+    local vim_edit_prompt = function(prompt_bufnr)
+        local current_picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+        local prompt = current_picker:_get_prompt()
+        local cwd = current_picker.cwd
+        actions.close(prompt_bufnr)
+        vim.api.nvim_exec(':edit ' .. cwd .. '/' .. prompt, false)
+        return true
+    end
+
     require("telescope.builtin").find_files({
         prompt_title = "< scio >",
         cwd = "~/github/mmngreco/scio",
         hidden = true,
         no_ignore = true,
+        attach_mappings = function(_, map)
+            map('i', '<c-n>', vim_edit_prompt)
+            return true
+        end
     })
 end
 
-mmngreco.search_matlab = function()
-    require("telescope.builtin").find_files({
-        prompt_title = "< matlab toolbox >",
-        cwd = "~/etsgit1/COM/Matlab/ets/",
-        hidden = true,
-        no_ignore = true,
-    })
-end
+-- mmngreco.search_matlab = function()
+--     require("telescope.builtin").find_files({
+--         prompt_title = "< matlab toolbox >",
+--         cwd = "~/etsgit1/COM/Matlab/ets/",
+--         hidden = true,
+--         no_ignore = true,
+--     })
+-- end
 
 mmngreco.search_dotfiles = function()
     require("telescope.builtin").find_files({
