@@ -1078,6 +1078,9 @@ lua << EOF
 require('neorg').setup {
     load = {
         ["core.defaults"] = {},
+        ["core.export"] = {
+            config = {}
+            },
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
@@ -1085,7 +1088,7 @@ require('neorg').setup {
                     home = "~/notes/home",
                 }
             }
-        }
+        },
     }
 }
 EOF
