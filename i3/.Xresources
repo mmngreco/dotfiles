@@ -26,10 +26,17 @@ xterm*faceSize: 12
 xterm*saveLines: 100000
 ! xterm*boldMode: false
 xterm*selectToClipboard: true
-
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0000/dddd
-urxvt*foreground: #ffffff
+! disable bold font faces, instead make text light blue.
+! XTerm.vt100.colorBDMode: true
+! XTerm.vt100.colorBD: rgb:82/a4/d3
+! disable underlined text, instead make it white.
+! XTerm.vt100.colorULMode: true
+! XTerm.vt100.colorUL: rgb:e4/e4/e4
+! *.vt100.reverseVideo: true
+! similarly use colorIT for italics
+! urxvt*depth: 32
+! urxvt*background: rgba:0000/0000/0000/dddd
+! urxvt*foreground: #ffffff
 
 ! ------------------------------------------------------------------------------
 ! gruvbox-dark
