@@ -27,6 +27,10 @@ xterm*saveLines: 100000
 ! xterm*boldMode: false
 xterm*selectToClipboard: true
 
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0000/dddd
+urxvt*foreground: #ffffff
+
 ! ------------------------------------------------------------------------------
 ! gruvbox-dark
 ! ------------------------------------------------------------------------------

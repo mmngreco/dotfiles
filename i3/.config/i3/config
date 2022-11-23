@@ -269,24 +269,33 @@ for_window [class=slack|Slack] focus
 # client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
 # client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 # client.background           #2f343f
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+# Use custom colors for black
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
 
 set $bg-color            #d8dee820
 set $indicator-color     #d8dee820
-set $border-color        #0cf4ca20
-set $inactive-bg-color   #00000020
+set $border-color        #0cf4ca00
+set $inactive-bg-color   #00000000
 set $text-color          #ababab00
 set $inactive-text-color #676E7D00
 set $urgent-bg-color     #2f343f00
 set $ws-focused-bg       #d8dee800
-
-# set $bg-color            #d8dee820
-# set $indicator-color     #d8dee820
-# set $border-color        #ffffff21
-# set $inactive-bg-color   #ffffff01
-# set $text-color          #ffffff01
-# set $inactive-text-color #ffffff20
-# set $urgent-bg-color     #ffffff01
-# set $ws-focused-bg       #d8dee801
 
 # window colors
 #                       border              background         text                 indicator
@@ -294,3 +303,4 @@ client.focused          $border-color       $bg-color          $text-color      
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+
