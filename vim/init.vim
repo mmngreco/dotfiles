@@ -101,7 +101,8 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 Plug 'itchyny/calendar.vim'
 " Plug 'johngrib/vim-game-code-break'
 " Plug 'joom/latex-unicoder.vim'
