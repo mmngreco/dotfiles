@@ -175,9 +175,8 @@ alias psql_catalog_c='psql $METADATA_DB_URL -c'
 
 
 # alias bat=batcat
-
-alias mount_etls='sshfs mgreco@35.225.183.218:/home/alejandrohall ~/mnt/do_etls/home/alejandrohall'
-alias unmount_etls='fusermount -u ~/mnt/do_etls/home/alejandrohall'
+# alias mount_etls='sshfs mgreco@35.225.183.218:/home/alejandrohall ~/mnt/do_etls/home/alejandrohall'
+# alias unmount_etls='fusermount -u ~/mnt/do_etls/home/alejandrohall'
 
 # kitty
 alias icat="kitty +kitten icat"
