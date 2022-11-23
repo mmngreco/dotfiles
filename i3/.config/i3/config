@@ -239,7 +239,7 @@ bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 10
+for_window [class=".*"] border pixel 20
 # for_window [class="kitty"] border pixel 4
 # for_window [class=".*"] border pixel 0
 # gaps inner all set 20
@@ -273,7 +273,7 @@ for_window [class=slack|Slack] focus
 set $bg-color            #d8dee820
 set $indicator-color     #d8dee820
 set $border-color        #0cf4ca00
-set $inactive-bg-color   #ffffff00
+set $inactive-bg-color   #00000000
 set $text-color          #ababab00
 set $inactive-text-color #676E7D00
 set $urgent-bg-color     #2f343f00
