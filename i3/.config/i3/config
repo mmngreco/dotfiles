@@ -272,12 +272,21 @@ for_window [class=slack|Slack] focus
 
 set $bg-color            #d8dee820
 set $indicator-color     #d8dee820
-set $border-color        #0cf4ca00
-set $inactive-bg-color   #00000000
+set $border-color        #0cf4ca20
+set $inactive-bg-color   #00000020
 set $text-color          #ababab00
 set $inactive-text-color #676E7D00
 set $urgent-bg-color     #2f343f00
 set $ws-focused-bg       #d8dee800
+
+# set $bg-color            #d8dee820
+# set $indicator-color     #d8dee820
+# set $border-color        #ffffff21
+# set $inactive-bg-color   #ffffff01
+# set $text-color          #ffffff01
+# set $inactive-text-color #ffffff20
+# set $urgent-bg-color     #ffffff01
+# set $ws-focused-bg       #d8dee801
 
 # window colors
 #                       border              background         text                 indicator
