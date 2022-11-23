@@ -149,3 +149,18 @@ function! DeleteInactiveBufs()
     echomsg nWipeouts . ' buffer(s) wiped out'
 endfunction
 command! Bdi :call DeleteInactiveBufs()
+
+
+function! s:markdown_backlinks()
+    call fzf#vim#grep(
+                \ "rg --column --line-number --no-heading --color=always --smart-case ".expand('%'), 1,
+                \ fzf#vim#with_preview('right:50%:hidden', '?'), 0)
+endfunction
+command! Backlinks call s:markdown_backlinks()
+
+
+function! s:copy_filename_as_mdlink()
+    let fname=expand("%")
+    let @a="[" . fname . "](./" . fname. ")"
+endfunction
+" autocommand BufLeave * call s:copy_filename_as_mdlink()

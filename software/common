@@ -15,4 +15,7 @@ sudo apt --yes install \
     wget \
     xclip \
     light \
+    plocate \
+    bat \
+    lynx \
     toilet

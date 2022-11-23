@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+dir=/tmp/catppuccin
+git clone https://github.com/catppuccin/zsh-syntax-highlighting.git $dir
+cd $dir/themes/
+cp -v catppuccin_mocha-zsh-syntax-highlighting.zsh ~/.zsh/

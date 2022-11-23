@@ -2,6 +2,7 @@
 
 sudo apt install -y python3-venv python3-pip python3-wheel
 python3 -m pip install --user pipx
+bash -c "pipx install copier"
 bash -c "pipx install cookiecutter"
 bash -c "pipx install pydoro"
 bash -c "pipx install flake8"
@@ -13,3 +14,5 @@ bash -c "pipx install vdsql"
 bash -c "pipx install lookatme"
 bash -c "pipx install httpie"
 bash -c "pipx install s3cmd"
+bash -c "pipx install pdftotext"
+bash -c "pipx install trash-cli"
