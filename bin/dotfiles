@@ -42,6 +42,16 @@ dotfilesPull () {
 }
 
 
+dotfilesPush () {
+
+    pushd $DOTFILES > /dev/null
+    git fetch
+    git push
+    popd > /dev/null
+
+}
+
+
 dotfilesSource() {
     if [[ -z "$DOTFILES" ]]; then
         export DOTFILES="${1:-$HOME/.dotfiles}"
@@ -95,6 +105,8 @@ dotfiles() {
             dotfilesCommit secret ;;
         source)
             dotfilesSource ;;
+        push)
+            dotfilesPush ;;
         pull)
             dotfilesPull ;;
         link)
