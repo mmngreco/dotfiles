@@ -6,27 +6,11 @@ set $alt Mod1
 # set font
 font pango:ubuntu 10
 
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
-
-# autostart
-# exec --no-startup-id xrandr --output eDP-1 --off --auto
-exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
-exec --no-startup-id dunst &
-exec --no-startup-id xsettingsd &
-exec --no-startup-id nm-applet &
-exec --no-startup-id blueman-applet &
-exec --no-startup-id volumeicon &
-# exec --no-startup-id compton -b
-exec --no-startup-id clipit &
-exec --no-startup-id caffeine-indicator &
-
-exec --no-startup-id i3-msg 'exec kitty'
-# exec --no-startup-id i3-msg 'exec xterm'
-exec --no-startup-id i3-msg 'exec nautilus'
-exec --no-startup-id i3-msg 'exec telegram-desktop'
-exec --no-startup-id i3-msg 'exec keepassxc'
-exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
 
 # start a terminal
 bindsym $super+Return exec kitty
@@ -237,7 +221,7 @@ bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 20
+# for_window [class=".*"] border pixel 20
 # for_window [class="kitty"] border pixel 4
 # for_window [class=".*"] border pixel 0
 # gaps inner all set 20
@@ -302,3 +286,22 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
+# autostart
+# exec --no-startup-id xrandr --output eDP-1 --off --auto
+exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+exec --no-startup-id dunst &
+exec --no-startup-id xsettingsd &
+exec --no-startup-id nm-applet &
+exec --no-startup-id blueman-applet &
+exec --no-startup-id volumeicon &
+exec --no-startup-id compton -b
+exec --no-startup-id picom -b
+# exec --no-startup-id clipit &
+exec --no-startup-id caffeine-indicator &
+
+exec --no-startup-id i3-msg 'exec kitty'
+# exec --no-startup-id i3-msg 'exec xterm'
+# exec --no-startup-id i3-msg 'exec nautilus'
+exec --no-startup-id i3-msg 'exec telegram-desktop'
+exec --no-startup-id i3-msg 'exec keepassxc'
+exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
