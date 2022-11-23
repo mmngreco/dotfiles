@@ -29,3 +29,8 @@ install_absent node
 install_absent ctags
 install_absent nvim
 install_absent tmux
+install_absent diff-so-fancy
+install_absent delta
+install_absent ctags
+install_absent pipx
+

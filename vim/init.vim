@@ -33,6 +33,7 @@ let g:loaded_perl_provider = 0
 
 call plug#begin()
 
+Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 Plug 'pwntester/octo.nvim'
 Plug 'stevearc/gkeep.nvim', { 'do': ':UpdateRemotePlugins' }
