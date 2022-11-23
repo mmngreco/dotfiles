@@ -31,8 +31,8 @@ exec --no-startup-id i3-msg 'exec keepassxc'
 exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
 
 # start a terminal
-# bindsym $super+Return exec kitty
-bindsym $super+Return exec xterm
+bindsym $super+Return exec kitty
+bindsym $super+t exec xterm
 # bindsym $super+Shift+Return workspace 1; focus; exec xterm
 # bindsym $super+Shift+Ctrl+v exec croma
 
