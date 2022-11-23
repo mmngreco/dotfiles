@@ -6,12 +6,15 @@ libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
 libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
 autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev
 
-dir=/tmp/i3-gaps
+sudo apt install build-essential
+sudo apt install meson ninja-build
+
+dir="/tmp/i3-gaps"
 
 set -e
-
+[ -d "$dir" ] && rm -rf $dir
 # clone the repository
-git clone https://github.com/Airblader/i3 i3-gaps $dir
+git clone --depth 1 https://github.com/Airblader/i3 $dir
 cd $dir
 
 # compile
