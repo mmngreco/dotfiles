@@ -33,19 +33,24 @@ let g:loaded_perl_provider = 0
 
 call plug#begin()
 
+Plug 'romainl/vim-qf'
+Plug 'RRethy/vim-illuminate'
+
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 Plug 'pwntester/octo.nvim'
-Plug 'stevearc/gkeep.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'stevearc/gkeep.nvim', { 'do': ':UpdateRemotePlugins' }
+
 
 Plug 'folke/noice.nvim'
 Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
-Plug 'jpalardy/vim-slime'
 
+Plug 'jpalardy/vim-slime'
 Plug 'Klafyvel/vim-slime-cells'
-" Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+" Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 " Plug 'psf/black', { 'branch': 'stable' }
 Plug 'nvim-orgmode/orgmode'
 
@@ -78,7 +83,7 @@ Plug 'Konfekt/FastFold'
 " Plug 'willchao612/vim-diagon'
 " Plug 'aquach/vim-mediawiki-editor'
 Plug 'cespare/vim-toml'
-Plug 'chipsenkbeil/distant.nvim'
+" Plug 'chipsenkbeil/distant.nvim'
 Plug 'chrisbra/csv.vim'
 " Plug 'chrisbra/unicode.vim'
 " Plug 'christoomey/vim-tmux-navigator'
@@ -134,7 +139,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " Plug pangloss/vim-javascript'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 
 " Plug 'rcarriga/nvim-dap-ui'
 " Plug 'mfussenegger/nvim-dap'
@@ -168,11 +173,11 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/refactoring.nvim'
 " Plug 'ThePrimeagen/vim-be-good'
-Plug 'tpope/vim-abolish'
 
-Plug 'tpope/vim-dadbod'  " database interface
 Plug 'kristijanhusak/vim-dadbod-ui'
 "
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-dadbod'  " database interface
 Plug 'tpope/vim-dispatch'  " compiler + make = dispatch
 Plug 'tpope/vim-fugitive'  " offers git commands in vim
 Plug 'tpope/vim-markdown'
@@ -183,11 +188,11 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " better netrw
-" Plug 'tweekmonster/impsort.vim'  " color and sort imports
+Plug 'tweekmonster/impsort.vim'  " color and sort imports
 Plug 'tyru/open-browser.vim'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-test/vim-test'
+" Plug 'vim-test/vim-test'
 
 " Plug 'vim-utils/vim-man'
 " Plug 'vuciv/vim-bujo'  " todos
@@ -439,7 +444,7 @@ augroup end
 
 " ==== source plugin conf
 "
-source $DOTFILES/vim/plugins/distant.vim
+" source $DOTFILES/vim/plugins/distant.vim
 source $DOTFILES/vim/plugins/sets.vim
 source $DOTFILES/vim/plugins/netrw.vim
 source $DOTFILES/vim/plugins/functions.vim
@@ -851,7 +856,7 @@ EOF
 autocmd! FileType dbui nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)
 autocmd! FileType dbui setl nonumber norelativenumber
 nnoremap <leader>sq <Plug>(DBUI_SaveQuery)
-nnoremap <silent> `` :nohlsearch<CR>:call minimap#vim#ClearColorSearch()<CR>
+" nnoremap <silent> `` :nohlsearch<CR>:call minimap#vim#ClearColorSearch()<CR>
 
 
 " init.vim
@@ -1075,7 +1080,7 @@ require"octo".setup({
 })
 EOF
 
-lua << EOF
+lua <<EOF
 require('neorg').setup {
     load = {
         ["core.defaults"] = {},
@@ -1092,4 +1097,55 @@ require('neorg').setup {
         },
     }
 }
+EOF
+
+
+lua <<EOF
+-- default configuration
+require('illuminate').configure({
+    -- providers: provider used to get references in the buffer, ordered by priority
+    providers = {
+        'lsp',
+        'treesitter',
+        'regex',
+    },
+    -- delay: delay in milliseconds
+    delay = 100,
+    -- filetype_overrides: filetype specific overrides.
+    -- The keys are strings to represent the filetype while the values are tables that
+    -- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
+    filetype_overrides = {},
+    -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
+    filetypes_denylist = {
+        'dirvish',
+        'fugitive',
+    },
+    -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
+    filetypes_allowlist = {},
+    -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
+    -- See `:help mode()` for possible values
+    modes_denylist = {},
+    -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
+    -- See `:help mode()` for possible values
+    modes_allowlist = {},
+    -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
+    -- Only applies to the 'regex' provider
+    -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+    providers_regex_syntax_denylist = {},
+    -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
+    -- Only applies to the 'regex' provider
+    -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+    providers_regex_syntax_allowlist = {},
+    -- under_cursor: whether or not to illuminate under the cursor
+    under_cursor = true,
+    -- large_file_cutoff: number of lines at which to use large_file_config
+    -- The `under_cursor` option is disabled when this cutoff is hit
+    large_file_cutoff = nil,
+    -- large_file_config: config to use for large files (based on large_file_cutoff).
+    -- Supports the same keys passed to .configure
+    -- If nil, vim-illuminate will be disabled for large files.
+    large_file_overrides = nil,
+    -- min_count_to_highlight: minimum number of matches required to perform highlighting
+    min_count_to_highlight = 1,
+})
 EOF
