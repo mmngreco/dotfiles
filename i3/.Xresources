@@ -21,110 +21,43 @@ XTerm.vt100.translations: #override \
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 xterm*faceName: Cascadia Code PL
-xterm*faceSize: 12
+xterm*faceSize: 14
 !  xterm*vt100*geometry: 80x50
 xterm*saveLines: 100000
 ! xterm*boldMode: false
 xterm*selectToClipboard: true
-! disable bold font faces, instead make text light blue.
-! XTerm.vt100.colorBDMode: true
-! XTerm.vt100.colorBD: rgb:82/a4/d3
-! disable underlined text, instead make it white.
-! XTerm.vt100.colorULMode: true
-! XTerm.vt100.colorUL: rgb:e4/e4/e4
-! *.vt100.reverseVideo: true
-! similarly use colorIT for italics
-! urxvt*depth: 32
-! urxvt*background: rgba:0000/0000/0000/dddd
-! urxvt*foreground: #ffffff
 
-! ------------------------------------------------------------------------------
-! gruvbox-dark
-! ------------------------------------------------------------------------------
-! ! hard contrast: *background: #1d2021
-! xterm*background: #282828
-! ! soft contrast: xterm*background: #32302f
-! xterm*foreground: #ebdbb2
-! ! Black + DarkGrey
-! xterm*color0:  #282828
-! xterm*color8:  #928374
-! ! DarkRed + Red
-! xterm*color1:  #cc241d
-! xterm*color9:  #fb4934
-! ! DarkGreen + Green
-! xterm*color2:  #98971a
-! xterm*color10: #b8bb26
-! ! DarkYellow + Yellow
-! xterm*color3:  #d79921
-! xterm*color11: #fabd2f
-! ! DarkBlue + Blue
-! xterm*color4:  #458588
-! xterm*color12: #83a598
-! ! DarkMagenta + Magenta
-! xterm*color5:  #b16286
-! xterm*color13: #d3869b
-! ! DarkCyan + Cyan
-! xterm*color6:  #689d6a
-! xterm*color14: #8ec07c
-! ! LightGrey + White
-! xterm*color7:  #a89984
-! xterm*color15: #ebdbb2
-
-
-! ------------------------------------------------------------------------------
-! Rofi configs
-! ------------------------------------------------------------------------------
-
-! rofi.color-enabled: true
-! rofi.color-window: #2e3440, #2e3440, #2e3440
-! rofi.color-normal: #2e3440, #d8dee9, #2e3440, #2e3440, #bf616a
-! rofi.color-active: #2e3440, #b48ead, #2e3440, #2e3440, #93e5cc
-! rofi.color-urgent: #2e3440, #ebcb8b, #2e3440, #2e3440, #ebcb8b
-! rofi.modi: run,drun,window
-
-! ------------------------------------------------------------------------------
-! Dmenu configs
-! ------------------------------------------------------------------------------
-
-! dmenu.selforeground:	    #d8dee9
-! dmenu.background:	        #2e3440
-! dmenu.selbackground:	    #bf616a
-! dmenu.foreground:	        #d8dee9
-
-! ------------------------------------------------------------------------------
-! Theme catpuccin
-! ------------------------------------------------------------------------------
-*background: #1E1E2E
-*foreground: #CDD6F4
+xterm.vt100*background: #1E1E2E
+xterm.vt100*foreground: #CDD6F4
 
 ! black
-*color0: #45475A
-*color8: #585B70
+xterm.vt100*color0: #45475A
+xterm.vt100*color8: #585B70
 
 ! red
-*color1: #F38BA8
-*color9: #F38BA8
+xterm.vt100*color1: #F38BA8
+xterm.vt100*color9: #F38BA8
 
 ! green
-*color2: #A6E3A1
-*color10: #A6E3A1
+xterm.vt100*color2: #A6E3A1
+xterm.vt100*color10: #A6E3A1
 
 ! yellow
-*color3: #F9E2AF
-*color11: #F9E2AF
+xterm.vt100*color3: #F9E2AF
+xterm.vt100*color11: #F9E2AF
 
 ! blue
-*color4: #89B4FA
-*color12: #89B4FA
+xterm.vt100*color4: #89B4FA
+xterm.vt100*color12: #89B4FA
 
 ! magenta
-*color5: #F5C2E7
-*color13: #F5C2E7
+xterm.vt100*color5: #F5C2E7
+xterm.vt100*color13: #F5C2E7
 
 ! cyan
-*color6: #94E2D5
-*color14: #94E2D5
+xterm.vt100*color6: #94E2D5
+xterm.vt100*color14: #94E2D5
 
 ! white
-*color7: #BAC2DE
-*color15: #A6ADC8
+xterm.vt100*color7: #BAC2DE
+xterm.vt100*color15: #A6ADC8
