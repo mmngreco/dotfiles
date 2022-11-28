@@ -466,7 +466,9 @@ source $DOTFILES/vim/plugins/navegation.vim
 source $DOTFILES/vim/plugins/neoformat.vim
 source $DOTFILES/vim/plugins/pydocstring.vim
 " source $DOTFILES/vim/plugins/slimux.vim
-source $DOTFILES/vim/plugins/slime.vim
+if !exists('g:started_by_firenvim')
+    source $DOTFILES/vim/plugins/slime.vim
+endif
 source $DOTFILES/vim/plugins/tagbar.vim
 source $DOTFILES/vim/plugins/telescope.vim
 source $DOTFILES/vim/plugins/test.vim
