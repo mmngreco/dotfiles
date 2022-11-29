@@ -41,5 +41,5 @@ export KITTY_LISTEN_ON=unix:/tmp/mykitty-$PPID
 
 # export MOIRA_HOURS_PER_DAY=6
 # export GDK_BACKEND=x11
-export GTK_THEME=Adwaita:dark
+export GTK_THEME=Materia:dark:compact
 export AWS_CONFIG_FILE=$HOME/.aws/credentials
