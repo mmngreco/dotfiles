@@ -24,7 +24,7 @@
     ~/.bash_profile: shell/bash_profile
     ~/.bashrc: shell/bashrc
     ~/.zshrc: shell/zshrc
-    ~/.zprofile: shell/zshrc
+    ~/.zprofile: shell/zprofile
     ~/.inputrc: shell/inputrc
     ~/.profile: shell/profile
 
