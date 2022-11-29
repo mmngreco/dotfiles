@@ -46,8 +46,10 @@ Plug 'folke/noice.nvim'
 Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
 
+if !exists('g:started_by_firenvim')
 Plug 'jpalardy/vim-slime'
 Plug 'Klafyvel/vim-slime-cells'
+end
 
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 " Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}

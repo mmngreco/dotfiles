@@ -1,3 +1,4 @@
+if !exists('g:started_by_firenvim')
 let g:slime_target = "tmux"
 let g:slime_paste_file='~/.slime_paste'
 let g:slime_cell_delimiter = "#\\s*%%"
@@ -40,3 +41,4 @@ nnoremap <leader>c- O<esc>77i-<esc>:norm gcc<cr>j
 
 " nnoremap <leader>cl V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>nn
 " nnoremap <leader>cc V/%%<cr>k:'<,'>SlimuxREPLSendSelection<cr>
+endif
