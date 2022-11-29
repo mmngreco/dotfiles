@@ -13,7 +13,7 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
 " set ttymouse=xterm2
-set mouse=a
+set mouse=
 set cursorline
 " set mouse=nv
 
@@ -938,7 +938,7 @@ EOF
 " EOF
 
 
-lua <<EOF
+lua <<EOL
 require"octo".setup({
   default_remote = {"upstream", "origin"}; -- order to try remotes
   ssh_aliases = {},                        -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
@@ -1080,9 +1080,9 @@ require"octo".setup({
     }
   }
 })
-EOF
+EOL
 
-lua <<EOF
+lua <<EOL
 require('neorg').setup {
     load = {
         ["core.defaults"] = {},
@@ -1099,10 +1099,10 @@ require('neorg').setup {
         },
     }
 }
-EOF
+EOL
 
 
-lua <<EOF
+lua <<EOL
 -- default configuration
 require('illuminate').configure({
     -- providers: provider used to get references in the buffer, ordered by priority
@@ -1150,4 +1150,4 @@ require('illuminate').configure({
     -- min_count_to_highlight: minimum number of matches required to perform highlighting
     min_count_to_highlight = 1,
 })
-EOF
+EOL

@@ -7,8 +7,6 @@ test -r /home/mgreco/.opam/opam-init/init.sh && . /home/mgreco/.opam/opam-init/i
 
 if [[ "do-etls" = "$(hostname)" ]]; then
     [ -f ~/.profile ] && source ~/.profile
-    export DOTFILES=$HOME/.dotfiles
+    # [ -f ~/.bashrc ] && source ~/.bashrc
     export TERM=xterm-256color
-    [ -f ~/.bashrc ] && source ~/.bashrc
-    exec zsh
 fi
