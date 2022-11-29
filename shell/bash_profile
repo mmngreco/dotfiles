@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 [ -d "$HOME/.cargo/" ] && . "$HOME/.cargo/env"
 
 # opam configuration
-test -r /home/mgreco/.opam/opam-init/init.sh && . /home/mgreco/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 if [[ "do-etls" = "$(hostname)" ]]; then
-    [ -f ~/.profile ] && source ~/.profile
-    # [ -f ~/.bashrc ] && source ~/.bashrc
+    [ -f $HOME/.profile ] && source $HOME/.profile
     export TERM=xterm-256color
 fi
