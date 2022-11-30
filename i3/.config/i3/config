@@ -4,7 +4,7 @@ set $alt Mod1
 
 # Use: xrandr command to check monitor names.
 # set font
-font pango:ubuntu 10
+font pango:ubuntu 12
 
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 0 ms
@@ -19,7 +19,7 @@ bindsym $super+t exec xterm
 # bindsym $super+Shift+Ctrl+v exec croma
 
 # start dmenu (a program launcher)
-bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=10'"
+bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'ubuntu:size=12'"
 bindsym $super+Shift+t exec pkill compton && compton -b
 
 # open rofi
@@ -29,8 +29,8 @@ bindsym $super+r exec sh $HOME/.config/rofi/bin/runner
 bindsym $super+p exec sh $HOME/.config/rofi/bin/powermenu
 bindsym $super+s exec sh $HOME/.config/rofi/bin/screenshot
 
-bindsym $super+c exec notify-send Moira "$(moira check)"
-bindsym $super+v exec notify-send VPN "$(nmcli con up ets)"
+# bindsym $super+c exec notify-send Moira "$(moira check)"
+# bindsym $super+v exec notify-send VPN "$(nmcli con up ets)"
 
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
@@ -95,7 +95,7 @@ bindsym $super+Shift+h split v
 bindsym Ctrl+Shift+s layout toggle split
 
 # enter fullscreen mode for the focused container
-bindsym Ctrl+Shift+m fullscreen toggle
+# bindsym Ctrl+Shift+m fullscreen toggle
 
 # toggle tiling / floating
 bindsym Ctrl+Shift+space floating toggle
@@ -105,8 +105,8 @@ bindsym $alt+Ctrl+Shift+s focus mode_toggle
 
 
 # switch to workspace
-bindsym $alt+Shift+Ctrl+h workspace next
-bindsym $alt+Shift+Ctrl+l workspace prev
+# bindsym $alt+Shift+Ctrl+h workspace next
+# bindsym $alt+Shift+Ctrl+l workspace prev
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace 1
@@ -241,8 +241,8 @@ assign [class=Audacity|Vlc|mpv|Ghb|Xfburn] 8
 assign [class=obs|easyeffects] 9
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
-for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
-for_window [class=slack|Slack] focus
+# for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
+for_window [class=".*"] focus
 
 # # colour of border, background, text, indicator, and child_border
 # client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
@@ -300,8 +300,8 @@ exec --no-startup-id caffeine-indicator &
 # exec --no-startup-id clipit &
 
 exec --no-startup-id i3-msg 'exec kitty'
+exec --no-startup-id i3-msg 'exec QT_SCALE_FACTOR=1.5 keepassxc'
 # exec --no-startup-id i3-msg 'exec xterm'
 # exec --no-startup-id i3-msg 'exec nautilus'
 # exec --no-startup-id i3-msg 'exec telegram-desktop'
-exec --no-startup-id i3-msg 'exec QT_SCALE_FACTOR=1.5 keepassxc'
 # exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
