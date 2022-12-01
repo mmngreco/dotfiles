@@ -8,6 +8,7 @@ import pdb
 
 try:
     import numpy as np
+
     np.set_printoptions(linewidth=120)
 except Exception:
     pass
