@@ -13,7 +13,7 @@ require('packer').startup(function(use)
   use 'jpalardy/vim-slime'
   use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
-  use 'RRethy/vim-illuminate'
+  -- use 'RRethy/vim-illuminate'
 
   use 'wbthomason/packer.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
@@ -177,14 +177,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'onedark',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
+
 
 -- Enable Comment.nvim
 require('Comment').setup()
@@ -536,7 +529,7 @@ require('illuminate').configure({
     under_cursor = true,
     -- large_file_cutoff: number of lines at which to use large_file_config
     -- The `under_cursor` option is disabled when this cutoff is hit
-    large_file_cutoff = nil,
+    large_file_cutoff = 10000,
     -- large_file_config: config to use for large files (based on large_file_cutoff).
     -- Supports the same keys passed to .configure
     -- If nil, vim-illuminate will be disabled for large files.
@@ -893,14 +886,14 @@ vim.b.SimpylFold_fold_blank = 0
 
 -- sets
 vim.o.scrollback=20000
-vim.o.guicursor=nil
--- vim.o.relativenumber = 1
--- vim.o.nohlsearch = 1
+-- vim.o.guicursor=nil
+-- vim.o.relativenumber = true
+-- vim.o.nohlsearch = true
 -- vim.o.hidden = true
--- vim.o.noerrorbells = 1
-vim.o.tabstop=4
-vim.o.softtabstop=4
-vim.o.shiftwidth=4
+-- vim.o.noerrorbells = true
+-- vim.o.tabstop=4
+-- vim.o.softtabstop=4
+-- vim.o.shiftwidth=4
 -- vim.o.expandtab = true
 -- vim.o.smartindent = true
 -- vim.o.number = true
@@ -908,18 +901,18 @@ vim.o.shiftwidth=4
 -- vim.o.noswapfile = true
 -- vim.o.nobackup = true
 vim.o.undodir=os.getenv("HOME") .. '/.vim/undodir'
--- vim.o.undofile = true
--- vim.o.incsearch = true
--- vim.o.termguicolors = true
-vim.o.scrolloff=8
-vim.o.signcolumn='no'
-vim.o.cmdheight=1
-vim.o.timeoutlen=220
-vim.o.updatetime=50
-vim.o.colorcolumn=80
-vim.o.shortmess=vim.o.shortmess .. 'c'
-vim.o.textwidth=79
--- vim.o.cursorline=true
+vim.o.undofile = true
+vim.o.incsearch = true
+vim.o.termguicolors = true
+-- vim.o.scrolloff=8
+-- vim.o.signcolumn='no'
+vim.o.cmdheight = 1
+vim.o.timeoutlen = 220
+vim.o.updatetime = 50
+vim.o.colorcolumn = 80
+vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.textwidth = 79
+vim.o.cursorline = true
 
 -- vim.keymap.set('n', '<space><cr>', 'source ~/.config/nvim/init.lua', {noremap = true})
 vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {noremap = true})
@@ -979,6 +972,8 @@ vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').r
 -- Inline variable can also pick up the identifier currently under the cursor without visual mode
 vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
 
+-- to show hidden symbols characters in a file, :set list to show them.
+vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
