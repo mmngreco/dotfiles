@@ -10,6 +10,8 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
+  use 'jpalardy/vim-slime'
+  use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
   use 'RRethy/vim-illuminate'
 
@@ -817,6 +819,7 @@ vim.keymap.set('n', '<leader>co', 'o%%<esc>:norm gcc<cr>k', {noremap = true})
 vim.keymap.set('n', '<leader>c-', 'O<esc>77i-<esc>:norm gcc<cr>j', {noremap = true})
 
 -- slime
+vim.cmd([[let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}]])
 vim.g.slime_target = "tmux"
 vim.g.slime_paste_file='~/.slime_paste'
 vim.g.slime_cell_delimiter = "#\\\\s*%%"
@@ -826,13 +829,14 @@ vim.g.slime_dont_ask_default = 1
 -- vim.g.slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
 vim.g.slime_no_mappings = 1
 
-vim.keymap.set('n', '<leader>cv', '<Plug>SlimeConfig', {noremap = true})
-vim.keymap.set('n', '<leader>e', '<Plug>SlimeSend<cr>', {noremap = true})
-vim.keymap.set('x', '<leader>cl', '<Plug>SlimeRegionSend<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>cp', '<Plug>SlimeParagraphSend', {noremap = true})
-vim.keymap.set('n', '<leader>cc', '<Plug>SlimeCellsSendAndGoToNext', {noremap = true})
-vim.keymap.set('n', '<leader>cj', '<Plug>SlimeCellsNext', {noremap = true})
-vim.keymap.set('n', '<leader>ck', '<Plug>SlimeCellsPrev', {noremap = true})
+vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
+vim.keymap.set('v', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
+vim.keymap.set('x', '<leader>cl', ':SlimeRegionSend<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>cp', ':SlimeParagraphSend', {noremap = true})
+vim.keymap.set('n', '<leader>cc', ':SlimeCellsSendAndGoToNext', {noremap = true})
+vim.keymap.set('n', '<leader>cj', ':SlimeCellsNext', {noremap = true})
+vim.keymap.set('n', '<leader>ck', ':SlimeCellsPrev', {noremap = true})
 
 -- markdown
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'sql' }
@@ -890,23 +894,23 @@ vim.b.SimpylFold_fold_blank = 0
 -- sets
 vim.o.scrollback=20000
 vim.o.guicursor=nil
-vim.o.relativenumber = true
-vim.o.nohlsearch = true
-vim.o.hidden = true
-vim.o.noerrorbells = true
+-- vim.o.relativenumber = 1
+-- vim.o.nohlsearch = 1
+-- vim.o.hidden = true
+-- vim.o.noerrorbells = 1
 vim.o.tabstop=4
 vim.o.softtabstop=4
 vim.o.shiftwidth=4
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.number = true
-vim.o.nowrap = true
-vim.o.noswapfile = true
-vim.o.nobackup = true
+-- vim.o.expandtab = true
+-- vim.o.smartindent = true
+-- vim.o.number = true
+-- vim.o.nowrap = true
+-- vim.o.noswapfile = true
+-- vim.o.nobackup = true
 vim.o.undodir=os.getenv("HOME") .. '/.vim/undodir'
-vim.o.undofile = true
-vim.o.incsearch = true
-vim.o.termguicolors = true
+-- vim.o.undofile = true
+-- vim.o.incsearch = true
+-- vim.o.termguicolors = true
 vim.o.scrolloff=8
 vim.o.signcolumn='no'
 vim.o.cmdheight=1
@@ -915,9 +919,11 @@ vim.o.updatetime=50
 vim.o.colorcolumn=80
 vim.o.shortmess=vim.o.shortmess .. 'c'
 vim.o.textwidth=79
-vim.o.cursorline=true
+-- vim.o.cursorline=true
 
-vim.keymap.set('n', '<space><cr>', 'source ~/.config/nvim/init.lua', {noremap = true})
+-- vim.keymap.set('n', '<space><cr>', 'source ~/.config/nvim/init.lua', {noremap = true})
+vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>rc', ':new ~/.config/nvim/init.lua<cr>', {noremap = true})
 
 
 vim.cmd([[
