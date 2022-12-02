@@ -11,6 +11,25 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'jpalardy/vim-slime'
+  use {
+    'klafyvel/vim-slime-cells',
+    requires = {{'jpalardy/vim-slime', opt=true}},
+    ft = {'python'},
+    config=function ()
+      vim.g.slime_target = "tmux"
+      vim.g.slime_cell_delimiter = "^\\s*##"
+      vim.g.slime_default_config = {socket_name="default", target_pane="0"}
+      vim.g.slime_dont_ask_default = 1
+      vim.g.slime_bracketed_paste = 0
+      vim.g.slime_no_mappings = 1
+      vim.cmd([[
+      nmap <leader>cv <Plug>SlimeConfig
+      nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
+      nmap <leader>cj <Plug>SlimeCellsNext
+      nmap <leader>ck <Plug>SlimeCellsPrev
+      ]])
+    end
+  }
   use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
   -- use 'RRethy/vim-illuminate'
@@ -816,16 +835,15 @@ vim.cmd([[let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0)
 vim.g.slime_target = "tmux"
 vim.g.slime_paste_file='~/.slime_paste'
 vim.g.slime_cell_delimiter = "#\\\\s*%%"
-vim.g.slime_python_ipython = 1
-vim.g.slime_bracketed_paste = 1
-vim.g.slime_dont_ask_default = 1
--- vim.g.slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
-vim.g.slime_no_mappings = 1
+vim.g.slime_python_ipython = true
+vim.g.slime_bracketed_paste = false
+vim.g.slime_dont_ask_default = true
+vim.g.slime_no_mappings = true
 
 vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
 vim.keymap.set('v', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
-vim.keymap.set('x', '<leader>cl', ':SlimeRegionSend<cr>', {noremap = true})
+vim.keymap.set('x', '<leader>cl', '<Plug>SlimeRegionSend', {noremap = true})
 vim.keymap.set('n', '<leader>cp', ':SlimeParagraphSend', {noremap = true})
 vim.keymap.set('n', '<leader>cc', ':SlimeCellsSendAndGoToNext', {noremap = true})
 vim.keymap.set('n', '<leader>cj', ':SlimeCellsNext', {noremap = true})
