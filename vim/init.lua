@@ -13,7 +13,7 @@ require('packer').startup(function(use)
   use 'jpalardy/vim-slime'
   use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
-  -- use 'RRethy/vim-illuminate'
+  use 'RRethy/vim-illuminate'
 
   use 'wbthomason/packer.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
