@@ -10,6 +10,17 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
+
+  -- use {'google/vim-codereview',
+  --   requires = 'google/vim-maktaba',
+  --   ensure_dependencies = true,
+  --   after = 'google/vim-maktaba'
+  -- }
+  use {
+    'ldelossa/gh.nvim',
+    requires = { { 'ldelossa/litee.nvim' } }
+  }
+
   use 'jpalardy/vim-slime'
   use {
     'klafyvel/vim-slime-cells',
@@ -32,7 +43,10 @@ require('packer').startup(function(use)
   }
   use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
-  use 'RRethy/vim-illuminate'
+  use {
+    'RRethy/vim-illuminate',
+    disable = true
+  }
 
   use 'wbthomason/packer.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
@@ -510,52 +524,52 @@ require("catppuccin").setup({
     highlight_overrides = {},
 })
 
-require('illuminate').configure({
-    -- providers: provider used to get references in the buffer, ordered by priority
-    providers = {
-        'lsp',
-        'treesitter',
-        'regex',
-    },
-    -- delay: delay in milliseconds
-    delay = 100,
-    -- filetype_overrides: filetype specific overrides.
-    -- The keys are strings to represent the filetype while the values are tables that
-    -- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
-    filetype_overrides = {},
-    -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
-    filetypes_denylist = {
-        'dirvish',
-        'fugitive',
-    },
-    -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
-    filetypes_allowlist = {},
-    -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
-    -- See `:help mode()` for possible values
-    modes_denylist = {},
-    -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
-    -- See `:help mode()` for possible values
-    modes_allowlist = {},
-    -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
-    -- Only applies to the 'regex' provider
-    -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
-    providers_regex_syntax_denylist = {},
-    -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
-    -- Only applies to the 'regex' provider
-    -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
-    providers_regex_syntax_allowlist = {},
-    -- under_cursor: whether or not to illuminate under the cursor
-    under_cursor = true,
-    -- large_file_cutoff: number of lines at which to use large_file_config
-    -- The `under_cursor` option is disabled when this cutoff is hit
-    large_file_cutoff = 10000,
-    -- large_file_config: config to use for large files (based on large_file_cutoff).
-    -- Supports the same keys passed to .configure
-    -- If nil, vim-illuminate will be disabled for large files.
-    large_file_overrides = nil,
-    -- min_count_to_highlight: minimum number of matches required to perform highlighting
-    min_count_to_highlight = 1,
-})
+-- require('illuminate').configure({
+--     -- providers: provider used to get references in the buffer, ordered by priority
+--     providers = {
+--         'lsp',
+--         'treesitter',
+--         'regex',
+--     },
+--     -- delay: delay in milliseconds
+--     delay = 100,
+--     -- filetype_overrides: filetype specific overrides.
+--     -- The keys are strings to represent the filetype while the values are tables that
+--     -- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
+--     filetype_overrides = {},
+--     -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
+--     filetypes_denylist = {
+--         'dirvish',
+--         'fugitive',
+--     },
+--     -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
+--     filetypes_allowlist = {},
+--     -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
+--     -- See `:help mode()` for possible values
+--     modes_denylist = {},
+--     -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
+--     -- See `:help mode()` for possible values
+--     modes_allowlist = {},
+--     -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
+--     -- Only applies to the 'regex' provider
+--     -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+--     providers_regex_syntax_denylist = {},
+--     -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
+--     -- Only applies to the 'regex' provider
+--     -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+--     providers_regex_syntax_allowlist = {},
+--     -- under_cursor: whether or not to illuminate under the cursor
+--     under_cursor = true,
+--     -- large_file_cutoff: number of lines at which to use large_file_config
+--     -- The `under_cursor` option is disabled when this cutoff is hit
+--     large_file_cutoff = 10000,
+--     -- large_file_config: config to use for large files (based on large_file_cutoff).
+--     -- Supports the same keys passed to .configure
+--     -- If nil, vim-illuminate will be disabled for large files.
+--     large_file_overrides = nil,
+--     -- min_count_to_highlight: minimum number of matches required to perform highlighting
+--     min_count_to_highlight = 1,
+-- })
 
 require('lualine').setup({
     options = {
@@ -993,6 +1007,53 @@ vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').re
 -- to show hidden symbols characters in a file, :set list to show them.
 vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
 vim.keymap.set("n", "<leader>w", ":Git<cr>", {noremap = true})
+
+-- [[ litee.gh : code review ]]
+--
+require('litee.lib').setup()
+require('litee.gh').setup({
+  -- deprecated, around for compatability for now.
+  jump_mode   = "invoking",
+  -- remap the arrow keys to resize any litee.nvim windows.
+  map_resize_keys = false,
+  -- do not map any keys inside any gh.nvim buffers.
+  disable_keymaps = false,
+  -- the icon set to use.
+  icon_set = "default",
+  -- any custom icons to use.
+  icon_set_custom = nil,
+  -- whether to register the @username and #issue_number omnifunc completion
+  -- in buffers which start with .git/
+  git_buffer_completion = true,
+  -- defines keymaps in gh.nvim buffers.
+  keymaps = {
+      -- when inside a gh.nvim panel, this key will open a node if it has
+      -- any futher functionality. for example, hitting <CR> on a commit node
+      -- will open the commit's changed files in a new gh.nvim panel.
+      open = "<CR>",
+      -- when inside a gh.nvim panel, expand a collapsed node
+      expand = "zo",
+      -- when inside a gh.nvim panel, collpased and expanded node
+      collapse = "zc",
+      -- when cursor is over a "#1234" formatted issue or PR, open its details
+      -- and comments in a new tab.
+      goto_issue = "gd",
+      -- show any details about a node, typically, this reveals commit messages
+      -- and submitted review bodys.
+      details = "d",
+      -- inside a convo buffer, submit a comment
+      submit_comment = "<C-s>",
+      -- inside a convo buffer, when your cursor is ontop of a comment, open
+      -- up a set of actions that can be performed.
+      actions = "<C-a>",
+      -- inside a thread convo buffer, resolve the thread.
+      resolve_thread = "<C-r>",
+      -- inside a gh.nvim panel, if possible, open the node's web URL in your
+      -- browser. useful particularily for digging into external failed CI
+      -- checks.
+      goto_web = "gx"
+  }
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

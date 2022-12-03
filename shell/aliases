@@ -133,7 +133,7 @@ alias tkill="tmux kill-server"
 
 # RC files
 alias tmuxrc="pushd_edit_pop $DOTFILES tmux/tmux.conf"
-alias vimrc="pushd_edit_pop $DOTFILES vim/init.vim"
+alias vimrc="pushd_edit_pop $DOTFILES vim/init.lua"
 alias zshrc="pushd_edit_pop $DOTFILES shell/zshrc"
 alias bashrc="pushd_edit_pop $DOTFILES shell/bashrc"
 alias reload="exec $SHELL"
