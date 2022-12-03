@@ -11,28 +11,32 @@ end
 require('packer').startup(function(use)
   -- Package manager
 
-  -- use {'google/vim-codereview',
-  --   requires = 'google/vim-maktaba',
-  --   ensure_dependencies = true,
-  --   after = 'google/vim-maktaba'
-  -- }
-  use {
-    'ldelossa/gh.nvim',
-    requires = { { 'ldelossa/litee.nvim' } }
-  }
-
-  use 'jpalardy/vim-slime'
   use {
     'klafyvel/vim-slime-cells',
     requires = {{'jpalardy/vim-slime', opt=true}},
     ft = {'python'},
+    after = 'jpalardy/vim-slime',
     config=function ()
-      vim.g.slime_target = "tmux"
-      vim.g.slime_cell_delimiter = "^\\s*##"
-      vim.g.slime_default_config = {socket_name="default", target_pane="0"}
-      vim.g.slime_dont_ask_default = 1
       vim.g.slime_bracketed_paste = 0
+      vim.g.slime_cell_delimiter = "#\\\\s*%%"
+      vim.g.slime_dont_ask_default = 1
       vim.g.slime_no_mappings = 1
+      vim.g.slime_paste_file='~/.slime_paste'
+      vim.g.slime_target = "tmux"
+      vim.g.slime_bracketed_paste = 1
+      vim.g.slime_dont_ask_default = 1
+      vim.cmd([[
+      let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
+      ]])
+      vim.g.slime_no_mappings = 1
+      vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
+      vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
+      vim.keymap.set('v', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
+      vim.keymap.set('x', '<leader>cl', '<Plug>SlimeRegionSend', {noremap = true})
+      vim.keymap.set('n', '<leader>cp', ':SlimeParagraphSend', {noremap = true})
+      vim.keymap.set('n', '<leader>cc', ':SlimeCellsSendAndGoToNext', {noremap = true})
+      vim.keymap.set('n', '<leader>cj', ':SlimeCellsNext', {noremap = true})
+      vim.keymap.set('n', '<leader>ck', ':SlimeCellsPrev', {noremap = true})
       vim.cmd([[
       nmap <leader>cv <Plug>SlimeConfig
       nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
@@ -53,10 +57,30 @@ require('packer').startup(function(use)
 
   use 'mbbill/undotree'
 	use 'kristijanhusak/vim-dadbod-ui'
-	use 'szw/vim-maximizer'
+	use {
+      'szw/vim-maximizer',
+      config=function ()
+        vim.keymap.set('n', '<leader>m', ':MaximizerToggle!<CR>', {noremap = true})
+      end
+  }
 	use 'ThePrimeagen/git-worktree.nvim'
 	use 'ThePrimeagen/harpoon'
-	use 'ThePrimeagen/refactoring.nvim'
+
+
+	use {
+    'ThePrimeagen/refactoring.nvim',
+    config=function ()
+      vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+      vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+      vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
+      vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+      -- Extract block doesn't need visual mode
+      vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], {noremap = true, silent = true, expr = false})
+      vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
+      vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+    end
+  }
+
 	use 'tpope/vim-abolish'
 	use 'tpope/vim-dadbod'
 	use 'tpope/vim-dispatch'
@@ -74,6 +98,7 @@ require('packer').startup(function(use)
 	use 'godlygeek/tabular'
 	use 'goerz/jupytext.vim'
 	use 'gyim/vim-boxdraw'
+  use 'fatih/vim-go'
 	use 'mattn/gist-vim'
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -168,7 +193,7 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
+-- vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Decrease update time
@@ -176,7 +201,7 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 vim.cmd [[colorscheme catppuccin]]
 
 -- Set completeopt to have a better completion experience
@@ -289,7 +314,7 @@ vim.keymap.set('n', '<leader>th', '<cmd>lua require(\'telescope.builtin\').help_
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim'},
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'help'},
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -845,23 +870,6 @@ vim.keymap.set('n', '<leader>co', 'o%%<esc>:norm gcc<cr>k', {noremap = true})
 vim.keymap.set('n', '<leader>c-', 'O<esc>77i-<esc>:norm gcc<cr>j', {noremap = true})
 
 -- [[ slime ]]
-vim.g.slime_target = "tmux"
-vim.g.slime_paste_file='~/.slime_paste'
-vim.g.slime_cell_delimiter = "#\\\\s*%%"
--- vim.g.slime_python_ipython = 1
-vim.g.slime_bracketed_paste = 1
-vim.g.slime_dont_ask_default = 1
-vim.cmd([[let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}]])
-vim.g.slime_no_mappings = 1
-
-vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
-vim.keymap.set('v', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
-vim.keymap.set('x', '<leader>cl', '<Plug>SlimeRegionSend', {noremap = true})
-vim.keymap.set('n', '<leader>cp', ':SlimeParagraphSend', {noremap = true})
-vim.keymap.set('n', '<leader>cc', ':SlimeCellsSendAndGoToNext', {noremap = true})
-vim.keymap.set('n', '<leader>cj', ':SlimeCellsNext', {noremap = true})
-vim.keymap.set('n', '<leader>ck', ':SlimeCellsPrev', {noremap = true})
 
 -- markdown
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'sql' }
@@ -923,11 +931,11 @@ vim.o.scrollback=20000
 -- vim.o.nohlsearch = true
 -- vim.o.hidden = true
 -- vim.o.noerrorbells = true
--- vim.o.tabstop=4
--- vim.o.softtabstop=4
--- vim.o.shiftwidth=4
--- vim.o.expandtab = true
--- vim.o.smartindent = true
+vim.o.tabstop=4
+vim.o.softtabstop=4
+vim.o.shiftwidth=4
+vim.o.expandtab = true
+vim.o.smartindent = true
 -- vim.o.number = true
 -- vim.o.nowrap = true
 -- vim.o.noswapfile = true
@@ -941,12 +949,11 @@ vim.o.termguicolors = true
 vim.o.cmdheight = 1
 vim.o.timeoutlen = 220
 vim.o.updatetime = 50
-vim.o.colorcolumn = 80
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.textwidth = 79
 vim.o.cursorline = true
+vim.o.colorcolumn = 80
 
--- vim.keymap.set('n', '<space><cr>', 'source ~/.config/nvim/init.lua', {noremap = true})
 vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>rc', ':new ~/.config/nvim/init.lua<cr>', {noremap = true})
 
@@ -974,86 +981,27 @@ augroup end
 vim.keymap.set('n', 'gV', '`[v`]', {noremap = true})
 vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>/<C-r><C-w>/gI<left><left><left>', {noremap = true})
 vim.keymap.set('n', 'gs', ':%s//g<left><left>', {noremap = true})
-vim.keymap.set('i', '<c-j>', '<esc>:.m+1 \\| startinsert<cr>', {noremap = true})
-vim.keymap.set('i', '<c-k>', '<esc>:.m-2 \\| startinsert<cr>', {noremap = true})
+
+vim.keymap.set('i', '<C-J>', '<esc>:.m+1 | startinsert<cr>', {noremap = true})
+vim.keymap.set('i', '<C-K>', '<esc>:.m-2 | startinsert<cr>', {noremap = true})
+
 vim.keymap.set('n', '<leader>k', ':m .-2<cr>==', {noremap = true})
 vim.keymap.set('n', '<leader>j', ':m .+1<cr>==', {noremap = true})
+
 vim.keymap.set('n', '<leader>cn', ':cnext<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>cp', ':cprev<cr>', {noremap = true})
+
 vim.keymap.set('n', '<leader>gls', ':let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>gln', ':cnext<cr>:call search(g:_search_term)<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>glp', ':cprev<cr>:call search(g:_search_term)<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>sn', ':\'<,\'>!sort -n -k 2', {noremap = true})
 vim.keymap.set('v', '<leader>s', ':\'<,\'>!sort -f<cr>', {noremap = true})
 -- vim.o.isfname:append('@-@')
-
 vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>cal', ':Calendar -view=year -split=vertical -width=27 -first_day=monday<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>day', ':Calendar -first_day=monday<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>m', ':MaximizerToggle!<CR>', {noremap = true})
-
--- [[ refactoring ]]
-vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
-vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
-vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
-vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
--- Extract block doesn't need visual mode
-vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], {noremap = true, silent = true, expr = false})
-vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
-
--- Inline variable can also pick up the identifier currently under the cursor without visual mode
-vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
 
 -- to show hidden symbols characters in a file, :set list to show them.
 vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
 vim.keymap.set("n", "<leader>w", ":Git<cr>", {noremap = true})
-
--- [[ litee.gh : code review ]]
---
-require('litee.lib').setup()
-require('litee.gh').setup({
-  -- deprecated, around for compatability for now.
-  jump_mode   = "invoking",
-  -- remap the arrow keys to resize any litee.nvim windows.
-  map_resize_keys = false,
-  -- do not map any keys inside any gh.nvim buffers.
-  disable_keymaps = false,
-  -- the icon set to use.
-  icon_set = "default",
-  -- any custom icons to use.
-  icon_set_custom = nil,
-  -- whether to register the @username and #issue_number omnifunc completion
-  -- in buffers which start with .git/
-  git_buffer_completion = true,
-  -- defines keymaps in gh.nvim buffers.
-  keymaps = {
-      -- when inside a gh.nvim panel, this key will open a node if it has
-      -- any futher functionality. for example, hitting <CR> on a commit node
-      -- will open the commit's changed files in a new gh.nvim panel.
-      open = "<CR>",
-      -- when inside a gh.nvim panel, expand a collapsed node
-      expand = "zo",
-      -- when inside a gh.nvim panel, collpased and expanded node
-      collapse = "zc",
-      -- when cursor is over a "#1234" formatted issue or PR, open its details
-      -- and comments in a new tab.
-      goto_issue = "gd",
-      -- show any details about a node, typically, this reveals commit messages
-      -- and submitted review bodys.
-      details = "d",
-      -- inside a convo buffer, submit a comment
-      submit_comment = "<C-s>",
-      -- inside a convo buffer, when your cursor is ontop of a comment, open
-      -- up a set of actions that can be performed.
-      actions = "<C-a>",
-      -- inside a thread convo buffer, resolve the thread.
-      resolve_thread = "<C-r>",
-      -- inside a gh.nvim panel, if possible, open the node's web URL in your
-      -- browser. useful particularily for digging into external failed CI
-      -- checks.
-      goto_web = "gx"
-  }
-})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
