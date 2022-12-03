@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-ver="v2.1.7-beta"
+ver="v2.1.8"
 wget https://github.com/federico-terzi/espanso/releases/download/${ver}/espanso-debian-x11-amd64.deb
 sudo apt install ./espanso-debian-x11-amd64.deb
 rm ./espanso-debian-x11-amd64.deb
