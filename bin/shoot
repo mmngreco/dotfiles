@@ -2,7 +2,7 @@
 
 img=/tmp/shot$(date "+%FT%T").png
 
-scrot -s "$img"
+maim -s "$img"
 url=$(imgur "$img")
 
 echo "url: $url"

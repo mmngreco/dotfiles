@@ -1,4 +1,2 @@
 #!/usr/bin/env bash
-# scrot -e 'xclip -selection clipboard -t image/png -i $f'
-scrot $HOME/Pictures/ScreenShot_%a-%d%b%y_%H.%M.png -s -e 'xclip -selection clipboard -t image/png -i $f'
-
+maim $HOME/Pictures/ScreenShot_$(date +%Y-%m-%d_%H%M%S).png -s | xclip -selection clipboard -t image/png

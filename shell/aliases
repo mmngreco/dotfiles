@@ -159,8 +159,8 @@ alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP
 # python
 alias pyServer='python -s -m http.server'
 # alias asdf='setxkbmap -rules evdev -model evdev -layout us -variant dvorak'
-alias kbus='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
-alias kbusnocaps='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl -option ctrl:nocaps'
+alias kb-us='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
+alias kb-usnocaps='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl -option ctrl:nocaps'
 alias pipenv='pipx run pipenv'
 
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
