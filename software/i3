@@ -1,19 +1,51 @@
 #!/usr/bin/env bash
-# https://i3wm.org/docs/userguide.html#_using_i3
-# /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb keyring.deb SHA256:cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
-# sudo dpkg -i ./keyring.deb
-# echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" >> /etc/apt/sources.list.d/sur5r-i3.list
+
 sudo apt update
+sudo apt install --yes \
+    suckless-tools \
+    picom \
+    hsetroot \
+    rxvt-unicode \
+    xsel \
+    rofi \
+    fonts-font-awesome \
+    fonts-noto \
+    fonts-mplus \
+    xsettingsd \
+    lxappearance \
+    scrot \
+    blueman \
+    ffmpeg \
+    volumeicon-alsa \
+    figlet
 
-echo ""
-echo "Installing dependencies..."
-echo ""
+# https://github.com/Airblader/i3/wiki/Building-from-source
+sudo apt install --yes \
+    libxcb1-dev \
+	libxcb-keysyms1-dev \
+	libpango1.0-dev \
+    libxcb-util0-dev \
+	libxcb-icccm4-dev \
+	libyajl-dev \
+    libstartup-notification0-dev \
+	libxcb-randr0-dev \
+    libev-dev \
+	libxcb-cursor-dev \
+	libxcb-xinerama0-dev \
+    libxcb-xkb-dev \
+	libxkbcommon-dev \
+	libxkbcommon-x11-dev \
+    autoconf \
+	libxcb-xrm0 \
+	libxcb-xrm-dev \
+	automake \
+	libxcb-shape0-dev
 
-sudo apt install --yes i3
-sudo apt install --yes i3-wm i3lock i3status suckless-tools
-sudo apt install --yes compton hsetroot rxvt-unicode xsel rofi fonts-font-awesome fonts-noto fonts-mplus xsettingsd lxappearance scrot blueman ffmpeg volumeicon-alsa figlet
-
-echo ""
-echo "Linking files..."
-echo ""
-
+dir=/tmp/i3
+[ -d $dir ] || rm -rf $dir
+git clone https://github.com/i3/i3 $dir
+pushd $dir &> /dev/null
+mkdir -p build && cd build
+meson ..
+ninja
+sudo meson install

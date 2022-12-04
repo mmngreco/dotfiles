@@ -222,12 +222,9 @@ bindsym $super+e layout toggle split
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
-# for_window [class="kitty"] border pixel 4
-# for_window [class=".*"] border pixel 0
-# gaps inner all set 20
-# gaps outer current plus 5
-# gaps horizontal current plus 40
-# gaps outer current toggle 60
+gaps inner 5
+gaps outer 25
+
 
 assign [class=kitty] 1
 assign [class=Brave-browser] 2
