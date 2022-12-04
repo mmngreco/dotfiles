@@ -10,6 +10,7 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
+  use 'github/copilot.vim'
 
   use {
     'klafyvel/vim-slime-cells',
