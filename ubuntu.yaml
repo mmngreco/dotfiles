@@ -42,10 +42,9 @@
     ~/.config/alacritty/alacritty.yml: terminal/alacritty.yml
 
     # vim
-    ~/.config/nvim:
-      path: vim/*
+    ~/.config/nvim/init.lua:
+      path: vim/init.lua
       force: true
-      glob: true
 
     # Python
     ~/.condarc: conda/.condarc
