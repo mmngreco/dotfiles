@@ -232,7 +232,7 @@ require('gitsigns').setup {
   },
 }
 
--- [[ Configure Telescope ]]
+-- [[ Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
@@ -406,7 +406,14 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua', 'gopls' }
+local servers = {
+  -- 'clangd',
+	-- 'rust_analyzer',
+	'pyright',
+	-- 'tsserver',
+	'sumneko_lua',
+	'gopls'
+}
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -627,15 +634,15 @@ autocmd({'FileType'}, {
     command = "setl nonumber norelativenumber",
 })
 
-local mmngreco = {}
+M = {}
 local actions = require('telescope.actions')
 
-mmngreco.no_preview = function()
+M.no_preview = function()
     require("telescope.builtin").current_buffer_fuzzy_find(no_preview())
 end
 
 
-mmngreco.search_scio = function()
+M.search_scio = function()
 
     local vim_edit_prompt = function(prompt_bufnr)
         local current_picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
@@ -658,18 +665,9 @@ mmngreco.search_scio = function()
     })
 end
 
--- mmngreco.search_matlab = function()
---     require("telescope.builtin").find_files({
---         prompt_title = "< matlab toolbox >",
---         cwd = "~/etsgit1/COM/Matlab/ets/",
---         hidden = true,
---         no_ignore = true,
---     })
--- end
+local ignore_patterns = { "venv/", ".venv/", ".git/", "node_modules/", "%.pyc", "__.*cache.*/", "*.pkl", "*.pickle" , "*.mat"}
 
-local ignore_patterns = { ".venv/", ".git/", "node_modules/", "%.pyc", "__.*cache.*/", "*.pkl", "*.pickle" , "*.mat"}
-
-mmngreco.search_dotfiles = function()
+M.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< dotfiles >",
         cwd = "$DOTFILES",
@@ -678,7 +676,7 @@ mmngreco.search_dotfiles = function()
     })
 end
 
-mmngreco.find_files = function()
+M.find_files = function()
     require("telescope.builtin").find_files({
         file_ignore_patterns = ignore_patterns,
         hidden = true,
@@ -688,7 +686,7 @@ mmngreco.find_files = function()
 end
 
 
-mmngreco.git_branches = function()
+M.git_branches = function()
     require("telescope.builtin").git_branches({
         attach_mappings = function(_, map)
             map('i', '<c-d>', actions.git_delete_branch)
@@ -700,7 +698,7 @@ mmngreco.git_branches = function()
 end
 
 
-mmngreco.grep_dotfiles = function()
+M.grep_dotfiles = function()
     require("telescope.builtin").live_grep({
         prompt_title = "< dotfiles >",
         cwd = "$DOTFILES",
@@ -712,7 +710,7 @@ end
 
 
 local telescope = require('telescope')
-telescope.mmngreco = mmngreco
+telescope.mmngreco = M
 telescope.load_extension("git_worktree")
 telescope.load_extension('harpoon')
 
@@ -791,7 +789,7 @@ augroup END
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
 
--- lsp
+-- [[ LSP ]]
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
 vim.g.completion_enable_snippet = 'vim-vsnip'
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
@@ -805,12 +803,53 @@ vim.keymap.set('n', '<leader>dq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 vim.keymap.set('n', '<leader>dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', {noremap = true})
 vim.keymap.set('n', '<leader>dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', {noremap = true})
 
---jupytext
+-- [[ jupytext ]]
 --
 -- vim.g.jupytext_filetype_map = { 'py' : 'python' }
 vim.g.jupytext_fmt = 'py'
 
 -- [[ harpoon ]]
+-- create a function to send the selection to a harpoon terminal
+local function send_to_harpoon(term_num)
+    local term = require('harpoon.term')
+    if vim.fn.mode() == 'v' then
+        print "Visual mode"
+        local selection = vim.fn.getreg('v')
+        if selection == '' then
+            vim.cmd('normal! y')
+            selection = vim.fn.getreg('v')
+        end
+        -- split the selection into lines
+        -- and send each line to the terminal
+        -- split by newline and carriage return
+        for _, line in ipairs(vim.split(selection, '\r\n')) do
+            print(line)
+            -- term.sendCommand(term_num, line)
+        end
+
+        for line in selection:gmatch("[^\r]+") do
+            print(line)
+            -- term.sendCommand(term_num, line)
+            -- term.sendCommand(term_num, '\r')
+        end
+    else
+        local line = vim.fn.getline('.')
+        term.sendCommand(term_num, line)
+        term.sendCommand(term_num, '\r')
+    end
+
+end
+
+M.send_to_harpoon = send_to_harpoon
+-- create a keymap for the function
+vim.keymap.set('n', '<leader>h', ':lua M.send_to_harpoon(1)<CR>', {noremap = true})
+vim.keymap.set('v', '<leader>h', ':lua M.send_to_harpoon(1)<CR>', {noremap = true})
+
+
+-- vim.keymap.set('n', '<leader>h', ':lua require("harpoon.term").gotoTerminal(1)<CR>', {noremap = true})
+-- create a keymap to send selection to a harpoon terminal
+-- vim.keymap.set('v', '<leader>h', ':lua require("harpoon.term").sendCommand(1, vim.fn.input("Command: "))<CR>', {noremap = true})
+--
 local harpoon = require('harpoon.mark').add_file
 
 vim.keymap.set('n', '<leader>aa', require('harpoon.mark').add_file, {noremap = true})
