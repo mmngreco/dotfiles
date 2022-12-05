@@ -810,9 +810,12 @@ vim.g.jupytext_fmt = 'py'
 
 -- [[ harpoon ]]
 -- create a function to send the selection to a harpoon terminal
-local function send_to_harpoon(term_num)
+function Send_to_harpoon(term_num)
     local term = require('harpoon.term')
+    print('send to harpoon')
+    print(vim.fn.mode())
     if vim.fn.mode() == 'v' then
+        -- this is not working
         print "Visual mode"
         local selection = vim.fn.getreg('v')
         if selection == '' then
@@ -833,17 +836,19 @@ local function send_to_harpoon(term_num)
             -- term.sendCommand(term_num, '\r')
         end
     else
+        print "Visual mode"
         local line = vim.fn.getline('.')
         term.sendCommand(term_num, line)
         term.sendCommand(term_num, '\r')
     end
 
 end
+vim.keymap.set('n', '<leader>h', '<cmd>lua Send_to_harpoon(1)<CR>', {noremap = true})
 
-M.send_to_harpoon = send_to_harpoon
+-- M.send_to_harpoon = send_to_harpoon
 -- create a keymap for the function
-vim.keymap.set('n', '<leader>h', ':lua M.send_to_harpoon(1)<CR>', {noremap = true})
-vim.keymap.set('v', '<leader>h', ':lua M.send_to_harpoon(1)<CR>', {noremap = true})
+-- vim.keymap.set('n', '<leader>h', ':lua M.send_to_harpoon(1)<CR>', {noremap = true})
+-- vim.keymap.set('v', '<leader>h', ':\'<,\'>lua M.send_to_harpoon(1)<CR>', {noremap = true})
 
 
 -- vim.keymap.set('n', '<leader>h', ':lua require("harpoon.term").gotoTerminal(1)<CR>', {noremap = true})
