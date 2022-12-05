@@ -809,54 +809,32 @@ vim.keymap.set('n', '<leader>dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',
 vim.g.jupytext_fmt = 'py'
 
 -- [[ harpoon ]]
--- create a function to send the selection to a harpoon terminal
-function Send_to_harpoon(term_num)
-    local term = require('harpoon.term')
-    print('send to harpoon')
-    print(vim.fn.mode())
-    if vim.fn.mode() == 'v' then
-        -- this is not working
-        print "Visual mode"
-        local selection = vim.fn.getreg('v')
-        if selection == '' then
-            vim.cmd('normal! y')
-            selection = vim.fn.getreg('v')
-        end
-        -- split the selection into lines
-        -- and send each line to the terminal
-        -- split by newline and carriage return
-        for _, line in ipairs(vim.split(selection, '\r\n')) do
-            print(line)
-            -- term.sendCommand(term_num, line)
-        end
 
-        for line in selection:gmatch("[^\r]+") do
-            print(line)
-            -- term.sendCommand(term_num, line)
-            -- term.sendCommand(term_num, '\r')
+function Send_to_harpoon(term_num, visual)
+    local goto_term = vim.g.harpoon_goto_term
+    local term = require('harpoon.term')
+    if visual == 1 then
+        local lines = vim.fn.getline("'<", "'>")
+        for _, line in ipairs(lines) do
+            term.sendCommand(term_num, line)
+            term.sendCommand(term_num, '\r')
         end
     else
-        print "Visual mode"
         local line = vim.fn.getline('.')
         term.sendCommand(term_num, line)
         term.sendCommand(term_num, '\r')
     end
 
+    if goto_term == 1 then
+        term.gotoTerminal(term_num)
+    end
+
 end
-vim.keymap.set('n', '<leader>h', '<cmd>lua Send_to_harpoon(1)<CR>', {noremap = true})
+vim.g.harpoon_goto_term = 0
+vim.keymap.set('n', '<leader>h', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
+vim.keymap.set('v', '<leader>h', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
 
--- M.send_to_harpoon = send_to_harpoon
--- create a keymap for the function
--- vim.keymap.set('n', '<leader>h', ':lua M.send_to_harpoon(1)<CR>', {noremap = true})
--- vim.keymap.set('v', '<leader>h', ':\'<,\'>lua M.send_to_harpoon(1)<CR>', {noremap = true})
-
-
--- vim.keymap.set('n', '<leader>h', ':lua require("harpoon.term").gotoTerminal(1)<CR>', {noremap = true})
--- create a keymap to send selection to a harpoon terminal
--- vim.keymap.set('v', '<leader>h', ':lua require("harpoon.term").sendCommand(1, vim.fn.input("Command: "))<CR>', {noremap = true})
---
 local harpoon = require('harpoon.mark').add_file
-
 vim.keymap.set('n', '<leader>aa', require('harpoon.mark').add_file, {noremap = true})
 vim.keymap.set('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, {noremap = true})
 
