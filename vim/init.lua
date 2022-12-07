@@ -834,6 +834,7 @@ vim.g.harpoon_goto_term = 0
 vim.keymap.set('n', '<leader>h', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
 vim.keymap.set('v', '<leader>h', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
 
+
 local harpoon = require('harpoon.mark').add_file
 vim.keymap.set('n', '<leader>aa', require('harpoon.mark').add_file, {noremap = true})
 vim.keymap.set('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, {noremap = true})
@@ -1027,5 +1028,39 @@ vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = tr
 vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
 vim.keymap.set("n", "<leader>w", ":Git<cr>", {noremap = true})
 
+vim.keymap.set('n', '<leader>tu', 'yypvawr-', {noremap = true, desc = 'underline word under cursor'})
+vim.keymap.set('n', '<leader>tx', ':s/\\[\\s\\?\\]/[x]/<cr>', {noremap = true, desc = 'check a box in markdown'})
+vim.keymap.set('n', '<leader>t<space>', ':s/\\[x\\]/[ ]/<cr>', {noremap = true, desc = 'uncheck a box in markdown'})
+vim.keymap.set('n', '<leader>ta', 'I- [ ] <esc>', {noremap = true, desc = 'append empty checkbox in markdown'})
+
+-- create a function to read all checkbox in the current paragraph
+-- and return the number of checked and unchecked boxes
+vim.cmd([[
+function! Checkboxes()
+    normal! vipo<esc>
+    let l:line = line('.')
+    let l:col = col('.')
+    let l:count = 0
+    let l:total = 0
+    while getline(l:line) =~# '^\s*-\s\+\[.\]'
+        let l:total += 1
+        if getline(l:line) =~# '^\s*-\s\+\[x\]'
+            let l:count += 1
+        endif
+        let l:line += 1
+    endwhile
+    call cursor(l:line, l:col)
+    echo l:count . '/' . l:total
+    let l:sum = l:count . '/' . l:total
+    call append(l:line, l:sum)
+    return [l:count, l:total]
+endfunction
+]])
+
+
+---vim.cmd([[
+-- imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+-- let g:copilot_no_tab_map = v:true
+-- ]])
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
