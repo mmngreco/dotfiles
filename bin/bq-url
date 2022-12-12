@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import sys
+try:
+    table = sys.argv[1]
+except Exception:
+    table = sys.stdin.read().strip()
+
+try:
+    project, dataset, table = table.split(".")
+    url = f"https://console.cloud.google.com/search;q={table};searchScope=projects%2F{project};tab=all?project={project}"
+except Exception:
+    url = f"https://console.cloud.google.com/search;q={table}"
+
+print(url)

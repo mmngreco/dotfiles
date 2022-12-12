@@ -1,26 +1,34 @@
 #!/usr/bin/env bash
 # taken from https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/bin/tmux-sessionizer
 
-selected=`listProjects | fzf --header=Projects --reverse --ansi --query "$1" --height 10% -m --header="Create a new tmux session"`
+directory=$1
+session_name=$2
 
-if [[ -z $selected ]]; then
+if [ -z "$directory" ]; then
+    directory=`listProjects | fzf --header=Projects --reverse --ansi --query "$1" --height 10% -m --header="Create a new tmux session"`
+fi
+
+if [[ -z $directory ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+if [[ -z $session_name ]]; then
+    session_name=$(basename "$directory" | tr . _)
+fi
+
 tmux_running=$(pgrep tmux)
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $session_name -c $directory
     exit 0
 fi
 
-if ! tmux has-session -t $selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t $session_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $directory
 fi
 
 if [[ -z $TMUX ]]; then
-    tmux attach-session -t $selected_name
+    tmux attach-session -t $session_name
 else
-    tmux switch-client -t $selected_name
+    tmux switch-client -t $session_name
 fi
 

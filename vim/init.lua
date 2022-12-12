@@ -157,7 +157,7 @@ vim.o.hlsearch = false
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = 'n'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -1032,6 +1032,11 @@ vim.keymap.set('n', '<leader>tu', 'yypvawr-', {noremap = true, desc = 'underline
 vim.keymap.set('n', '<leader>tx', ':s/\\[\\s\\?\\]/[x]/<cr>', {noremap = true, desc = 'check a box in markdown'})
 vim.keymap.set('n', '<leader>t<space>', ':s/\\[x\\]/[ ]/<cr>', {noremap = true, desc = 'uncheck a box in markdown'})
 vim.keymap.set('n', '<leader>ta', 'I- [ ] <esc>', {noremap = true, desc = 'append empty checkbox in markdown'})
+vim.keymap.set('n', '<leader>y', '"+yy', {noremap = true, desc = 'copy to system clipboard'})
+vim.keymap.set('v', '<leader>y', '"+y', {noremap = true, desc = 'copy to system clipboard'})
+vim.keymap.set('n', '<leader>m', ':MaximizerToggle<cr>', {noremap = true, desc = 'Maximize current window'})
+
+
 
 -- create a function to read all checkbox in the current paragraph
 -- and return the number of checked and unchecked boxes
