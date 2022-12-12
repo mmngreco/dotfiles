@@ -1041,31 +1041,31 @@ vim.keymap.set('n', '<leader>m', ':MaximizerToggle<cr>', {noremap = true, desc =
 
 -- lua function to count all checkboxes in the current paragraph
 -- and return the number of checked and unchecked boxes
-function Checkboxes()
-    vim.cmd('normal! vip<ESC>')
+function _G.Checkboxes()
     local line = vim.fn.line('.')
-    local col = vim.fn.col('.')
+    local line_orig = vim.fn.getline('.')
     local checked = 0
     local total = 0
-    print('line: ' .. line .. ' col: ' .. col)
 
-    while line > 1 do
+    -- find the first line of the paragraph
+    while line > 1 and vim.fn.getline(line - 1) ~= '' do
+        line = line - 1
+    end
+
+    while true do
         local line_text = vim.fn.getline(line)
-        if line_text:match('^%s*%-%s%[x%]') then
-            print('checked: ' .. line_text)
+        if line_text:match('^%s*%-%s%[[xX]%]') then
             checked = checked + 1
             total = total + 1
         elseif line_text:match('^%s*%-%s%[.%]') then
-            print('unchecked: ' .. line_text)
             total = total + 1
         else
             break
         end
-        line = line - 1
+        line = line + 1
     end
 
-    vim.fn.cursor(line, col)
-    print(checked .. '/' .. total)
+    vim.api.nvim_input("vipo<esc>A (" .. checked .. "/" .. total .. ")<esc>")
     return {checked, total}
 end
 vim.cmd('command! -nargs=0 Checkboxes lua Checkboxes()')
