@@ -1062,6 +1062,10 @@ function! Checkboxes()
 endfunction
 ]])
 
+vim.keymap.set('n', '<C-g>', ':GBrowse<cr>', {noremap = true})
+vim.keymap.set('v', '<C-g>', ':GBrowse<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>yg', ':GBrowse!<cr>', {noremap = true})
+vim.keymap.set('v', '<leader>yg', ':GBrowse!<cr>', {noremap = true})
 
 ---vim.cmd([[
 -- imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
