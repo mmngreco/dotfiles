@@ -24,6 +24,11 @@ c.InteractiveShellApp.exec_lines = [
 	"tbClass.debugger_cls = Pdb",
 	"tbClass.pdb = tbClass.debugger_cls()",
     "%pdb off",
+	"import os",
+	"def addToClipBoard(text):",
+	"    command = 'echo %r | xclip -selection clipboard' % text",
+	"    os.system(command)",
+
     ]
 c.InteractiveShellApp.extensions = ["autoreload", "rich", "pyflyby"]
 # c.InteractiveShell.colors = 'NoColor'

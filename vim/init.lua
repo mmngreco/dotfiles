@@ -10,6 +10,7 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
+  use 'ishan9299/modus-theme-vim'
   use 'github/copilot.vim'
 
   use {
@@ -30,29 +31,10 @@ require('packer').startup(function(use)
 
   use 'mbbill/undotree'
 	use 'kristijanhusak/vim-dadbod-ui'
-	use {
-      'szw/vim-maximizer',
-      config=function ()
-        vim.keymap.set('n', '<leader>m', ':MaximizerToggle!<CR>', {noremap = true})
-      end
-  }
+	use 'szw/vim-maximizer'
 	use 'ThePrimeagen/git-worktree.nvim'
 	use 'ThePrimeagen/harpoon'
-
-
-	use {
-    'ThePrimeagen/refactoring.nvim',
-    config=function ()
-      vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
-      vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
-      vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
-      vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
-      -- Extract block doesn't need visual mode
-      vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], {noremap = true, silent = true, expr = false})
-      vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
-      vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
-    end
-  }
+	use 'ThePrimeagen/refactoring.nvim'
 
 	use 'tpope/vim-abolish'
 	use 'tpope/vim-dadbod'
@@ -146,7 +128,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
-vim.g.catppuccin_flavour = 'mocha'
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -175,7 +156,11 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 -- vim.o.termguicolors = true
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd('colorscheme modus-vivendi')
+vim.g.modus_termtrans_enable = 1
+vim.g.modus_faint_syntax = 1
+-- vim.cmd [[colorscheme catppuccin]]
+-- vim.g.catppuccin_flavour = 'mocha'
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -1003,18 +988,36 @@ nmap <leader>ck <Plug>SlimeCellsPrev
 ]])
 
 
-vim.keymap.set('n', 'gV', '`[v`]', {noremap = true})
-vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>/<C-r><C-w>/gI<left><left><left>', {noremap = true})
-vim.keymap.set('n', 'gs', ':%s//g<left><left>', {noremap = true})
+-- function to disable number and relative number
+vim.g.number = 1
+function _G.toggle_numbers()
+    if vim.g.number == 1 then
+        vim.g.number = 0
+        vim.o.number = false
+        vim.o.relativenumber = false
+        vim.o.signcolumn = 'no'
+    else
+        vim.g.number = 1
+        vim.o.number = true
+        vim.o.relativenumber = true
+        vim.o.signcolumn = 'yes'
+    end
+end
+vim.cmd('command! -nargs=0 ToggleNumbers lua toggle_numbers()')
 
-vim.keymap.set('i', '<C-J>', '<esc>:.m+1 | startinsert<cr>', {noremap = true})
-vim.keymap.set('i', '<C-K>', '<esc>:.m-2 | startinsert<cr>', {noremap = true})
 
-vim.keymap.set('n', '<leader>k', ':m .-2<cr>==', {noremap = true})
-vim.keymap.set('n', '<leader>j', ':m .+1<cr>==', {noremap = true})
+vim.keymap.set('n', 'gV', '`[v`]', {noremap = true, desc = 'select last visual selection' })
+vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>/<C-r><C-w>/gI<left><left><left>', {noremap = true, desc = 'search and replace word under cursor' })
+vim.keymap.set('n', 'gs', ':%s//g<left><left>', {noremap = true, desc = 'search and replace' })
 
-vim.keymap.set('n', '<leader>cn', ':cnext<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>cp', ':cprev<cr>', {noremap = true})
+vim.keymap.set('i', '<C-J>', '<esc>:.m+1 | startinsert<cr>', {noremap = true, desc = 'move line down' })
+vim.keymap.set('i', '<C-K>', '<esc>:.m-2 | startinsert<cr>', {noremap = true, desc = 'move line up' })
+
+vim.keymap.set('n', '<leader>k', ':m .-2<cr>==', {noremap = true, desc = 'move line up' })
+vim.keymap.set('n', '<leader>j', ':m .+1<cr>==', {noremap = true, desc = 'move line down' })
+
+vim.keymap.set('n', '<leader>cn', ':cnext<cr>', {noremap = true, desc = 'next error' })
+vim.keymap.set('n', '<leader>cp', ':cprev<cr>', {noremap = true, desc = 'previous error' })
 
 vim.keymap.set('n', '<leader>gls', ':let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>gln', ':cnext<cr>:call search(g:_search_term)<cr>', {noremap = true})
@@ -1036,36 +1039,79 @@ vim.keymap.set('n', '<leader>y', '"+yy', {noremap = true, desc = 'copy to system
 vim.keymap.set('v', '<leader>y', '"+y', {noremap = true, desc = 'copy to system clipboard'})
 vim.keymap.set('n', '<leader>m', ':MaximizerToggle<cr>', {noremap = true, desc = 'Maximize current window'})
 
-
-
+-- [[ checkbox ]]
 -- create a function to read all checkbox in the current paragraph
 -- and return the number of checked and unchecked boxes
-vim.cmd([[
-function! Checkboxes()
-    normal! vipo<esc>
-    let l:line = line('.')
-    let l:col = col('.')
-    let l:count = 0
-    let l:total = 0
-    while getline(l:line) =~# '^\s*-\s\+\[.\]'
-        let l:total += 1
-        if getline(l:line) =~# '^\s*-\s\+\[x\]'
-            let l:count += 1
-        endif
-        let l:line += 1
-    endwhile
-    call cursor(l:line, l:col)
-    echo l:count . '/' . l:total
-    let l:sum = l:count . '/' . l:total
-    call append(l:line, l:sum)
-    return [l:count, l:total]
-endfunction
-]])
+
+-- lua function to count all checkboxes in the current paragraph
+-- and return the number of checked and unchecked boxes
+function _G.Checkboxes()
+    local line = vim.fn.line('.')
+    local line_orig = vim.fn.getline('.')
+    local checked = 0
+    local total = 0
+
+    -- find the first line of the paragraph
+    while line > 1 and vim.fn.getline(line - 1) ~= '' do
+        line = line - 1
+    end
+
+    while true do
+        local line_text = vim.fn.getline(line)
+        if line_text:match('^%s*%-%s%[[xX]%]') then
+            checked = checked + 1
+            total = total + 1
+        elseif line_text:match('^%s*%-%s%[.%]') then
+            total = total + 1
+        else
+            break
+        end
+        line = line + 1
+    end
+
+    vim.api.nvim_input("vipo<esc>A (" .. checked .. "/" .. total .. ")<esc>")
+    return {checked, total}
+end
+vim.cmd('command! -nargs=0 Checkboxes lua Checkboxes()')
 
 
----vim.cmd([[
--- imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
--- let g:copilot_no_tab_map = v:true
--- ]])
--- The line beneath this is called `modeline`. See `:help modeline`
+-- [[ fugitive ]]
+vim.keymap.set('n', '<C-g>', ':GBrowse<cr>', {noremap = true, desc = 'browse current file on github'})
+vim.keymap.set('v', '<C-g>', ':GBrowse<cr>', {noremap = true, desc = 'browse current file and line on github'})
+vim.keymap.set('n', '<C-g><C-y>', ':GBrowse!<cr>', {noremap = true, desc = 'yank github url of the current file'})
+vim.keymap.set('v', '<C-g><C-y>', ':GBrowse!<cr>', {noremap = true, desc = 'yank github url of the current line'})
+
+
+-- [[ refactoring ]]
+-- https://github.com/ThePrimeagen/refactoring.nvim
+vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+-- Extract block doesn't need visual mode
+vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+
+
+-- [[ copilot ]]
+-- https://github.com/github/copilot.vim
+vim.g.copilot_autocomplete = 1
+vim.g.copilot_autocomplete_delay = 100
+
+function _G.toggle_copilot()
+    if vim.g.copilot_autocomplete == 1 then
+        vim.g.copilot_autocomplete = 0
+        vim.cmd('Copilot disable')
+        print('copilot off')
+    else
+        vim.g.copilot_autocomplete = 1
+        vim.cmd('Copilot enable')
+        print('copilot on')
+    end
+end
+vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
+vim.cmd('command! -nargs=0 ToggleCopilot lua toggle_copilot()')
+
+
 -- vim: ts=2 sts=2 sw=2 et
