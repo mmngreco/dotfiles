@@ -10,6 +10,7 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
+  use 'ishan9299/modus-theme-vim'
   use 'github/copilot.vim'
 
   use {
@@ -127,7 +128,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
-vim.g.catppuccin_flavour = 'mocha'
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -156,7 +156,11 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 -- vim.o.termguicolors = true
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd('colorscheme modus-vivendi')
+vim.g.modus_termtrans_enable = 1
+vim.g.modus_faint_syntax = 1
+-- vim.cmd [[colorscheme catppuccin]]
+-- vim.g.catppuccin_flavour = 'mocha'
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
