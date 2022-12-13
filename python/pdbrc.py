@@ -5,6 +5,7 @@ Actually, it is what the author uses daily :-). Put it into ~/.pdbrc.py to use
 it.
 """
 import pdb
+import os
 
 try:
     import numpy as np
@@ -13,6 +14,10 @@ try:
 except Exception:
     pass
 
+
+def addToClipBoard(text):
+    command = 'echo %r | xclip -selection clipboard' % text
+    os.system(command)
 
 def show_variables(variables):
     for k, v in variables.items():
