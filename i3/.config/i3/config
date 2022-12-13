@@ -220,8 +220,8 @@ bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 0
-gaps inner 5
+for_window [class=".*"] border pixel 2
+gaps inner 8
 gaps outer 30
 
 
@@ -291,9 +291,8 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
 exec --no-startup-id picom -b
-exec --no-startup-id slimbookbattery &
+# exec --no-startup-id slimbookbattery &
 # exec --no-startup-id caffeine-indicator &
-# exec --no-startup-id picom -b
 # exec --no-startup-id clipit &
 
 exec --no-startup-id i3-msg 'exec kitty'
