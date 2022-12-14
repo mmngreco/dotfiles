@@ -336,7 +336,7 @@ bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 2
 gaps inner 8
 gaps outer 30
 
