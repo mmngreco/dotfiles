@@ -948,6 +948,8 @@ augroup mmngreco
     autocmd FileType markdown setl conceallevel=2 spl=en,es
     autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
     autocmd TermOpen * setl nonumber norelativenumber
+    autocmd  * setl nonumber norelativenumber
+    autocmd FileType fugitive setl nonumber norelativenumber nosigncolumn
 augroup END
 
 augroup black_stuff
@@ -1112,6 +1114,7 @@ function _G.toggle_copilot()
 end
 vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
 vim.cmd('command! -nargs=0 ToggleCopilot lua toggle_copilot()')
+
 
 
 -- vim: ts=2 sts=2 sw=2 et
