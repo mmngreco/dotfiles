@@ -1,10 +1,67 @@
 # set modifier
 set $super Mod4
 set $alt Mod1
+set $height 20
 
 # Use: xrandr command to check monitor names.
 # set font
 font pango:ubuntu 12
+# # colour of border, background, text, indicator, and child_border
+# client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+# client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+# client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+# client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+# client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+# client.background           #2f343f
+# set $bg-color            #d8dee820
+# set $indicator-color     #d8dee820
+# set $border-color        #0cf4ca00
+# set $inactive-bg-color   #00000000
+# set $text-color          #ababab00
+# set $inactive-text-color #676E7D00
+# set $urgent-bg-color     #2f343f00
+# set $ws-focused-bg       #d8dee800
+# window colors
+#                       border              background         text                 indicator
+# client.focused          $border-color       $bg-color          $text-color          $indicator-color
+# client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+# client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+# Use custom colors for black
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
+
+
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+
+floating_minimum_size -1 x -1
+floating_maximum_size -1 x -1
+
+font pango:Hack, FontAwesome 12
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
+client.unfocused        $black      $black      $white      $darkblack  $darkblack
+client.focused_inactive $black      $black      $white      $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background       $black
 
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 0 ms
@@ -137,33 +194,47 @@ bindsym $super+Shift+r mode "resize"
 
 # =============================================================================
 # Focus
+set $ws1  "1:  "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws9  "4:  "
+set $ws4  "4:  "
+set $ws5  "5:  "
+set $ws6  "6:  "
+set $ws7  "7:  "
+set $ws8  "8:  "
+set $ws10 "10:  "
 
 set $monitor_secondary eDP-1
-workspace 6 output $monitor_secondary
-workspace 7 output $monitor_secondary
-workspace 8 output $monitor_secondary
-workspace 9 output $monitor_secondary
-workspace 0 output $monitor_secondary
+workspace $ws6 output $monitor_secondary
+workspace $ws7 output $monitor_secondary
+workspace $ws8 output $monitor_secondary
+workspace $ws9 output $monitor_secondary
+workspace $ws10 output $monitor_secondary
 
 
 set $monitor_primary HDMI-1
-workspace 1 output $monitor_primary
-workspace 2 output $monitor_primary
-workspace 3 output $monitor_primary
-workspace 4 output $monitor_primary
-workspace 5 output $monitor_primary
+workspace $ws1 output $monitor_primary
+workspace $ws2 output $monitor_primary
+workspace $ws3 output $monitor_primary
+workspace $ws4 output $monitor_primary
+workspace $ws5 output $monitor_primary
 
-bindsym $super+1 workspace 1
-bindsym $super+2 workspace 2
-bindsym $super+3 workspace 3
-bindsym $super+4 workspace 4
-bindsym $super+5 workspace 5
+bindsym $super+1 workspace $ws1
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5
 
-bindsym $super+6 workspace 6
-bindsym $super+7 workspace 7
-bindsym $super+8 workspace 8
-bindsym $super+9 workspace 9
-bindsym $super+0 workspace 0
+bindsym $super+6 workspace $ws6
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
+bindsym $super+0 workspace $ws10
+
+bindsym $mod+Tab workspace back_and_forth
+
+
 
 # =============================================================================
 # System
@@ -206,10 +277,58 @@ bar {
     # output $monitor_secondary
     # output $monitor_third
     # output $monitor_fourth
+    font pango:Hack, FontAwesome 12
+    strip_workspace_numbers yes
+    separator_symbol "■"
+    bindsym button4 nop
+    bindsym button5 nop
+    tray_output primary
+#    tray_output eDP1
+    tray_padding 6
+    height $height
 
     status_command i3status
+    # colors {
+    #     statusline         $white
+    #     background         $transparent
+    #     separator          $transparent
+    #
+    #     #                  BORDER       BACKGROUND   TEXT
+    #     focused_workspace  $transparent $transparent $darkwhite
+    #     inactive_workspace $transparent $transparent $white
+    #     active_workspace   $transparent $transparent $white
+    #     urgent_workspace   $darkred     $darkred     $transparent
+    #     binding_mode       $darkred     $darkred     $transparent
+    # }
 
 }
+# bar {
+# #    verbose yes
+#     status_command i3blocks
+#     i3bar_command i3bar -t
+#     position top
+#     font pango:Hack, FontAwesome 12
+#     strip_workspace_numbers yes
+#     separator_symbol "■"
+#     bindsym button4 nop
+#     bindsym button5 nop
+#     tray_output primary
+# #    tray_output eDP1
+#     tray_padding 6
+#     height $height
+#     colors {
+#         statusline         $white
+#         background         $transparent
+#         separator          $transparent
+#
+# #                          BORDER       BACKGROUND   TEXT
+#         focused_workspace  $transparent $transparent $darkwhite
+#         inactive_workspace $transparent $transparent $white
+#         active_workspace   $transparent $transparent $white
+#         urgent_workspace   $darkred     $darkred     $transparent
+#         binding_mode       $darkred     $darkred     $transparent
+#     }
+# }
 
 # default_orientation vertical #start in opposite orientation from your monitor
 for_window [class=".*"] split toggle
@@ -220,7 +339,7 @@ bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
 gaps inner 8
 gaps outer 30
 
@@ -240,47 +359,7 @@ for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 # for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
 for_window [class=".*"] focus
 
-# # colour of border, background, text, indicator, and child_border
-# client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
-# client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.background           #2f343f
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
-# Use custom colors for black
-set $black       #282828
-set $darkblack   #1d2021
-set $transparent #00000000
 
-set $bg-color            #d8dee820
-set $indicator-color     #d8dee820
-set $border-color        #0cf4ca00
-set $inactive-bg-color   #00000000
-set $text-color          #ababab00
-set $inactive-text-color #676E7D00
-set $urgent-bg-color     #2f343f00
-set $ws-focused-bg       #d8dee800
-
-# window colors
-#                       border              background         text                 indicator
-client.focused          $border-color       $bg-color          $text-color          $indicator-color
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
 # autostart
 exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1 --auto --primary
