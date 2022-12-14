@@ -341,16 +341,16 @@ gaps inner 8
 gaps outer 30
 
 
-assign [class=kitty] $ws1
-assign [class=Brave-browser] $ws2
-assign [class=DBeaver] $ws3
-assign [class=slack|Slack] $ws4
-assign [class=Org.gnome.Nautilus|Thunar|File-roller] $ws4
-assign [class=libreoffice*|Gimp*|Inkscape] $ws5
-assign [class=TelegramDesktop] $ws6
-assign [class=keepassxc|KeePassXC] $ws8
-assign [class=Audacity|Vlc|mpv|Ghb|Xfburn] $ws8
-assign [class=obs|easyeffects] $ws9
+assign [class=kitty] 1
+assign [class=Brave-browser] 2
+assign [class=DBeaver] 3
+assign [class=slack|Slack] 4
+assign [class=Org.gnome.Nautilus|Thunar|File-roller] 4
+assign [class=libreoffice*|Gimp*|Inkscape] 5
+assign [class=TelegramDesktop] 6
+assign [class=keepassxc|KeePassXC] 8
+assign [class=Audacity|Vlc|mpv|Ghb|Xfburn] 8
+assign [class=obs|easyeffects] 9
 
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 # for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
