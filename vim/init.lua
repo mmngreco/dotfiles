@@ -948,8 +948,8 @@ augroup mmngreco
     autocmd FileType markdown setl conceallevel=2 spl=en,es
     autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
     autocmd TermOpen * setl nonumber norelativenumber
-    autocmd  * setl nonumber norelativenumber
     autocmd FileType fugitive setl nonumber norelativenumber nosigncolumn
+    autocmd BufLeave fugitive://* norm gq
 augroup END
 
 augroup black_stuff
