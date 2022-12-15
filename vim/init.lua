@@ -12,6 +12,7 @@ require('packer').startup(function(use)
   -- Package manager
   -- use 'ishan9299/modus-theme-vim'
   use 'github/copilot.vim'
+  use 'nvie/vim-flake8'
 
   use {
     'klafyvel/vim-slime-cells',
