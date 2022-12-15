@@ -819,11 +819,11 @@ end
 vim.g.harpoon_goto_term = 0
 vim.keymap.set('n', '<leader>h', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
 vim.keymap.set('v', '<leader>h', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
+-- open harpoon menu
+vim.keymap.set('n', '<leader>ha', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {noremap = true})
+-- add file to harpoon
+vim.keymap.set('n', '<leader>hf', ':lua require("harpoon.mark").add_file()<CR>', {noremap = true})
 
-
-local harpoon = require('harpoon.mark').add_file
-vim.keymap.set('n', '<leader>aa', require('harpoon.mark').add_file, {noremap = true})
-vim.keymap.set('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, {noremap = true})
 
 vim.cmd([[
 nnoremap <silent> <Plug>SendToHarpoon1 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon1", v:count)<cr>
