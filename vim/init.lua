@@ -1028,7 +1028,8 @@ vim.keymap.set('n', '<leader>glp', ':cprev<cr>:call search(g:_search_term)<cr>',
 vim.keymap.set('n', '<leader>sn', ':\'<,\'>!sort -n -k 2', {noremap = true})
 vim.keymap.set('v', '<leader>s', ':\'<,\'>!sort -f<cr>', {noremap = true})
 -- vim.o.isfname:append('@-@')
-vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = true})
+-- vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = true})
+vim.keymap.set('v', '<leader>sf', ':!sqlformat  -k upper -r --indent_after_first --indent_columns -<cr>', {noremap = true})
 
 -- to show hidden symbols characters in a file, :set list to show them.
 vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
