@@ -11,6 +11,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
   -- use 'ishan9299/modus-theme-vim'
+  use 'nvim-telescope/telescope-symbols.nvim'
   use 'github/copilot.vim'
   use 'nvie/vim-flake8'
 

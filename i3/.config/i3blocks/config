@@ -1,29 +1,55 @@
 separator=false
-separator_block_width=5
+separator_block_width=8
+border_top=0
+border_left=0
+border_right=0
+border_bottom=3
 
 [brightness]
-label= 
+label=
 command=echo $(printf "%.0f " $(light -G))
 interval=10
 signal=2
-color=#d79921
+border=#d79921
 
 [wireless]
 label= 
 command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
 interval=2
-color=#98971a
+border=#98971a
 
 [weather]
 label=
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
-color=#A4C2F4
+border=#A4C2F4
+
+[logout]
+full_text=
+command=i3-msg -q exit
+border=#3cc17c
+
+[shutdoown]
+full_text=
+command=exec systemctl poweroff -i
+border=#9e3493
+
+[calendar]
+full_text= cal
+command=gsimplecal &
+border=#b63cc1
+
+[battery]
+label=
+command=bash $DOTFILES/scripts/battery.sh
+interval=10
+border=#3ec98f
 
 [time]
 label=
-command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "
 interval=5
 markup=pango
-color=#928374
-separator_block_width=0
+border=#928374
+
+
