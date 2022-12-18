@@ -17,6 +17,11 @@ sudo apt install --yes \
     blueman \
     ffmpeg \
     volumeicon-alsa \
+    pavucontrol \
+    xbacklight \
+    xautolock \
+    xdotool \
+    i3blocks \
     figlet
 
 # https://github.com/Airblader/i3/wiki/Building-from-source
@@ -42,6 +47,7 @@ sudo apt install --yes \
 	libxcb-shape0-dev
 
 dir=/tmp/i3
+set -e
 [ -d $dir ] || rm -rf $dir
 git clone https://github.com/i3/i3 $dir
 pushd $dir &> /dev/null
