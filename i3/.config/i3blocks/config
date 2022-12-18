@@ -1,0 +1,29 @@
+separator=false
+separator_block_width=5
+
+[brightness]
+label= 
+command=echo $(printf "%.0f " $(light -G))
+interval=10
+signal=2
+color=#d79921
+
+[wireless]
+label= 
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+interval=2
+color=#98971a
+
+[weather]
+label=
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#A4C2F4
+
+[time]
+label=
+command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+interval=5
+markup=pango
+color=#928374
+separator_block_width=0

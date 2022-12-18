@@ -936,6 +936,8 @@ vim.o.textwidth = 79
 vim.o.cursorline = true
 vim.o.colorcolumn = 80
 
+vim.g.python3_host_prog = 'python3'
+
 vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>rc', ':new ~/.config/nvim/init.lua<cr>', {noremap = true})
 

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# xrandr --newmode "3840x2160_60.00" 712.75 3840 4160 4576 5312 2160 2163 2168 2237 -hsync +vsync
-# xrandr --newmode "3440x1440_60.00"  419.50  3440 3696 4064 4688  1440 1443 1453 1493 -hsync +vsync
-
-# second=$(xrandr -q | grep connected | grep -v discon | grep -i hdmi | awk '{print $1}')
-# xrandr --addmode $second 3840x2160_60.00
-# xrandr --addmode $second 3440x1440_60.00
-# xrandr --output $second --mode 3440x1440_60.00
-

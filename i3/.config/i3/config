@@ -2,6 +2,7 @@
 set $super Mod4
 set $alt Mod1
 set $height 20
+set $editor kitty
 
 # Use: xrandr command to check monitor names.
 # set font
@@ -65,6 +66,17 @@ force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
+
+set $ws1   "1:  "
+set $ws2   "2:  "
+set $ws4   "3:  "
+set $ws3   "4:  "
+set $ws5   "5:  "
+set $ws6   "6:  "
+set $ws7   "7:  "
+set $ws8   "8:  "
+set $ws9   "9:  "
+set $ws10 "10:  "
 
 # start a terminal
 bindsym $super+Return exec kitty
@@ -191,16 +203,7 @@ bindsym $super+Shift+r mode "resize"
 
 # =============================================================================
 # Focus
-set $ws1  "1:  "
-set $ws2  "2:  "
-set $ws3  "3:  "
-set $ws9  "4:  "
-set $ws4  "4:  "
-set $ws5  "5:  "
-set $ws6  "6:  "
-set $ws7  "7:  "
-set $ws8  "8:  "
-set $ws10 "10:  "
+
 
 set $monitor_secondary eDP-1
 workspace $ws6 output $monitor_secondary
@@ -229,8 +232,22 @@ bindsym $super+8 workspace $ws8
 bindsym $super+9 workspace $ws9
 bindsym $super+0 workspace $ws10
 
-bindsym $super+Tab workspace back_and_forth
+bindsym $super+Tab workspace next
+bindsym $super+Shift+Tab workspace prev
 
+
+bindsym $super+f fullscreen
+bindsym $super+g fullscreen global
+
+bindsym $super+z layout stacking
+bindsym $super+x layout tabbed
+bindsym $super+c layout toggle split
+
+bindsym $super+Shift+space floating toggle
+bindsym $super+space focus mode_toggle
+
+bindsym $super+a focus parent
+bindsym $super+Shift+a focus child
 
 
 # =============================================================================
@@ -245,65 +262,37 @@ bindsym $super+Shift+q exec i3-nagbar -t warning -m 'Logout ?' -b 'Yes' 'i3-msg 
 # power off
 bindsym $super+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' 'exec systemctl poweroff -i', mode "default"
 
+bindsym $super+Shift+w exec --no-startup-id $editor --class "__nmtui" -e "nmtui-connect"
+
 # panel
-bar {
-
-    colors {
-
-        background #2f343f
-        statusline #2f343f
-        separator #4b5262
-
-        # colour of border, background, and text
-        focused_workspace       #2f343f #bf616a #d8dee8
-        active_workspace        #2f343f #2f343f #d8dee8
-        inactive_workspace      #2f343f #2f343f #d8dee8
-        urgent_workspace        #2f343f #ebcb8b #2f343f
-
-    }
-
-    # font pango:mplus 8
-    # position top
-    tray_output primary
-
-    # mode hide
-    # hidden_state hide
-    # modifier Mod1
-
-    # output $monitor_main
-    # output $monitor_secondary
-    # output $monitor_third
-    # output $monitor_fourth
-    font pango:Hack, FontAwesome 12
-    strip_workspace_numbers yes
-    separator_symbol "■"
-    bindsym button4 nop
-    bindsym button5 nop
-    tray_output primary
-#    tray_output eDP1
-    tray_padding 6
-    height $height
-
-    status_command i3status
-    # colors {
-    #     statusline         $white
-    #     background         $transparent
-    #     separator          $transparent
-    #
-    #     #                  BORDER       BACKGROUND   TEXT
-    #     focused_workspace  $transparent $transparent $darkwhite
-    #     inactive_workspace $transparent $transparent $white
-    #     active_workspace   $transparent $transparent $white
-    #     urgent_workspace   $darkred     $darkred     $transparent
-    #     binding_mode       $darkred     $darkred     $transparent
-    # }
-
-}
 # bar {
-# #    verbose yes
-#     status_command i3blocks
-#     i3bar_command i3bar -t
-#     position top
+#
+#     colors {
+#
+#         background #2f343f
+#         statusline #2f343f
+#         separator #4b5262
+#
+#         # colour of border, background, and text
+#         focused_workspace       #2f343f #bf616a #d8dee8
+#         active_workspace        #2f343f #2f343f #d8dee8
+#         inactive_workspace      #2f343f #2f343f #d8dee8
+#         urgent_workspace        #2f343f #ebcb8b #2f343f
+#
+#     }
+#
+#     # font pango:mplus 8
+#     # position top
+#     tray_output primary
+#
+#     # mode hide
+#     # hidden_state hide
+#     # modifier Mod1
+#
+#     # output $monitor_main
+#     # output $monitor_secondary
+#     # output $monitor_third
+#     # output $monitor_fourth
 #     font pango:Hack, FontAwesome 12
 #     strip_workspace_numbers yes
 #     separator_symbol "■"
@@ -313,19 +302,49 @@ bar {
 # #    tray_output eDP1
 #     tray_padding 6
 #     height $height
-#     colors {
-#         statusline         $white
-#         background         $transparent
-#         separator          $transparent
 #
-# #                          BORDER       BACKGROUND   TEXT
-#         focused_workspace  $transparent $transparent $darkwhite
-#         inactive_workspace $transparent $transparent $white
-#         active_workspace   $transparent $transparent $white
-#         urgent_workspace   $darkred     $darkred     $transparent
-#         binding_mode       $darkred     $darkred     $transparent
-#     }
+#     status_command i3status
+#     # colors {
+#     #     statusline         $white
+#     #     background         $transparent
+#     #     separator          $transparent
+#     #
+#     #     #                  BORDER       BACKGROUND   TEXT
+#     #     focused_workspace  $transparent $transparent $darkwhite
+#     #     inactive_workspace $transparent $transparent $white
+#     #     active_workspace   $transparent $transparent $white
+#     #     urgent_workspace   $darkred     $darkred     $transparent
+#     #     binding_mode       $darkred     $darkred     $transparent
+#     # }
+#
 # }
+bar {
+#    verbose yes
+    status_command i3blocks
+    i3bar_command i3bar -t
+    position top
+    font pango:Hack, FontAwesome 12
+    strip_workspace_numbers yes
+    separator_symbol "■"
+    bindsym button4 nop
+    bindsym button5 nop
+    tray_output primary
+#    tray_output eDP1
+    tray_padding 3
+    height $height
+    colors {
+        statusline         $white
+        background         $transparent
+        separator          $transparent
+
+#                          BORDER       BACKGROUND   TEXT
+        focused_workspace  $white       $transparent $white
+        inactive_workspace $transparent $transparent $white
+        active_workspace   $transparent $transparent $white
+        urgent_workspace   $darkred     $darkred     $transparent
+        binding_mode       $darkred     $darkred     $transparent
+    }
+}
 
 # default_orientation vertical #start in opposite orientation from your monitor
 for_window [class=".*"] split toggle
@@ -336,16 +355,17 @@ bindsym $super+e layout toggle split
 
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 0
 gaps inner 8
 gaps outer 30
+gaps top 10
 
 
 assign [class=kitty] $ws1
 assign [class=Brave-browser] $ws2
 assign [class=DBeaver] $ws3
 assign [class=slack|Slack] $ws4
-assign [class=Org.gnome.Nautilus|Thunar|File-roller] $ws4
+# assign [class=Org.gnome.Nautilus|Thunar|File-roller] $ws4
 assign [class=libreoffice*|Gimp*|Inkscape] $ws5
 assign [class=TelegramDesktop] $ws6
 assign [class=keepassxc|KeePassXC] $ws8
@@ -356,6 +376,16 @@ for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 # for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
 for_window [class=".*"] focus
 
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [instance="__scratchpad"] floating enable, resize set 900 px 500 px, move position center
+for_window [instance="__nmtui"] floating enable
 
 
 # autostart
@@ -377,3 +407,5 @@ exec --no-startup-id i3-msg 'exec QT_SCALE_FACTOR=1.5 keepassxc'
 # exec --no-startup-id i3-msg 'exec nautilus'
 # exec --no-startup-id i3-msg 'exec telegram-desktop'
 # exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
+exec_always --no-startup-id "pgrep --exact xev || xev -root -event randr | grep --line-buffered ScreenChangeNotify | while read change; do pkill -RTMIN+4 i3blocks; done"
+
