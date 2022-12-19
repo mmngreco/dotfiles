@@ -3,38 +3,46 @@ separator_block_width=8
 border_top=0
 border_left=0
 border_right=0
-border_bottom=3
+border_bottom=2
+color=#FFFFFF
+
 
 [logout]
-full_text=
+full_text=" "
 command=i3-msg -q exit
 border=#d84949
 
 [shutdoown]
-full_text=
+full_text=" "
 command=exec systemctl poweroff -i
 border=#d84949
 
-[calendar]
-full_text= Cal
-command=gsimplecal &
-border=#b63cc1
-
 [brightness]
-label=
-command=echo $(printf "%.0f " $(light -G))
+command=echo " $(printf "%.0f" $(light -G))"
 interval=10
 signal=2
 border=#d79921
 
 [wireless]
-command=[[ -z "$(iwgetid -r)" ]] && echo "睊 " || echo "  $(iwgetid -r)"
+command=bash -c '[[ -z "$(iwgetid -r)" ]] && echo "睊 " || echo "  $(iwgetid -r)"'
 interval=2
 border=#98971a
 
+[calendar]
+full_text= Cal
+command=gsimplecal &
+border=#b63cc1
+
+[time]
+# label=
+command=echo " `date +'%a %d %b'` <b> `date +'%T'`</b> "
+interval=5
+markup=pango
+border=#928374
+
 [weather]
 label=
-command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+command=echo " `curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo`"
 interval=3600
 border=#A4C2F4
 
@@ -42,13 +50,6 @@ border=#A4C2F4
 command=bash $DOTFILES/scripts/battery.sh
 interval=10
 border=#3ec98f
-
-[time]
-label=
-command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "
-interval=5
-markup=pango
-border=#928374
 
 # [monitor]
 # full_text="   "

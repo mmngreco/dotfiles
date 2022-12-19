@@ -322,8 +322,8 @@ bar {
 #    verbose yes
     status_command i3blocks
     i3bar_command i3bar -t
-    position bottom
-    font pango:Hack, FontAwesome 12
+    position top
+    font pango:CaskaydiaCove Nerd Font, FontAwesome 12
     strip_workspace_numbers yes
     separator_symbol "■"
     bindsym button4 nop
@@ -338,7 +338,7 @@ bar {
         separator          $transparent
 
 #                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $white       $transparent $white
+        focused_workspace  $transparent $transparent $white
         inactive_workspace $transparent $transparent $white
         active_workspace   $transparent $transparent $white
         urgent_workspace   $darkred     $darkred     $transparent
@@ -357,8 +357,9 @@ bindsym $super+e layout toggle split
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
 gaps inner 8
-gaps outer 10
-gaps top 30
+gaps outer 30
+gaps top 10
+gaps bottom 30
 
 
 assign [class=kitty] $ws1
