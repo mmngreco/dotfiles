@@ -1122,5 +1122,7 @@ end
 vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
 vim.cmd('command! -nargs=0 ToggleCopilot lua toggle_copilot()')
 
+vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
+
 
 -- vim: ts=2 sts=2 sw=2 et

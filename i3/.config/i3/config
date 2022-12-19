@@ -322,7 +322,7 @@ bar {
 #    verbose yes
     status_command i3blocks
     i3bar_command i3bar -t
-    position top
+    position bottom
     font pango:Hack, FontAwesome 12
     strip_workspace_numbers yes
     separator_symbol "■"
@@ -357,8 +357,8 @@ bindsym $super+e layout toggle split
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
 gaps inner 8
-gaps outer 30
-gaps top 10
+gaps outer 10
+gaps top 30
 
 
 assign [class=kitty] $ws1
