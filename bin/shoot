@@ -7,4 +7,4 @@ url=$(imgur "$img")
 
 echo "url: $url"
 echo $url | xclip -selection c
-# notify-send "Uploaded to imgur: ${url}"
+notify-send "Uploaded to imgur: ${url}"

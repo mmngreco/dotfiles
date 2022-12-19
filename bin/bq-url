@@ -1,15 +1,13 @@
-#!/usr/bin/env python3
+#!/bin/bash
 
-import sys
-try:
-    table = sys.argv[1]
-except Exception:
-    table = sys.stdin.read().strip()
+full_table_id=$1
 
-try:
-    project, dataset, table = table.split(".")
-    url = f"https://console.cloud.google.com/search;q={table};searchScope=projects%2F{project};tab=all?project={project}"
-except Exception:
-    url = f"https://console.cloud.google.com/search;q={table}"
+project=$(echo $full_table_id | cut -d. -f1)
+dataset=$(echo $full_table_id | cut -d. -f2)
+table=$(echo $full_table_id | cut -d. -f3)
 
-print(url)
+# echo project $project
+# echo dataset $dataset
+# echo table $table
+
+xdg-open "https://console.cloud.google.com/bigquery?p=${project}&d=${dataset}&t=${table}&page=table"

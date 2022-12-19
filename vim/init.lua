@@ -10,8 +10,12 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
-  use 'ishan9299/modus-theme-vim'
+  -- use 'ishan9299/modus-theme-vim'
+
+  use 'majutsushi/tagbar'
+  use 'nvim-telescope/telescope-symbols.nvim'
   use 'github/copilot.vim'
+  use 'nvie/vim-flake8'
 
   use {
     'klafyvel/vim-slime-cells',
@@ -156,11 +160,11 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 -- vim.o.termguicolors = true
-vim.cmd('colorscheme modus-vivendi')
-vim.g.modus_termtrans_enable = 1
-vim.g.modus_faint_syntax = 1
--- vim.cmd [[colorscheme catppuccin]]
--- vim.g.catppuccin_flavour = 'mocha'
+-- vim.cmd('colorscheme modus-vivendi')
+-- vim.g.modus_termtrans_enable = 1
+-- vim.g.modus_faint_syntax = 1
+vim.cmd [[colorscheme catppuccin]]
+vim.g.catppuccin_flavour = 'mocha'
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -818,11 +822,11 @@ end
 vim.g.harpoon_goto_term = 0
 vim.keymap.set('n', '<leader>h', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
 vim.keymap.set('v', '<leader>h', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
+-- open harpoon menu
+vim.keymap.set('n', '<leader>ha', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {noremap = true})
+-- add file to harpoon
+vim.keymap.set('n', '<leader>hf', ':lua require("harpoon.mark").add_file()<CR>', {noremap = true})
 
-
-local harpoon = require('harpoon.mark').add_file
-vim.keymap.set('n', '<leader>aa', require('harpoon.mark').add_file, {noremap = true})
-vim.keymap.set('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, {noremap = true})
 
 vim.cmd([[
 nnoremap <silent> <Plug>SendToHarpoon1 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon1", v:count)<cr>
@@ -935,6 +939,8 @@ vim.o.textwidth = 79
 vim.o.cursorline = true
 vim.o.colorcolumn = 80
 
+vim.g.python3_host_prog = 'python3'
+
 vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>rc', ':new ~/.config/nvim/init.lua<cr>', {noremap = true})
 
@@ -948,6 +954,8 @@ augroup mmngreco
     autocmd FileType markdown setl conceallevel=2 spl=en,es
     autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
     autocmd TermOpen * setl nonumber norelativenumber
+    autocmd FileType fugitive setl nonumber norelativenumber
+    autocmd BufLeave fugitive://* norm gq
 augroup END
 
 augroup black_stuff
@@ -1025,7 +1033,8 @@ vim.keymap.set('n', '<leader>glp', ':cprev<cr>:call search(g:_search_term)<cr>',
 vim.keymap.set('n', '<leader>sn', ':\'<,\'>!sort -n -k 2', {noremap = true})
 vim.keymap.set('v', '<leader>s', ':\'<,\'>!sort -f<cr>', {noremap = true})
 -- vim.o.isfname:append('@-@')
-vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = true})
+-- vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = true})
+vim.keymap.set('v', '<leader>sf', ':!sqlformat  -k upper -r --indent_after_first --indent_columns -<cr>', {noremap = true})
 
 -- to show hidden symbols characters in a file, :set list to show them.
 vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
@@ -1112,6 +1121,8 @@ function _G.toggle_copilot()
 end
 vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
 vim.cmd('command! -nargs=0 ToggleCopilot lua toggle_copilot()')
+
+vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
 
 
 -- vim: ts=2 sts=2 sw=2 et

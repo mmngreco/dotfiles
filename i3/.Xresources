@@ -7,6 +7,18 @@ XTerm.termName: xterm-256color
 XTerm.vt100.locale: false
 XTerm.vt100.utf8: true
 XTerm.vt100.backarrowKey: false
+xterm*trueColor: true
+! xterm*eightBitInput: false
+! XTerm.vt100.allowColorOps: true
+
+! ! disable bold font faces, instead make text light blue.
+! XTerm.vt100.colorBDMode: true
+! XTerm.vt100.colorBD: rgb:82/a4/d3
+! ! disable underlined text, instead make it white.
+! XTerm.vt100.colorULMode: true
+! XTerm.vt100.colorUL: rgb:e4/e4/e4
+! ! similarly use colorIT for italics
+
 ! XTerm.ttyModes: erase ^?
 
 XTerm.vt100.translations: #override \
@@ -21,6 +33,7 @@ XTerm.vt100.translations: #override \
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 xterm*faceName: Cascadia Code PL
+! xTerm*faceName: mplus Nerd Font
 xterm*faceSize: 14
 !  xterm*vt100*geometry: 80x50
 xterm*saveLines: 100000

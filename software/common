@@ -18,4 +18,8 @@ sudo apt --yes install \
     plocate \
     bat \
     lynx \
+    alacritty \
+    i3blocks \
+    thunar \
+    xbacklight \
     toilet
