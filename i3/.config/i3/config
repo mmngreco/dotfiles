@@ -247,7 +247,7 @@ bar {
     status_command i3blocks
     i3bar_command i3bar -t
     position top
-    font pango:CaskaydiaCove Nerd Font, FontAwesome 13
+    font pango:CaskaydiaCove Nerd Font, FontAwesome 12
     strip_workspace_numbers yes
     separator_symbol "■"
     bindsym button4 nop
@@ -262,8 +262,8 @@ bar {
         separator          $transparent
 
 #                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $white       $transparent $white
-        inactive_workspace $transparent $transparent $white
+        focused_workspace  $transparent $transparent $white
+        inactive_workspace $transparent $transparent $black
         active_workspace   $transparent $transparent $white
         urgent_workspace   $darkred     $darkred     $transparent
         binding_mode       $darkred     $darkred     $transparent
@@ -321,7 +321,8 @@ exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b --experimental-backends
+
 # exec --no-startup-id slimbookbattery &
 # exec --no-startup-id caffeine-indicator &
 # exec --no-startup-id clipit &
