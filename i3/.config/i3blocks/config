@@ -33,6 +33,11 @@ full_text= Cal
 command=gsimplecal &
 border=#b63cc1
 
+[todo]
+full_text= todo
+command=kitty bash -c "nvim ~/TODO.md"
+border=#f2d93a
+
 [time]
 # label=
 command=echo " `date +'%a %d %b'` <b> `date +'%T'`</b> "
@@ -41,8 +46,7 @@ markup=pango
 border=#928374
 
 [weather]
-label=
-command=echo " `curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo`"
+command=echo "`curl -Ss 'https://wttr.in/?0&T&Q&format=1'`"
 interval=3600
 border=#A4C2F4
 

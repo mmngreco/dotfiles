@@ -1,33 +1,13 @@
 # set modifier
 set $super Mod4
 set $alt Mod1
-set $height 20
+set $height 34
 set $editor kitty
 
 # Use: xrandr command to check monitor names.
 # set font
-font pango:ubuntu 12
-# # colour of border, background, text, indicator, and child_border
-# client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
-# client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
-# client.background           #2f343f
-# set $bg-color            #d8dee820
-# set $indicator-color     #d8dee820
-# set $border-color        #0cf4ca00
-# set $inactive-bg-color   #00000000
-# set $text-color          #ababab00
-# set $inactive-text-color #676E7D00
-# set $urgent-bg-color     #2f343f00
-# set $ws-focused-bg       #d8dee800
-# window colors
-#                       border              background         text                 indicator
-# client.focused          $border-color       $bg-color          $text-color          $indicator-color
-# client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-# client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+font pango:CaskaydiaCove Nerd Font, FontAwesome 12
+
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
 set_from_resource $darkgreen   color2  #000000
@@ -47,12 +27,9 @@ set $black       #282828
 set $darkblack   #1d2021
 set $transparent #00000000
 
-
-
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
-font pango:Hack, FontAwesome 12
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
 client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
@@ -265,72 +242,19 @@ bindsym $super+Shift+Ctrl+q exec i3-nagbar -t warning -m 'Poweroff ?' -b 'Yes' '
 bindsym $super+Shift+w exec --no-startup-id $editor --class "__nmtui" -e "nmtui-connect"
 
 # panel
-# bar {
-#
-#     colors {
-#
-#         background #2f343f
-#         statusline #2f343f
-#         separator #4b5262
-#
-#         # colour of border, background, and text
-#         focused_workspace       #2f343f #bf616a #d8dee8
-#         active_workspace        #2f343f #2f343f #d8dee8
-#         inactive_workspace      #2f343f #2f343f #d8dee8
-#         urgent_workspace        #2f343f #ebcb8b #2f343f
-#
-#     }
-#
-#     # font pango:mplus 8
-#     # position top
-#     tray_output primary
-#
-#     # mode hide
-#     # hidden_state hide
-#     # modifier Mod1
-#
-#     # output $monitor_main
-#     # output $monitor_secondary
-#     # output $monitor_third
-#     # output $monitor_fourth
-#     font pango:Hack, FontAwesome 12
-#     strip_workspace_numbers yes
-#     separator_symbol "■"
-#     bindsym button4 nop
-#     bindsym button5 nop
-#     tray_output primary
-# #    tray_output eDP1
-#     tray_padding 6
-#     height $height
-#
-#     status_command i3status
-#     # colors {
-#     #     statusline         $white
-#     #     background         $transparent
-#     #     separator          $transparent
-#     #
-#     #     #                  BORDER       BACKGROUND   TEXT
-#     #     focused_workspace  $transparent $transparent $darkwhite
-#     #     inactive_workspace $transparent $transparent $white
-#     #     active_workspace   $transparent $transparent $white
-#     #     urgent_workspace   $darkred     $darkred     $transparent
-#     #     binding_mode       $darkred     $darkred     $transparent
-#     # }
-#
-# }
 bar {
 #    verbose yes
     status_command i3blocks
     i3bar_command i3bar -t
     position top
-    font pango:CaskaydiaCove Nerd Font, FontAwesome 12
+    font pango:CaskaydiaCove Nerd Font, FontAwesome 13
     strip_workspace_numbers yes
     separator_symbol "■"
     bindsym button4 nop
     bindsym button5 nop
     tray_output primary
 #    tray_output eDP1
-    tray_padding 3
+    tray_padding 7
     height $height
     colors {
         statusline         $white
@@ -358,7 +282,7 @@ bindsym $super+e layout toggle split
 for_window [class=".*"] border pixel 0
 gaps inner 8
 gaps outer 30
-gaps top 10
+gaps top 5
 gaps bottom 30
 
 
