@@ -338,7 +338,7 @@ bar {
         separator          $transparent
 
 #                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent $white
+        focused_workspace  $white       $transparent $white
         inactive_workspace $transparent $transparent $white
         active_workspace   $transparent $transparent $white
         urgent_workspace   $darkred     $darkred     $transparent
