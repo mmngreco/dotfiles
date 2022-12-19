@@ -5,6 +5,21 @@ border_left=0
 border_right=0
 border_bottom=3
 
+[logout]
+full_text=
+command=i3-msg -q exit
+border=#d84949
+
+[shutdoown]
+full_text=
+command=exec systemctl poweroff -i
+border=#d84949
+
+[calendar]
+full_text= Cal
+command=gsimplecal &
+border=#b63cc1
+
 [brightness]
 label=
 command=echo $(printf "%.0f " $(light -G))
@@ -13,8 +28,7 @@ signal=2
 border=#d79921
 
 [wireless]
-label= 
-command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+command=[[ -z "$(iwgetid -r)" ]] && echo "睊 " || echo "  $(iwgetid -r)"
 interval=2
 border=#98971a
 
@@ -24,23 +38,7 @@ command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
 border=#A4C2F4
 
-[logout]
-full_text=
-command=i3-msg -q exit
-border=#3cc17c
-
-[shutdoown]
-full_text=
-command=exec systemctl poweroff -i
-border=#9e3493
-
-[calendar]
-full_text= cal
-command=gsimplecal &
-border=#b63cc1
-
 [battery]
-label=
 command=bash $DOTFILES/scripts/battery.sh
 interval=10
 border=#3ec98f
@@ -52,4 +50,9 @@ interval=5
 markup=pango
 border=#928374
 
-
+# [monitor]
+# full_text="   "
+# command=bash $DOTFILES/scripts/monitor.sh
+# interval=15
+# signal=14
+# border=#928374
