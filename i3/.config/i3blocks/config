@@ -1,3 +1,4 @@
+# vim:filestype=config
 separator=false
 separator_block_width=8
 border_top=0
