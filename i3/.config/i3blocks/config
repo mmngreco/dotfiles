@@ -13,6 +13,11 @@ full_text=" "
 command=i3-msg -q exit
 border=#d84949
 
+[lock]
+full_text=" "
+command=i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
+border=#d84949
+
 [shutdoown]
 full_text=" "
 command=exec systemctl poweroff -i

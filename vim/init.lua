@@ -969,7 +969,6 @@ augroup mmngreco
     autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
     autocmd TermOpen * setl nonumber norelativenumber
     autocmd FileType fugitive setl nonumber norelativenumber
-    autocmd BufLeave fugitive://* norm gq
 augroup END
 
 augroup black_stuff
