@@ -1,4 +1,4 @@
-# vim:filestype=config
+# vim:filestype=config:fileencoding=utf-8:ft=conf:fdm=marker:fdl=0:fdc=1:
 separator=false
 separator_block_width=8
 border_top=0
@@ -56,9 +56,3 @@ command=bash $DOTFILES/scripts/battery.sh
 interval=10
 border=#3ec98f
 
-# [monitor]
-# full_text="   "
-# command=bash $DOTFILES/scripts/monitor.sh
-# interval=15
-# signal=14
-# border=#928374
