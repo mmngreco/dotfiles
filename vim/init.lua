@@ -17,12 +17,27 @@ require('packer').startup(function(use)
   use 'github/copilot.vim'
   use 'nvie/vim-flake8'
 
+  use 'jpalardy/vim-slime'
   use {
-    'klafyvel/vim-slime-cells',
-    requires = {{'jpalardy/vim-slime'}},
-    ft = {'python'},
-    after = 'jpalardy/vim-slime',
+      'klafyvel/vim-slime-cells',
+      requires = {{'jpalardy/vim-slime', opt=true}},
+      ft = {'python'},
+      config=function ()
+          vim.g.slime_target = "tmux"
+          vim.g.slime_cell_delimiter = "^\\s*##"
+          vim.g.slime_default_config = {socket_name="default", target_pane="0"}
+          vim.g.slime_dont_ask_default = 1
+          vim.g.slime_bracketed_paste = 1
+          vim.g.slime_no_mappings = 1
+          vim.cmd([[
+          nmap <leader>cv <Plug>SlimeConfig
+          nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
+          nmap <leader>cj <Plug>SlimeCellsNext
+          nmap <leader>ck <Plug>SlimeCellsPrev
+      ]])
+    end
   }
+
   use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
   use {
@@ -854,7 +869,6 @@ vim.keymap.set('n', '<leader>cO', 'O%%<esc>:norm gcc<cr>j', {noremap = true})
 vim.keymap.set('n', '<leader>co', 'o%%<esc>:norm gcc<cr>k', {noremap = true})
 vim.keymap.set('n', '<leader>c-', 'O<esc>77i-<esc>:norm gcc<cr>j', {noremap = true})
 
--- [[ slime ]]
 
 -- markdown
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'sql' }
@@ -984,16 +998,16 @@ vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
 vim.keymap.set('v', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
 vim.keymap.set('x', '<leader>cl', '<Plug>SlimeRegionSend', {noremap = true})
-vim.keymap.set('n', '<leader>cp', ':SlimeParagraphSend', {noremap = true})
-vim.keymap.set('n', '<leader>cc', ':SlimeCellsSendAndGoToNext', {noremap = true})
-vim.keymap.set('n', '<leader>cj', ':SlimeCellsNext', {noremap = true})
-vim.keymap.set('n', '<leader>ck', ':SlimeCellsPrev', {noremap = true})
-vim.cmd([[
-nmap <leader>cv <Plug>SlimeConfig
-nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
-nmap <leader>cj <Plug>SlimeCellsNext
-nmap <leader>ck <Plug>SlimeCellsPrev
-]])
+vim.keymap.set('n', '<leader>cp', '<Plug>SlimeParagraphSend', {noremap = true})
+vim.keymap.set('n', '<leader>cc', '<Plug>SlimeCellsSendAndGoToNext', {noremap = true})
+vim.keymap.set('n', '<leader>cj', '<Plug>SlimeCellsNext', {noremap = true})
+vim.keymap.set('n', '<leader>ck', '<Plug>SlimeCellsPrev', {noremap = true})
+-- vim.cmd([[
+-- nmap <leader>cv <Plug>SlimeConfig
+-- nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
+-- nmap <leader>cj <Plug>SlimeCellsNext
+-- nmap <leader>ck <Plug>SlimeCellsPrev
+-- ]])
 
 
 -- function to disable number and relative number
@@ -1119,7 +1133,7 @@ function _G.toggle_copilot()
         print('copilot on')
     end
 end
-vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
+-- vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
 vim.cmd('command! -nargs=0 ToggleCopilot lua toggle_copilot()')
 
 vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
