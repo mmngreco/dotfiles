@@ -15,7 +15,7 @@ border=#d84949
 
 [lock]
 full_text=" "
-command=i3lock -i /home/mgreco/github/mmngreco/wallpapers/0007.png
+command=i3lock -i /home/mgreco/github/mmngreco/wallpapers/pexels-visually-us-1643409.jpg
 border=#d84949
 
 [shutdoown]
