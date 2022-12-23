@@ -317,7 +317,7 @@ for_window [instance="__nmtui"] floating enable
 
 # autostart
 exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1 --auto --primary
-exec --no-startup-id feh --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
+exec --no-startup-id feh --bg-fill $HOME/github/mmngreco/wallpapers/WallpaperDog-10941700.jpg
 exec --no-startup-id dunst &
 exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
