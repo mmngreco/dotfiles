@@ -102,6 +102,8 @@ bindsym $super+w exec brave-browser-stable
 bindsym $super+Shift+f exec nautilus
 # bindsym $super+Shift+f workspace 4; focus; exec nautilus
 bindsym $super+m fullscreen toggle
+bindsym $super+y fullscreen disable; floating enable; resize set 600 450; sticky enable; move window to position 1940 54
+
 
 # ============================================================================
 # Focus
