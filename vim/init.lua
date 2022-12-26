@@ -11,6 +11,17 @@ end
 require('packer').startup(function(use)
   -- Package manager
   -- use 'ishan9299/modus-theme-vim'
+    -- Lua
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
   use 'majutsushi/tagbar'
   use 'nvim-telescope/telescope-symbols.nvim'
@@ -42,7 +53,7 @@ require('packer').startup(function(use)
   use 'romainl/vim-qf'
   use {
     'RRethy/vim-illuminate',
-    disable = true
+    -- disable = true
   }
 
   use 'wbthomason/packer.nvim'
@@ -263,29 +274,97 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [H]elp' })
+vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 
-vim.keymap.set('n', '<C-p>', '<cmd>lua require(\'telescope.builtin\').git_files()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>dot', '<cmd>lua require(\'telescope\').mmngreco.search_dotfiles()<CR>', {noremap = true})
-vim.keymap.set('n', '<Leader>ff', '<cmd>lua require(\'telescope\').mmngreco.find_files()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>fg', '<cmd>lua require(\'telescope\').mmngreco.no_preview()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>fk', '<cmd>lua require(\'telescope.builtin\').keymaps()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>gc', '<cmd>lua require(\'telescope\').mmngreco.git_branches()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>gsh', '<cmd>lua require(\'telescope.builtin\').git_stash()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>gwt', '<cmd>lua require(\'telescope\').extensions.git_worktree.create_git_worktree()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>lg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>pb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>ps', '<cmd>lua require(\'telescope.builtin\').grep_string({ search = vim.fn.input("Grep For > ")})<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>pw', '<cmd>lua require(\'telescope.builtin\').grep_string { search = vim.fn.expand("<cword>") }<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>sc', '<cmd>lua require(\'telescope\').mmngreco.search_scio()<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>th', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', {noremap = true})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {noremap = true, desc = 'Find files in git repo'})
+
+
+vim.keymap.set('n', '<leader>gt', builtin.git_stash, {noremap = true, desc = 'Git stash'})
+
+local function create_git_worktree()
+    require('telescope').extensions.git_worktree.create_git_worktree()
+end
+vim.keymap.set('n', '<leader>gwt', create_git_worktree, {noremap = true, desc = 'Git worktree'})
+
+
+-- local function grep_for()
+--     builtin.grep_string({ search = vim.fn.input("Grep For > ")})
+-- end
+-- vim.keymap.set('n', '<leader>ps', grep_for, {noremap = true})
+
+-- local function grep_string()
+--     builtin.grep_string({ search = vim.fn.expand("<cword>") })
+-- end
+-- vim.keymap.set('n', '<leader>pw', grep_string, {noremap = true})
+
+
+local actions = require('telescope.actions')
+local function search_scio()
+
+    -- function to edit a file
+    local vim_edit_prompt = function(prompt_bufnr)
+        local current_picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+        local prompt = current_picker:_get_prompt()
+        local cwd = current_picker.cwd
+        actions.close(prompt_bufnr)
+        vim.api.nvim_exec(':edit ' .. cwd .. '/' .. prompt, false)
+        return true
+    end
+
+    require("telescope.builtin").find_files({
+        prompt_title = "< scio >",
+        cwd = "~/github/mmngreco/scio",
+        hidden = true,
+        no_ignore = true,
+        attach_mappings = function(_, map)
+            map('i', '<c-n>', vim_edit_prompt)
+            return true
+        end
+    })
+end
+
+local ignore_patterns = { "venv/", ".venv/", ".git/", "node_modules/", "*.pyc", "__.*cache.*/", "*.pkl", "*.pickle" , "*.mat"}
+
+local function search_dotfiles()
+    require("telescope.builtin").find_files({
+        prompt_title = "< dotfiles >",
+        cwd = "$DOTFILES",
+        hidden = true,
+        no_ignore = true,
+    })
+end
+
+local function find_files()
+    require("telescope.builtin").find_files({
+        file_ignore_patterns = ignore_patterns,
+        hidden = true,
+        no_ignore = true,
+        follow = true,
+    })
+end
+
+
+local function git_branches()
+    require("telescope.builtin").git_branches({
+        attach_mappings = function(_, map)
+            map('i', '<c-d>', actions.git_delete_branch)
+            map('n', '<c-d>', actions.git_delete_branch)
+            map('i', '<c-b>', actions.git_create_branch)
+            return true
+        end
+    })
+end
+
+vim.keymap.set('n', '<leader>dot', search_dotfiles, {noremap = true})
+vim.keymap.set('n', '<Leader>ff', find_files, {noremap = true})
+vim.keymap.set('n', '<leader>gc', git_branches, {noremap = true})
+vim.keymap.set('n', '<leader>sc', search_scio, {noremap = true})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -353,7 +432,7 @@ require('nvim-treesitter.configs').setup {
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
@@ -533,52 +612,52 @@ require("catppuccin").setup({
     highlight_overrides = {},
 })
 
--- require('illuminate').configure({
---     -- providers: provider used to get references in the buffer, ordered by priority
---     providers = {
---         'lsp',
---         'treesitter',
---         'regex',
---     },
---     -- delay: delay in milliseconds
---     delay = 100,
---     -- filetype_overrides: filetype specific overrides.
---     -- The keys are strings to represent the filetype while the values are tables that
---     -- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
---     filetype_overrides = {},
---     -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
---     filetypes_denylist = {
---         'dirvish',
---         'fugitive',
---     },
---     -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
---     filetypes_allowlist = {},
---     -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
---     -- See `:help mode()` for possible values
---     modes_denylist = {},
---     -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
---     -- See `:help mode()` for possible values
---     modes_allowlist = {},
---     -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
---     -- Only applies to the 'regex' provider
---     -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
---     providers_regex_syntax_denylist = {},
---     -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
---     -- Only applies to the 'regex' provider
---     -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
---     providers_regex_syntax_allowlist = {},
---     -- under_cursor: whether or not to illuminate under the cursor
---     under_cursor = true,
---     -- large_file_cutoff: number of lines at which to use large_file_config
---     -- The `under_cursor` option is disabled when this cutoff is hit
---     large_file_cutoff = 10000,
---     -- large_file_config: config to use for large files (based on large_file_cutoff).
---     -- Supports the same keys passed to .configure
---     -- If nil, vim-illuminate will be disabled for large files.
---     large_file_overrides = nil,
---     -- min_count_to_highlight: minimum number of matches required to perform highlighting
---     min_count_to_highlight = 1,
--- })
+require('illuminate').configure({
+    -- providers: provider used to get references in the buffer, ordered by priority
+    providers = {
+        'lsp',
+        'treesitter',
+        'regex',
+    },
+    -- delay: delay in milliseconds
+    delay = 10,
+    -- filetype_overrides: filetype specific overrides.
+    -- The keys are strings to represent the filetype while the values are tables that
+    -- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
+    filetype_overrides = {},
+    -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
+    filetypes_denylist = {
+        'dirvish',
+        'fugitive',
+    },
+    -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
+    filetypes_allowlist = {},
+    -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
+    -- See `:help mode()` for possible values
+    modes_denylist = {},
+    -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
+    -- See `:help mode()` for possible values
+    modes_allowlist = {},
+    -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
+    -- Only applies to the 'regex' provider
+    -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+    providers_regex_syntax_denylist = {},
+    -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
+    -- Only applies to the 'regex' provider
+    -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+    providers_regex_syntax_allowlist = {},
+    -- under_cursor: whether or not to illuminate under the cursor
+    under_cursor = true,
+    -- large_file_cutoff: number of lines at which to use large_file_config
+    -- The `under_cursor` option is disabled when this cutoff is hit
+    large_file_cutoff = 3000,
+    -- large_file_config: config to use for large files (based on large_file_cutoff).
+    -- Supports the same keys passed to .configure
+    -- If nil, vim-illuminate will be disabled for large files.
+    large_file_overrides = nil,
+    -- min_count_to_highlight: minimum number of matches required to perform highlighting
+    min_count_to_highlight = 1,
+})
 
 require('lualine').setup({
     options = {
@@ -612,20 +691,20 @@ require('lualine').setup({
 })
 
 local augroup = vim.api.nvim_create_augroup
-mgreco = augroup('mgreco', {})
+Mgreco = augroup('mgreco', {})
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+-- local yank_group = augroup('HighlightYank', {})
 
 
 autocmd({"BufWritePre"}, {
-    group = mgreco,
+    group = Mgreco,
     pattern = "*",
     command = "%s/\\s\\+$//e",
 })
 
 autocmd({'FileType'}, {
-    group = mgreco,
+    group = Mgreco,
     pattern = "dbui",
     command = "nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)",
 })
@@ -633,107 +712,29 @@ autocmd({'FileType'}, {
 vim.keymap.set('n', '<leader>sq', '<Plug>(DBUI_SaveQuery)', {noremap = true})
 
 autocmd({'FileType'}, {
-    group = mgreco,
+    group = Mgreco,
     pattern = "dbui",
     command = "setl nonumber norelativenumber",
 })
 
-M = {}
-local actions = require('telescope.actions')
-
-M.no_preview = function()
-    require("telescope.builtin").current_buffer_fuzzy_find(no_preview())
-end
-
-
-M.search_scio = function()
-
-    local vim_edit_prompt = function(prompt_bufnr)
-        local current_picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
-        local prompt = current_picker:_get_prompt()
-        local cwd = current_picker.cwd
-        actions.close(prompt_bufnr)
-        vim.api.nvim_exec(':edit ' .. cwd .. '/' .. prompt, false)
-        return true
-    end
-
-    require("telescope.builtin").find_files({
-        prompt_title = "< scio >",
-        cwd = "~/github/mmngreco/scio",
-        hidden = true,
-        no_ignore = true,
-        attach_mappings = function(_, map)
-            map('i', '<c-n>', vim_edit_prompt)
-            return true
-        end
-    })
-end
-
-local ignore_patterns = { "venv/", ".venv/", ".git/", "node_modules/", "%.pyc", "__.*cache.*/", "*.pkl", "*.pickle" , "*.mat"}
-
-M.search_dotfiles = function()
-    require("telescope.builtin").find_files({
-        prompt_title = "< dotfiles >",
-        cwd = "$DOTFILES",
-        hidden = true,
-        no_ignore = true,
-    })
-end
-
-M.find_files = function()
-    require("telescope.builtin").find_files({
-        file_ignore_patterns = ignore_patterns,
-        hidden = true,
-        no_ignore = true,
-        follow = true,
-    })
-end
-
-
-M.git_branches = function()
-    require("telescope.builtin").git_branches({
-        attach_mappings = function(_, map)
-            map('i', '<c-d>', actions.git_delete_branch)
-            map('n', '<c-d>', actions.git_delete_branch)
-            map('i', '<c-b>', actions.git_create_branch)
-            return true
-        end
-    })
-end
-
-
-M.grep_dotfiles = function()
-    require("telescope.builtin").live_grep({
-        prompt_title = "< dotfiles >",
-        cwd = "$DOTFILES",
-        hidden = true,
-        no_ignore = true,
-    })
-end
-
 
 
 local telescope = require('telescope')
-telescope.mmngreco = M
 telescope.load_extension("git_worktree")
 telescope.load_extension('harpoon')
 
 
--- netrw
---
-
+-- [[ netrw ]]
 vim.g.netrw_browse_split = 0
 vim.g.netrw_winsize = 25
 vim.g.netrw_localrmdir='rm -r'
 vim.g.netrw_browsex_viewer= 'xdg-open'
 vim.g.netrw_hide = 0
 
-
 vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)')
 vim.keymap.set('v', 'gx', '<Plug>(openbrowser-smart-search)')
 vim.keymap.set('n', '<leader>dd', ':Lexplore %:p:h<CR>', {noremap = true})
 vim.keymap.set('n', '<Leader>da', ':Lexplore<CR>', {noremap = true})
-
 
 vim.cmd([[
 if &columns < 90
@@ -791,7 +792,15 @@ augroup netrw_mapping
 augroup END
 ]])
 
+-- [[ terminal ]]
+-- terminal settings
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', {noremap = true})
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', {noremap = true})
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', {noremap = true})
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', {noremap = true})
+vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>w', {noremap = true})
+
 
 -- [[ LSP ]]
 vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
@@ -808,8 +817,7 @@ vim.keymap.set('n', '<leader>dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
 vim.keymap.set('n', '<leader>dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', {noremap = true})
 
 -- [[ jupytext ]]
---
--- vim.g.jupytext_filetype_map = { 'py' : 'python' }
+vim.g.jupytext_filetype_map = { py='python' }
 vim.g.jupytext_fmt = 'py'
 
 -- [[ harpoon ]]
@@ -834,35 +842,26 @@ function Send_to_harpoon(term_num, visual)
     end
 
 end
+
 vim.g.harpoon_goto_term = 0
-vim.keymap.set('n', '<leader>h', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
-vim.keymap.set('v', '<leader>h', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
+-- send to harpoon terminal
+vim.keymap.set('n', '<C-s><C-h>', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
+vim.keymap.set('v', '<C-s><C-h>', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
 -- open harpoon menu
 vim.keymap.set('n', '<leader>ha', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {noremap = true})
+
+vim.keymap.set('n', '<C-h>', ':lua require("harpoon.ui").nav_file(1)<cr>', { noremap = true } )
+vim.keymap.set('n', '<C-j>', ':lua require("harpoon.ui").nav_file(2)<cr>', { noremap = true } )
+vim.keymap.set('n', '<C-k>', ':lua require("harpoon.ui").nav_file(3)<cr>', { noremap = true } )
+vim.keymap.set('n', '<C-l>', ':lua require("harpoon.ui").nav_file(4)<cr>', { noremap = true } )
+
+vim.keymap.set('n', '<C-h><C-h>', ':lua require("harpoon.term").gotoTerminal(1)<cr>i', { noremap = true } )
+vim.keymap.set('n', '<C-j><C-j>', ':lua require("harpoon.term").gotoTerminal(2)<cr>i', { noremap = true } )
+vim.keymap.set('n', '<C-k><C-k>', ':lua require("harpoon.term").gotoTerminal(3)<cr>i', { noremap = true } )
+vim.keymap.set('n', '<C-l><C-l>', ':lua require("harpoon.term").gotoTerminal(4)<cr>i', { noremap = true } )
+
 -- add file to harpoon
 vim.keymap.set('n', '<leader>hf', ':lua require("harpoon.mark").add_file()<CR>', {noremap = true})
-
-
-vim.cmd([[
-nnoremap <silent> <Plug>SendToHarpoon1 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(1, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon1", v:count)<cr>
-nnoremap <silent> <Plug>SendToHarpoon2 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(2, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon2", v:count)<cr>
-nnoremap <silent> <Plug>SendToHarpoon3 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(3, vim.g['_cmd'])<cr> \ :call repeat#set("\<Plug>SendToHarpoon3", v:count)<cr>
-nnoremap <silent> <Plug>SendToHarpoon4 :let g:_cmd = (getline('.') . "\n")<CR>:lua require("harpoon.term").sendCommand(4, vim.g['_cmd'])<cr> \ call repeat#set("\<Plug>SendToHarpoon4", v:count)<cr>
-nmap <leader>lh  <Plug>SendToHarpoon1
-nmap <leader>lj  <Plug>SendToHarpoon2
-nmap <leader>lk  <Plug>SendToHarpoon3
-nmap <leader>ll  <Plug>SendToHarpoon4
-
-nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<cr>
-nnoremap <C-j> :lua require("harpoon.ui").nav_file(2)<cr>
-nnoremap <C-k> :lua require("harpoon.ui").nav_file(3)<cr>
-nnoremap <C-l> :lua require("harpoon.ui").nav_file(4)<cr>
-
-nnoremap <C-h><C-h> :lua require("harpoon.term").gotoTerminal(1)<cr>i
-nnoremap <C-j><C-j> :lua require("harpoon.term").gotoTerminal(2)<cr>i
-nnoremap <C-k><C-k> :lua require("harpoon.term").gotoTerminal(3)<cr>i
-nnoremap <C-l><C-l> :lua require("harpoon.term").gotoTerminal(4)<cr>i
-]])
 
 -- python cells
 vim.keymap.set('n', '<leader>cO', 'O%%<esc>:norm gcc<cr>j', {noremap = true})
@@ -884,12 +883,12 @@ vim.g.grepper.jump = 1
 vim.g.grepper.next_tool = '<leader>g'
 vim.g.grepper.simple_prompt = 1
 vim.g.grepper.quickfix = 0
+
 vim.keymap.set('n', '<leader>*', ':Grepper -tool ag -cword -noprompt<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>g', ':Grepper -tool ag<cr>', {noremap = true})
 
 -- fasfold
 
-vim.g.markdown_folding = 1
 vim.g.python_folding = 1
 vim.g.markdown_folding = 1
 vim.g.tex_fold_enabled = 1
@@ -903,17 +902,16 @@ vim.g.perl_fold_blocks = 1
 vim.g.r_syntax_folding = 1
 vim.g.rust_fold = 1
 vim.g.php_folding = 1
-vim.keymap.set('n', 'zuz', '<Plug>(FastFoldUpdate)', {noremap = true})
 vim.g.fastfold_savehook = 1
 vim.g.fastfold_fold_command_suffixes =  { 'x','X','a','A','o','O','c','C' }
 vim.g.fastfold_fold_movement_commands = {']z', '[z', 'zj', 'zk'}
 vim.g.fastfold_savehook = 0
-vim.cmd([[
-augroup Fold
-    autocmd!
-    autocmd FileType python setlocal foldmethod=indent
-augroup END
-]])
+
+vim.keymap.set('n', 'zuz', '<Plug>(FastFoldUpdate)', {noremap = true})
+local Fold = vim.api.nvim_create_augroup('Fold', { clear = true })
+vim.api.nvim_create_autocmd('BufReadPost', {group=Fold, pattern='*', command='silent! normal zuz'})
+vim.api.nvim_create_autocmd('BufWinEnter', {group=Fold, pattern='*', command='setlocal foldmethod=expr'})
+vim.api.nvim_create_autocmd('FileType', {group=Fold, pattern='python', command='foldmethod=indent'})
 
 vim.g.SimpylFold_docstring_preview = 0
 vim.g.SimpylFold_fold_docstring = 0
@@ -926,7 +924,6 @@ vim.b.SimpylFold_fold_blank = 0
 -- sets
 vim.o.scrollback=20000
 -- vim.o.guicursor=nil
--- vim.o.relativenumber = true
 -- vim.o.nohlsearch = true
 -- vim.o.hidden = true
 -- vim.o.noerrorbells = true
@@ -936,14 +933,15 @@ vim.o.shiftwidth=4
 vim.o.expandtab = true
 vim.o.smartindent = true
 -- vim.o.number = true
--- vim.o.nowrap = true
+vim.o.relativenumber = true
+vim.o.wrap = false
 -- vim.o.noswapfile = true
 -- vim.o.nobackup = true
-vim.o.undodir=os.getenv("HOME") .. '/.vim/undodir'
+vim.o.undodir = os.getenv("HOME") .. '/.vim/undodir'
 vim.o.undofile = true
 vim.o.incsearch = true
 vim.o.termguicolors = true
--- vim.o.scrolloff=8
+vim.o.scrolloff=8
 -- vim.o.signcolumn='no'
 vim.o.cmdheight = 1
 vim.o.timeoutlen = 220
@@ -958,27 +956,16 @@ vim.g.python3_host_prog = 'python3'
 vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>rc', ':new ~/.config/nvim/init.lua<cr>', {noremap = true})
 
-
-vim.cmd([[
-augroup mmngreco
-    autocmd!
-    autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufWritePre *.go GoFmt
-    autocmd BufEnter *.dbout norm zR
-    autocmd FileType markdown setl conceallevel=2 spl=en,es
-    autocmd FileType make setl noexpandtab shiftwidth=4 softtabstop=0
-    autocmd TermOpen * setl nonumber norelativenumber
-    autocmd FileType fugitive setl nonumber norelativenumber
-augroup END
-
-augroup black_stuff
-    autocmd!
-    " https://github.com/psf/black/issues/1293#issuecomment-623237094
-    autocmd FileType python nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>
-augroup end
-]])
-
-
+local mmngreco = vim.api.nvim_create_augroup('mmngreco', {clear = true})
+vim.api.nvim_create_autocmd('BufWritePost', {group=mmngreco, pattern='~/.config/nvim/init.lua', command='source ~/.config/nvim/init.lua'})
+vim.api.nvim_create_autocmd('BufWritePre', { group=mmngreco, pattern='*', command='%s/\\s\\+$//e'})
+vim.api.nvim_create_autocmd('BufWritePre', { group=mmngreco, pattern='*.go', command='GoFmt'})
+vim.api.nvim_create_autocmd('BufEnter', { group=mmngreco, pattern='*.dbout', command='norm zR'})
+vim.api.nvim_create_autocmd('FileType', { group=mmngreco, pattern='markdown', command='setl conceallevel=2 spl=en,es'})
+vim.api.nvim_create_autocmd('FileType', { group=mmngreco, pattern='make', command='setl noexpandtab shiftwidth=4 softtabstop=0'})
+vim.api.nvim_create_autocmd('TermOpen', { group=mmngreco, pattern='*', command='setl nonumber norelativenumber'})
+vim.api.nvim_create_autocmd('FileType', { group=mmngreco, pattern='fugitive', command='setl nonumber norelativenumber'})
+vim.api.nvim_create_autocmd('FileType', { group=mmngreco, pattern='python', command='nnoremap <buffer> <F8> :silent !black -l79 -S %<CR><CR>'})
 
 -- [[ slime ]]
 vim.g.slime_bracketed_paste = 0
@@ -1001,17 +988,17 @@ vim.keymap.set('n', '<leader>cp', '<Plug>SlimeParagraphSend', {noremap = true})
 vim.keymap.set('n', '<leader>cc', '<Plug>SlimeCellsSendAndGoToNext', {noremap = true})
 vim.keymap.set('n', '<leader>cj', '<Plug>SlimeCellsNext', {noremap = true})
 vim.keymap.set('n', '<leader>ck', '<Plug>SlimeCellsPrev', {noremap = true})
--- vim.cmd([[
--- nmap <leader>cv <Plug>SlimeConfig
--- nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
--- nmap <leader>cj <Plug>SlimeCellsNext
--- nmap <leader>ck <Plug>SlimeCellsPrev
--- ]])
+vim.cmd([[
+nmap <leader>cv <Plug>SlimeConfig
+nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
+nmap <leader>cj <Plug>SlimeCellsNext
+nmap <leader>ck <Plug>SlimeCellsPrev
+]])
 
 
 -- function to disable number and relative number
 vim.g.number = 1
-function _G.toggle_numbers()
+function ToggleNumbers()
     if vim.g.number == 1 then
         vim.g.number = 0
         vim.o.number = false
@@ -1024,8 +1011,6 @@ function _G.toggle_numbers()
         vim.o.signcolumn = 'yes'
     end
 end
-vim.cmd('command! -nargs=0 ToggleNumbers lua toggle_numbers()')
-
 
 vim.keymap.set('n', 'gV', '`[v`]', {noremap = true, desc = 'select last visual selection' })
 vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>/<C-r><C-w>/gI<left><left><left>', {noremap = true, desc = 'search and replace word under cursor' })
@@ -1040,18 +1025,40 @@ vim.keymap.set('n', '<leader>j', ':m .+1<cr>==', {noremap = true, desc = 'move l
 vim.keymap.set('n', '<leader>cn', ':cnext<cr>', {noremap = true, desc = 'next error' })
 vim.keymap.set('n', '<leader>cp', ':cprev<cr>', {noremap = true, desc = 'previous error' })
 
-vim.keymap.set('n', '<leader>gls', ':let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>gln', ':cnext<cr>:call search(g:_search_term)<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>glp', ':cprev<cr>:call search(g:_search_term)<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>sn', ':\'<,\'>!sort -n -k 2', {noremap = true})
-vim.keymap.set('v', '<leader>s', ':\'<,\'>!sort -f<cr>', {noremap = true})
+
+vim.keymap.set('n', '<leader>gls',
+    function ()
+        Search_term = vim.fn.expand('%')
+        vim.cmd('Gclog -- %')
+        vim.cmd('call search("' .. Search_term .. '")')
+    end,
+    {noremap = true, desc = 'git log search' }
+)
+
+vim.keymap.set('n', '<leader>gln',
+    function ()
+        vim.cmd('cnext')
+        vim.fn.search(Search_term)
+    end,
+    {noremap = true, desc = 'next git log search' }
+)
+vim.keymap.set('n', '<leader>glp',
+    function ()
+        vim.cmd('cprev')
+        vim.fn.search(Search_term)
+    end,
+    {noremap = true, desc = 'previous git log search' }
+)
+
+vim.keymap.set('n', '<leader>sn', ':\'<,\'>!sort -n -k 2', {noremap = true, desc = 'sort lines numerically' })
+vim.keymap.set('v', '<leader>s', ':\'<,\'>!sort -f<cr>', {noremap = true, desc = 'sort lines' })
 -- vim.o.isfname:append('@-@')
 -- vim.keymap.set('v', '<leader>sf', ':!sqlformat -k upper -r -<cr>', {noremap = true})
 vim.keymap.set('v', '<leader>sf', ':!sqlformat  -k upper -r --indent_after_first --indent_columns -<cr>', {noremap = true})
 
 -- to show hidden symbols characters in a file, :set list to show them.
 vim.o.listchars='tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»'
-vim.keymap.set("n", "<leader>w", ":Git<cr>", {noremap = true})
+
 
 vim.keymap.set('n', '<leader>tu', 'yypvawr-', {noremap = true, desc = 'underline word under cursor'})
 vim.keymap.set('n', '<leader>tx', ':s/\\[\\s\\?\\]/[x]/<cr>', {noremap = true, desc = 'check a box in markdown'})
@@ -1062,14 +1069,9 @@ vim.keymap.set('v', '<leader>y', '"+y', {noremap = true, desc = 'copy to system 
 vim.keymap.set('n', '<leader>m', ':MaximizerToggle<cr>', {noremap = true, desc = 'Maximize current window'})
 
 -- [[ checkbox ]]
--- create a function to read all checkbox in the current paragraph
--- and return the number of checked and unchecked boxes
-
--- lua function to count all checkboxes in the current paragraph
--- and return the number of checked and unchecked boxes
-function _G.Checkboxes()
+function Checkboxes()
     local line = vim.fn.line('.')
-    local line_orig = vim.fn.getline('.')
+    -- local line_orig = vim.fn.getline('.')
     local checked = 0
     local total = 0
 
@@ -1094,10 +1096,11 @@ function _G.Checkboxes()
     vim.api.nvim_input("vipo<esc>A (" .. checked .. "/" .. total .. ")<esc>")
     return {checked, total}
 end
-vim.cmd('command! -nargs=0 Checkboxes lua Checkboxes()')
+-- vim.cmd('command! -nargs=0 Checkboxes lua Checkboxes()')
 
 
 -- [[ fugitive ]]
+vim.keymap.set("n", "<leader>w", ":Git<cr>", {noremap = true})
 vim.keymap.set('n', '<C-g>', ':GBrowse<cr>', {noremap = true, desc = 'browse current file on github'})
 vim.keymap.set('v', '<C-g>', ':GBrowse<cr>', {noremap = true, desc = 'browse current file and line on github'})
 vim.keymap.set('n', '<C-g><C-y>', ':GBrowse!<cr>', {noremap = true, desc = 'yank github url of the current file'})
@@ -1121,7 +1124,7 @@ vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').re
 vim.g.copilot_autocomplete = 1
 vim.g.copilot_autocomplete_delay = 100
 
-function _G.toggle_copilot()
+function ToggleCopilot()
     if vim.g.copilot_autocomplete == 1 then
         vim.g.copilot_autocomplete = 0
         vim.cmd('Copilot disable')
@@ -1133,9 +1136,10 @@ function _G.toggle_copilot()
     end
 end
 -- vim.keymap.set('n', '<leader>cp', ':lua toggle_copilot()<cr>', {noremap = true, desc = 'toggle copilot'})
-vim.cmd('command! -nargs=0 ToggleCopilot lua toggle_copilot()')
 
+-- [[ tagbar ]]
 vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
 
+vim.keymap.set('n', '<leader>z', '!tmux neww tmux-sessionizer<cr>', {noremap = true, desc = 'tmux sessionizer'})
 
 -- vim: ts=2 sts=2 sw=2 et
