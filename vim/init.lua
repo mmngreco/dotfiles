@@ -1139,6 +1139,63 @@ end
 -- [[ tagbar ]]
 vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
 
-vim.keymap.set('n', '<leader>z', '!tmux neww tmux-sessionizer<cr>', {noremap = true, desc = 'tmux sessionizer'})
+-- vim.keymap.set('n', '<leader>z', ':!tmux neww tmux-sessionizer<cr>', {noremap = true, desc = 'tmux sessionizer'})
+--
+local function open_projects()
+  local options = {
+    prompt = "Pick a Project :",
+    layout = {
+      default = "default",
+      preview = "right",
+    },
+    sorter = "fzy",
+    chooser = "tmux-sessionizer",  -- open the selected folder in a new tmux session
+  }
+  telescope.scanners.new("listProjects"):scan(options)
+end
+
+
+-- local function open_projects()
+--   local options = {
+--     prompt = "Pick a Project >",
+--     finder = "listProjects",
+--     sorter = "fzy",
+--     chooser = "tmux-sessionizer",
+--     layout = {
+--       default = "default",
+--       preview = "right",
+--     },
+--   }
+--   actions.find(options)
+-- end
+
+local previewers = require("telescope.previewers")
+local pickers = require("telescope.pickers")
+local sorters = require("telescope.sorters")
+local finders = require("telescope.finders")
+
+local project_picker = pickers.new(
+    {
+        results_title = "Tmux Projects",
+        prompt_title = "Pick a Project > ",
+        finder = finders.new_oneshot_job({"listProjects"}, {}),
+        sorter = sorters.get_fuzzy_file(),
+        previewer = previewers.new_buffer_previewer({
+            define_preview = function(self, entry, status)
+                -- Execute another command using the highlighted entry
+                return require('telescope.previewers.utils').job_maker(
+                    {"ls", entry.value},
+                    self.state.bufnr,
+                    {value=entry.value})
+            end
+        }),
+    }, {})
+
+local function open_projects()
+    project_picker:find()
+end
+
+
+vim.keymap.set('n', '<leader>z', project_picker.find, {noremap = true, desc = 'open projects'})
 
 -- vim: ts=2 sts=2 sw=2 et
