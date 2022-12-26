@@ -907,7 +907,7 @@ vim.g.fastfold_fold_command_suffixes =  { 'x','X','a','A','o','O','c','C' }
 vim.g.fastfold_fold_movement_commands = {']z', '[z', 'zj', 'zk'}
 vim.g.fastfold_savehook = 0
 
-vim.keymap.set('n', 'zuz', '<Plug>(FastFoldUpdate)', {noremap = true})
+vim.keymap.set('n', 'zuz', '<Plug>FastFoldUpdate', {noremap = true})
 local Fold = vim.api.nvim_create_augroup('Fold', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {group=Fold, pattern='*', command='silent! normal zuz'})
 vim.api.nvim_create_autocmd('BufWinEnter', {group=Fold, pattern='*', command='setlocal foldmethod=expr'})
