@@ -907,11 +907,10 @@ vim.g.fastfold_fold_command_suffixes =  { 'x','X','a','A','o','O','c','C' }
 vim.g.fastfold_fold_movement_commands = {']z', '[z', 'zj', 'zk'}
 vim.g.fastfold_savehook = 0
 
-vim.keymap.set('n', 'zuz', '<Plug>FastFoldUpdate', {noremap = true})
+vim.keymap.set('n', 'zuz', '<Plug>FastFoldUpdate', { noremap = true, desc = 'update folds' })
 local Fold = vim.api.nvim_create_augroup('Fold', { clear = true })
-vim.api.nvim_create_autocmd('BufReadPost', {group=Fold, pattern='*', command='silent! normal zuz'})
-vim.api.nvim_create_autocmd('BufWinEnter', {group=Fold, pattern='*', command='setlocal foldmethod=expr'})
-vim.api.nvim_create_autocmd('FileType', {group=Fold, pattern='python', command='foldmethod=indent'})
+vim.api.nvim_create_autocmd('BufWinEnter', { group=Fold, pattern='*', command='setlocal foldmethod=expr' })
+vim.api.nvim_create_autocmd('FileType', { group=Fold, pattern='python', command='foldmethod=indent' })
 
 vim.g.SimpylFold_docstring_preview = 0
 vim.g.SimpylFold_fold_docstring = 0
@@ -923,7 +922,7 @@ vim.b.SimpylFold_fold_blank = 0
 
 -- sets
 vim.o.scrollback=20000
--- vim.o.guicursor=nil
+vim.o.guicursor=""
 -- vim.o.nohlsearch = true
 -- vim.o.hidden = true
 -- vim.o.noerrorbells = true
