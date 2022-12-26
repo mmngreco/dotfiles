@@ -11,17 +11,6 @@ end
 require('packer').startup(function(use)
   -- Package manager
   -- use 'ishan9299/modus-theme-vim'
-    -- Lua
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
-    }
 
   use 'majutsushi/tagbar'
   use 'nvim-telescope/telescope-symbols.nvim'
@@ -1139,21 +1128,6 @@ end
 -- [[ tagbar ]]
 vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
 
--- vim.keymap.set('n', '<leader>z', ':!tmux neww tmux-sessionizer<cr>', {noremap = true, desc = 'tmux sessionizer'})
---
-local function open_projects()
-  local options = {
-    prompt = "Pick a Project :",
-    layout = {
-      default = "default",
-      preview = "right",
-    },
-    sorter = "fzy",
-    chooser = "tmux-sessionizer",  -- open the selected folder in a new tmux session
-  }
-  telescope.scanners.new("listProjects"):scan(options)
-end
-
 
 -- local function open_projects()
 --   local options = {
@@ -1180,6 +1154,7 @@ local project_picker = pickers.new(
         prompt_title = "Pick a Project > ",
         finder = finders.new_oneshot_job({"listProjects"}, {}),
         sorter = sorters.get_fuzzy_file(),
+        chooser = "tmux-sessionizer",
         previewer = previewers.new_buffer_previewer({
             define_preview = function(self, entry, status)
                 -- Execute another command using the highlighted entry
@@ -1189,13 +1164,12 @@ local project_picker = pickers.new(
                     {value=entry.value})
             end
         }),
-    }, {})
+    })
 
 local function open_projects()
     project_picker:find()
 end
 
-
-vim.keymap.set('n', '<leader>z', project_picker.find, {noremap = true, desc = 'open projects'})
+vim.keymap.set('n', '<leader>z', open_projects, {noremap = true, desc = 'open projects'})
 
 -- vim: ts=2 sts=2 sw=2 et
