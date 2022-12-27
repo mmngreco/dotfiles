@@ -14,3 +14,4 @@ espanso/user/pass.hide.yml
 shell/custom.hide
 espanso/user/hide.yml
 vim/lua/
+.gitsecret/
