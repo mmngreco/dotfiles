@@ -636,9 +636,10 @@ require('illuminate').configure({
 
 require('lualine').setup({
     options = {
-        icons_enabled = true,
         theme = 'catppuccin',
-        separator = { left = '', right = ''},
+        icons_enabled = false,
+        -- icons_enabled = true,
+        -- separator = { left = '', right = ''},
         component_separators = {'', ''},
         section_separators = {'', ''},
         disabled_filetypes = {}
