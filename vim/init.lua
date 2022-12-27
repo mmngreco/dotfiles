@@ -11,39 +11,25 @@ end
 require('packer').startup(function(use)
   -- Package manager
   -- use 'ishan9299/modus-theme-vim'
+  use 'nvim-treesitter/playground'
+
+  -- [[ dap ]]
+  use 'mfussenegger/nvim-dap'
+  use 'mfussenegger/nvim-dap-python'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
 
   use 'majutsushi/tagbar'
   use 'nvim-telescope/telescope-symbols.nvim'
+
   use 'github/copilot.vim'
   use 'nvie/vim-flake8'
 
   use 'jpalardy/vim-slime'
-  use {
-      'klafyvel/vim-slime-cells',
-      requires = {{'jpalardy/vim-slime', opt=true}},
-      ft = {'python'},
-      config=function ()
-          vim.g.slime_target = "tmux"
-          vim.g.slime_cell_delimiter = "^\\s*##"
-          vim.g.slime_default_config = {socket_name="default", target_pane="0"}
-          vim.g.slime_dont_ask_default = 1
-          vim.g.slime_bracketed_paste = 1
-          vim.g.slime_no_mappings = 1
-          vim.cmd([[
-          nmap <leader>cv <Plug>SlimeConfig
-          nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
-          nmap <leader>cj <Plug>SlimeCellsNext
-          nmap <leader>ck <Plug>SlimeCellsPrev
-      ]])
-    end
-  }
 
   use 'liuchengxu/vista.vim'
   use 'romainl/vim-qf'
-  use {
-    'RRethy/vim-illuminate',
-    -- disable = true
-  }
+  use 'RRethy/vim-illuminate'
 
   use 'wbthomason/packer.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
@@ -899,7 +885,7 @@ vim.g.fastfold_savehook = 0
 vim.keymap.set('n', 'zuz', '<Plug>FastFoldUpdate', { noremap = true, desc = 'update folds' })
 local Fold = vim.api.nvim_create_augroup('Fold', { clear = true })
 vim.api.nvim_create_autocmd('BufWinEnter', { group=Fold, pattern='*', command='setlocal foldmethod=expr' })
-vim.api.nvim_create_autocmd('FileType', { group=Fold, pattern='python', command='foldmethod=indent' })
+-- vim.api.nvim_create_autocmd('FileType', { group=Fold, pattern='python', command='foldmethod=indent' })
 
 vim.g.SimpylFold_docstring_preview = 0
 vim.g.SimpylFold_fold_docstring = 0
@@ -957,32 +943,23 @@ vim.api.nvim_create_autocmd('FileType', { group=mmngreco, pattern='python', comm
 
 -- [[ slime ]]
 vim.g.slime_bracketed_paste = 0
-vim.g.slime_cell_delimiter = "#\\\\s*%%"
+vim.g.slime_cell_delimiter = [[\s*#\s*%%]]
 vim.g.slime_dont_ask_default = 1
 vim.g.slime_no_mappings = 1
 vim.g.slime_paste_file='~/.slime_paste'
 vim.g.slime_target = "tmux"
 vim.g.slime_bracketed_paste = 1
 vim.g.slime_dont_ask_default = 1
-vim.cmd([[
-let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
-]])
+vim.g.slime_default_config = {socket_name="default", target_pane=":.2"}
 vim.g.slime_no_mappings = 1
 vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
-vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
-vim.keymap.set('v', '<leader>e',  ':SlimeSend<cr>', {noremap = true})
-vim.keymap.set('x', '<leader>cl', '<Plug>SlimeRegionSend', {noremap = true})
-vim.keymap.set('n', '<leader>cp', '<Plug>SlimeParagraphSend', {noremap = true})
-vim.keymap.set('n', '<leader>cc', '<Plug>SlimeCellsSendAndGoToNext', {noremap = true})
-vim.keymap.set('n', '<leader>cj', '<Plug>SlimeCellsNext', {noremap = true})
-vim.keymap.set('n', '<leader>ck', '<Plug>SlimeCellsPrev', {noremap = true})
-vim.cmd([[
-nmap <leader>cv <Plug>SlimeConfig
-nmap <leader>cc <Plug>SlimeCellsSendAndGoToNext
-nmap <leader>cj <Plug>SlimeCellsNext
-nmap <leader>ck <Plug>SlimeCellsPrev
-]])
+vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true, desc = 'send line to tmux'})
+vim.keymap.set('x', '<leader>e', '<Plug>SlimeRegionSend', {noremap = true, desc = 'send line to tmux'})
 
+vim.keymap.set('n', '<leader>ep', '<Plug>SlimeParagraphSend', {noremap = true})
+vim.keymap.set('n', '<leader>cc', '<Plug>SlimeSendCell', {noremap = true})
+vim.keymap.set('n', '<leader>ck', '<cmd>call search(g:slime_cell_delimiter, "b")<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>cj', '<cmd>call search(g:slime_cell_delimiter)<cr>', {noremap = true})
 
 -- function to disable number and relative number
 vim.g.number = 1
@@ -1129,47 +1106,29 @@ end
 vim.keymap.set('n', '<leader>t', ':Tagbar<cr>', {noremap = true, desc = 'toggle tagbar'})
 
 
--- local function open_projects()
---   local options = {
---     prompt = "Pick a Project >",
---     finder = "listProjects",
---     sorter = "fzy",
---     chooser = "tmux-sessionizer",
---     layout = {
---       default = "default",
---       preview = "right",
---     },
---   }
---   actions.find(options)
--- end
+-- [[ dap ]]
+require("dapui").setup()
+require("nvim-dap-virtual-text").setup({})
+require("dap-python").setup(os.getenv('HOME') .. '/.virtualenvs/debugpy/bin/python')
 
-local previewers = require("telescope.previewers")
-local pickers = require("telescope.pickers")
-local sorters = require("telescope.sorters")
-local finders = require("telescope.finders")
+local dap = require('dap')
+vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, {noremap = true, desc = 'dap set breakpoint condition'})
+vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, {noremap = true, desc = 'dap toggle breakpoint'})
+vim.keymap.set('n', '<leader>dc', dap.continue, {noremap = true, desc = 'dap continue'})
 
-local project_picker = pickers.new(
-    {
-        results_title = "Tmux Projects",
-        prompt_title = "Pick a Project > ",
-        finder = finders.new_oneshot_job({"listProjects"}, {}),
-        sorter = sorters.get_fuzzy_file(),
-        chooser = "tmux-sessionizer",
-        previewer = previewers.new_buffer_previewer({
-            define_preview = function(self, entry, status)
-                -- Execute another command using the highlighted entry
-                return require('telescope.previewers.utils').job_maker(
-                    {"ls", entry.value},
-                    self.state.bufnr,
-                    {value=entry.value})
-            end
-        }),
-    })
+vim.keymap.set('n', '<leader>dh', dap.step_out, {noremap = true, desc = 'dap step out ←'})
+vim.keymap.set('n', '<leader>dj', dap.step_over, {noremap = true, desc = 'dap step over ↓'})
+vim.keymap.set('n', '<leader>dl', dap.step_into, {noremap = true, desc = 'dap step into →'})
 
-local function open_projects()
-    project_picker:find()
-end
+vim.keymap.set('n', '<leader>de', dap.repl.open, {noremap = true, desc = 'dap open repl'})
+vim.keymap.set('n', '<leader>dr', dap.run_last, {noremap = true, desc = 'dap run last'})
+vim.keymap.set('n', '<leader>dq', dap.disconnect, {noremap = true, desc = 'dap disconnect'})
 
-vim.keymap.set('n', '<leader>z', open_projects, {noremap = true, desc = 'open projects'})
+-- [[ dap:ui ]]
+local dapui = require('dapui')
+vim.keymap.set('n', '<leader>du', dapui.toggle, {noremap = true, desc = 'toggle dap ui'})
+vim.keymap.set('n', '<leader>do', dapui.open, {noremap = true, desc = 'toggle dap ui'})
+vim.keymap.set('n', '<leader>dx', dapui.close, {noremap = true, desc = 'toggle dap ui'})
 
--- vim: ts=2 sts=2 sw=2 et
+
+-- vim:ts=2 sts=2 sw=2 et
