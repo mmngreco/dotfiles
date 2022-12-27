@@ -41,7 +41,7 @@ border=#b63cc1
 
 [todo]
 full_text= todo
-command=kitty bash -c "nvim ~/TODO.md"
+command=xterm -e "nvim ~/TODO.md"
 border=#f2d93a
 
 [time]

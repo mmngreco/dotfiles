@@ -6,11 +6,27 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
   vim.cmd.packadd 'packer.nvim'
 end
+local executable = function(x)
+  return vim.fn.executable(x) == 1
+end
 
 
 require('packer').startup(function(use)
   -- Package manager
-  -- use 'ishan9299/modus-theme-vim'
+  use {"pwntester/octo.nvim", disable = not executable "gh"}
+
+  use "folke/zen-mode.nvim"
+  use "folke/twilight.nvim"
+  use "monaqa/dial.nvim"
+  use {
+    "NTBBloodbath/rest.nvim",
+    disable = not executable "jq",
+    config = function()
+      require("rest-nvim").setup()
+    end,
+  }
+
+  use 'lewis6991/impatient.nvim'
   use 'nvim-treesitter/playground'
 
   -- [[ dap ]]
@@ -25,45 +41,7 @@ require('packer').startup(function(use)
   use {
     "zbirenbaum/copilot.lua",
     config = function()
-      require('copilot').setup({
-        panel = {
-          enabled = true,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "gr",
-            open = "<C-CR>"
-          },
-        },
-        suggestion = {
-          enabled = true,
-          auto_trigger = false,
-          debounce = 75,
-          keymap = {
-            accept = "<M-l>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        filetypes = {
-          yaml = false,
-          markdown = true,
-          help = false,
-          gitcommit = false,
-          gitrebase = false,
-          hgcommit = false,
-          svn = false,
-          cvs = false,
-          ["."] = false,
-        },
-        copilot_node_command = 'node', -- Node.js version must be > 16.x
-        server_opts_overrides = {},
-      })
+      require('copilot').setup()
     end,
   }
 
@@ -101,8 +79,9 @@ require('packer').startup(function(use)
 
   use 'wbthomason/packer.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
-  use 'navarasu/onedark.nvim'
-  use 'folke/tokyonight.nvim'
+  -- use 'ishan9299/modus-theme-vim'
+  use {'navarasu/onedark.nvim'}
+  use {'folke/tokyonight.nvim'}
 
   use 'mbbill/undotree'
   use 'kristijanhusak/vim-dadbod-ui'
@@ -181,6 +160,8 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+require('impatient')
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
@@ -850,7 +831,7 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
 vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', {noremap = true})
 vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', {noremap = true})
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', {noremap = true})
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', {noremap = true})
+-- vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', {noremap = true})
 vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>w', {noremap = true})
 
 
@@ -1000,7 +981,8 @@ vim.o.updatetime = 50
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.textwidth = 79
 vim.o.cursorline = true
-vim.o.colorcolumn = 80
+
+vim.o.colorcolumn = "80" -- works!
 
 vim.g.python3_host_prog = 'python3'
 
