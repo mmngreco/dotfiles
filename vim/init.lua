@@ -1175,8 +1175,9 @@ vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, {noremap = true, desc = 
 vim.keymap.set('n', '<leader>dc', dap.continue, {noremap = true, desc = 'dap continue'})
 
 vim.keymap.set('n', '<leader>dh', dap.step_out, {noremap = true, desc = 'dap step out ←'})
-vim.keymap.set('n', '<leader>dj', dap.step_over, {noremap = true, desc = 'dap step over ↓'})
 vim.keymap.set('n', '<leader>dl', dap.step_into, {noremap = true, desc = 'dap step into →'})
+vim.keymap.set('n', '<leader>dk', dap.step_back, {noremap = true, desc = 'dap step back ↑'})
+vim.keymap.set('n', '<leader>dj', dap.step_over, {noremap = true, desc = 'dap step over ↓'})
 
 vim.keymap.set('n', '<leader>de', dap.repl.open, {noremap = true, desc = 'dap open repl'})
 vim.keymap.set('n', '<leader>dr', dap.run_last, {noremap = true, desc = 'dap run last'})
