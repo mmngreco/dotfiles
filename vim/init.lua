@@ -13,9 +13,64 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
-  use {"pwntester/octo.nvim", disable = not executable "gh"}
 
-  use "folke/zen-mode.nvim"
+
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup({
+        {
+          window = {
+            backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+            -- height and width can be:
+            -- * an absolute number of cells when > 1
+            -- * a percentage of the width / height of the editor when <= 1
+            -- * a function that returns the width or the height
+            width = 120, -- width of the Zen window
+            height = 1, -- height of the Zen window
+            -- by default, no options are changed for the Zen window
+            -- uncomment any of the options below, or add other vim.wo options you want to apply
+            options = {
+              -- signcolumn = "no", -- disable signcolumn
+              -- number = false, -- disable number column
+              -- relativenumber = false, -- disable relative numbers
+              -- cursorline = false, -- disable cursorline
+              -- cursorcolumn = false, -- disable cursor column
+              -- foldcolumn = "0", -- disable fold column
+              -- list = false, -- disable whitespace characters
+            },
+          },
+          plugins = {
+            -- disable some global vim options (vim.o...)
+            -- comment the lines to not apply the options
+            options = {
+              enabled = true,
+              ruler = false, -- disables the ruler text in the cmd line area
+              showcmd = false, -- disables the command in the last line of the screen
+            },
+            twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+            gitsigns = { enabled = false }, -- disables git signs
+            tmux = { enabled = false }, -- disables the tmux statusline
+            -- this will change the font size on kitty when in zen mode
+            -- to make this work, you need to set the following kitty options:
+            -- - allow_remote_control socket-only
+            -- - listen_on unix:/tmp/kitty
+            kitty = {
+              enabled = false,
+              font = "+4", -- font size increment
+            },
+          },
+          -- callback where you can add custom code when the Zen window opens
+          on_open = function(win)
+          end,
+          -- callback where you can add custom code when the Zen window closes
+          on_close = function()
+          end,
+        }
+      })
+    end
+  }
+
   use "folke/twilight.nvim"
   use "monaqa/dial.nvim"
   use {
@@ -36,8 +91,9 @@ require('packer').startup(function(use)
   use 'theHamsta/nvim-dap-virtual-text'
 
   use 'majutsushi/tagbar'
-  use 'nvim-telescope/telescope-symbols.nvim'
 
+  -- [[ copilot ]]
+  -- use 'github/copilot.vim'
   use {
     "zbirenbaum/copilot.lua",
     config = function()
@@ -53,10 +109,9 @@ require('packer').startup(function(use)
     end,
   }
 
+
   -- Github integration
-  if vim.fn.executable "gh" == 1 then
-    use "pwntester/octo.nvim"
-  end
+  use {"pwntester/octo.nvim", disable = not executable "gh"}
 
   -- Sweet message committer
   use "rhysd/committia.vim"
@@ -68,7 +123,6 @@ require('packer').startup(function(use)
     keys = "<Plug>(git-messenger)",
   }
 
-  -- use 'github/copilot.vim'
   use 'nvie/vim-flake8'
 
   use 'jpalardy/vim-slime'
@@ -78,20 +132,25 @@ require('packer').startup(function(use)
   use 'RRethy/vim-illuminate'
 
   use 'wbthomason/packer.nvim'
+
+  -- [[ colorschemes ]]
+  use 'wuelnerdotexe/vim-enfocado'
   use { "catppuccin/nvim", as = "catppuccin" }
-  -- use 'ishan9299/modus-theme-vim'
+  use { 'ishan9299/modus-theme-vim' }
   use {'navarasu/onedark.nvim'}
   use {'folke/tokyonight.nvim'}
 
   use 'mbbill/undotree'
-  use 'kristijanhusak/vim-dadbod-ui'
   use 'szw/vim-maximizer'
   use 'ThePrimeagen/git-worktree.nvim'
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
 
   use 'tpope/vim-abolish'
+
   use 'tpope/vim-dadbod'
+  use 'kristijanhusak/vim-dadbod-ui'
+
   use 'tpope/vim-dispatch'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-markdown'
@@ -109,6 +168,7 @@ require('packer').startup(function(use)
   use 'gyim/vim-boxdraw'
   use 'fatih/vim-go'
   use 'mattn/gist-vim'
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -148,7 +208,7 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
-
+  use {'nvim-telescope/telescope-symbols.nvim'}
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
@@ -211,18 +271,54 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
--- vim.o.termguicolors = true
--- vim.cmd('colorscheme modus-vivendi')
--- vim.g.modus_termtrans_enable = 1
--- vim.g.modus_faint_syntax = 1
--- vim.g.catppuccin_flavour = 'mocha'
-vim.cmd [[colorscheme onedark]]
-require('onedark').setup {
-    style = 'darker',
-    transparent = true,  -- Show/hide background
+function SetColorScheme(colorscheme)
 
-}
-require('onedark').load()
+  if colorscheme == 'onedark' then
+    require('onedark').setup({
+      style = 'darker',
+      -- style = 'warmer',
+      -- style = 'deep',
+      toggle_style_key = ',ts', -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+      transparent = true,  -- Show/hide background
+      diagnostics = {
+        darker = true, -- darker colors for diagnostic
+        undercurl = true,   -- use undercurl instead of underline for diagnostics
+        background = false,    -- use background color for virtual text
+      },
+    })
+    require('onedark').load()
+    vim.cmd [[colorscheme onedark]]
+
+  elseif colorscheme == 'modus-vivendi' then
+    vim.g.modus_faint_syntax = 0
+    vim.g.modus_green_strings = 1
+    vim.g.modus_yellow_comments = 0
+    vim.g.modus_cursorline_intense = 1
+    vim.g.modus_termtrans_enable = 0
+    vim.cmd('colorscheme modus-vivendi')
+
+  elseif colorscheme == 'catppuccin' then
+    vim.o.termguicolors = true
+    vim.g.catppuccin_flavour = 'mocha'
+    vim.cmd [[colorscheme catppuccin]]
+
+  elseif colorscheme == 'tokyonight' then
+    vim.cmd [[colorscheme tokyonight]]
+
+  elseif colorscheme == 'enfocado' then
+    vim.g.enfocado_style = 'nature' -- Available: `nature` or `neon`.
+    vim.cmd('colorscheme enfocado')
+
+  end
+
+  return colorscheme
+
+end
+
+
+-- ColoringVim('modus-vivendi')
+-- SetColorScheme('tokyonight')
+SetColorScheme('onedark')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -315,14 +411,12 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep'
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 
 vim.keymap.set('n', '<C-p>', builtin.git_files, {noremap = true, desc = 'Find files in git repo'})
-
-
-vim.keymap.set('n', '<leader>gt', builtin.git_stash, {noremap = true, desc = 'Git stash'})
+vim.keymap.set('n', '<leader>gs', builtin.git_stash, {noremap = true, desc = 'Git stash'})
 
 local function create_git_worktree()
   require('telescope').extensions.git_worktree.create_git_worktree()
 end
-vim.keymap.set('n', '<leader>gwt', create_git_worktree, {noremap = true, desc = 'Git worktree'})
+vim.keymap.set('n', '<leader>gw', create_git_worktree, {noremap = true, desc = 'Git worktree'})
 
 
 -- local function grep_for()
@@ -990,7 +1084,7 @@ vim.keymap.set('n', '<leader><cr>', ':source ~/.config/nvim/init.lua<cr>', {nore
 vim.keymap.set('n', '<leader>rc', ':new ~/.config/nvim/init.lua<cr>', {noremap = true})
 
 local mmngreco = vim.api.nvim_create_augroup('mmngreco', {clear = true})
-vim.api.nvim_create_autocmd('BufWritePost', {group=mmngreco, pattern='~/.config/nvim/init.lua', command='source ~/.config/nvim/init.lua'})
+-- vim.api.nvim_create_autocmd('BufWritePost', {group=mmngreco, pattern='~/.config/nvim/init.lua', command='source ~/.config/nvim/init.lua'})
 vim.api.nvim_create_autocmd('BufWritePre', { group=mmngreco, pattern='*', command='%s/\\s\\+$//e'})
 vim.api.nvim_create_autocmd('BufWritePre', { group=mmngreco, pattern='*.go', command='GoFmt'})
 vim.api.nvim_create_autocmd('BufEnter', { group=mmngreco, pattern='*.dbout', command='norm zR'})
@@ -1223,5 +1317,6 @@ ls.add_snippets('all', {
     s('hola', t'hola mundo!')
 })
 
+vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<cr>', { noremap = true, desc = 'ZenMode toggle'})
 
 -- vim:ts=2 sts=2 sw=2 et
