@@ -68,17 +68,18 @@ bindsym $super+Shift+t exec pkill picom && picom -b
 # open rofi
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
 bindsym $super+Ctrl+Shift+k exec "i3bindings | rofi -dmenu -no-config -theme-str 'listview { columns: 1; flow: vertical; }' -width 80"
+bindsym $super+m exec "/home/mgreco/rofi/splatmoji/splatmoji copy"
+
+# monitor settings using rofi
+bindsym $super+Ctrl+Shift+m exec rofi-randr
+bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
+bindsym $super+Ctrl+Shift+x exec xrandr --auto
 
 # bindsym $super+c exec notify-send Moira "$(moira check)"
 # bindsym $super+v exec notify-send VPN "$(nmcli con up ets)"
 
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
-
-# monitor settings using rofi
-bindsym $super+Ctrl+Shift+m exec rofi-randr
-bindsym $super+Ctrl+Shift+x exec xrandr --auto
-bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
 
 # change wallpaper
 bindsym $super+Ctrl+Shift+e exec --no-startup-id feh -D 3600 --randomize --bg-fill $HOME/github/mmngreco/wallpapers/*
@@ -97,9 +98,6 @@ bindsym $super+w exec brave-browser-stable
 
 # open file browser
 bindsym $super+Shift+f exec nautilus
-# bindsym $super+Shift+f workspace 4; focus; exec nautilus
-bindsym $super+m fullscreen toggle
-bindsym $super+y fullscreen disable; floating enable; resize set 600 450; sticky enable; move window to position 1940 54
 
 
 # ============================================================================
@@ -211,15 +209,14 @@ bindsym $super+0 workspace $ws10
 bindsym $super+Tab workspace next
 bindsym $super+Shift+Tab workspace prev
 
-
 bindsym $super+f fullscreen
 bindsym $super+g fullscreen global
+bindsym $super+y fullscreen disable; floating enable; resize set 600 450; sticky enable; move window to position 1940 54
 
 bindsym $super+z layout stacking
 bindsym $super+x layout tabbed
 bindsym $super+c layout toggle split
 
-bindsym $super+Shift+space floating toggle
 bindsym $super+space focus mode_toggle
 
 bindsym $super+a focus parent
@@ -321,8 +318,7 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
 exec --no-startup-id picom -b --experimental-backends
-
-# exec --no-startup-id slimbookbattery &
+exec --no-startup-id slimbookbattery &
 # exec --no-startup-id caffeine-indicator &
 # exec --no-startup-id clipit &
 
@@ -333,4 +329,3 @@ exec --no-startup-id i3-msg 'exec QT_SCALE_FACTOR=1.5 keepassxc'
 # exec --no-startup-id i3-msg 'exec telegram-desktop'
 # exec --no-startup-id i3-msg 'exec flatpak run com.github.wwmm.easyeffects'
 exec_always --no-startup-id "pgrep --exact xev || xev -root -event randr | grep --line-buffered ScreenChangeNotify | while read change; do pkill -RTMIN+4 i3blocks; done"
-
