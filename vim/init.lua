@@ -1049,7 +1049,7 @@ vim.b.SimpylFold_fold_blank = 0
 
 -- sets
 vim.o.scrollback=20000
-vim.o.guicursor=""
+-- vim.o.guicursor=""
 -- vim.o.nohlsearch = true
 -- vim.o.hidden = true
 -- vim.o.noerrorbells = true
