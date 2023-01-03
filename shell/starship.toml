@@ -17,6 +17,7 @@ success_symbol = "[\\$](bold green)"
 error_symbol = "[\\$](bold red)"
 vimcmd_symbol = "[<](bold green)"
 
+
 [git_commit]
 tag_symbol = " tag "
 
@@ -37,7 +38,7 @@ symbol = "C "
 symbol = "conda "
 
 [cmake]
-format = "via [$symbol]($style)"
+format = "[$symbol]($style)"
 symbol = "cmake "
 
 [directory]
@@ -47,14 +48,19 @@ read_only = " ro"
 symbol = "docker "
 
 [git_branch]
-symbol = "git "
+format = '[$symbol$branch]($style) '
+truncation_length = 10
+truncation_symbol = ''
+style = 'bold purple'
+# ignore_branches = ['master', 'main']
+symbol = ""
 
 [julia]
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 symbol = "jl "
 
 [nodejs]
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 symbol = "nodejs "
 
 [memory_usage]
@@ -64,34 +70,35 @@ symbol = "memory "
 symbol = "sudo "
 
 [gcloud]
-symbol = '️gc '
-format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+symbol = '️gc:'
+format = '[$symbol$account(@$domain)(\($project\))]($style) '
+style = 'bold blue'
 project_aliases = { 'data-observatory-ops'='do-ops'}
 
 [golang]
 symbol = "go "
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 
 [lua]
 symbol = "lua "
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 
 [meson]
 symbol = "meson "
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 
 [python]
 symbol = "py "
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 
 [rust]
 symbol = "rs "
-format = 'via [$symbol]($style)'
+format = '[$symbol]($style)'
 
 [username]
 style_user = 'white bold'
 style_root = 'black bold'
-format = '[$user]($style)'
+format = '[$user]($style) '
 disabled = false
 show_always = true
 
@@ -104,7 +111,7 @@ disabled = false
 
 [time]
 disabled = false
-format = '🕙[\[ $time \]]($style) '
+format = '[$time]($style) '
 time_format = '%T'
 
 [line_break]
