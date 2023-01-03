@@ -75,7 +75,7 @@ symbol = "sudo "
 disabled = false
 
 [gcloud]
-disabled = false
+disabled = true
 symbol = '️gc:'
 format = '[$symbol$account(@$domain)(\($project\))]($style) '
 style = 'bold blue'
@@ -124,6 +124,7 @@ disabled = false
 [time]
 disabled = false
 format = '[$time]($style) '
+style = 'bold purple'
 time_format = '%T'
 
 [line_break]
