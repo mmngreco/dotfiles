@@ -16,12 +16,15 @@ add_newline = true
 success_symbol = "[\\$](bold green)"
 error_symbol = "[\\$](bold red)"
 vimcmd_symbol = "[<](bold green)"
+disabled = false
 
 
 [git_commit]
+disabled = false
 tag_symbol = " tag "
 
 [git_status]
+disabled = false
 ahead = ">"
 behind = "<"
 diverged = "<>"
@@ -35,19 +38,23 @@ symbol = "aws "
 symbol = "C "
 
 [conda]
+disabled = false
 symbol = "conda "
 
 [cmake]
 format = "[$symbol]($style)"
 symbol = "cmake "
+disabled = false
 
 [directory]
 truncation_length = 12
 truncation_symbol = '.../'
 read_only = " ro"
+disabled = false
 
 [docker_context]
 symbol = "docker "
+disabled = false
 
 [git_branch]
 format = '[$symbol$branch]($style) '
@@ -56,47 +63,49 @@ truncation_symbol = ''
 style = 'bold purple'
 # ignore_branches = ['master', 'main']
 symbol = ""
-
-[julia]
-format = '[$symbol]($style)'
-symbol = "jl "
+disabled = false
 
 [nodejs]
 format = '[$symbol]($style)'
 symbol = "nodejs "
-
-[memory_usage]
-symbol = "memory "
+disabled = false
 
 [sudo]
 symbol = "sudo "
+disabled = false
 
 [gcloud]
+disabled = false
 symbol = '️gc:'
 format = '[$symbol$account(@$domain)(\($project\))]($style) '
 style = 'bold blue'
 project_aliases = { 'data-observatory-ops'='do-ops'}
 
 [golang]
+disabled = false
 symbol = "go "
 format = '[$symbol]($style)'
 
 [lua]
+disabled = false
 symbol = "lua "
 format = '[$symbol]($style)'
 
 [meson]
 symbol = "meson "
 format = '[$symbol]($style)'
+disabled = false
 
 [python]
 symbol = "py:"
 # format = '[$symbol]($style)'
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+disabled = false
 
 [rust]
 symbol = "rs "
 format = '[$symbol]($style)'
+disabled = false
 
 [username]
 style_user = 'white bold'
@@ -116,6 +125,7 @@ disabled = false
 disabled = false
 format = '[$time]($style) '
 time_format = '%T'
+disabled = false
 
 [line_break]
 disabled = false
@@ -124,6 +134,7 @@ disabled = false
 [cmd_duration]
 min_time = 500
 format = '[took:$duration](bold green) '
+disabled = false
 
 # [custom.foo]
 # command = 'echo foo' # shows output of command
