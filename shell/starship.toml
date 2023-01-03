@@ -1,0 +1,107 @@
+format = """
+$all\
+$line_break\
+$shell\
+$character"""
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+[character]
+success_symbol = "[\\$](bold green)"
+error_symbol = "[\\$](bold red)"
+vimcmd_symbol = "[<](bold green)"
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[aws]
+symbol = "aws "
+
+[c]
+symbol = "C "
+
+[conda]
+symbol = "conda "
+
+[cmake]
+format = "via [$symbol]($style)"
+symbol = "cmake "
+
+[directory]
+read_only = " ro"
+
+[docker_context]
+symbol = "docker "
+
+[git_branch]
+symbol = "git "
+
+[julia]
+format = 'via [$symbol]($style)'
+symbol = "jl "
+
+[nodejs]
+format = 'via [$symbol]($style)'
+symbol = "nodejs "
+
+[memory_usage]
+symbol = "memory "
+
+[sudo]
+symbol = "sudo "
+
+[gcloud]
+symbol = '️gc '
+format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+project_aliases = { 'data-observatory-ops'='do-ops'}
+
+[golang]
+symbol = "go "
+format = 'via [$symbol]($style)'
+
+[lua]
+symbol = "lua "
+format = 'via [$symbol]($style)'
+
+[meson]
+symbol = "meson "
+format = 'via [$symbol]($style)'
+
+[python]
+symbol = "py "
+format = 'via [$symbol]($style)'
+
+[rust]
+symbol = "rs "
+format = 'via [$symbol]($style)'
+
+[hostname]
+ssh_only = true
+format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+trim_at = '.companyname.com'
+disabled = false
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = '%T'
+
+[line_break]
+disabled = false
+
+# [custom.foo]
+# command = 'echo foo' # shows output of command
+# detect_files = ['foo'] # can specify filters but wildcards are not supported
+# when = ''' test "$HOME" = "$PWD" '''
+# format = ' transcending [$output]($style) '

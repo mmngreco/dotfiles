@@ -21,6 +21,8 @@
     ~/.tmux.conf: tmux/tmux.conf
 
     # shell
+    ~/.config/startship.toml: ~/.dotfiles/shell/starship.toml
+
     ~/.inputrc: shell/inputrc
     ~/.profile: shell/profile
     # bash
