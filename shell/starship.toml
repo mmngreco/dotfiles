@@ -88,8 +88,9 @@ symbol = "meson "
 format = '[$symbol]($style)'
 
 [python]
-symbol = "py "
-format = '[$symbol]($style)'
+symbol = "py:"
+# format = '[$symbol]($style)'
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [rust]
 symbol = "rs "
