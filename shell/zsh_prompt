@@ -30,8 +30,9 @@ function setPrompt() {
     input=${1:-$DEFAULT_PROMPT}
     case $input in
 
-        0 | starship)
+        0|starship)
             eval "$(starship init zsh)"
+            ;;
 
         1)
             PROMPT=''
