@@ -125,7 +125,6 @@ disabled = false
 disabled = false
 format = '[$time]($style) '
 time_format = '%T'
-disabled = false
 
 [line_break]
 disabled = false
