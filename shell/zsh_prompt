@@ -68,7 +68,7 @@ function setPrompt() {
             PROMPT+='%(?:%{$fg[green]%}$:%{$fg[red]%}$)%{$reset_color%} '
             ;;
 
-        *)
+        help)
             echo "Usage:"
             echo "setPrompt [1,2,3]"
             echo ""
@@ -88,6 +88,10 @@ function setPrompt() {
             echo "setPrompt 4 ->"
             echo "dotfiles (21:42|0s) $"
 
+            ;;
+
+        *)
+            setPrompt ${DEFAULT_PROMPT:-4}
             ;;
 
         esac
