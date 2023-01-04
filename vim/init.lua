@@ -14,6 +14,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
 
+  use {'dhruvasagar/vim-table-mode'}
 
   use {
     "folke/zen-mode.nvim",
