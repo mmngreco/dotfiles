@@ -40,12 +40,12 @@ symbol = "C:"
 [conda]
 disabled = false
 symbol = "conda:"
-format = "[$symbol]($style)"
+format = "[$symbol$environment]($style) "
 
 [cmake]
-format = "[$symbol]($style)"
-symbol = "cmake:"
 disabled = false
+format = "[$symbol]($style) "
+symbol = "cmake:"
 
 [directory]
 truncation_length = 12
@@ -67,7 +67,7 @@ symbol = ""
 disabled = false
 
 [nodejs]
-format = '[$symbol]($style)'
+format = '[$symbol]($style) '
 symbol = "nodejs:"
 disabled = false
 
