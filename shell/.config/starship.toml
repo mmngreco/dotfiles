@@ -32,18 +32,18 @@ renamed = "r"
 deleted = "x"
 
 [aws]
-symbol = "aws "
+symbol = "aws:"
 
 [c]
-symbol = "C "
+symbol = "C:"
 
 [conda]
 disabled = false
-symbol = "conda "
+symbol = "conda:"
 
 [cmake]
 format = "[$symbol]($style)"
-symbol = "cmake "
+symbol = "cmake:"
 disabled = false
 
 [directory]
@@ -53,7 +53,7 @@ read_only = " ro"
 disabled = false
 
 [docker_context]
-symbol = "docker "
+symbol = "docker:"
 disabled = false
 
 [git_branch]
@@ -67,12 +67,12 @@ disabled = false
 
 [nodejs]
 format = '[$symbol]($style)'
-symbol = "nodejs "
+symbol = "nodejs:"
 disabled = false
 
 [sudo]
-symbol = "sudo "
-disabled = false
+symbol = "sudo:"
+disabled = true
 
 [gcloud]
 disabled = true
@@ -83,16 +83,16 @@ project_aliases = { 'data-observatory-ops'='do-ops'}
 
 [golang]
 disabled = false
-symbol = "go "
+symbol = "go:"
 format = '[$symbol]($style)'
 
 [lua]
 disabled = false
-symbol = "lua "
+symbol = "lua:"
 format = '[$symbol]($style)'
 
 [meson]
-symbol = "meson "
+symbol = "meson:"
 format = '[$symbol]($style)'
 disabled = false
 
@@ -100,10 +100,10 @@ disabled = false
 symbol = "py:"
 # format = '[$symbol]($style)'
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-disabled = false
+disabled = true
 
 [rust]
-symbol = "rs "
+symbol = "rs:"
 format = '[$symbol]($style)'
 disabled = false
 
