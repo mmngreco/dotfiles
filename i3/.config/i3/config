@@ -58,13 +58,13 @@ set $default_gaps_outer 40
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
-workspace $ws9 gaps inner 0
-workspace $ws9 gaps outer 0
-workspace $ws9 gaps top 0
-workspace $ws9 gaps botton 0
+workspace $ws9 gaps inner 1
+workspace $ws9 gaps outer  1
+# workspace $ws9 gaps top 0
+# workspace $ws9 gaps bottom 0
 
-workspace $ws10 gaps inner 0
-workspace $ws10 gaps outer 0
+workspace $ws10 gaps inner 1
+workspace $ws10 gaps outer 1
 
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 0 ms
@@ -316,14 +316,14 @@ mode "$mode_gaps" {
 }
 
 mode "$mode_gaps_inner" {
-    bindsym plus  gaps inner current plus 5
+    bindsym Shift+plus  gaps inner current plus 5
     bindsym minus gaps inner current minus 5
 
     bindsym 0     mode "default", gaps inner current set 0
     bindsym d     mode "default", gaps inner current set $default_gaps_inner
 
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
+    bindsym $super+plus  gaps inner all plus 5
+    bindsym $super+minus gaps inner all minus 5
 
     bindsym Shift+0     mode "default", gaps inner all set 0
     bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
@@ -333,14 +333,14 @@ mode "$mode_gaps_inner" {
 }
 
 mode "$mode_gaps_outer" {
-    bindsym plus  gaps outer current plus 5
+    bindsym Shift+plus  gaps outer current plus 5
     bindsym minus gaps outer current minus 5
 
     bindsym 0     mode "default", gaps outer current set 0
     bindsym d     mode "default", gaps outer current set $default_gaps_outer
 
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
+    bindsym $super+plus  gaps outer all plus 5
+    bindsym $super+minus gaps outer all minus 5
 
     bindsym Shift+0     mode "default", gaps outer all set 0
     bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
