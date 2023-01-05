@@ -31,6 +31,7 @@ floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
 
+
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
 client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
 client.unfocused        $black      $black      $white      $darkblack  $darkblack
@@ -38,11 +39,6 @@ client.focused_inactive $black      $black      $white      $darkblack  $darkbla
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
 
-workspace_auto_back_and_forth yes
-force_display_urgency_hint 0 ms
-focus_on_window_activation urgent
-# Use Mouse+$super to drag floating windows to their wanted position
-floating_modifier $super
 
 set $ws1   "1:  "
 set $ws2   "2:  "
@@ -54,6 +50,32 @@ set $ws7   "7:  "
 set $ws8   "8:  "
 set $ws9   "9:  "
 set $ws10 "10:  "
+
+gaps top 30
+# gaps bottom 30
+set $default_gaps_inner 8
+set $default_gaps_outer 40
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+workspace $ws9 gaps inner 0
+workspace $ws9 gaps outer 0
+workspace $ws9 gaps top 0
+workspace $ws9 gaps botton 0
+
+workspace $ws10 gaps inner 0
+workspace $ws10 gaps outer 0
+
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+
+# ----------------------------------------------------------------------------
+# key bindings
+# ----------------------------------------------------------------------------
 
 bindsym $super+Return exec kitty
 bindsym $super+t exec xterm
@@ -274,12 +296,66 @@ for_window [class=".*"] split toggle
 bindsym $super+e layout toggle split
 
 
+
+
+set $mode_gaps gaps
+set $mode_gaps_outer outer gaps
+set $mode_gaps_inner inner gaps
+
+## gaps mode:
+bindsym $super+Shift+g mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+
+    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# ----------------------------------------------------------------------------
+# for window /
+# ----------------------------------------------------------------------------
+
+
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
-gaps inner 8
-gaps outer 30
-gaps top 5
-gaps bottom 30
 
 
 assign [class=kitty] $ws1
@@ -317,7 +393,8 @@ exec --no-startup-id xsettingsd &
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id volumeicon &
-exec --no-startup-id picom -b --experimental-backends
+# exec --no-startup-id picom -b --experimental-backends
+exec --no-startup-id picom -b
 exec --no-startup-id slimbookbattery &
 # exec --no-startup-id caffeine-indicator &
 # exec --no-startup-id clipit &
