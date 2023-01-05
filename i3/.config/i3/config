@@ -317,7 +317,7 @@ mode "$mode_gaps" {
 
 mode "$mode_gaps_inner" {
     bindsym Shift+plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
+    bindsym minus       gaps inner current minus 5
 
     bindsym 0     mode "default", gaps inner current set 0
     bindsym d     mode "default", gaps inner current set $default_gaps_inner
