@@ -39,6 +39,11 @@ full_text= Cal
 command=gsimplecal &
 border=#b63cc1
 
+[dotfiles]
+full_text= Dotfiles
+command=xterm -e "nvim ~/.dotfiles"
+border=#f2d93a
+
 [todo]
 full_text= todo
 command=xterm -e "nvim ~/TODO.md"
