@@ -5,8 +5,8 @@ border_top=0
 border_left=0
 border_right=0
 border_bottom=2
-# color=#000000
-color=#FFF
+color=#000000
+# color=#FFF
 
 
 [logout]
