@@ -72,8 +72,9 @@ symbol = "nodejs:"
 disabled = false
 
 [sudo]
-symbol = "sudo:"
-disabled = true
+symbol = "sudo"
+format = '[$symbol]($style) '
+disabled = false
 
 [gcloud]
 disabled = true
@@ -101,7 +102,7 @@ disabled = false
 symbol = "py:"
 # format = '[$symbol]($style)'
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-disabled = true
+disabled = false
 
 [rust]
 symbol = "rs:"
