@@ -1,7 +1,7 @@
 # set modifier
 set $super Mod4
 set $alt Mod1
-set $height 34
+set $height 35
 set $editor kitty
 
 # Use: xrandr command to check monitor names.
@@ -31,7 +31,6 @@ floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
 
-
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
 client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
 client.unfocused        $black      $black      $white      $darkblack  $darkblack
@@ -51,12 +50,12 @@ set $ws8   "8:  "
 set $ws9   "9:  "
 set $ws10 "10:  "
 
-gaps top 30
-# gaps bottom 30
 set $default_gaps_inner 8
 set $default_gaps_outer 40
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
+gaps top 10
+# gaps bottom 30
 
 workspace $ws9 gaps inner 1
 workspace $ws9 gaps outer  1
