@@ -102,7 +102,7 @@ disabled = false
 symbol = "py:"
 # format = '[$symbol]($style)'
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-disabled = false
+disabled = true
 
 [rust]
 symbol = "rs:"

@@ -1,4 +1,5 @@
 env_prompt: '($(basename {default_env})) '
-# ssl_verify: False
+changeps1: False
+ssl_verify: False
 auto_activate_base: False
 auto_stack: 0

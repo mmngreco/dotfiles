@@ -1319,5 +1319,7 @@ ls.add_snippets('all', {
 })
 
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<cr>', { noremap = true, desc = 'ZenMode toggle'})
+vim.keymap.set('n', '<leader>p', '"0p', { desc = 'Paste 0 register' })
+vim.keymap.set('v', '<leader>p', '"0p', { desc = 'Paste 0 register' })
 
 -- vim:ts=2 sts=2 sw=2 et
