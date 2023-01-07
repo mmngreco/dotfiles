@@ -696,7 +696,7 @@ cmp.setup {
   sources = {
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
-    -- { name = 'copilot' },
+    { name = 'copilot' },
     { name = 'buffer' },
     { name = 'path' },
     -- { name = 'neorg' },
