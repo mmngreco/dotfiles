@@ -699,7 +699,7 @@ cmp.setup {
     { name = 'copilot' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'neorg' },
+    -- { name = 'neorg' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'orgmode' },
   },
