@@ -79,7 +79,7 @@ dotfilesInstall() {
         for pkg in "$@"
         do
             echo Installing $pkg
-            source $DOTFILES/software/$pkg
+            bash $DOTFILES/software/$pkg
         done
     fi
 }
