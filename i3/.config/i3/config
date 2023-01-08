@@ -353,9 +353,6 @@ mode "$mode_gaps_outer" {
 # ----------------------------------------------------------------------------
 
 
-# window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 0
-
 
 assign [class=kitty] $ws1
 assign [class=Brave-browser] $ws2
@@ -368,9 +365,11 @@ assign [class=keepassxc|KeePassXC] $ws8
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn] $ws8
 assign [class=obs|easyeffects] $ws9
 
+for_window [class=".*"] focus
+for_window [class=".*"] border pixel 0
+
 for_window [class=Viewnior|feh|File-roller|Lxappearance] floating enable
 # for_window [class=Org.gnome.Nautilus|Brave-browser|firefox|TelegramDesktop|Gimp*|Inkscape|Vlc] focus
-for_window [class=".*"] focus
 
 
 for_window [window_role="pop-up"] floating enable
@@ -382,6 +381,10 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [instance="__scratchpad"] floating enable, resize set 900 px 500 px, move position center
 for_window [instance="__nmtui"] floating enable
+
+# twtich hack
+for_window [class="obs" title="Chat"] floating disable
+for_window [class="obs" title="Twitch Stats"] floating disable
 
 
 # autostart
