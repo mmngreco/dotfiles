@@ -91,6 +91,8 @@ bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show dru
 bindsym $super+Ctrl+Shift+k exec "i3bindings | rofi -dmenu -no-config -theme-str 'listview { columns: 1; flow: vertical; }' -width 80"
 bindsym $super+m exec "/home/mgreco/rofi/splatmoji/splatmoji copy"
 
+bindsym $super+Shift+l exec "/home/mgreco/i3-layout-manager/layout_manager.sh"
+
 # monitor settings using rofi
 bindsym $super+Ctrl+Shift+m exec rofi-randr
 bindsym $super+Ctrl+Shift+t exec monitor_layout.sh
