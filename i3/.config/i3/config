@@ -386,7 +386,8 @@ for_window [instance="__nmtui"] floating enable
 
 # twtich hack
 for_window [class="obs" title="Chat"] floating disable
-for_window [class="obs" title="Twitch Stats"] floating disable
+for_window [class="obs" title="Twitch Stats"] floating disable;
+for_window [class="obs" title="OBS.*"] floating disable
 
 
 # autostart
