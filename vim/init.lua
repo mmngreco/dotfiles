@@ -1326,4 +1326,27 @@ vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<cr>', { noremap = true, desc = '
 vim.keymap.set('n', '<leader>p', '"0p', { desc = 'Paste 0 register' })
 vim.keymap.set('v', '<leader>p', '"0p', { desc = 'Paste 0 register' })
 
+
+-- create function to swap booleans values in lua
+-- so we can use it in mappings
+-- e.g. False -> True, True -> False, 0 -> 1, 1 -> 0, false -> true, true -> false
+function SwapBool()
+  -- get current word
+  local value_map = {
+    ['True'] = 'False',
+    ['False'] = 'True',
+    ['true'] = 'false',
+    ['false'] = 'true',
+  }
+  local word = vim.fn.expand("<cword>")
+  local new = value_map[word]
+  -- replace current word with new word
+  vim.api.nvim_command("normal ciw" .. new)
+end
+
+vim.keymap.set('n', '<leader>sb', ':lua SwapBool()<cr>', {noremap = true, desc = 'swap boolean value'})
+
+-- common mistake: prevent create a file 2
+vim.api.nvim_command('cabbrev w2 w')
+
 -- vim:ts=2 sts=2 sw=2 et
