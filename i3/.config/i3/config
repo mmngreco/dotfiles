@@ -76,6 +76,13 @@ floating_modifier $super
 # key bindings
 # ----------------------------------------------------------------------------
 
+## Make the currently focused window a scratchpad
+bindsym $super+Shift+minus move scratchpad
+## Show the first scratchpad window
+bindsym $super+minus scratchpad show
+## Show the sup-mail scratchpad window, if any.
+bindsym $alt+s [title="^Sup ::"] scratchpad show
+
 bindsym $super+Return exec kitty
 bindsym $super+t exec xterm
 

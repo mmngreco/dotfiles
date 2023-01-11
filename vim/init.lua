@@ -1349,4 +1349,21 @@ vim.keymap.set('n', '<leader>sb', ':lua SwapBool()<cr>', {noremap = true, desc =
 -- common mistake: prevent create a file 2
 vim.api.nvim_command('cabbrev w2 w')
 
+-- function to convert table tab separetaed into a python dict
+function TabToDict()
+    vim.cmd[[:'<,'>s/\t/": "/]]
+    pcall(vim.cmd, [[:'<,'>s/\t/", "/g]])
+    vim.cmd[[:'<,'>s/^/"/g]]
+    vim.cmd[[:'<,'>s/$/",/g]]
+    pcall(vim.cmd, [[normal :'<,'>s/""/None/g']])
+    pcall(vim.cmd, [[normal :'<,'>s/"TRUE"/True/g']])
+    vim.api.nvim_command("normal gVVc{\r}")
+    vim.api.nvim_command("normal O")
+    vim.api.nvim_command("normal P}dd")
+    vim.api.nvim_command("normal vi{g=")
+    -- vim.api.nvim_command("normal! dd")
+end
+
+vim.keymap.set('v', '<leader>td', ':lua TabToDict()<cr>', {noremap = true, desc = 'convert table to dict'})
+
 -- vim:ts=2 sts=2 sw=2 et
