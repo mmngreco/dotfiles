@@ -16,19 +16,16 @@ c.PlainTextFormatter.pprint = True
 c.TerminalInteractiveShell.editor = 'nvim'
 # c.TerminalInteractiveShell.editing_mode = 'vi'
 c.InteractiveShellApp.exec_lines = [
-    "%pdb on",
-	"from IPython.terminal.interactiveshell import TerminalInteractiveShell",
-	"shl = TerminalInteractiveShell().instance()",
-	"tbClass = shl.InteractiveTB",
-	"from pdb import Pdb",
-	"tbClass.debugger_cls = Pdb",
-	"tbClass.pdb = tbClass.debugger_cls()",
-    "%pdb off",
-	"import os",
-	"def addToClipBoard(text):",
-	"    command = 'echo %r | xclip -selection clipboard' % text",
-	"    os.system(command)",
-
+    # "%pdb on",
+    # "from IPython.terminal.interactiveshell import TerminalInteractiveShell",
+    # "shl = TerminalInteractiveShell().instance()",
+    # "tbClass = shl.InteractiveTB",
+    # "from pdb import Pdb",
+    # "tbClass.debugger_cls = Pdb",
+    # "tbClass.pdb = tbClass.debugger_cls()",
+    # "%pdb off",
+    "import sys;sys.path.append('/home/mgreco/.dotfiles/python/scripts')",
+    "from clipboard import pbcopy"
     ]
 c.InteractiveShellApp.extensions = ["autoreload", "rich", "pyflyby"]
 # c.InteractiveShell.colors = 'NoColor'
