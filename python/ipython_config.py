@@ -5,7 +5,7 @@ from IPython.terminal.prompts import ClassicPrompts
 c = get_config()
 c.TerminalInteractiveShell.confirm_exit = False
 c.TerminalInteractiveShell.banner1 = ""
-c.TerminalInteractiveShell.prompts_class = ClassicPrompts
+# c.TerminalInteractiveShell.prompts_class = ClassicPrompts
 # c.TerminalInteractiveShell.editing_mode = "vim"
 # c.TerminalInteractiveShell.editor = "vi"
 c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
