@@ -1133,7 +1133,7 @@ end
 
 vim.keymap.set('n', 'gV', '`[v`]', {noremap = true, desc = 'select last visual selection' })
 vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>/<C-r><C-w>/gI<left><left><left>', {noremap = true, desc = 'search and replace word under cursor' })
-vim.keymap.set('n', 'gs', ':%s//g<left><left>', {noremap = true, desc = 'search and replace' })
+-- vim.keymap.set('n', 'gs', ':%s//g<left><left>', {noremap = true, desc = 'search and replace' })
 
 vim.keymap.set('i', '<C-J>', '<esc>:.m+1 | startinsert<cr>', {noremap = true, desc = 'move line down' })
 vim.keymap.set('i', '<C-K>', '<esc>:.m-2 | startinsert<cr>', {noremap = true, desc = 'move line up' })
@@ -1365,5 +1365,7 @@ function TabToDict()
 end
 
 vim.keymap.set('v', '<leader>td', ':lua TabToDict()<cr>', {noremap = true, desc = 'convert table to dict'})
+
+vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%:p")<cr>', {noremap = true, desc = 'yank filename/buffer path'})
 
 -- vim:ts=2 sts=2 sw=2 et
