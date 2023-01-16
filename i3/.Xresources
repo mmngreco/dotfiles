@@ -34,7 +34,7 @@ XTerm.vt100.translations: #override \
 
 xterm*faceName: Cascadia Code PL
 ! xTerm*faceName: mplus Nerd Font
-xterm*faceSize: 14
+xterm*faceSize: 12
 !  xterm*vt100*geometry: 80x50
 xterm*saveLines: 100000
 ! xterm*boldMode: false
