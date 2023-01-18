@@ -987,6 +987,7 @@ function Send_to_harpoon(term_num, visual)
 end
 
 vim.g.harpoon_goto_term = 0
+
 -- send to harpoon terminal
 vim.keymap.set('n', '<C-s><C-h>', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
 vim.keymap.set('v', '<C-s><C-h>', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
@@ -1006,7 +1007,7 @@ vim.keymap.set('n', '<C-l><C-l>', ':lua require("harpoon.term").gotoTerminal(4)<
 -- add file to harpoon
 vim.keymap.set('n', '<leader>hf', ':lua require("harpoon.mark").add_file()<CR>', {noremap = true})
 
--- python cells
+-- add python cells
 vim.keymap.set('n', '<leader>cO', 'O%%<esc>:norm gcc<cr>j', {noremap = true})
 vim.keymap.set('n', '<leader>co', 'o%%<esc>:norm gcc<cr>k', {noremap = true})
 vim.keymap.set('n', '<leader>c-', 'O<esc>77i-<esc>:norm gcc<cr>j', {noremap = true})
@@ -1121,6 +1122,12 @@ vim.g.slime_bracketed_paste = 1
 vim.g.slime_dont_ask_default = 1
 vim.g.slime_default_config = {socket_name="default", target_pane=":.2"}
 vim.g.slime_no_mappings = 1
+
+vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>ep', '<Plug>SlimeParagraphSend', {noremap = true})
+vim.keymap.set('n', '<leader>cc', '<Plug>SlimeSendCell', {noremap = true})
+vim.keymap.set('n', '<leader>ck', '<cmd>call search(g:slime_cell_delimiter, "b")<cr>', {noremap = true})
+vim.keymap.set('n', '<leader>cj', '<cmd>call search(g:slime_cell_delimiter)<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>cv', ':SlimeConfig<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true, desc = 'send line to tmux'})
 vim.keymap.set('x', '<leader>e', '<Plug>SlimeRegionSend', {noremap = true, desc = 'send line to tmux'})
@@ -1382,5 +1389,21 @@ end
 vim.keymap.set('v', '<leader>td', ':lua TabToDict()<cr>', {noremap = true, desc = 'convert table to dict'})
 
 vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%:p")<cr>', {noremap = true, desc = 'yank filename/buffer path'})
+
+
+local use_slime = 0
+function ToggleSlime()
+  if use_slime then
+    vim.keymap.set('n', '<leader>e', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
+    vim.keymap.set('v', '<leader>e', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
+    use_slime = 0
+  else
+    vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true, desc = 'send line to tmux'})
+    vim.keymap.set('x', '<leader>e', '<Plug>SlimeRegionSend', {noremap = true, desc = 'send line to tmux'})
+    use_slime = 1
+  end
+end
+
+ToggleSlime()
 
 -- vim:ts=2 sts=2 sw=2 et
