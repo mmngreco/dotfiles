@@ -189,3 +189,5 @@
 [safe]
 	directory = /data/github/carto/data-observatory/etl
 	directory = /data/github/carto/data-observatory
+	directory = /data/github/carto/data-observatory/.git
+	directory = /data/github/carto/data-observatory/

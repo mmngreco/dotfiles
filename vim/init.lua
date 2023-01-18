@@ -938,11 +938,13 @@ augroup END
 -- [[ terminal ]]
 -- terminal settings
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
--- vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', {noremap = true})
--- vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', {noremap = true})
--- vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', {noremap = true})
--- vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', {noremap = true})
--- vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>w', {noremap = true})
+vim.keymap.set('t', '<C-w>h', '<C-\\><C-n><C-w>h', {noremap = true})
+vim.keymap.set('t', '<C-w>j', '<C-\\><C-n><C-w>j', {noremap = true})
+vim.keymap.set('t', '<C-w>k', '<C-\\><C-n><C-w>k', {noremap = true})
+vim.keymap.set('t', '<C-w>l', '<C-\\><C-n><C-w>l', {noremap = true})
+vim.keymap.set('t', '<C-w>w', '<C-\\><C-n><C-w>w', {noremap = true})
+vim.keymap.set('t', '<C-P>', '<C-\\><C-n>pi<cr>', {noremap = true})
+-- vim.keymap.set('n', '<C-l>', 'i<C-l>', {noremap = true})
 
 
 -- [[ LSP ]]
