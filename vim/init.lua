@@ -1509,13 +1509,24 @@ require'nvim-treesitter.configs'.setup {
 -- create scratch buffer with name and open it
 
 function CreateScratch()
-  -- 20 % of the screen height
-  vim.cmd('20new ./scratch.py')
+  local parent = './scratch'
+  if vim.fn.isdirectory(parent) == 0 then
+    parent = '.'
+  end
+  local num = 0
+  local ext = '.py'
+  local file = function(n) return parent .. '/' .. n .. ext end
+
+  while (vim.fn.filereadable(file(num)) ~= 0) and (num <= 1000) do
+    num = num + 1
+  end
+  vim.cmd('10new ' .. file(num))
+
+  vim.bo.buftype = '__scratch__'
   -- vim.bo.filetype = 'markdown'
-  -- vim.bo.buftype = './scratch.py'
   -- vim.bo.bufhidden = 'wipe'
   -- vim.bo.swapfile = false
-  -- vim.bo.modifiable = true
+  vim.bo.modifiable = true
   vim.bo.textwidth = 0
 end
 
