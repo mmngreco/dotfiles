@@ -1396,21 +1396,19 @@ vim.keymap.set('v', '<leader>td', ':lua TabToDict()<cr>', {noremap = true, desc 
 vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%:p")<cr>', {noremap = true, desc = 'yank filename/buffer path'})
 
 
-local use_slime = 0
-function ToggleSlime()
-  if use_slime then
-    vim.keymap.set('n', '<leader>e', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
-    vim.keymap.set('v', '<leader>e', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
-    use_slime = 0
-  else
-    vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = true, desc = 'send line to tmux'})
-    vim.keymap.set('x', '<leader>e', '<Plug>SlimeRegionSend', {noremap = true, desc = 'send line to tmux'})
-    use_slime = 1
+function ToggleSlime(back)
+  if back == 'harpoon' then
+    vim.keymap.set('n', '<leader>e', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = false})
+    vim.keymap.set('v', '<leader>e', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = false})
+    print("Using harpoon")
+  elseif back == 'slime' then
+    vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = false, desc = 'send line to tmux'})
+    vim.keymap.set('x', '<leader>e', '<Plug>SlimeRegionSend', {noremap = false, desc = 'send line to tmux'})
+    print("Using Slime")
   end
 end
 
-ToggleSlime()
-
+ToggleSlime('slime')
 
 
 require'nvim-treesitter.configs'.setup {
@@ -1506,4 +1504,22 @@ require'nvim-treesitter.configs'.setup {
 
   },
 }
+
+
+-- create scratch buffer with name and open it
+
+function CreateScratch()
+  -- 20 % of the screen height
+  vim.cmd('20new ./scratch.py')
+  -- vim.bo.filetype = 'markdown'
+  -- vim.bo.buftype = './scratch.py'
+  -- vim.bo.bufhidden = 'wipe'
+  -- vim.bo.swapfile = false
+  -- vim.bo.modifiable = true
+  vim.bo.textwidth = 0
+end
+
+vim.keymap.set('n', '<leader>ss', ':lua CreateScratch()<cr>', {noremap = true, desc = 'create scratch buffer'})
+
+
 -- vim:ts=2 sts=2 sw=2 et
