@@ -396,7 +396,7 @@ for_window [class="obs" title="Chat"] floating disable
 for_window [class="obs" title="Twitch Stats"] floating disable;
 for_window [class="obs" title="OBS.*"] floating disable
 
-for_window [class="matplotlib"] floating enable
+for_window [class="Matplotlib"] floating enable
 
 
 # autostart
