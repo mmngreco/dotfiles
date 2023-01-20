@@ -396,6 +396,8 @@ for_window [class="obs" title="Chat"] floating disable
 for_window [class="obs" title="Twitch Stats"] floating disable;
 for_window [class="obs" title="OBS.*"] floating disable
 
+for_window [class="matplotlib"] floating enable
+
 
 # autostart
 exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1 --auto --primary
