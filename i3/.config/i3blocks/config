@@ -6,7 +6,7 @@ border_left=0
 border_right=0
 border_bottom=2
 color=#000000
-# color=#FFF
+# color=#FFFF
 
 
 [logout]
@@ -40,11 +40,16 @@ full_text= Cal
 command=gsimplecal &
 border=#b63cc1
 
-[dotfiles]
-full_text= Dotfiles
-command=xterm -e "nvim ~/.dotfiles"
+[vim]
+full_text= vim
+command=xterm -e "nvim"
 border=#f2d93a
 
+# [dotfiles]
+# full_text= Dotfiles
+# command=xterm -e "nvim ~/.dotfiles"
+# border=#f2d93a
+#
 [todo]
 full_text= todo
 command=xterm -e "nvim ~/TODO.md"
@@ -57,10 +62,10 @@ interval=5
 markup=pango
 border=#928374
 
-[weather]
-command=echo "`curl -Ss 'https://wttr.in/?0&T&Q&format=1'`"
-interval=3600
-border=#A4C2F4
+# [weather]
+# command=echo "`curl -Ss 'https://wttr.in/?0&T&Q&format=1'`"
+# interval=3600
+# border=#A4C2F4
 
 [battery]
 command=bash $DOTFILES/scripts/battery.sh
