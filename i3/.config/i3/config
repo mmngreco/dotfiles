@@ -96,7 +96,7 @@ bindsym $super+Shift+t exec pkill picom && picom -b
 # open rofi
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'ubuntu 12'
 bindsym $super+Ctrl+Shift+k exec "i3bindings | rofi -dmenu -no-config -theme-str 'listview { columns: 1; flow: vertical; }' -width 80"
-bindsym $super+m exec "/home/mgreco/rofi/splatmoji/splatmoji copy"
+bindsym $super+e exec "/home/mgreco/rofi/splatmoji/splatmoji copy"
 
 bindsym $super+Shift+l exec "/home/mgreco/i3-layout-manager/layout_manager.sh"
 
@@ -161,13 +161,13 @@ bindsym $super+Shift+v split h
 bindsym $super+Shift+h split v
 
 # change container layout split
-bindsym Ctrl+Shift+s layout toggle split
+bindsym Ctrl+Shift+space layout toggle split
 
 # enter fullscreen mode for the focused container
 # bindsym Ctrl+Shift+m fullscreen toggle
 
 # toggle tiling / floating
-bindsym Ctrl+Shift+space floating toggle
+bindsym Ctrl+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $alt+Ctrl+Shift+s focus mode_toggle
@@ -209,7 +209,7 @@ mode "resize" {
 
     bindsym Return mode "default"
 }
-bindsym $super+Shift+r mode "resize"
+bindsym $super+r mode "resize"
 
 
 # =============================================================================
@@ -254,7 +254,7 @@ bindsym $super+z layout stacking
 bindsym $super+x layout tabbed
 bindsym $super+c layout toggle split
 
-bindsym $super+space focus mode_toggle
+bindsym $super+s focus mode_toggle
 
 bindsym $super+a focus parent
 bindsym $super+Shift+a focus child
