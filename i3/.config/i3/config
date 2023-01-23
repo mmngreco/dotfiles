@@ -200,6 +200,13 @@ mode "resize" {
     bindsym j resize grow height 5 px or 5 ppt
     bindsym k resize shrink height 5 px or 5 ppt
     bindsym l resize grow width 5 px or 5 ppt
+
+    # mouse
+    bindsym --whole-window button7 resize shrink width 5 px or 5 ppt
+    bindsym --whole-window button5 resize grow height 5 px or 5 ppt
+    bindsym --whole-window button4 resize shrink height 5 px or 5 ppt
+    bindsym --whole-window button6 resize grow width 5 px or 5 ppt
+
     bindsym Return mode "default"
 }
 bindsym $super+Shift+r mode "resize"
