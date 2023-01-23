@@ -161,7 +161,7 @@ bindsym $super+Shift+v split h
 bindsym $super+Shift+h split v
 
 # change container layout split
-bindsym Ctrl+Shift+space layout toggle split
+bindsym $super+Shift+s layout toggle split
 
 # enter fullscreen mode for the focused container
 # bindsym Ctrl+Shift+m fullscreen toggle
@@ -308,7 +308,7 @@ for_window [class=".*"] split toggle
 # toggles split at each new window
 # bindsym $mod+shift+q split toggle kill #kill command resets the split
 # should already exist but use if split orientation  messes up
-bindsym $super+e layout toggle split
+# bindsym $super+e layout toggle split
 
 
 
