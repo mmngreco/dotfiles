@@ -1237,8 +1237,6 @@ vim.keymap.set('n', '<leader>tu', 'yypvawr-', {noremap = true, desc = 'underline
 vim.keymap.set('n', '<leader>tx', ':s/\\[\\s\\?\\]/[x]/<cr>', {noremap = true, desc = 'check a box in markdown'})
 vim.keymap.set('n', '<leader>t<space>', ':s/\\[x\\]/[ ]/<cr>', {noremap = true, desc = 'uncheck a box in markdown'})
 vim.keymap.set('n', '<leader>ta', 'I- [ ] <esc>', {noremap = true, desc = 'append empty checkbox in markdown'})
-vim.keymap.set('n', '<leader>y', '"+yy', {noremap = true, desc = 'copy to system clipboard'})
-vim.keymap.set('v', '<leader>y', '"+y', {noremap = true, desc = 'copy to system clipboard'})
 vim.keymap.set('n', '<leader>m', ':MaximizerToggle<cr>', {noremap = true, desc = 'Maximize current window'})
 
 -- [[ checkbox ]]
@@ -1378,10 +1376,6 @@ ls.add_snippets('python', {
 
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<cr>', { noremap = true, desc = 'ZenMode toggle'})
 
-vim.keymap.set('n', '<C-v>', '"0p', { desc = 'Paste 0 register' })
-vim.keymap.set('i', '<C-v>', '<C-r>0', { desc = 'Paste 0 register' })
-vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste clipboard register' })
-vim.keymap.set('v', '<leader>p', '"+p', { desc = 'Paste clipboard register' })
 
 
 -- create function to swap booleans values in lua
@@ -1423,7 +1417,6 @@ end
 
 vim.keymap.set('v', '<leader>td', ':lua TabToDict()<cr>', {noremap = true, desc = 'convert table to dict'})
 
-vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%:p")<cr>', {noremap = true, desc = 'yank filename/buffer path'})
 
 
 function ToggleSlime(back)
@@ -1585,6 +1578,17 @@ high_str.setup({
 
 vim.keymap.set("v", "<leader>h", ":<c-u>HSHighlight 2<cr>", {noremap = true, desc = 'high-str'})
 -- vim.keymap.set("n", "<leader>h", ":<c-u>HSHighlight 2<cr>", {noremap = true, desc = 'high-str'})
-vim.keymap.set("v", "<C-c>", "\"+y", {noremap = true, desc = 'yank to clipboard'})
+
+vim.keymap.set("v", "<C-c>", "\"0y", {noremap = true, desc = 'yank to clipboard'})
+vim.keymap.set("n", "<C-c>", "\"0yy", {noremap = true, desc = 'yank to clipboard'})
+
+vim.keymap.set('n', '<C-v><C-v>', '"0p', { desc = 'Paste 0 register' })
+vim.keymap.set('i', '<C-v>', '<C-r>0', { desc = 'Paste 0 register' })
+
+vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste clipboard register' })
+vim.keymap.set('v', '<leader>p', '"+p', { desc = 'Paste clipboard register' })
+vim.keymap.set('n', '<leader>y', '"+yy', {noremap = true, desc = 'copy to system clipboard'})
+vim.keymap.set('v', '<leader>y', '"+y', {noremap = true, desc = 'copy to system clipboard'})
+vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%:p")<cr>', {noremap = true, desc = 'yank filename/buffer path'})
 
 -- vim:ts=2 sts=2 sw=2 et
