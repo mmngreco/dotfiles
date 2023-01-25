@@ -875,6 +875,12 @@ autocmd({'FileType'}, {
   command = "nmap <buffer> <leader>w <Plug>(DBUI_SaveQuery)",
 })
 
+autocmd({'FileType'}, {
+  group = Mgreco,
+  pattern = "markdown",
+  command = "normal zR",
+})
+
 vim.keymap.set('n', '<leader>sq', '<Plug>(DBUI_SaveQuery)', {noremap = true})
 
 autocmd({'FileType'}, {
@@ -1371,8 +1377,11 @@ ls.add_snippets('python', {
 })
 
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<cr>', { noremap = true, desc = 'ZenMode toggle'})
-vim.keymap.set('n', '<leader>p', '"0p', { desc = 'Paste 0 register' })
-vim.keymap.set('v', '<leader>p', '"0p', { desc = 'Paste 0 register' })
+
+vim.keymap.set('n', '<C-v>', '"0p', { desc = 'Paste 0 register' })
+vim.keymap.set('i', '<C-v>', '<C-r>0', { desc = 'Paste 0 register' })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste clipboard register' })
+vim.keymap.set('v', '<leader>p', '"+p', { desc = 'Paste clipboard register' })
 
 
 -- create function to swap booleans values in lua
@@ -1573,5 +1582,9 @@ high_str.setup({
 		color_9 = {"#7d5c34", "smart"},	-- Fallow brown
 	}
 })
+
+vim.keymap.set("v", "<leader>h", ":<c-u>HSHighlight 2<cr>", {noremap = true, desc = 'high-str'})
+-- vim.keymap.set("n", "<leader>h", ":<c-u>HSHighlight 2<cr>", {noremap = true, desc = 'high-str'})
+vim.keymap.set("v", "<C-c>", "\"+y", {noremap = true, desc = 'yank to clipboard'})
 
 -- vim:ts=2 sts=2 sw=2 et
