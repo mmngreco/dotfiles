@@ -1039,8 +1039,8 @@ vim.keymap.set('n', '<C-l><C-l>', ':lua require("harpoon.term").gotoTerminal(4)<
 vim.keymap.set('n', '<leader>hf', ':lua require("harpoon.mark").add_file()<CR>', {noremap = true})
 
 -- add python cells
-vim.keymap.set('n', '<leader>cO', 'O%%<esc>:norm gcc<cr>j', {noremap = true})
-vim.keymap.set('n', '<leader>co', 'o%%<esc>:norm gcc<cr>k', {noremap = true})
+vim.keymap.set('n', '<leader>co', 'O%%<esc>:norm gcc<cr>j', {noremap = true})
+vim.keymap.set('n', '<leader>cO', 'o%%<esc>:norm gcc<cr>k', {noremap = true})
 vim.keymap.set('n', '<leader>c-', 'O<esc>77i-<esc>:norm gcc<cr>j', {noremap = true})
 vim.keymap.set('n', 'vic', 'V?%%<cr>o/%%<cr>koj', {noremap = true})
 
