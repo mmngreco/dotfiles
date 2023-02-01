@@ -1369,9 +1369,13 @@ local t = ls.text_node
 ls.add_snippets('all', {
     s('hola', t'hola mundo!')
 })
-local t = ls.text_node
+
 ls.add_snippets('python', {
     s('pdb', t'__import__("pdb").set_trace()')
+})
+
+ls.add_snippets('python', {
+    s('pm', t'__import__("pdb").pm()')
 })
 
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<cr>', { noremap = true, desc = 'ZenMode toggle'})

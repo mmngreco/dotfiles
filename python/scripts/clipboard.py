@@ -8,7 +8,7 @@ def to_clipboard(obj, copy_cmd="xclip -selection clipboard"):
 
 
 def pbcopy(text):
-    command = 'echo %r | xclip -selection clipboard' % text
+    command = r"echo '%r' | xclip -selection clipboard" % text
     os.system(command)
 
 
