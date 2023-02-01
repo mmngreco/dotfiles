@@ -13,13 +13,15 @@ end
 
 require('packer').startup(function(use)
   -- Package manager
-  use {
-    "jcdickinson/wpm.nvim",
-    config = function()
-      require("wpm").setup({
-      })
-    end
-  }
+
+
+  -- use {
+  --   "jcdickinson/wpm.nvim",
+  --   config = function()
+  --     require("wpm").setup({
+  --     })
+  --   end
+  -- }
 
   use {
     "folke/todo-comments.nvim",
@@ -831,7 +833,7 @@ require('illuminate').configure({
   min_count_to_highlight = 1,
 })
 
-local wpm = require("wpm")
+-- local wpm = require("wpm")
 require('lualine').setup({
   options = {
     theme = 'onedark',
@@ -852,8 +854,8 @@ require('lualine').setup({
       'encoding',
       'fileformat',
       'filetype',
-      wpm.wpm,
-      wpm.historic_graph
+      -- wpm.wpm,
+      -- wpm.historic_graph
     },
     lualine_y = {function() return vim.fn.ObsessionStatus('Ob:ON', 'Ob:Off') end },
     lualine_z = {'location'}
