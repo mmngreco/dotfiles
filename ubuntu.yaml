@@ -12,6 +12,7 @@
 
 - link:
     ~/.dotfiles: .
+    ~/.visidatarc: ./.visidatarc
     ~/.config/pulse/default.pa: pulse/default.pa
     # ~/.octaverc: octave/octaverc
     ~/.gitconfig: git/gitconfig

@@ -229,7 +229,8 @@ workspace $ws9 output $monitor_secondary
 workspace $ws10 output $monitor_secondary
 
 
-set $monitor_primary HDMI-1
+# set $monitor_primary HDMI-1
+set $monitor_primary DP-3
 workspace $ws1 output $monitor_primary
 workspace $ws2 output $monitor_primary
 workspace $ws3 output $monitor_primary
@@ -403,8 +404,11 @@ for_window [instance="__nmtui"] floating enable
 
 # twtich hack
 for_window [class="obs" title="Chat"] floating disable
-for_window [class="obs" title="Twitch Stats"] floating disable;
+for_window [class="obs" title="Twitch Stats"] floating disable
 for_window [class="obs" title="OBS.*"] floating disable
+
+for_window [title="alsamixer"] floating enable
+for_window [title=".*Huddle"] floating enable
 
 for_window [class="Matplotlib"] floating enable, resize set 500 px 400 px, move position center
 for_window [title="countdown.*"] floating enable, resize set 396 px 102 px, move position center
