@@ -1012,7 +1012,7 @@ vim.g.jupytext_fmt = 'py'
 
 -- [[ harpoon ]]
 
-function Send_to_harpoon(term_num, visual)
+function SendToHarpoon(term_num, visual)
   local goto_term = vim.g.harpoon_goto_term
   local term = require('harpoon.term')
   if visual == 1 then
@@ -1036,8 +1036,8 @@ end
 vim.g.harpoon_goto_term = 0
 
 -- send to harpoon terminal
-vim.keymap.set('n', '<C-s><C-h>', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = true})
-vim.keymap.set('v', '<C-s><C-h>', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = true})
+vim.keymap.set('n', '<C-s><C-h>', ':lua SendToHarpoon(1, 0)<CR>', {noremap = true})
+vim.keymap.set('v', '<C-s><C-h>', ':lua SendToHarpoon(1, 1)<CR>', {noremap = true})
 -- open harpoon menu
 vim.keymap.set('n', '<leader>ha', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {noremap = true})
 
@@ -1441,8 +1441,8 @@ vim.keymap.set('v', '<leader>td', ':lua TabToDict()<cr>', {noremap = true, desc 
 
 function ToggleSlime(back)
   if back == 'harpoon' then
-    vim.keymap.set('n', '<leader>e', ':lua Send_to_harpoon(1, 0)<CR>', {noremap = false})
-    vim.keymap.set('v', '<leader>e', ':lua Send_to_harpoon(1, 1)<CR>', {noremap = false})
+    vim.keymap.set('n', '<leader>e', ':lua SendToHarpoon(1, 0)<CR>', {noremap = false})
+    vim.keymap.set('v', '<leader>e', ':lua SendToHarpoon(1, 1)<CR>', {noremap = false})
     print("Using harpoon")
   elseif back == 'slime' then
     vim.keymap.set('n', '<leader>e',  ':SlimeSend<cr>', {noremap = false, desc = 'send line to tmux'})
@@ -1630,7 +1630,7 @@ vim.api.nvim_create_autocmd({"BufReadPre"}, {
 				vim.o.eventignore = 'FileType'
 				vim.bo.swapfile = false
 				vim.bo.bufhidden = 'unload'
-				vim.bo.buftype = 'nowrite'
+				-- vim.bo.buftype = 'nowrite'
 				vim.bo.undolevels = -1
 			end
 		end
@@ -1659,5 +1659,48 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
 		end
 	end
 })
+
+-- local BigQuery = vim.api.nvim_create_augroup("BigQuery", {})
+-- vim.api.nvim_create_autocmd({"BufEnter"}, {
+-- 	group = BigQuery,
+--   pattern = '*.bigquery',
+--   callback = function(ev)
+--     if ev.file and ev.file:match('%.bigquery$') then
+--       vim.bo.filetype = 'sql'
+--       print('BigQuery filetype set')
+--     end
+--   end,
+-- })
+--
+-- local BQ = {
+--   win_term = nil,
+--   win_buf = nil,
+-- }
+-- vim.api.nvim_create_autocmd({"BufWritePost"}, {
+--   group = BigQuery,
+--   pattern = '*.bigquery',
+--   callback = function(ev)
+--     if ev.file and ev.file:match('%.bigquery$') then
+--       if BQ.win_buf == nil then
+--         BQ.win_buf = vim.api.nvim_get_current_win()
+--       end
+--       local buf = vim.fn.expand('%')
+--       local cmd = "bq query --format sparse --nouse_legacy_sql" .. buf
+--       local cmd_map = ':lua require("harpoon.term").sendCommand(12, '..cmd..')<cr>'
+--       -- vim.keymap.lset('n', '<leader><cr>', ':lua harpoon.send()<cr>', {desc = 'create scratch buffer'})
+--       -- vim.keymap.set('n', '<leader><cr>', ':lua require("harpoon.term").gotoTerminal(12)<cr>', { noremap = true } )
+--       --
+--       vim.keymap.lset('n', '<leader><cr>', cmd_map, { noremap = true } )
+--
+--       vim.fn.execute('vnew')
+--       require("harpoon.term").gotoTerminal(12)
+--       local win_term = vim.api.nvim_get_current_win()
+--
+--       vim.api.nvim_set_current_win(win_buf)
+--       print('BigQuery filetype set')
+--     end
+--   end,
+-- })
+
 
 -- vim:ts=2 sts=2 sw=2 et
