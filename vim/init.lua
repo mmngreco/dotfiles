@@ -1409,6 +1409,7 @@ function SwapBool()
     ['true'] = 'false',
     ['false'] = 'true',
   }
+
   local word = vim.fn.expand("<cword>")
   local new = value_map[word]
   -- replace current word with new word
