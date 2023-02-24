@@ -35,7 +35,7 @@ unset __conda_setup
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # ----------------------------------------------------------------------------
-# shortcuts
+# >>> shortcuts >>>
 join-lines() {
   local item
   while read item; do
@@ -56,6 +56,7 @@ unset -f bind-git-wrapper
 bindkey -s ^t^w "txw\n"
 bindkey -s ^t^s "txs\n"
 if [ -e /home/mgreco/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mgreco/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# <<< shortcuts <<<
 
 # Created by `pipx` on 2021-12-07 18:17:23
 export PATH="$PATH:/home/mgreco/.local/bin"

@@ -64,8 +64,8 @@ xterm.vt100*color4: #89B4FA
 xterm.vt100*color12: #89B4FA
 
 ! magenta
-xterm.vt100*color5: #F5C2E7
-xterm.vt100*color13: #F5C2E7
+xterm.vt100*color5: #d122a1
+xterm.vt100*color13: #d122a1
 
 ! cyan
 xterm.vt100*color6: #94E2D5
