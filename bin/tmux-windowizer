@@ -11,4 +11,5 @@ fi
 
 shift
 tmux send-keys -t $target "$*" Enter
+tmux select-window -t $clean_name
 
