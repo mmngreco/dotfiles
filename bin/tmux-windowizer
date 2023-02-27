@@ -10,4 +10,5 @@ if ! tmux has-session -t $target 2> /dev/null; then
 fi
 
 shift
-tmux send-keys -t $target "$*"
+tmux send-keys -t $target "$*" Enter
+
