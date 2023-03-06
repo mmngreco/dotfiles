@@ -23,8 +23,8 @@ matches:
         params:
           cmd: "curl 'https://api.ipify.org'"
 
-  - trigger: "doops"
-    replace: "data-observatory-ops"
+  # - trigger: "doops"
+  #   replace: "data-observatory-ops"
 
   - trigger: ":details:"
     replace: |-
