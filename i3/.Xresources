@@ -22,14 +22,10 @@ xterm*trueColor: true
 ! XTerm.ttyModes: erase ^?
 
 XTerm.vt100.translations: #override \
-    Meta <Key> minus: smaller-vt-font() \n\
-    Meta <Key> plus: larger-vt-font() \n\
-    Meta <Key> KP_Subtract: smaller-vt-font() \n\
-    Meta <Key> KP_Add: larger-vt-font() \n\
-    Super <Key> minus: smaller-vt-font() \n\
-    Super <Key> plus: larger-vt-font() \n\
-    Super <Key> KP_Subtract: smaller-vt-font() \n\
-    Super <Key> KP_Add: larger-vt-font() \n\
+    Ctrl Shift <Key> minus: smaller-vt-font() \n\
+    Ctrl Shift <Key> plus: larger-vt-font() \n\
+    Ctrl Shift <Key> KP_Subtract: smaller-vt-font() \n\
+    Ctrl Shift <Key> KP_Add: larger-vt-font() \n\
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 xterm*faceName: Cascadia Code PL
