@@ -669,7 +669,7 @@ local servers = {
   'pyright',
   -- 'tsserver',
   -- 'sumneko_lua',
-  'gopls'
+  -- 'gopls'
 }
 
 -- Ensure the servers above are installed
