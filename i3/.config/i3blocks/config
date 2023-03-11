@@ -5,8 +5,8 @@ border_top=0
 border_left=0
 border_right=0
 border_bottom=2
-color=#000000
-# color=#FFFF
+# color=#000000
+color=#FFFF
 
 
 [logout]
@@ -71,4 +71,3 @@ border=#928374
 command=bash $DOTFILES/scripts/battery.sh
 interval=10
 border=#3ec98f
-
