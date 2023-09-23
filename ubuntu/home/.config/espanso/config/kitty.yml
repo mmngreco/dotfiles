@@ -1,4 +1,3 @@
-backend: Clipboard
 filter_class: kitty
+backend: Clipboard
 disable_x11_fast_inject: true
-fast_inject: false
